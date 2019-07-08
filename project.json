@@ -2,25 +2,30 @@
     "repoName": "visual-music",
     "tagline": "An app that converts your favorite music pieces into visual expressions.",
     "color": "#e8c123",
-    "logo": "https://ih1.redbubble.net/image.347750138.4981/st%2Csmall%2C215x235-pad%2C210x230%2Cf8f8f8.lite-1u4.jpg",
+    "logo": "https://raw.githubusercontent.com/zero-to-mastery/visual-music/master/visual-music-logo/Logo%20Background(1).png",
     "channelName": "visual-music",
     "desc": [
         "Visual Music webapp provides the users with a real time visual transcription of a streamed music piece. \nIf the visual transcription can be at first of random assignment of colors and shapes, it shouldn't remain so, as one of the main interest is to transcribe the emotional effects of the music piece.",
         "__**The applications could be:**__ \n:small_orange_diamond: Screening the visual expression, \n:small_orange_diamond: Hearing impaired accessibility, \n:small_orange_diamond: Downloadable artistic pieces, \n:small_orange_diamond: Tools for visualization theory \nFor more indepth use case [see here](https://github.com/zero-to-mastery/visual-music#applications)",
-        "__**Stack:**__ \nThe idea is to stream Soundcloud music, take the data that we receive and process it through p5.js for visualization.\n**Using:**\n:small_blue_diamond:   React \n:small_blue_diamond:   p5 \n:small_blue_diamond:   Soundcloud API \n:small_blue_diamond:   Figma to design the UI interface",
+        "__**Stack:**__ small_blue_diamond:   Figma small_blue_diamond:   Storybook \n:small_blue_diamond:   React \n:small_blue_diamond:   p5 \n:small_blue_diamond:   react-p5-wrapper \n:small_blue_diamond:   Firebase",
         "Whilst working on various features, including data visualization and digital signal processing, you will gain valuable experience in collaborating and working with version control and source code management (Github), which are extremely valuable skills."
     ],
     "team": [
         ["lucie", "Project Lead"],
-        ["justinwlin", "Tech Advisor"]
+        ["justinwlin", "Tech Advisor"],
+        ["nab", "Design Lead"]
     ],
     "links": [
         ["README.md", "https://github.com/zero-to-mastery/visual-music/blob/master/README.md"],
-        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/visual-music/blob/master/CONTRIBUTING.md"]
+        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/visual-music/blob/master/CONTRIBUTING.md"],
+        ["GitHub & PR Guide", "https://github.com/zero-to-mastery/visual-music/blob/master/Visual-Music-GitHub-PR-Guide.pdf"],
+        ["Wiki", "https://github.com/zero-to-mastery/visual-music/wiki"]
     ],
     "poi": [
         ["README.md", "https://github.com/zero-to-mastery/visual-music/blob/master/README.md"],
-        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/visual-music/blob/master/CONTRIBUTING.md"]
+        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/visual-music/blob/master/CONTRIBUTING.md"],
+        ["GitHub & PR Guide", "https://github.com/zero-to-mastery/visual-music/blob/master/Visual-Music-GitHub-PR-Guide.pdf"],
+        ["Wiki", "https://github.com/zero-to-mastery/visual-music/wiki"]
     ],
     "tasks": {
         "title": "Trello Tasks",
