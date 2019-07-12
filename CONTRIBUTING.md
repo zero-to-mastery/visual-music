@@ -9,7 +9,7 @@ Team Lead:
 * Tech Advisor: [justinwlin](https://github.com/justinwlin)
 * Frontend Lead: ?
 * Design Lead: [abneha04](https://github.com/abneha04)   
-* Backend Lead: ?      
+* Backend Lead: [Nilkamal](https://github.com/Nilkamal)   
 * QA Lead: ?                      
 *quality insurance: to check the code for issues before a PR can be merged*
 
