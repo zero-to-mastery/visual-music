@@ -57,9 +57,7 @@ class App extends React.Component {
     onFileUpload = event => {
         const song = event.target.files[0];
 
-        if (song.type === 'audio/mp3') {
-            this.setState({uploadedSong: song, ...soundReset});
-        }
+        this.setState({uploadedSong: song, ...soundReset});
     }
 
     render() {
