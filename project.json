@@ -13,7 +13,8 @@
     "team": [
         ["lucie", "Project Lead"],
         ["justinwlin", "Tech Advisor"],
-        ["nab", "Design Lead"]
+        ["nab", "Design Lead"],
+        ["nilkamal", "Back End Lead"]
     ],
     "links": [
         ["README.md", "https://github.com/zero-to-mastery/visual-music/blob/master/README.md"],
