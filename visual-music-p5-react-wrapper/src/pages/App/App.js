@@ -56,7 +56,6 @@ class App extends React.Component {
     *********************************************/
     onFileUpload = event => {
         const song = event.target.files[0];
-
         this.setState({uploadedSong: song, ...soundReset});
     }
 
