@@ -10,8 +10,7 @@ Team Lead:
 * Frontend Lead: ?
 * Design Lead: [abneha04](https://github.com/abneha04)   
 * Backend Lead: [Nilkamal](https://github.com/Nilkamal)   
-* QA Lead: ?                      
-*quality insurance: to check the code for issues before a PR can be merged*
+* QA Lead: [gmagnenat](https://github.com/gmagnenat)                      
 
 __We recognize all contributors__
 Contributions can be:
@@ -95,8 +94,6 @@ If you have any library that you want to use, please discuss it with the team fi
 * [React](https://reactjs.org/)          
   * https://reactjs.org/tutorial/tutorial.html         
   * https://reactjs.org/community/courses.html   
-* [Docker](https://www.docker.com/)      
-  * https://www.youtube.com/watch?v=C6LtRb1OJuw&app=desktop        
  
 ## Miscellaneous
 ### Digital Signal Processing theory:
