@@ -28,7 +28,7 @@ import './SoundPlayer.styles.css';
 const SoundPlayer = ({ volume, onPlayPress, onVolumeChange, onFileUpload, buttonText }) => (
     <div className='soundplayer'>
         <input type="file"
-            accept=".mp3,audio/*"
+            accept="audio/*"
             name="file"
             onChange={onFileUpload}/>
         <div className='soundplayer-controls'>
