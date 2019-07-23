@@ -16,13 +16,12 @@ The applications could be :
 
 ## Technology/Stack:
 * [Figma](https://www.figma.com/): to design the UI
-* [Storybook](https://storybook.js.org/): to test and export the components for React
+* [Storybook](https://storybook.js.org/): to test and export the UI components for React
 * [React](https://reactjs.org/): to build the UI
 * [p5](https://p5js.org/): for visualization
    * using [react-p5-wrapper](https://www.npmjs.com/package/react-p5-wrapper))
 * [Firebase](https://firebase.google.com/)                 
-* [Docker](https://www.docker.com/): to run and deploy the app
-* [Travis CI](https://travis-ci.org/): continuous integration service used to build and test projects hosted at GitHub
+* [Travis CI](https://travis-ci.org/): to build and test the deployed app
   
 __Idea:__ We want to analyse the data from an uploaded mp3 song, and process it through p5.js. We are not building a player, and not building a simple visualizer: we want to think on how to transcribe the music in an artistic way - the emotions, patterns, etc. Challenges have to be solved but it could mean working on rhythms, beats, melodies, frequencies, loops, etc.         
 
@@ -36,23 +35,24 @@ __Idea:__ We want to analyse the data from an uploaded mp3 song, and process it 
 ## Functionalities
 ### Version 1.0
 * Landing page
-  * carousel ->         
+  * parallax effect ->         
 Features         
 About us        
 Contact form          
 Social media (links)          
 Login/Register/Reset password             
          
-* Onboarding user screen         
-* Player page
-* Upload song button
-* Play/pause button
-* Download button (enabled when the song is over)
-* Screenshot button          
-* Share button           
-* Almost full screen for visual      
-* Visual themes panel (show/hide on mouse move)      
-* Play bar at the bottom (show/hide on mouse move)
+* Sign up screen   
+* Login screen    
+* Reset password screen     
+* Onboarding user screen     
+* Uploading song screen        
+* Visual themes panel   
+* Preview visual screen
+* Player page         
+* Snapshot screen             
+* Share on social media screen             
+* Download visual screen               
 
 ### Features
 * Upload mp3 song
