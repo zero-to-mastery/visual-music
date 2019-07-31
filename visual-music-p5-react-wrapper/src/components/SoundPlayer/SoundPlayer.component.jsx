@@ -25,32 +25,40 @@ import './SoundPlayer.styles.css';
     2.  onVolumeChange
     3.  onFileUpload
 *************************************************************/
-const SoundPlayer = ({ volume, onPlayPress, onVolumeChange, onFileUpload, buttonText }) => (
-    <div className='soundplayer'>
-        <input type="file"
-            accept="audio/*"
-            name="file"
-            onChange={onFileUpload}/>
-        <div className='soundplayer-controls'>
-            <div>
-                <button className='control-button'
-                    onClick={onPlayPress}>
-                    {buttonText}
-                </button>
-            </div>
-            <div>
-                <label>Volume</label>
-                <input type="range"
-                    name="volume"
-                    value={volume}
-                    min="0.0"
-                    max="1.0"
-                    step="0.1"
-                    onChange={onVolumeChange}
-                />
-            </div>
-        </div>
-    </div>
+const SoundPlayer = ({
+	volume,
+	onPlayPress,
+	onVolumeChange,
+	onFileUpload,
+	buttonText,
+	isSongLoaded
+}) => (
+	<div className='soundplayer'>
+		<input type='file' accept='audio/*' name='file' onChange={onFileUpload} />
+		<div className='soundplayer-controls'>
+			<div>
+				<button
+					className='control-button'
+					onClick={onPlayPress}
+					disabled={!isSongLoaded}
+				>
+					{buttonText}
+				</button>
+			</div>
+			<div>
+				<label>Volume</label>
+				<input
+					type='range'
+					name='volume'
+					value={volume}
+					min='0.0'
+					max='1.0'
+					step='0.1'
+					onChange={onVolumeChange}
+				/>
+			</div>
+		</div>
+	</div>
 );
 
 export default SoundPlayer;
