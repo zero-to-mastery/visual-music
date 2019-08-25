@@ -1,6 +1,7 @@
 import React from 'react';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
+import LandingPage from '../../components/LandingPage/LandingPage.component';
 import './App.css';
 
 let soundReset = {
@@ -15,7 +16,8 @@ class App extends React.Component {
         this.state = {
             uploadedSong: null,
             volume: 0.5,
-            ...soundReset
+            ...soundReset,
+            route: 'landingPage'
         }
     }
 
@@ -62,21 +64,26 @@ class App extends React.Component {
     render() {
         const { uploadedSong, volume, isPlaying, buttonText, onSongEnd } = this.state;
         return (
-            <div className='visualmusic'>
-                <Visualizer
-                    volume = {volume}
-                    isPlaying = {isPlaying}
-                    uploadedSong = {uploadedSong}
-                    onSongEnd = {onSongEnd}
-                />
-                <SoundPlayer
-                    volume = {volume}
-                    buttonText = {buttonText}
-                    onPlayPress = {this.onPlayPress}
-                    onVolumeChange = {this.onVolumeChange}
-                    onFileUpload = {this.onFileUpload}
-                />
-            </div>
+          <>
+            {this.state.route === 'landingPage'
+              ? <LandingPage />
+              : <div className='visualmusic'>
+                  <Visualizer
+                      volume = {volume}
+                      isPlaying = {isPlaying}
+                      uploadedSong = {uploadedSong}
+                      onSongEnd = {onSongEnd}
+                  />
+                  <SoundPlayer
+                      volume = {volume}
+                      buttonText = {buttonText}
+                      onPlayPress = {this.onPlayPress}
+                      onVolumeChange = {this.onVolumeChange}
+                      onFileUpload = {this.onFileUpload}
+                  />
+                </div>
+            }
+          </>
         );
     }
 }
