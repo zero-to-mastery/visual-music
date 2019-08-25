@@ -6,10 +6,11 @@ import { config } from 'react-spring/renderprops'
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
 import Button from '../Button/Button.component.jsx';
+import SectionTwo from './sections/SectionTwo.component.jsx';
 
 class LandingPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
@@ -37,23 +38,15 @@ class LandingPage extends Component {
               </p>
             </ParallaxLayer>
             <ParallaxLayer speed={-0.12} offset={0.75}>
-              <Button text="Get Started" btnClass="getStarted" />
+              <Button
+                text="Get Started"
+                btnClass="getStarted"
+                handleRouteChange={this.props.handleRouteChange}
+                to="visualizer"
+              />
             </ParallaxLayer>
           </section>
-
-          <section id="section-two">
-          <ParallaxLayer speed={0.12} offset={1.32}>
-              <h2 className="content-wrapper heading">Best Experience</h2>
-            </ParallaxLayer>
-            <ParallaxLayer speed={0.08} offset={1.45}>
-              <hr style={{ marginLeft: '8%', width: '30%', border: '2px solid white' }} />
-            </ParallaxLayer>
-            <ParallaxLayer speed={0.01} offset={1.5}>
-              <p className="content-wrapper tagline">
-                Collection of visual themes to transcribe the emotional and rythmic effects of an uoloaded mp3 song.
-              </p>
-            </ParallaxLayer>\
-          </section>
+          <SectionTwo />
         </Parallax>
       </>
     )

@@ -2,6 +2,7 @@ import React from 'react';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
 import LandingPage from '../../components/LandingPage/LandingPage.component';
+import Button from '../../components/Button/Button.component.jsx'
 import './App.css';
 
 let soundReset = {
@@ -61,12 +62,21 @@ class App extends React.Component {
         this.setState({uploadedSong: song, ...soundReset});
     }
 
+    /********************************************
+        Handle file uploads. Uploaded file is saved
+        as state and is passed down to the sketch file as props.
+        Sketch then loads the file using p5.Sound library.
+    *********************************************/
+    handleRouteChange = route => {
+      this.setState({ route })
+    }
+
     render() {
         const { uploadedSong, volume, isPlaying, buttonText, onSongEnd } = this.state;
         return (
           <>
             {this.state.route === 'landingPage'
-              ? <LandingPage />
+              ? <LandingPage handleRouteChange={(route) => this.handleRouteChange(route)} />
               : <div className='visualmusic'>
                   <Visualizer
                       volume = {volume}
@@ -81,6 +91,7 @@ class App extends React.Component {
                       onVolumeChange = {this.onVolumeChange}
                       onFileUpload = {this.onFileUpload}
                   />
+                  <Button text="GoBack" handleRouteChange={(route) => this.handleRouteChange(route)} to="landingPage" />
                 </div>
             }
           </>
