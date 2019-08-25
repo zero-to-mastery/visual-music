@@ -1,4 +1,4 @@
-.landing-page-wrap {
+.landing-page-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,3 +11,27 @@
   background-attachment: fixed;
   color: #FFFFFF;
 }
+
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+}
+
+.content-wrapper {
+  width: 35%;
+  margin-left: 8%;
+  color: white;
+}
+
+.heading {
+  font-size: 3.3rem;
+  font-weight: 400;
+}
+
+.tagline {
+ font-size: 1.8rem;
+ font-weight: 300;
+}
+
