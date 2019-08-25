@@ -1,0 +1,19 @@
+.getStarted {
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  padding: 15px 45px;
+  border: 0.8px solid;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  background-color: #FFFFFF;
+  color: #0D4E67;
+  transition: 0.4s;
+}
+
+.getStarted:hover {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 0.8px solid;
+}
+
