@@ -14,6 +14,10 @@ button {
   border: 0;
 }
 
+button:focus {
+  outline: none;
+}
+
 .visualmusic {
   display: flex;
   flex-direction: column;

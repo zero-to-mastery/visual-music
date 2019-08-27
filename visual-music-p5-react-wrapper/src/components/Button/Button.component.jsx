@@ -12,7 +12,7 @@ import React from 'react';
 import './Button.styles.css';
 
 const Button = ({ text, btnClass, handleRouteChange, to }) => (
-  <button className={btnClass} onClick={() => handleRouteChange(to)}>
+  <button className={btnClass} onClick={handleRouteChange ? () => handleRouteChange(to) : null}>
     {text}
   </button>
 );
