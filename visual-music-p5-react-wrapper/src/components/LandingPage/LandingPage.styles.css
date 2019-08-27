@@ -4,12 +4,20 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../../assets/LandingPageAssets/bg-image.svg');
+  background-image: url('../../assets/LandingPageAssets/bg-image2.gif');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: overlay;
+}
+
+.landing-page-bg::after,
+.landing-page-bg::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: overlay;
 }
 
 nav {

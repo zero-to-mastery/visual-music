@@ -21,11 +21,13 @@ class LandingPage extends Component {
           <img src={logo} alt="logo" height="100px" width="100px" />
         </nav>
         <Parallax pages={3} config={{ tension: 100, friction: 50 }}>
-          <ParallaxLayer offset={1} speed={0.9} style={{ backgroundColor: 'rgba(13, 78, 103, 0.56)' }} />
+
+          <ParallaxLayer offset={1} speed={0.9} style={{ backgroundColor: 'rgba(13, 78, 103, 0.56)', zIndex: '-1' }} />
           <ParallaxLayer offset={2} speed={0.55} style={{ backgroundColor: 'rgba(41, 172, 109, 0.56)' }} />
 
           <SectionOne handleRouteChange={this.props.handleRouteChange}/>
           <SectionTwo />
+
         </Parallax>
       </>
     )
