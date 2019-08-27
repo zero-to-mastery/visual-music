@@ -4,7 +4,7 @@ import { ParallaxLayer } from 'react-spring/renderprops-addons';
 import Button from '../../Button/Button.component.jsx';
 
 const SectionOne = ({ handleRouteChange }) => (
-  <section id="section-one">
+  <section>
     <ParallaxLayer speed={0.2} offset={0.35}>
       <h2 className="content-wrapper heading">Discover and Share Music Visualization</h2>
     </ParallaxLayer>

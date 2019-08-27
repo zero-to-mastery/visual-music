@@ -4,7 +4,7 @@ import { ParallaxLayer } from 'react-spring/renderprops-addons';
 import Icons from './SectionTwoIcons/SectionTwoIcons.component.jsx'
 
 const SectionTwo = () => (
-  <section id="section-two">
+  <section>
     <ParallaxLayer speed={0.09} offset={1.22}>
       <h2 className="content-wrapper heading">Best Experience</h2>
     </ParallaxLayer>
