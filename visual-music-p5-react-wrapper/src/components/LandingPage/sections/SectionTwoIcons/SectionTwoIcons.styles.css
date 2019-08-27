@@ -1,0 +1,18 @@
+#group-one {
+  display: block;
+  width: 20vw;
+  /* height: 10vh; */
+  margin-right: 20%;
+  margin-left: auto;
+}
+
+#group-two {
+  display: grid;
+  grid-row-gap: 55px;
+  grid-column-gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 30px 30px 30px;
+  width: 21vw;
+  margin-right: 18%;
+  margin-left: auto;
+}

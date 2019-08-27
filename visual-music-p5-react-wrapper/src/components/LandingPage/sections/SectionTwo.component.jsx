@@ -1,7 +1,7 @@
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import Icons from '../Icons/Icons.component.jsx'
+import Icons from './SectionTwoIcons/SectionTwoIcons.component.jsx'
 
 const SectionTwo = () => (
   <section id="section-two">
