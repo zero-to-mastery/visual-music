@@ -20,13 +20,6 @@
   background-blend-mode: overlay;
 }
 
-nav {
-  position: fixed;
-  top: 0;
-  z-index: 3;
-  width: 100%;
-}
-
 .content-wrapper {
   width: 45%;
   margin-left: 8%;

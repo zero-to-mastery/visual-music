@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './LandingPage.styles.css';
-import logo from '../../assets/LogoSVG.svg';
+import TopNav from '../TopNav/TopNav.component.jsx';
 
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
@@ -17,12 +17,10 @@ class LandingPage extends Component {
     return (
       <>
         <div className="landing-page-bg" />
-        <nav>
-          <img src={logo} alt="logo" height="100px" width="100px" />
-        </nav>
+        <TopNav />
         <Parallax pages={3} config={{ tension: 100, friction: 50 }}>
 
-          <ParallaxLayer offset={1} speed={0.9} style={{ backgroundColor: 'rgba(13, 78, 103, 0.56)', zIndex: '-1' }} />
+          <ParallaxLayer offset={1} speed={0.9} style={{ backgroundColor: 'rgba(13, 78, 103, 0.56)' }} />
           <ParallaxLayer offset={2} speed={0.55} style={{ backgroundColor: 'rgba(41, 172, 109, 0.56)' }} />
 
           <SectionOne handleRouteChange={this.props.handleRouteChange}/>

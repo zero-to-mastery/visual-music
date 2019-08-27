@@ -1,8 +1,10 @@
 /*
 
 Reusable button component.
-Pass text and btnClass (className) as props.
-Pass either one of the existing classes or write a new one in Button.styles.css.
+Pass text, btnClass (className), handleRouteChange (function), and to (path) as props.
+for styles pass either one of the existing classes or write a new one in Button.styles.css.
+handleRouteChange() is defined in App.js,
+and will set state.route to the value passed to the "to" prop.
 
 */
 
