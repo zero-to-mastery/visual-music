@@ -1,6 +1,6 @@
 .visualizer {
     width: 15rem;
     padding: 1rem;
-    margin: 1rem;
+    margin: 0 auto;
     border: 0.1rem black dotted;
 }

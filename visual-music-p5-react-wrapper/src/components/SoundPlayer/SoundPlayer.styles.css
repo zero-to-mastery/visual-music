@@ -1,6 +1,7 @@
 .soundplayer {
     display: flex;
     flex-flow: column wrap;
+    margin: 0 auto;
 }
 
 .soundplayer-controls {

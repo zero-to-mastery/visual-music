@@ -91,7 +91,11 @@ class App extends React.Component {
                       onVolumeChange = {this.onVolumeChange}
                       onFileUpload = {this.onFileUpload}
                   />
-                  <Button text="GoBack" handleRouteChange={(route) => this.handleRouteChange(route)} to="landingPage" />
+                  <Button
+                    text="GoBack"
+                    handleRouteChange={(route) => this.handleRouteChange(route)}
+                    to="landingPage"
+                  />
                 </div>
             }
           </>
