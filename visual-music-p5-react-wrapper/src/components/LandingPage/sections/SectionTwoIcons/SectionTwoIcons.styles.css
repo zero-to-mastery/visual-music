@@ -1,18 +1,44 @@
-#group-one {
+.icons {
+  z-index: 100;
   display: block;
   width: 20vw;
-  /* height: 10vh; */
   margin-right: 20%;
   margin-left: auto;
 }
 
-#group-two {
-  display: grid;
-  grid-row-gap: 55px;
-  grid-column-gap: 30px;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 30px 30px 30px;
-  width: 21vw;
-  margin-right: 18%;
-  margin-left: auto;
+#frame {
+  /* display: block; */
+  width: 22vw;
+  /* margin-right: 20%; */
+  /* margin-left: auto; */
+}
+
+.icon {
+  width: 2.5vw;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  filter: drop-shadow(1px 4px 5px white);
+  cursor: pointer;
+}
+
+#download {
+  margin-left: 0.8%;
+}
+
+#print {
+  margin-left: 1.75%;
+}
+
+#share {
+  margin-left: 9.75%;
+}
+
+#snapshot {
+  margin-left: 9.85%;
+}
+
+#song {
+  margin-left: 18.65%;
 }

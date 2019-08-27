@@ -8,37 +8,37 @@ function importAll(imgs) {
   return imgs.keys().map(imgs);
 }
 const icons = importAll(require.context('../../../../assets/LandingPageAssets/section-2-icons/icons', false, /\.(svg)$/));
-
+const [ download, print, share, snapshot, song ] = icons;
 const Icons = () => {
   return (
-    <div>
+    <div className="icons">
       <ParallaxLayer offset={1.5} speed={0.45}>
-        <img id="group-one" src={iconsGroupOne} alt={`icons frame`}/>
+        <img id="frame" src={iconsGroupOne} alt={`icons frame`}/>
       </ParallaxLayer>
-      <div id="group-two">
-          {
-            icons.map((icon, i) => {
-              return (
-                <div>
-                  <ParallaxLayer
-                    offset={0 < i && i < 4 ? 1.4 + i / 11 : 1.53}
-                    speed={0.5 + i / 30}
-                  >
-                    <img
-                      key={i}
-                      src={icon}
-                      alt={`icon${i}`}
-                      width="35px"
-                    />
-                  </ParallaxLayer>
-                </div>
-              )
-            })
-          }
+
+      <div>
+
+        <ParallaxLayer offset={1.59} speed={0.52}>
+          <img src={download} alt="download" className="icon" id="download" />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.78} speed={0.55}>
+          <img src={print} alt="print" className="icon" id="print" />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.52} speed={0.5}>
+          <img src={share} alt="share" className="icon" id="share" />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.68} speed={0.52}>
+          <img src={snapshot} alt="snapshot" className="icon" id="snapshot" />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.59} speed={0.52}>
+          <img src={song} alt="song" className="icon" id="song" />
+        </ParallaxLayer>
+
       </div>
-      {/* <ParallaxLayer offset={1.63} speed={0.5}>
-        <img id="group-two" src={iconsGroupTwo} alt={`icon 2`} width="200px" height="147px" />
-      </ParallaxLayer> */}
     </div>
   );
 }
