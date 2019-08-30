@@ -3,12 +3,12 @@ import { ParallaxLayer } from 'react-spring/renderprops-addons';
 import iconsGroupOne from '../../../../../assets/LandingPageAssets/section-2-icons/Group1.svg';
 import './SectionTwoIcons.styles.css';
 
+import importAll from '../../../../../utils/importAllFiles';
+
 // Import all icon SVGs from folder
-function importAll(imgs) {
-  return imgs.keys().map(imgs);
-}
 const icons = importAll(require.context('../../../../../assets/LandingPageAssets/section-2-icons/icons', false, /\.(svg)$/));
 const [ download, print, share, snapshot, song ] = icons;
+
 const Icons = () => {
   return (
     <div className="icons">
