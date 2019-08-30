@@ -41,7 +41,6 @@
 /* Log in button styles plus hover animation */
 .log-in {
   padding: 10px 30px;
-  border-radius: 5px;
   background-color: transparent;
   color: #FFFFFF;
   font-size: 1rem;
@@ -67,3 +66,12 @@
   right: 20%;
 } 
 
+/* Scrol button styles */
+.scroll {
+  display: block;
+  margin: 5% auto;
+  padding: 10px 30px;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-size: 1.3rem;
+}
