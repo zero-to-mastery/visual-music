@@ -4,8 +4,8 @@ import TopNav from '../TopNav/TopNav.component.jsx';
 
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import SectionOne from './sections/SectionOne.component.jsx';
-import SectionTwo from './sections/SectionTwo.component.jsx';
+import SectionOne from './sections/SectionOne/SectionOne.component.jsx';
+import SectionTwo from './sections/SectionTwo/SectionTwo.component.jsx';
 import SectionThree from './sections/SectionThree/SectionThree.component.jsx';
 
 class LandingPage extends Component {
