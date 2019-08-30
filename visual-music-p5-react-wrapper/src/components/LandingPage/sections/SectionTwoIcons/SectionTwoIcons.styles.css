@@ -1,8 +1,9 @@
 .icons {
+  position: relative;
   z-index: 100;
   display: block;
   width: 20vw;
-  margin-right: 20%;
+  margin-right: 25%;
   margin-left: auto;
 }
 
@@ -24,21 +25,31 @@
 }
 
 #download {
-  margin-left: 0.8%;
+  position: absolute;
+  right: 38.5%;
+  z-index: 99;
 }
 
 #print {
-  margin-left: 1.75%;
+  position: absolute;
+  right: 79%;
+  z-index: 99;
 }
 
 #share {
-  margin-left: 9.75%;
+  position: absolute;
+  right: -5.5%;
+  z-index: 99;
 }
 
 #snapshot {
-  margin-left: 9.85%;
+  position: absolute;
+  right: 38.5%;
+  z-index: 99;
 }
 
 #song {
-  margin-left: 18.65%;
+  position: absolute;
+  right: 85.5%;
+  z-index: 99;
 }
