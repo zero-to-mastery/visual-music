@@ -2,6 +2,7 @@ import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 
 import Button from '../../../Button/Button.component.jsx';
+import Contactform from './FormComponents/ContactForm.component.jsx';
 
 const SectionThree = ({ scrollClick }) => (
   <section>
@@ -20,6 +21,10 @@ const SectionThree = ({ scrollClick }) => (
     <ParallaxLayer speed={0} offset={2.75}>
         <Button text="Scroll" handleRouteChange={scrollClick} btnClass="scroll" />
     </ParallaxLayer>
+    <ParallaxLayer offset={2.4} speed={0.6} style={{ zIndex: '99', height: '0' }}>
+      <Contactform />
+    </ParallaxLayer>
+    
   {/* </ParallaxLayer> */}
   </section>
 )

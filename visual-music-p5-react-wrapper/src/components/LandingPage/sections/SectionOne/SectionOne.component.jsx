@@ -23,7 +23,7 @@ const SectionOne = ({ handleRouteChange, scrollClick }) => (
     >
       <Button
         text="Get Started"
-        btnClass="getStarted"
+        btnClass="get-started"
         handleRouteChange={handleRouteChange}
         to="visualizer"
       />
