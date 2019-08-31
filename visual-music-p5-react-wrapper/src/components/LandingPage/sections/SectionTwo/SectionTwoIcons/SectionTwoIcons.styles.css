@@ -20,7 +20,7 @@
 }
 
 .icon:hover {
-  filter: drop-shadow(1px 4px 5px white);
+  filter: drop-shadow(1px 4px 5px #ffffff93);
   cursor: pointer;
 }
 
