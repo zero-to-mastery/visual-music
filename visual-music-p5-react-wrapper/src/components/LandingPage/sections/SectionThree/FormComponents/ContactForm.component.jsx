@@ -1,3 +1,11 @@
+/*************************
+ * 
+ * Contact form component.
+ * Created as a class component to acommodate for form validation,
+ * that needs to be added.
+ * 
+ ************************/
+
 import React, { Component } from 'react';
 
 import './ContactForm.styles.css';

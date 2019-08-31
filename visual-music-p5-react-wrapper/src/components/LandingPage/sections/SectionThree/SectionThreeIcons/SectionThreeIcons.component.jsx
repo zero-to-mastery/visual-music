@@ -4,6 +4,7 @@ import './SectionThreeIcons.styles.css';
 
 import importAll from '../../../../../utils/importAllFiles';
 
+// Import all icons from assets folder
 const icons = importAll(require.context('../../../../../assets/LandingPageAssets/section-3-icons', false, /\.(svg)$/));
 const [ facebook, linkedIn, github, medium ] = icons;
 
