@@ -1,0 +1,29 @@
+.social-icons {
+  margin-left: 8%;
+}
+
+.social-icon {
+  transition: all .3s;
+}
+
+.social-icon:hover {
+  cursor: pointer;
+  filter: drop-shadow(1px 4px 5px #ffffff93);
+  transform: translateY(-10%);
+}
+
+#github {
+  margin-left: 0%;
+}
+
+#linkedIn {
+  margin-left: 4%;
+}
+
+#facebook {
+  margin-left: 8%;
+}
+
+#medium {
+  margin-left: 12%;
+}
