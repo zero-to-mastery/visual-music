@@ -27,7 +27,7 @@ class ContactForm extends Component {
           <br />
           <textarea rows="3" name="message" className="form-input" id="message" ></textarea>
         </label>
-        <Button text="Send" btnClass="get-started" />
+        <Button text="Send" btnClass="sign-up" />
       </div>
     )
   }
