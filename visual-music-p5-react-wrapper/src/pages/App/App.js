@@ -63,9 +63,9 @@ class App extends React.Component {
     }
 
     /********************************************
-        Handle file uploads. Uploaded file is saved
-        as state and is passed down to the sketch file as props.
-        Sketch then loads the file using p5.Sound library.
+        Handle route change. Clicking on 'Get Started' 
+        button in the landing page takes to visualizer.
+     
     *********************************************/
     handleRouteChange = route => {
       this.setState({ route })
