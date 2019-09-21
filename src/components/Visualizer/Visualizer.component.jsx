@@ -24,19 +24,20 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch
-        }
+        };
     }
 
     render() {
         const { volume, isPlaying, uploadedSong } = this.props;
         const { sketch } = this.state;
 
-        return(
-            <div className = 'visualizer'>
-                <P5Wrapper sketch = {sketch}
-                    volume = {volume}
-                    isPlaying = {isPlaying}
-                    uploadedSong = {uploadedSong}
+        return (
+            <div className="visualizer">
+                <P5Wrapper
+                    sketch={sketch}
+                    volume={volume}
+                    isPlaying={isPlaying}
+                    uploadedSong={uploadedSong}
                 />
             </div>
         );
