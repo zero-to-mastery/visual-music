@@ -7,7 +7,7 @@ Does the project appeal to you? Contact us on Discord and we'll provide the link
 Team Lead:     
 * Lead: [lucierabahi](https://github.com/lucierabahi)
 * Tech Advisor: [justinwlin](https://github.com/justinwlin)
-* Frontend Lead: ?
+* Frontend Lead: [ArnasDickus](https://github.com/ArnasDickus)
 * Design Lead: [abneha04](https://github.com/abneha04)   
 * Backend Lead: [Nilkamal](https://github.com/Nilkamal)   
 * QA Lead: [gmagnenat](https://github.com/gmagnenat)                      
