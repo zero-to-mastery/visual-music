@@ -1,7 +1,7 @@
 import React from 'react';
 import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
-import './App.css';
+import classes from './App.module.scss';
 
 let soundReset = {
     isPlaying: false,
@@ -76,7 +76,7 @@ class App extends React.Component {
             onSongEnd
         } = this.state;
         return (
-            <div className="visualmusic">
+            <div className={classes.visualmusic}>
                 <Visualizer
                     volume={volume}
                     isPlaying={isPlaying}
