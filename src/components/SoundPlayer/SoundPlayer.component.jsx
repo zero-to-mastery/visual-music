@@ -12,7 +12,7 @@
 ************************************************************/
 
 import React from 'react';
-import './SoundPlayer.styles.css';
+import classes from './SoundPlayer.module.scss';
 
 /***********************************************************
     Parameters (src/pages/App/App.js):
@@ -33,12 +33,12 @@ const SoundPlayer = ({
 	buttonText,
 	isSongLoaded
 }) => (
-	<div className='soundplayer'>
+	<div className={classes.soundplayer}>
 		<input type='file' accept='audio/*' name='file' onChange={onFileUpload} />
-		<div className='soundplayer-controls'>
+		<div className={classes.soundplayerControls}>
 			<div>
 				<button
-					className='control-button'
+					className={classes.soundplayer}
 					onClick={onPlayPress}
 					disabled={!isSongLoaded}
 				>

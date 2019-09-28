@@ -1,0 +1,19 @@
+.visualmusic {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 64px;
+    font-size: 1rem;
+}
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+.bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+}
