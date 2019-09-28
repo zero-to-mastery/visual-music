@@ -20,7 +20,7 @@ import {ReactComponent as VolumeIcon} from '../../assets/PlayerBarAssets/volume-
 import {ReactComponent as PlayIcon} from '../../assets/PlayerBarAssets/play-icon.svg';
 import {ReactComponent as SongIcon} from '../../assets/PlayerBarAssets/song-icon.svg';
 
-import './PlayerBar.css';
+import classes from './PlayerBar.module.scss';
 
 const pauseButton = (<svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24">
     <path fill="rgba(255, 255, 255, 0.75)" fillRule="evenodd" d="M0 0h6v24H0zM12 0h6v24h-6z"
@@ -46,43 +46,43 @@ class PlayerBar extends Component {
     render() {
         const {uploadedSong, onPlayPress, onFileUpload, isPlaying, isSongLoaded} = this.props;
         return (
-            <div className='player-bar'>
-                <div className="now-playing">
-                    <div className="icon">
+            <div className={classes.playerBar}>
+                <div className={classes.nowPlaying}>
+                    <div className={classes.icon}>
                         <SongIcon/>
                     </div>
-                    <div className="song-title">
+                    <div className={classes.songTitle}>
                         {uploadedSong ? uploadedSong.name : "No song selected"}
                     </div>
                 </div>
-                <div className="player-controls">
-                    <div className="play-button" onClick={onPlayPress}>
+                <div className={classes.playerControls}>
+                    <div className={classes.playButton} onClick={onPlayPress}>
                         {isPlaying && isSongLoaded ? pauseButton : <PlayIcon/>}
                     </div>
-                    <div className="controls">
-                        <span className="progress-time">0:00</span>
-                        <div className="slider">
-                            <div className="progress"/>
+                    <div className={classes.controls}>
+                        <span className={classes.progressTime}>0:00</span>
+                        <div className={classes.slider}>
+                            <div className={classes.progress}/>
                         </div>
-                        <span className="progress-time">0:00</span>
+                        <span className={classes.progressTime}>0:00</span>
                     </div>
-                    <div className="volume">
-                        <div className="volume-button">
+                    <div className={classes.volume}>
+                        <div className={classes.volumeButton}>
                             <VolumeIcon/>
                         </div>
                     </div>
                 </div>
-                <div className="player-bar-right">
-                    <div className="download">
-                        <div className="snapshot-button">
+                <div className={classes.playerBarRight}>
+                    <div className={classes.download}>
+                        <div className={classes.snapshotButton}>
                             <SnapshotIcon/>
                         </div>
-                        <div className="download-button">
+                        <div className={classes.downloadButton}>
                             <DownloadIcon/>
                         </div>
                     </div>
-                    <div className="upload-button">
-                        <label htmlFor="song" className="song-container">Upload New Song
+                    <div className={classes.uploadButton}>
+                        <label htmlFor="song" className={classes.songContainer}>Upload New Song
                             <input type="file" id="song" accept="audio/*" name="song" onChange={onFileUpload}/>
                         </label>
                     </div>
