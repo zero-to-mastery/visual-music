@@ -1,8 +1,10 @@
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import Icons from './SectionTwoIcons/SectionTwoIcons.component.jsx'
+// import Icons from './SectionTwoIcons/SectionTwoIcons.component.jsx'
 import Button from '../../../Button/Button.component.jsx';
+import './SectionTwo.styles.css';
+import blackHairGirl from '../../../../assets/LandingPageAssets/section-2-icons/blackHairAndBubbles.png';
 
 const SectionTwo = ({ scrollClick }) => (
   <section>
@@ -20,7 +22,13 @@ const SectionTwo = ({ scrollClick }) => (
       </p>
     </ParallaxLayer>
 
-    <Icons />
+    <ParallaxLayer speed={0.2} offset={1.3}>
+      <div className="black-hair-girl-wrapper">
+        <img src={blackHairGirl} alt="black haired girl" className="black-hair-girl"/>
+      </div>
+    </ParallaxLayer>
+
+    {/* <Icons /> */}
     
     <ParallaxLayer speed={0} offset={1.75} style={{zIndex: '80'}}>
       <Button text="Scroll" handleRouteChange={scrollClick} btnClass="scroll" />
