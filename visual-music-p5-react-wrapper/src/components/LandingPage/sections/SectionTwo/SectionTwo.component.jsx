@@ -4,7 +4,7 @@ import { ParallaxLayer } from 'react-spring/renderprops-addons';
 // import Icons from './SectionTwoIcons/SectionTwoIcons.component.jsx'
 import Button from '../../../Button/Button.component.jsx';
 import './SectionTwo.styles.css';
-import blackHairGirl from '../../../../assets/LandingPageAssets/section-2-icons/blackHairAndBubbles.png';
+import blackHairGirl from '../../../../assets/LandingPageAssets/section-2/blackHairAndBubbles.png';
 
 const SectionTwo = ({ scrollClick }) => (
   <section>
