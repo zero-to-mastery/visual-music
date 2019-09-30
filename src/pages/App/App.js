@@ -1,11 +1,11 @@
 import React from 'react';
-import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
-import Visualizer from '../../components/Visualizer/Visualizer.component';
+// import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
+// import Visualizer from '../../components/Visualizer/Visualizer.component';
+import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
 
 let soundReset = {
     isPlaying: false,
-    buttonText: 'Play'
 };
 
 class App extends React.Component {
@@ -72,25 +72,28 @@ class App extends React.Component {
             isSongLoaded,
             volume,
             isPlaying,
-            buttonText,
-            onSongEnd
+            // onSongEnd
         } = this.state;
         return (
-            <div className={classes.visualmusic}>
-                <Visualizer
-                    volume={volume}
-                    isPlaying={isPlaying}
-                    uploadedSong={uploadedSong}
-                    onSongEnd={onSongEnd}
-                />
-                <SoundPlayer
-                    volume={volume}
-                    buttonText={buttonText}
-                    onPlayPress={this.onPlayPress}
-                    onVolumeChange={this.onVolumeChange}
-                    onFileUpload={this.onFileUpload}
-                    isSongLoaded={isSongLoaded}
-                />
+            <div className={classes.pageContainer}>
+                {/* <div className={classes.visualmusic}>
+                    <Visualizer
+                        volume={volume}
+                        isPlaying={isPlaying}
+                        uploadedSong={uploadedSong}
+                        onSongEnd={onSongEnd}
+                    />
+                </div> */}
+                <div className={classes.bar}>
+                    <PlayerBar
+                        volume={volume}
+                        onFileUpload={this.onFileUpload}
+                        onPlayPress={this.onPlayPress}
+                        isPlaying={isPlaying}
+                        uploadedSong={uploadedSong}
+                        isSongLoaded={isSongLoaded}
+                    />
+                </div>
             </div>
         );
     }
