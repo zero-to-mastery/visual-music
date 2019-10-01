@@ -14,7 +14,7 @@
 ************************************************************/
 
 import React from 'react';
-import './Visualizer.styles.css';
+import classes from './Visualizer.module.scss';
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from '../../vendor/sketches/sketch';
 
@@ -24,19 +24,20 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch
-        }
+        };
     }
 
     render() {
         const { volume, isPlaying, uploadedSong } = this.props;
         const { sketch } = this.state;
 
-        return(
-            <div className = 'visualizer'>
-                <P5Wrapper sketch = {sketch}
-                    volume = {volume}
-                    isPlaying = {isPlaying}
-                    uploadedSong = {uploadedSong}
+        return (
+            <div className={classes.visualizer}>
+                <P5Wrapper
+                    sketch={sketch}
+                    volume={volume}
+                    isPlaying={isPlaying}
+                    uploadedSong={uploadedSong}
                 />
             </div>
         );
