@@ -1,0 +1,125 @@
+.overlay{
+    padding: 10%;
+
+    .login{
+        padding-top: 5%;
+        padding-bottom: 10%;
+        padding-left: 7%;
+        padding-right: 7%;
+        background: #0D4E67;
+        border-radius: 4px;
+    
+        .content{
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            // background: black;
+        
+            .titleGroup{
+        
+                font-family: Biryani;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 30px;
+                line-height: 140%;
+                width: 100%;
+                letter-spacing: 0.15em;
+                color: #FFFFFF;
+                padding-bottom: 4%;
+            }
+        
+            .emailGroup{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-bottom: 2%;
+            
+                .emailLabel{
+                
+                    font-family: Biryani;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 15px;
+                    line-height: 160%;
+                    /* or 24px */
+                
+                    letter-spacing: 0.1em;
+                
+                    color: #FFFFFF;
+                }
+                
+                .emailField{
+                    outline: none;
+                    height:44.8px;
+                    background: #FFFFFF;
+                    border: 2px solid #E6E6E6;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                }
+            }
+            
+            .passwordGroup{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding-bottom: 4%;
+            
+                .passwordLabel{
+                
+                    font-family: Biryani;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 15px;
+                    line-height: 160%;
+                    /* or 24px */
+                
+                    letter-spacing: 0.1em;
+                
+                    color: #FFFFFF;
+                }
+                
+                .passwordField{
+                    outline: none;
+                    height:44.8px;
+                    background: #FFFFFF;
+                    border: 2px solid #E6E6E6;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                }
+            }
+
+            .loginButtonGroup{
+                display:flex;
+                justify-content: center;
+                width: 100%;
+
+                .loginButton{
+                    outline: none;
+                    width: 120px;
+                    height: 39px;
+                    background: #FFFFFF;
+                    border-radius: 10px;
+
+                    font-family: Biryani;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 100%;
+                    letter-spacing: 0.1em;
+                    color: #0D4E67;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
