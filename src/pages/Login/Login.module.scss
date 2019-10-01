@@ -8,20 +8,17 @@
 
     .loginOverlay{
         width: 60%;
-        height: 70%;
-        padding-top: 5%;
-        padding-bottom: 6%;
-        padding-left: 4%;
-        padding-right: 4%;
         background: #0D4E67;
         border-radius: 4px;
     
         .content{
+            
             display:flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            // background: black;
+            margin: 5% 7% 7%;
+            margin-bottom: 8%;
         
             .titleGroup{
         
@@ -104,6 +101,7 @@
                 display:flex;
                 justify-content: center;
                 width: 100%;
+                padding-bottom: 4%;
 
                 .loginButton{
                     outline: none;
@@ -125,9 +123,9 @@
             }
         }
     }
+
+    
 }
-
-
 
 
 
