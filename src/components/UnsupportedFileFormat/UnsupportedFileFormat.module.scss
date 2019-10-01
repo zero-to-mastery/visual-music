@@ -1,0 +1,145 @@
+@import '../../globalScss/variables.scss';
+@import '../../globalScss/mixins.scss';
+
+body {
+    background-image: url('./unsupported-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.overlay {
+    @include overlay;
+}
+
+.container {
+    display: flex;
+}
+
+.containerBlue {
+    @include flex;
+    flex-direction: column;
+    margin: auto;
+
+    width: 50vw;
+    height: 50vh;
+    min-height: 25em;
+
+    background: $blue;
+    box-shadow: $shadow;
+    border-radius: $radius-box;
+}
+
+.containerWhite {
+    display: flex;
+    align-items: center;
+    margin-top: 5em;
+
+    width: 40vw;
+    height: 25vh;
+    min-height: 10em;
+
+    background: $white;
+    border-radius: $radius-box;
+}
+
+.text {
+    margin-left: 4vw;
+    color: $blue;
+}
+
+.text1 {
+    letter-spacing: 0.15em;
+    font-size: 1.1rem;
+    line-height: 140%;
+}
+
+.text2 {
+    margin-top: 10px;
+
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 160%;
+    letter-spacing: 0.1em;
+}
+
+.close {
+    align-self: flex-end;
+    margin: 2em 2em 2em 0;
+
+    width: 7.5em;
+    height: 2.4em;
+
+    font-family: 'Biryani', sans-serif;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 100%;
+
+    background: $white;
+    color: $blue;
+    border-radius: $radius-button;
+
+    cursor: pointer;
+
+    &:hover {
+        transform: translate(1px, 1px);
+    }
+}
+
+/******************
+*** MEDIA QUERIES ***
+*******************/
+@media only screen and (max-width: 320px) {
+    .containerBlue {
+        width: 100vw;
+        min-height: 10em;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .containerBlue {
+        width: 90vw;
+        min-height: 15em;
+    }
+
+    .containerWhite {
+        margin-top: 3em;
+        width: 80vw;
+        min-height: 7em;
+    }
+
+    .text1 {
+        letter-spacing: 0.15em;
+        font-size: 0.9rem;
+        line-height: 120%;
+    }
+
+    .text2 {
+        font-size: 0.7rem;
+        line-height: 140%;
+    }
+
+    .close {
+        margin: 1em 1em 1em 0;
+
+        width: 6em;
+        height: 2em;
+
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .containerBlue {
+        width: 80vw;
+    }
+
+    .containerWhite {
+        width: 70vw;
+    }
+
+    .close {
+        min-height: 2em;
+    }
+}

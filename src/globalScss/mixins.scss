@@ -1,0 +1,30 @@
+/*
+MIXINS USAGE INSTRUCTIONS
+
+Declare mixin:
+    @mixin flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+Use mixin:
+    @import './mixins.scss';
+    @include flex;
+*/
+
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(5, 5, 22, 0.4);
+    z-index: 9999;
+}
