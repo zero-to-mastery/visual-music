@@ -86,7 +86,6 @@ class App extends React.Component {
                     />
                 </div> */}
                 <Login />
-                {/*
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
@@ -96,8 +95,7 @@ class App extends React.Component {
                         uploadedSong={uploadedSong}
                         isSongLoaded={isSongLoaded}
                     />
-                </div>*/
-                }
+                </div>
             </div>
         );
     }
