@@ -1,11 +1,18 @@
 .overlay{
-    padding: 10%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #595757;
 
-    .login{
+    .loginOverlay{
+        width: 60%;
+        height: 70%;
         padding-top: 5%;
-        padding-bottom: 10%;
-        padding-left: 7%;
-        padding-right: 7%;
+        padding-bottom: 6%;
+        padding-left: 4%;
+        padding-right: 4%;
         background: #0D4E67;
         border-radius: 4px;
     
@@ -56,6 +63,8 @@
                     border: 2px solid #E6E6E6;
                     box-sizing: border-box;
                     border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 20px;
                 }
             }
             
@@ -86,6 +95,8 @@
                     border: 2px solid #E6E6E6;
                     box-sizing: border-box;
                     border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 20px;
                 }
             }
 
@@ -108,6 +119,8 @@
                     line-height: 100%;
                     letter-spacing: 0.1em;
                     color: #0D4E67;
+
+                    cursor: pointer;
                 }
             }
         }
