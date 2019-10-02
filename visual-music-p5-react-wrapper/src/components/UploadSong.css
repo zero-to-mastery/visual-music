@@ -1,3 +1,19 @@
-.container {
-  color: red;
+.boxStyle {
+  position: relative;
+  width: 872px;
+  height: 629px;
+  background: #050516;
+}
+
+.uploadFunctionalityStyle {
+  position: absolute;
+  width: 650px;
+  height: 300px;
+  left: 111px;
+  top: 165px;
+  font-weight: 900;
+  border: dashed 1.1px #ffffff;
+  border-radius: 5px;
+
+  opacity: 0.5;
 }
