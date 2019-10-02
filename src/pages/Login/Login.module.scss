@@ -1,3 +1,4 @@
+//most bottom overlay
 .overlay{
     width: 100vw;
     height: 100vh;
@@ -6,33 +7,37 @@
     align-items: center;
     background: #595757;
 
+    //login overlay where it contain login form
     .loginOverlay{
         width: 60%;
         background: #0D4E67;
         border-radius: 4px;
-    
-        .content{
-            
+        
+        //login form
+        .loginForm{
             display:flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            margin: 5% 7% 7%;
+            margin: 5% 7% 7%;//margin for top, left and right
             margin-bottom: 8%;
-        
+            
+            //title region
             .titleGroup{
-        
                 font-family: Biryani;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 30px;
+                font-size: 2rem;
                 line-height: 140%;
                 width: 100%;
                 letter-spacing: 0.15em;
                 color: #FFFFFF;
                 padding-bottom: 4%;
+
+                
             }
-        
+            
+            //email region
             .emailGroup{
                 display: flex;
                 flex-direction: column;
@@ -40,31 +45,27 @@
                 padding-bottom: 2%;
             
                 .emailLabel{
-                
                     font-family: Biryani;
                     font-style: normal;
                     font-weight: 600;
-                    font-size: 15px;
+                    font-size: 1rem;
                     line-height: 160%;
-                    /* or 24px */
-                
                     letter-spacing: 0.1em;
-                
                     color: #FFFFFF;
                 }
                 
                 .emailField{
                     outline: none;
-                    height:44.8px;
                     background: #FFFFFF;
                     border: 2px solid #E6E6E6;
                     box-sizing: border-box;
                     border-radius: 4px;
                     font-weight: 600;
-                    font-size: 20px;
+                    font-size: 2rem;
                 }
             }
             
+            //password region
             .passwordGroup{
                 display: flex;
                 flex-direction: column;
@@ -76,27 +77,24 @@
                     font-family: Biryani;
                     font-style: normal;
                     font-weight: 600;
-                    font-size: 15px;
+                    font-size: 1rem;
                     line-height: 160%;
-                    /* or 24px */
-                
                     letter-spacing: 0.1em;
-                
                     color: #FFFFFF;
                 }
                 
                 .passwordField{
                     outline: none;
-                    height:44.8px;
                     background: #FFFFFF;
                     border: 2px solid #E6E6E6;
                     box-sizing: border-box;
                     border-radius: 4px;
                     font-weight: 600;
-                    font-size: 20px;
+                    font-size: 2rem;
                 }
             }
 
+            //login button region
             .loginButtonGroup{
                 display:flex;
                 justify-content: center;
@@ -113,7 +111,7 @@
                     font-family: Biryani;
                     font-style: normal;
                     font-weight: 600;
-                    font-size: 16px;
+                    font-size: 1rem;
                     line-height: 100%;
                     letter-spacing: 0.1em;
                     color: #0D4E67;
@@ -121,11 +119,46 @@
                     cursor: pointer;
                 }
             }
+
+            //screen width less than 600px
+            @media only screen and (max-width:600px){
+                .titleGroup{
+                    font-size: 1.5rem;
+                }
+            }
+
+            //screen width less than 440px
+            @media only screen and (max-width:440px){
+                .titleGroup{
+                    font-size: 1.2rem;
+                }
+            }
+
+            //screen width less than 350px
+            @media only screen and (max-width:350px){
+                .titleGroup{
+                    font-size: 1rem;
+                }
+            }
+
+            //screen width less than 414px
+            @media only screen and (max-width:414px) {
+                .emailGroup{
+                    .emailField{
+                        font-size: 1.5rem;
+                    }
+                }
+                
+                .passwordGroup{
+                    .passwordField{
+                        font-size: 1.5rem;
+                    }
+                }
+            }
         }
     }
-
-    
 }
+
 
 
 

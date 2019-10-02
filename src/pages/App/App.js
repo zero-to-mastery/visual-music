@@ -3,7 +3,6 @@ import React from 'react';
 // import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
-import Login from '../Login/Login';//Test
 
 let soundReset = {
     isPlaying: false,
@@ -85,7 +84,6 @@ class App extends React.Component {
                         onSongEnd={onSongEnd}
                     />
                 </div> */}
-                <Login />
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}

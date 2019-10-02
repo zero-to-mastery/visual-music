@@ -61,7 +61,7 @@ const Login = ()=>{
 
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
-                <form className={classes.content} onSubmit={onFormSubmit}>
+                <form className={classes.loginForm} onSubmit={onFormSubmit}>
                     <div className={classes.titleGroup}>
                         <span>Welcome back!</span>
                     </div>
