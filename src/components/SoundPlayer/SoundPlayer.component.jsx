@@ -55,8 +55,10 @@ const SoundPlayer = ({
 					max='1.0'
 					step='0.1'
 					onChange={onVolumeChange}
+					
 				/>
 			</div>
+			dfkdlfkdlf
 		</div>
 	</div>
 );
