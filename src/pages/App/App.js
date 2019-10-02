@@ -3,7 +3,7 @@ import React from 'react';
 // import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
-
+import Visualizer from '../../components/Visualizer/Visualizer.component';
 let soundReset = {
     isPlaying: false,
 };
