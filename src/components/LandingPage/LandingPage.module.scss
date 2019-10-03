@@ -1,3 +1,9 @@
+$small: 470px;
+$medium: 620px;
+$medium-large: 978px;
+$large: 1052px;
+$x-large: 1200px;
+
 .landingPageBg {
   position: fixed;
   top: 0;
@@ -24,11 +30,31 @@
   width: auto;
   margin: 0 8%;
   color: #FFFFFF;
+
+  @media only screen and (min-width: $medium) {
+    width: 40%;
+  }
 }
 
 .heading {
-  font-size: 2.25rem;
+  font-size: 1.8rem;
   font-weight: 400;
+
+  @media only screen and (min-width: $small) {
+    font-size: 2rem;
+  }
+
+  @media only screen and (min-width: $medium-large) {
+    font-size: 2.4rem;
+  }
+
+  @media only screen and (min-width: $large) {
+    font-size: 2.8rem;
+  }
+
+  @media only screen and (min-width: $x-large) {
+    font-size: 3.2rem;
+  }
 }
 
 .tagline {
@@ -47,17 +73,4 @@
   width: 100%;
 } 
 
-@media only screen and (min-width: 420px) {
-  .contentWrapper {
-    width: 40%;
-    margin-left: 8%;
-  }
 
-  .heading {
-    font-size: 3.5rem;
-  }
-
-  .tagline {
-    font-size: 1.8rem;
-   }
-}
