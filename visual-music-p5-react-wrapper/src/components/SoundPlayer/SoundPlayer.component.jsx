@@ -11,8 +11,8 @@
         the part of the song to be played.
 ************************************************************/
 
-import React from 'react';
-import './SoundPlayer.styles.css';
+import React from "react";
+import "./SoundPlayer.styles.css";
 
 /***********************************************************
     Parameters (src/pages/App/App.js):
@@ -26,39 +26,39 @@ import './SoundPlayer.styles.css';
     3.  onFileUpload
 *************************************************************/
 const SoundPlayer = ({
-	volume,
-	onPlayPress,
-	onVolumeChange,
-	onFileUpload,
-	buttonText,
-	isSongLoaded
+  volume,
+  onPlayPress,
+  onVolumeChange,
+  onFileUpload,
+  buttonText,
+  isSongLoaded
 }) => (
-	<div className='soundplayer'>
-		<input type='file' accept='audio/*' name='file' onChange={onFileUpload} />
-		<div className='soundplayer-controls'>
-			<div>
-				<button
-					className='control-button'
-					onClick={onPlayPress}
-					disabled={!isSongLoaded}
-				>
-					{buttonText}
-				</button>
-			</div>
-			<div>
-				<label>Volume</label>
-				<input
-					type='range'
-					name='volume'
-					value={volume}
-					min='0.0'
-					max='1.0'
-					step='0.1'
-					onChange={onVolumeChange}
-				/>
-			</div>
-		</div>
-	</div>
+  <div className="soundplayer">
+    <input type="file" accept="audio/*" name="file" onChange={onFileUpload} />
+    <div className="soundplayer-controls">
+      <div>
+        <button
+          className="control-button"
+          onClick={onPlayPress}
+          disabled={!isSongLoaded}
+        >
+          {buttonText}
+        </button>
+      </div>
+      <div>
+        <label>Volume</label>
+        <input
+          type="range"
+          name="volume"
+          value={volume}
+          min="0.0"
+          max="1.0"
+          step="0.1"
+          onChange={onVolumeChange}
+        />
+      </div>
+    </div>
+  </div>
 );
 
 export default SoundPlayer;

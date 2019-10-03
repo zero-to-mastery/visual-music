@@ -17,3 +17,25 @@
 
   opacity: 0.5;
 }
+
+.iconStyle {
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  left: 46%;
+  right: 46%;
+  top: 29.33%;
+  bottom: 52.33%;
+  cursor: pointer;
+
+  font-family: "Font Awesome";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 55px;
+
+  color: #ffffff;
+
+  opacity: 0.5;
+}
