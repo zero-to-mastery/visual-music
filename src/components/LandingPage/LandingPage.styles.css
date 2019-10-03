@@ -1,0 +1,52 @@
+.landing-page-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../assets/LandingPageAssets/bg-image2.gif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: overlay;
+}
+
+.landing-page-bg::after,
+.landing-page-bg::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: overlay;
+}
+
+.content-wrapper {
+  width: auto;
+  margin: 0 8%;
+  color: white;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.tagline {
+ font-size: 1.5rem;
+ font-weight: 300;
+}
+
+@media only screen and (min-width: 420px) {
+  .content-wrapper {
+    width: 40%;
+    margin-left: 8%;
+  }
+
+  .heading {
+    font-size: 3.5rem;
+  }
+
+  .tagline {
+    font-size: 1.8rem;
+   }
+}

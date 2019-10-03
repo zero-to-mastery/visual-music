@@ -21,3 +21,7 @@
 [mubarakshow](https://github.com/mubarakshow)
 
 [ArnasDickus](https://github.com/ArnasDickus)
+
+[kpence](https://github.com/kpence)
+
+[ryanboris](https://github.com/ryanboris)
