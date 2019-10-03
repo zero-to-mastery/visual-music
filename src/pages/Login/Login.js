@@ -9,15 +9,6 @@
  2. Input user password
  3. Do not allow email address and password filed to be blank
 
-  state:
- 1. email
- 2. password
-
- functions:
- 1. onEmailChange
- 2. onPasswordChange
- 3. onFormSubmit
-
  TODO: - Action when form submit
  ************************************************************/
 import React from 'react';
@@ -47,7 +38,7 @@ class Login extends React.Component{
             <div className={classes.overlay}>
                 <div className={classes.loginOverlay}>
                     <form className={classes.loginForm} onSubmit={this.onFormSubmit}>
-                        <div className={classes.loginForm__titleGroup}>
+                        <div className={classes.titleGroup}>
                             <span>Welcome back!</span>
                         </div>
                         <div className={classes.emailGroup}>
