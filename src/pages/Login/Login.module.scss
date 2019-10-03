@@ -1,4 +1,29 @@
-//most bottom overlay
+@mixin formLabel{
+    font-family: Biryani;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 160%;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+}
+
+@mixin formInputField {
+    outline: none;
+    background: #FFFFFF;
+    border: 2px solid #E6E6E6;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+@mixin formGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .overlay{
     width: 100vw;
     height: 100vh;
@@ -6,154 +31,113 @@
     justify-content: center;
     align-items: center;
     background: #595757;
+}
 
-    //login overlay where it contain login form
-    .loginOverlay{
-        width: 60%;
-        background: #0D4E67;
-        border-radius: 4px;
+.loginOverlay{
+    width: 60%;
+    background: #0D4E67;
+    border-radius: 4px;
+}
+
+.loginForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 5% 7% 7%;
+    margin-bottom: 8%;
+    
+    &__titleGroup{
+        @include formGroup;
+        font-family: Biryani;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2rem;
+        line-height: 140%;
+        letter-spacing: 0.15em;
+        color: #FFFFFF;
+        padding-bottom: 4%;
+    }
+
+    .emailGroup{
+        @include formGroup;
+        padding-bottom: 2%;
+    
+        .emailLabel{
+            @include formLabel;
+        }
         
-        //login form
-        .loginForm{
-            display:flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin: 5% 7% 7%;//margin for top, left and right
-            margin-bottom: 8%;
-            
-            //title region
-            .titleGroup{
-                font-family: Biryani;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 2rem;
-                line-height: 140%;
-                width: 100%;
-                letter-spacing: 0.15em;
-                color: #FFFFFF;
-                padding-bottom: 4%;
+        .emailField{
+            @include formInputField;
+        }
+    }
+    
+    .passwordGroup{
+        @include formGroup;
+        padding-bottom: 4%;
+    
+        .passwordLabel{
+            @include formLabel;
+        }
+        
+        .passwordField{
+            @include formInputField;
+        }
+    }
 
-                
+    .loginButtonGroup{
+        @include formGroup;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 4%;
+
+        .loginButton{
+            outline: none;
+            width: 120px;
+            height: 39px;
+            background: #FFFFFF;
+            border-radius: 10px;
+
+            font-family: Biryani;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 100%;
+            letter-spacing: 0.1em;
+            color: #0D4E67;
+
+            cursor: pointer;
+        }
+    }
+
+    @media only screen and (max-width:600px){
+        .titleGroup{
+            font-size: 1.5rem;
+        }
+    }
+
+    @media only screen and (max-width:440px){
+        .titleGroup{
+            font-size: 1.2rem;
+        }
+    }
+
+    @media only screen and (max-width:350px){
+        .titleGroup{
+            font-size: 1rem;
+        }
+    }
+
+    @media only screen and (max-width:414px) {
+        .emailGroup{
+            .emailField{
+                font-size: 1.5rem;
             }
-            
-            //email region
-            .emailGroup{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                padding-bottom: 2%;
-            
-                .emailLabel{
-                    font-family: Biryani;
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 1rem;
-                    line-height: 160%;
-                    letter-spacing: 0.1em;
-                    color: #FFFFFF;
-                }
-                
-                .emailField{
-                    outline: none;
-                    background: #FFFFFF;
-                    border: 2px solid #E6E6E6;
-                    box-sizing: border-box;
-                    border-radius: 4px;
-                    font-weight: 600;
-                    font-size: 2rem;
-                }
-            }
-            
-            //password region
-            .passwordGroup{
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                padding-bottom: 4%;
-            
-                .passwordLabel{
-                
-                    font-family: Biryani;
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 1rem;
-                    line-height: 160%;
-                    letter-spacing: 0.1em;
-                    color: #FFFFFF;
-                }
-                
-                .passwordField{
-                    outline: none;
-                    background: #FFFFFF;
-                    border: 2px solid #E6E6E6;
-                    box-sizing: border-box;
-                    border-radius: 4px;
-                    font-weight: 600;
-                    font-size: 2rem;
-                }
-            }
-
-            //login button region
-            .loginButtonGroup{
-                display:flex;
-                justify-content: center;
-                width: 100%;
-                padding-bottom: 4%;
-
-                .loginButton{
-                    outline: none;
-                    width: 120px;
-                    height: 39px;
-                    background: #FFFFFF;
-                    border-radius: 10px;
-
-                    font-family: Biryani;
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 1rem;
-                    line-height: 100%;
-                    letter-spacing: 0.1em;
-                    color: #0D4E67;
-
-                    cursor: pointer;
-                }
-            }
-
-            //screen width less than 600px
-            @media only screen and (max-width:600px){
-                .titleGroup{
-                    font-size: 1.5rem;
-                }
-            }
-
-            //screen width less than 440px
-            @media only screen and (max-width:440px){
-                .titleGroup{
-                    font-size: 1.2rem;
-                }
-            }
-
-            //screen width less than 350px
-            @media only screen and (max-width:350px){
-                .titleGroup{
-                    font-size: 1rem;
-                }
-            }
-
-            //screen width less than 414px
-            @media only screen and (max-width:414px) {
-                .emailGroup{
-                    .emailField{
-                        font-size: 1.5rem;
-                    }
-                }
-                
-                .passwordGroup{
-                    .passwordField{
-                        font-size: 1.5rem;
-                    }
-                }
+        }
+        
+        .passwordGroup{
+            .passwordField{
+                font-size: 1.5rem;
             }
         }
     }
