@@ -1,14 +1,16 @@
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import Button from '../../../Button/Button.component.jsx';
-import SectionThreeIcons from './SectionThreeIcons/SectionThreeIcons.component.jsx';
-import Contactform from './FormComponents/ContactForm.component.jsx';
+import Button from '../../../Button/Button';
+import SectionThreeIcons from './SectionThreeIcons/SectionThreeIcons';
+import Contactform from './FormComponents/ContactForm';
+
+import classes from  '../../LandingPage.module.scss';
 
 const SectionThree = ({ scrollClick }) => (
   <section>
     <ParallaxLayer speed={0.15} offset={2.33} style={{ height: '0' }}>
-      <h2 className="content-wrapper heading">Contact</h2>
+      <h2 className={`${classes.contentWrapper} ${classes.heading}`}>Contact</h2>
     </ParallaxLayer>
 
     <ParallaxLayer speed={0.04} offset={2.45} style={{ height: '0' }}>
@@ -16,7 +18,7 @@ const SectionThree = ({ scrollClick }) => (
     </ParallaxLayer>
 
     <ParallaxLayer speed={0.1} offset={2.47} style={{ height: '0' }}>
-      <p className="content-wrapper tagline">
+      <p className={`${classes.contentWrapper} ${classes.tagline}`}>
         Would you like to write us?
       </p>
     </ParallaxLayer>

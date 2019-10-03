@@ -8,8 +8,8 @@
 
 import React, { Component } from 'react';
 
-import './ContactForm.styles.css';
-import Button from '../../../../Button/Button.component.jsx';
+import classes from './ContactForm.module.scss';
+import Button from '../../../../Button/Button';
 
 class ContactForm extends Component {
   constructor() {
@@ -19,23 +19,23 @@ class ContactForm extends Component {
 
   render() {
     return(
-      <div className="contact-form">
+      <div className={classes.contactForm}>
         <label>
           Name
           <br />
-          <input type="text" name="name" className="form-input" id="name" />
+          <input type="text" name="name" className={classes.formInput} id="name" />
         </label>
         <label>
           Email address
           <br />
-          <input type="email" name="email" className="form-input" id="email" />
+          <input type="email" name="email" className={classes.formInput} id="email" />
         </label>
         <label>
           Message
           <br />
-          <textarea rows="3" name="message" className="form-input" id="message" ></textarea>
+          <textarea rows="3" name="message" className={classes.formInput} id="message" ></textarea>
         </label>
-        <Button text="Send" btnClass="sign-up" />
+        <Button text="Send" btnClass="signUp" />
       </div>
     )
   }

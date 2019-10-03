@@ -1,4 +1,4 @@
-.landing-page-bg {
+.landingPageBg {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,16 +14,16 @@
   background-blend-mode: overlay;
 }
 
-.landing-page-bg::after,
-.landing-page-bg::before {
-  background-color: rgba(0, 0, 0, 0.6);
-  background-blend-mode: overlay;
-}
+// .landingPageBg::after,
+// .landingPageBg::before {
+//   background-color: rgba(0, 0, 0, 0.6);
+//   background-blend-mode: overlay;
+// }
 
-.content-wrapper {
+.contentWrapper {
   width: auto;
   margin: 0 8%;
-  color: white;
+  color: #FFFFFF;
 }
 
 .heading {
@@ -36,8 +36,19 @@
  font-weight: 300;
 }
 
+/* Section Two Styles */
+.blackHairGirlWrapper {
+  width: 35vw;
+  margin-right: 15%;
+  margin-left: auto;
+}
+
+.blackHairGirl {
+  width: 100%;
+} 
+
 @media only screen and (min-width: 420px) {
-  .content-wrapper {
+  .contentWrapper {
     width: 40%;
     margin-left: 8%;
   }

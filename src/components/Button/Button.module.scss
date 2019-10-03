@@ -1,5 +1,17 @@
 /* Get started button styles */
-.get-started {
+button {
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.getStarted {
   display: block;
   width: auto;
   margin: 8% auto;
@@ -10,16 +22,16 @@
   background-color: #FFFFFF;
   color: #0D4E67;
   transition: 0.4s;
-}
-
-.get-started:hover {
-  background-color: transparent;
-  color: #FFFFFF;
-  border: 0.8px solid;
+  
+  &:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 0.8px solid;
+  }
 }
 
 /* Sign up button styles plus hover animation */
-.sign-up {
+.signUp {
   padding: 10px 30px;
   border: 0.5px solid;
   border-radius: 5px;
@@ -30,16 +42,16 @@
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 0.4s ease-out;
-}
 
-.sign-up:hover {
-  background-position: left bottom;
-  color: #000000;
-  border: 0.5px solid white;
+  &:hover {
+    background-position: left bottom;
+    color: #000000;
+    border: 0.5px solid white;
+  }
 }
 
 /* Log in button styles plus hover animation */
-.log-in {
+.logIn {
   padding: 10px 30px;
   background-color: transparent;
   color: #FFFFFF;
@@ -49,22 +61,28 @@
   backface-visibility: hidden;
   position: relative;
   overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 20%;
+    right: 100%;
+    bottom: 0;
+    background: #FFFFFF;
+    height: 2px;
+    transition: right 0.4s ease-out;
+  }
+
+  &:hover {
+    &:before {
+      right: 20%;
+    }
+  }
 }
 
-.log-in:before {
-  content: "";
-  position: absolute;
-  left: 20%;
-  right: 100%;
-  bottom: 0;
-  background: #FFFFFF;
-  height: 2px;
-  transition: right 0.4s ease-out;
-}
-
-.log-in:hover:before {
-  right: 20%;
-} 
+// .log-in:hover:before {
+  
+// } 
 
 /* Scrol button styles */
 .scroll {
@@ -77,7 +95,7 @@
 }
 
 @media only screen and (min-width: 420px) {
-  .get-started {
+  .getStarted {
     margin: 0 auto;
   }
 

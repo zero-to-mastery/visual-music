@@ -1,17 +1,17 @@
-.social-icons {
+.socialIcons {
   position: relative;
   margin-left: 8%;
 }
 
-.social-icon {
+.socialIcon {
   width: 5.5vh;
   transition: all .3s;
-}
 
-.social-icon:hover {
-  cursor: pointer;
-  filter: drop-shadow(1px 4px 5px #ffffff93);
-  transform: translateY(-10%);
+  &:hover {
+    cursor: pointer;
+    filter: drop-shadow(1px 4px 5px #ffffff93);
+    transform: translateY(-10%);
+  }
 }
 
 #github {

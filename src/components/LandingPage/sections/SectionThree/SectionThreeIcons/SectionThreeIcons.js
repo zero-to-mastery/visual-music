@@ -1,6 +1,6 @@
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
-import './SectionThreeIcons.styles.css';
+import classes from './SectionThreeIcons.module.scss';
 
 import importAll from '../../../../../utils/importAllFiles';
 
@@ -9,41 +9,41 @@ const icons = importAll(require.context('../../../../../assets/LandingPageAssets
 const [ facebook, linkedIn, github, medium ] = icons;
 
 const SectionThreeIcons = () => (
-  <div className="social-icons">
+  <div className={classes.socialIcons}>
     <ParallaxLayer
       offset={2.54}
       speed={0.5}
-      id="github"
+      id={classes.github}
       style={{ width: 'min-content', height: '0', zIndex: '99' }}
     >
-      <img src={github} alt="github" className="social-icon" />
+      <img src={github} alt="github" className={classes.socialIcon} />
     </ParallaxLayer>
 
     <ParallaxLayer
       offset={2.54}
       speed={0.6}
-      id="linkedIn"
+      id={classes.linkedIn}
       style={{ width: 'min-content', height: '0', zIndex: '99' }}
     >
-      <img src={linkedIn} alt="linkedIn" className="social-icon" />
+      <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
     </ParallaxLayer>
 
     <ParallaxLayer
       offset={2.54}
       speed={0.7}
-      id="facebook"
+      id={classes.facebook}
       style={{ width: 'min-content', height: '0', zIndex: '99' }}
     >
-      <img src={facebook} alt="facebook" className="social-icon" />
+      <img src={facebook} alt="facebook" className={classes.socialIcon} />
     </ParallaxLayer>
 
     <ParallaxLayer
       offset={2.54}
       speed={0.8}
-      id="medium"
+      id={classes.medium}
       style={{ width: 'min-content', height: '0', zIndex: '99' }}
     >
-      <img src={medium} alt="medium" className="social-icon" />
+      <img src={medium} alt="medium" className={classes.socialIcon} />
     </ParallaxLayer>
   </div>
 )

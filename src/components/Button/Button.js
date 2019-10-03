@@ -9,10 +9,10 @@
 ************************/
 
 import React from 'react';
-import './Button.styles.css';
+import classes from './Button.module.scss';
 
 const Button = ({ text, btnClass, handleRouteChange, to }) => (
-  <button className={btnClass} onClick={handleRouteChange ? () => handleRouteChange(to) : null}>
+  <button className={classes[btnClass]} onClick={handleRouteChange ? () => handleRouteChange(to) : null}>
     {text}
   </button>
 );

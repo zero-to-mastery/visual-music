@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './LandingPage.styles.css';
-import TopNav from '../TopNav/TopNav.component.jsx';
+import classes from './LandingPage.module.scss';
+import TopNav from '../TopNav/TopNav';
 
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import SectionOne from './sections/SectionOne/SectionOne.component.jsx';
-import SectionTwo from './sections/SectionTwo/SectionTwo.component.jsx';
-import SectionThree from './sections/SectionThree/SectionThree.component.jsx';
+import SectionOne from './sections/SectionOne/SectionOne';
+import SectionTwo from './sections/SectionTwo/SectionTwo';
+import SectionThree from './sections/SectionThree/SectionThree';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class LandingPage extends Component {
   render() {
     return (
       <>
-        <div className="landing-page-bg" />
+        <div className={classes.landingPageBg} />
         <TopNav />
         <Parallax
           pages={3}

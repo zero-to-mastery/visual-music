@@ -1,12 +1,12 @@
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
-
-import Button from '../../../Button/Button.component.jsx';
+import classes from  '../../LandingPage.module.scss';
+import Button from '../../../Button/Button';
 
 const SectionOne = ({ handleRouteChange, scrollClick }) => (
   <section>
     <ParallaxLayer speed={0.15} offset={0.32}>
-      <h2 className="content-wrapper heading">Discover and Share Music Visualization</h2>
+      <h2 className={`${classes.contentWrapper} ${classes.heading}`}>Discover and Share Music Visualization</h2>
     </ParallaxLayer>
 
     <ParallaxLayer speed={0.04} offset={0.54}>
@@ -14,7 +14,7 @@ const SectionOne = ({ handleRouteChange, scrollClick }) => (
     </ParallaxLayer>
 
     <ParallaxLayer speed={0.1} offset={0.57}>
-      <p className="content-wrapper tagline">
+      <p className={`${classes.contentWrapper} ${classes.tagline}`}>
         An app that converts your favoriet music pieces into visual expresions.
       </p>
     </ParallaxLayer>
@@ -26,7 +26,7 @@ const SectionOne = ({ handleRouteChange, scrollClick }) => (
     >
       <Button
         text="Get Started"
-        btnClass="get-started"
+        btnClass="getStarted"
         handleRouteChange={handleRouteChange}
         to="visualizer"
       />
