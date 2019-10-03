@@ -9,6 +9,7 @@ import "./UploadSong.css";
  1. Upload SVG Icon
  2. Text supported format
  
+ Trello Task link "https://trello.com/c/ipDPVDl3/96-story-create-upload-song-component-in-react"
  ****************************/
 
 class UploadSong extends React.Component {
@@ -37,6 +38,8 @@ class UploadSong extends React.Component {
               />
             </svg>
           </button>
+          <h3 className="uploadText">Upload New Song</h3>
+          <p className="fileFormatStyle">file format supported: mp3</p>
         </div>
       </div>
     );

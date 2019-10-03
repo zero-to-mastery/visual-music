@@ -39,3 +39,39 @@
 
   opacity: 0.5;
 }
+
+.uploadText {
+  position: absolute;
+  left: 33.38%;
+  right: 33.38%;
+  top: 51%;
+  bottom: 35%;
+
+  font-family: Biryani;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 42px;
+
+  color: #4f4e4e;
+
+  opacity: 0.5;
+}
+
+.fileFormatStyle {
+  position: absolute;
+  left: 31.54%;
+  right: 31.54%;
+  top: 63.67%;
+  bottom: 25.67%;
+
+  font-family: Biryani;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+
+  color: #4f4e4e;
+
+  opacity: 0.5;
+}
