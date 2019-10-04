@@ -1,0 +1,29 @@
+/*********************** 
+
+Top Navigation Component.
+
+Current features:
+1. Log In button.
+2. Sign Up button.
+
+TODO: - Black background on scroll.
+
+************************/
+
+import React from 'react';
+import classes from './TopNav.module.scss';
+import logo from '../../assets/LogoSVG.svg';
+
+import Button from '../Button/Button';
+
+const TopNav = () => (
+    <nav className={classes.topNav}>
+        <img src={logo} alt="logo" height="85px" width="85px" />
+        <div>
+            <Button text="Log In" btnClass="logIn" />
+            <Button text="Sign Up" btnClass="signUp" />
+        </div>
+    </nav>
+);
+
+export default TopNav;
