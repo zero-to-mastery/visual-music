@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css?family=Biryani&display=swap');
+
+body {
+    background: #050516;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /*centers items on the line (the x-axis by default)*/
+    align-items: center; /*centers items on the cross-axis (y by default)*/
+
+    .signup-component {
+        background: #0d4e67;
+        border-radius: 4px;
+        width: 500px;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signup {
+        display: flex;
+        flex-wrap: wrap;
+        width: 400px;
+        height: 400px;
+
+        .headline {
+            display: flex;
+            flex-wrap: wrap;
+            height: 20%;
+            justify-content: flex-start;
+
+            .headline1 {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 25px;
+                line-height: 140%;
+                letter-spacing: 0.1em;
+                color: #ffffff;
+                width: 100%;
+                height: 50%;
+            }
+            .sub-headline {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 32px;
+                color: #ffffff;
+            }
+        }
+
+        .searchfields {
+            height: 70%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            .name {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                height: 23%;
+                margin-bottom: 30px;
+                padding: 0px;
+                box-sizing: border-box;
+
+                label {
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 15px;
+                    line-height: 160%;
+                    letter-spacing: 0.1em;
+                    color: #ffffff;
+                    width: 100%;
+                    margin-bottom: 0px;
+                    height: 50%;
+                    margin-bottom: 0px;
+                }
+
+                input {
+                    background: #ffffff;
+                    border: 2px solid #e6e6e6;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    width: 100%;
+                }
+            }
+
+            .email {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                height: 23%;
+                margin-bottom: 30px;
+                padding: 0px;
+                box-sizing: border-box;
+                label {
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 15px;
+                    line-height: 160%;
+                    letter-spacing: 0.1em;
+                    color: #ffffff;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+
+                input {
+                    background: #ffffff;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    width: 100%;
+                }
+            }
+
+            .password {
+                display: flex;
+                flex-wrap: wrap;
+                width: 100%;
+                height: 23%;
+                margin-bottom: 30px;
+                padding: 0px;
+                box-sizing: border-box;
+                label {
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 15px;
+                    line-height: 160%;
+                    letter-spacing: 0.1em;
+                    color: #ffffff;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+
+                input {
+                    background: #ffffff;
+                    box-sizing: border-box;
+                    border-radius: 4px;
+                    width: 100%;
+                }
+            }
+		}
+
+		.showpassword{
+			width: 100%;
+			display: flex;
+			justify-content: baseline;
+			flex-wrap: nowrap;
+			box-sizing: border-box;
+			input{
+				height: 100%;
+				width: 5%;
+				padding: none;
+			}
+
+			label{
+				font-style: normal;
+                font-weight: normal;
+                font-size: 15px;
+                line-height: 140%;
+                letter-spacing: 0.1em;
+				color: #ffffff;
+				width: 95%;
+				padding-right: 20px;
+			}
+		}
+		
+		.custom-button{
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			margin-top: 20px;
+
+			button{
+				border-radius: 4px;
+				background: white;
+				width: 90px;
+				height: 25px;
+				font-style: normal;
+				font-weight: normal;
+				letter-spacing: 0.1em;
+				color: #0d4e67;
+				outline: none;
+				border: none;
+
+			}
+		}
+    }
+}
+
+@media only screen and (max-width: 575px) {
+	body {
+		background: #050516;
+		overflow: hidden;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center; /*centers items on the line (the x-axis by default)*/
+		align-items: center; /*centers items on the cross-axis (y by default)*/
+	
+		.signup-component {
+			background: #0d4e67;
+			border-radius: 4px;
+			width: 380px;
+			height: 380px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	
+		.signup {
+			display: flex;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 300px;
+	
+			.headline {
+				display: flex;
+				flex-wrap: wrap;
+				height: 15%;
+				justify-content: flex-start;
+	
+				.headline1 {
+					font-style: normal;
+					font-weight: normal;
+					font-size: 20px;
+					line-height: 100%;
+					letter-spacing: 0.1em;
+					color: #ffffff;
+					width: 100%;
+					height: 50%;
+					text-align:center;
+					margin-bottom: 0px;
+				}
+				.sub-headline {
+					font-style: normal;
+					font-weight: normal;
+					font-size: 15px;
+					line-height: 20px;
+					color: #ffffff;
+					width: 100%;
+					text-align: center;
+					
+				}
+			}
+	
+			.searchfields {
+				height: 70%;
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+	
+				.name {
+					display: flex;
+					flex-wrap: wrap;
+					width: 100%;
+					height: 23%;
+					margin-bottom: 30px;
+					padding: 0px;
+					box-sizing: border-box;
+	
+					label {
+						font-style: normal;
+						font-weight: 600;
+						font-size: 15px;
+						line-height: 160%;
+						letter-spacing: 0.1em;
+						color: #ffffff;
+						width: 100%;
+						margin-bottom: 0px;
+						height: 50%;
+						margin-bottom: 0px;
+					}
+	
+					input {
+						background: #ffffff;
+						border: 2px solid #e6e6e6;
+						box-sizing: border-box;
+						border-radius: 4px;
+						width: 100%;
+					}
+				}
+	
+				.email {
+					display: flex;
+					flex-wrap: wrap;
+					width: 100%;
+					height: 23%;
+					margin-bottom: 30px;
+					padding: 0px;
+					box-sizing: border-box;
+					label {
+						font-style: normal;
+						font-weight: 600;
+						font-size: 15px;
+						line-height: 160%;
+						letter-spacing: 0.1em;
+						color: #ffffff;
+						width: 100%;
+						margin-bottom: 0px;
+					}
+	
+					input {
+						background: #ffffff;
+						box-sizing: border-box;
+						border-radius: 4px;
+						width: 100%;
+					}
+				}
+	
+				.password {
+					display: flex;
+					flex-wrap: wrap;
+					width: 100%;
+					height: 23%;
+					margin-bottom: 30px;
+					padding: 0px;
+					box-sizing: border-box;
+					label {
+						font-style: normal;
+						font-weight: 600;
+						font-size: 15px;
+						line-height: 160%;
+						letter-spacing: 0.1em;
+						color: #ffffff;
+						width: 100%;
+						margin-bottom: 0px;
+					}
+	
+					input {
+						background: #ffffff;
+						box-sizing: border-box;
+						border-radius: 4px;
+						width: 100%;
+					}
+				}
+			}
+			
+			.custom-button{
+				display: flex;
+				justify-content: center;
+				width: 100%;
+	
+				button{
+					border-radius: 4px;
+					background: white;
+					width: 100px;
+					font-style: normal;
+					font-weight: normal;
+					letter-spacing: 0.1em;
+					color: #0d4e67;
+					outline: none;
+					border: none;
+				}
+			}
+		}
+	}
+		
+}
