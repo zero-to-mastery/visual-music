@@ -12,13 +12,17 @@
  TODO: - Action when form submit
  ************************************************************/
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import classes from './Login.module.scss';
 
 class Login extends React.Component{
+    constructor(props) {
+        super(props)
 
-    state = {
-        email:'',
-        password:''
+        this.state = {
+            email:'',
+            password:''
+        }
     }
 
     onEmailChange = (evt)=>{
@@ -30,7 +34,12 @@ class Login extends React.Component{
     }
 
     onFormSubmit = (evt)=>{
+        const {email, password} = this.state
         evt.preventDefault();
+        /**
+         * Note: This code is only filler and serves the purpose of testing react router and its ability to redirect to the application view and mimic that process prior to the actual functionality, DB, server/client side auth checks are added in the future.
+         */
+        (email && password) && this.props.history.push('/app')
     }
 
     render(){
@@ -43,20 +52,20 @@ class Login extends React.Component{
                         </div>
                         <div className={classes.emailGroup}>
                             <label className={classes.emailLabel}>Email address</label>
-                            <input className={classes.emailField} 
+                            <input className={classes.emailField}
                             type='email'
                             onChange={this.onEmailChange}
                             required/>
                         </div>
                         <div className={classes.passwordGroup}>
                             <label className={classes.passwordLabel}>Password</label>
-                            <input className={classes.passwordField} 
+                            <input className={classes.passwordField}
                             type='password'
                             onChange={this.onPasswordChange}
                             required/>
                         </div>
                         <div className={classes.loginButtonGroup}>
-                            <button className={classes.loginButton} 
+                            <button className={classes.loginButton}
                             type='submite'>Login</button>
                         </div>
                     </form>
@@ -66,4 +75,4 @@ class Login extends React.Component{
     }
 }
 
-export default Login;
+export default withRouter(Login);
