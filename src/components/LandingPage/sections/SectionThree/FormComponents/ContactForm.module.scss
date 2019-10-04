@@ -1,0 +1,26 @@
+.contactForm {
+  width: 66%;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+
+  label {
+    width: 40%;
+    margin: 0 0 2% 0;
+    font-size: 1.5em;
+  }
+
+  .formInput {
+    width: 100%;
+    line-height: 2.5;
+    margin-top: 1%;
+    border: none;
+    border-radius: 2px;
+  }
+
+  #message {
+    overflow: hidden;
+  }
+}
