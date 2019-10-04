@@ -3,9 +3,10 @@ import React from 'react';
 // import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
+import UploadSong from '../../components/UploadSong';
 
 let soundReset = {
-    isPlaying: false,
+    isPlaying: false
 };
 
 class App extends React.Component {
@@ -71,7 +72,7 @@ class App extends React.Component {
             uploadedSong,
             isSongLoaded,
             volume,
-            isPlaying,
+            isPlaying
             // onSongEnd
         } = this.state;
         return (
@@ -84,6 +85,9 @@ class App extends React.Component {
                         onSongEnd={onSongEnd}
                     />
                 </div> */}
+                <div className={classes.uploadPage}>
+                    <UploadSong />
+                </div>
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
