@@ -1,0 +1,17 @@
+.soundplayer {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.soundplayerControls {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.control-button {
+    padding: 0.2rem;
+}
+
+.soundplayer-controls div {
+    margin: 0.5rem;
+}
