@@ -32,7 +32,7 @@
     align-items: center;
     background: #595757;
 
-    & .loginOverlay{
+    .loginOverlay{
         width: 32%;
         background: #0D4E67;
         border-radius: 4px;
@@ -67,7 +67,7 @@
     margin: 7% 10% 10%;
     margin-bottom: 8%;
     
-    & .titleGroup{
+    .titleGroup{
         @include formGroup;
         font-family: Biryani;
         font-style: normal;
@@ -79,39 +79,39 @@
         padding-bottom: 6%;
     }
 
-    & .emailGroup{
+    .emailGroup{
         @include formGroup;
         padding-bottom: 5%;
 
-        & .emailLabel{
+        .emailLabel{
             @include formLabel;
         }
         
-        & .emailField{
+        .emailField{
             @include formInputField;
         }
     }
     
-    & .passwordGroup{
+    .passwordGroup{
         @include formGroup;
         padding-bottom: 6%;
     
-        & .passwordLabel{
+        .passwordLabel{
             @include formLabel;
         }
         
-        & .passwordField{
+        .passwordField{
             @include formInputField;
         }
     }
 
-    & .loginButtonGroup{
+    .loginButtonGroup{
         @include formGroup;
         justify-content: center;
         align-items: center;
         padding-bottom: 4%;
 
-        & .loginButton{
+        .loginButton{
             outline: none;
             width: 120px;
             height: 39px;
@@ -131,13 +131,13 @@
     }
 
     @media only screen and (max-width:473px){
-        & .titleGroup{
+        .titleGroup{
             font-size: 1.5rem;
         }
     }
 
     @media only screen and (max-width:353px){
-        & .titleGroup{
+        .titleGroup{
             font-size: 1.2rem;
         }
     }
