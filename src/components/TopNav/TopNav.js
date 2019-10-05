@@ -1,4 +1,4 @@
-/*********************** 
+/***********************
 
 Top Navigation Component.
 
@@ -11,6 +11,7 @@ TODO: - Black background on scroll.
 ************************/
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './TopNav.module.scss';
 import logo from '../../assets/LogoSVG.svg';
 
@@ -20,7 +21,9 @@ const TopNav = () => (
     <nav className={classes.topNav}>
         <img src={logo} alt="logo" height="85px" width="85px" />
         <div>
-            <Button text="Log In" btnClass="logIn" />
+            <Link to="/login">
+                <Button text="Log In" btnClass="logIn" />
+            </Link>
             <Button text="Sign Up" btnClass="signUp" />
         </div>
     </nav>
