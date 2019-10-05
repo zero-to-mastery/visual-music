@@ -1,6 +1,6 @@
 import React from 'react';
 // import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
-// import Visualizer from '../../components/Visualizer/Visualizer.component';
+import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
 
@@ -72,18 +72,18 @@ class App extends React.Component {
             isSongLoaded,
             volume,
             isPlaying,
-            // onSongEnd
+            onSongEnd
         } = this.state;
         return (
             <div className={classes.pageContainer}>
-                {/* <div className={classes.visualmusic}>
+                <div className={classes.visualmusic}>
                     <Visualizer
                         volume={volume}
                         isPlaying={isPlaying}
                         uploadedSong={uploadedSong}
                         onSongEnd={onSongEnd}
                     />
-                </div> */}
+                </div>
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
