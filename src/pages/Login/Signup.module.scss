@@ -1,0 +1,323 @@
+.signupcomponent {
+    border: 2px solid;
+    width: 100vw;
+    height: 100vh;
+    background: #050516;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .container {
+        width: 40%;
+        height: 80%;
+        background: #0d4e67;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signup {
+        width: 70%;
+        height: 70%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .headlines {
+            width: 100%;
+            height: 16.66%;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+
+            .headline {
+                font-size: 20px;
+                line-height: 140%;
+                letter-spacing: 0.12em;
+                color: #ffffff;
+            }
+        }
+
+        .subheadline {
+            font-size: 15px;
+            line-height: 32px;
+            color: #ffffff;
+            width: 100%;
+            display: block;
+            height: 50%;
+        }
+    }
+
+    .searchfields {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .name,
+        .email,
+        .password {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            height: 30%;
+            margin-top: 3.33%;
+        }
+
+        label {
+            width: 100%;
+            font-size: 15px;
+            line-height: 160%;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+        }
+
+        input {
+            background: #ffffff;
+            border: 2px solid #e6e6e6;
+            box-sizing: border-box;
+            border-radius: 4px;
+            width: 100%;
+        }
+    }
+
+    .showpassword {
+        width: 100%;
+        display: flex;
+        margin-top: 2%;
+        align-items: center;
+
+        input {
+            height: 50%;
+            width: 5%;
+        }
+
+        label {
+            width: 90%;
+            font-size: 15px;
+            line-height: 160%;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            padding: 1%;
+        }
+    }
+
+    .custombutton {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        button {
+            text-align: center;
+            letter-spacing: 0.1em;
+
+            color: #0d4e67;
+            background: #ffffff;
+            border-radius: 10px;
+            width: 20%;
+            border: none;
+            outline: none;
+        }
+    }
+}
+
+@media only screen and (min-width: 430px ) and (max-width: 1131px) {
+    .signupcomponent {
+        .container {
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+				
+				.custom-button {
+					button {
+						width: 25%;
+					}
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 1017px) {
+    .signupcomponent {
+        .container {
+            .signup {
+				width: 80%;
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+				
+				.custom-button {
+					button {
+						width: 30%;
+					}
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 892px) {
+    .signupcomponent {
+        .container {
+			width: 50%;
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 713px) {
+    .signupcomponent {
+        .container {
+            .signup {
+				width: 90%;
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 635px) {
+    .signupcomponent {
+        .container {
+			width: 60%;
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 530px) {
+    .signupcomponent {
+        .container {
+			width: 70%;
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 455px) {
+    .signupcomponent {
+        .container {
+			width: 80%;
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 399px) {
+    .signupcomponent {
+        .container {
+			width: 90%;
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
+
+@media (max-width: 355px) {
+    .signupcomponent {
+        .container {
+			width: 100%;
+            .signup {
+                .headlines {
+                    justify-content: center;
+
+                    .headline {
+                        font-size: 18px;
+                    }
+                    .subheadline {
+						font-size: 13px;
+						text-align: center;
+                    }
+				}
+            }
+        }
+    }
+}
