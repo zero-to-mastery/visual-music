@@ -1,28 +1,29 @@
+@import '../../globalScss/variables.scss';
+
 .boxStyle {
     display: flex;
     width: 100vw;
     align-items: center;
     justify-content: center;
 
-    height: 90vh;
-    font-size: 12px;
-    max-width: 100%;
+    height: 95vh;
+    // max-width: 100%;
     background: #050516;
 }
 
 .uploadFunctionalityStyle {
     display: flex;
     width: 45%;
-    height: 40%;
+    height: 45%;
     padding: 0.5em 1em;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
     /* font-weight: 900; */
-    border: dashed 1.1px #ffffff;
-    border-radius: 5px;
-    border-width: 1.5px;
+    border: dashed 1px #ffffff;
+    border-radius: 0.4rem;
+    border-width: 0.1rem;
 
     opacity: 0.5;
 }
@@ -33,27 +34,24 @@
     outline: none;
     display: flex;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 .uploadText {
     display: flex;
-    font-style: normal;
     font-weight: 900;
     font-size: 1.8rem;
-    line-height: 1.5rem;
+    line-height: 4rem;
     text-align: center;
 
-    color: #4f4e4e;
+    color: $grey;
 }
 
 .fileFormatStyle {
     display: flex;
-    font-family: Biryani;
-    font-style: normal;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 1.1rem;
     text-align: center;
 
-    color: #4f4e4e;
+    color: $grey;
 }
