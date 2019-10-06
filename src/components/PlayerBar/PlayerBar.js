@@ -86,6 +86,14 @@ class PlayerBar extends Component {
                     <div className={classes.volume}>
                         <div className={classes.volumeButton}>
                             <VolumeIcon />
+                            <input
+                                className={classes.volumeSlider}
+                                id="vol-control"
+                                type="range"
+                                min="0"
+                                max="10"
+                                step="1"
+                            ></input>
                         </div>
                     </div>
                 </div>
