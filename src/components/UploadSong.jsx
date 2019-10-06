@@ -1,5 +1,5 @@
 import React from 'react';
-import './UploadSong.css';
+import classes from './UploadSong.module.scss';
 
 /****************************
  Creating UploadSong Component 
@@ -16,10 +16,10 @@ class UploadSong extends React.Component {
     state = {}; // Empty state
     render() {
         return (
-            <div className="boxStyle">
-                <div className="uploadFunctionalityStyle">
+            <div className={classes.boxStyle}>
+                <div className={classes.uploadFunctionalityStyle}>
                     <button
-                        className="iconStyle"
+                        className={classes.iconStyle}
                         type="file"
                         accept="audio/*"
                         name="file"
@@ -38,8 +38,8 @@ class UploadSong extends React.Component {
                             />
                         </svg>
                     </button>
-                    <div className="uploadText">Upload New Song</div>
-                    <div className="fileFormatStyle">
+                    <div className={classes.uploadText}>Upload New Song</div>
+                    <div className={classes.fileFormatStyle}>
                         file format supported: mp3
                     </div>
                 </div>
