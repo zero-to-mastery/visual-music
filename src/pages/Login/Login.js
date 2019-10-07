@@ -68,9 +68,9 @@ class Login extends React.Component{
                             <button className={classes.loginButton}
                             type='submit'>Login</button>
                         </div>
-                        <div className={classes.passwordIssuesGroup}>
-                            <Link to={'/forgot-password'}>
-                                <button className={classes.passwordIssuesButtons}>Forgot Password?</button>
+                        <div className={classes.forgotPasswordLinksGroup}>
+                            <Link to={'/forgot-password'} className={classes.forgotPasswordLink}>
+                                Forgot Password?
                             </Link>
                         </div>
                     </form>

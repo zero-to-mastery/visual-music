@@ -129,14 +129,15 @@
             cursor: pointer;
         }
     }
-    .passwordIssuesGroup {
+    .forgotPasswordLinksGroup {
         display: flex;
         justify-content: center;
         width: 100%;
-        .passwordIssuesButtons {
+        .forgotPasswordLink {
             font-size: 14px;
             background: transparent;
             color: white;
+            text-decoration: none;
         }
     }
 
