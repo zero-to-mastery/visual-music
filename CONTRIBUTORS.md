@@ -24,4 +24,10 @@
 
 [kpence](https://github.com/kpence)
 
--[@codinggilm](https://github.com/codinggilm)
+[ryanboris](https://github.com/ryanboris)
+
+[tomneo2004](https://github.com/tomneo2004)
+
+[JimBratsos](https://github.com/JimBratsos)
+
+[Antonio Franceschi](https://github.com/francofle)
