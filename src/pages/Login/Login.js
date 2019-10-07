@@ -12,7 +12,7 @@
  TODO: - Action when form submit
  ************************************************************/
 import React from 'react';
-import {withRouter} from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
 import classes from './Login.module.scss';
 
 class Login extends React.Component{
@@ -66,7 +66,12 @@ class Login extends React.Component{
                         </div>
                         <div className={classes.loginButtonGroup}>
                             <button className={classes.loginButton}
-                            type='submite'>Login</button>
+                            type='submit'>Login</button>
+                        </div>
+                        <div className={classes.passwordIssuesGroup}>
+                            <Link to={'/forgot-password'}>
+                                <button className={classes.passwordIssuesButtons}>Forgot Password?</button>
+                            </Link>
                         </div>
                     </form>
                 </div>

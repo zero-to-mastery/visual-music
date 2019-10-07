@@ -129,6 +129,16 @@
             cursor: pointer;
         }
     }
+    .passwordIssuesGroup {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        .passwordIssuesButtons {
+            font-size: 14px;
+            background: transparent;
+            color: white;
+        }
+    }
 
     @media only screen and (max-width:473px){
         .titleGroup{
