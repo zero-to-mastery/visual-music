@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import App from '../pages/App/App';
 import LandingPage from '../components/LandingPage/LandingPage';
 import Login from '../pages/Login/Login';
+import ForgotPassword from '../pages/ForgotPassword/forgotPasswordPage.component';
 
 export default function AppRouter() {
     return (
@@ -10,6 +11,7 @@ export default function AppRouter() {
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={Login} />
             <Route path="/app" component={App}/>
+            <Route path="/forgot-password" component={ForgotPassword}/>
         </Switch>
     );
 }
