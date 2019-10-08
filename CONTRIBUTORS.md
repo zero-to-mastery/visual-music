@@ -24,8 +24,12 @@
 
 [kpence](https://github.com/kpence)
 
+<<<<<<< HEAD
 [ryanboris](https://github.com/ryanboris)
 
 [tomneo2004](https://github.com/tomneo2004)
 
 [JimBratsos](https://github.com/JimBratsos)
+=======
+-[@codinggilm](https://github.com/codinggilm)
+>>>>>>> upstream/master

@@ -1,97 +1,65 @@
-/************************************************************
- Main component for Login.
+// i used react-hooks in coming page cause (first i"m big fan! and second ,)
+// when it come to use redux, the new way of do that it without mapStateToProps
+// etc .. and much more easy to grasp.
+// i added notes on each hook for some that not familliar, hope you'll gonna like it,
+// otherwise in the next pages there's no need for hooks again.
 
- Allows users to input email address and password and click
- login button to submit the form
+// this is fully working example of firebase-redux-auth.
+// the user and password are a@a.com
 
- Current features:
- 1. Input user email address
- 2. Input user password
- 3. Do not allow email address and password filed to be blank
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { signIn } from '../../store/actions/authActions';
+import { withRouter, Redirect } from 'react-router-dom';
+import LoginPage from './LoginPage/LoginPage';
 
- TODO: - Action when form submit
- ************************************************************/
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import classes from './Login.module.scss';
-import LoginAction from './LoginAction';
+function Login() {
+    // useSelector Redux hook re-mount every time the `state` in redux-store modified.
+    // at first visit in the page, `uid` and `authError` are both equal null.
+    // after submiting a login request, one of them should not be null anymore...
+    const uid = useSelector(state => state.firebase.auth.uid);
+    const error = useSelector(state => state.auth.authError);
 
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
+    // useSispatch its the second redux hooks, allow actions dispatching from react component.
+    // we will dispatch { signIn } action imported from the store.
 
-        this.state = {
-            email: '',
-            password: ''
-        };
+    const dispatch = useDispatch();
+
+    // instead of `this, bind, constructor` etc.. useState give us an option to declare
+    // a constant and direct function to change it
+    // ( { setEmail() === this.setState(email: ) } )
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const onFormSubmit = event => {
+        event.preventDefault();
+        dispatch(signIn({ email, password }));
+    };
+
+    // in case { uid } is not null anymore we want the user redirect to app
+    if (uid) return <Redirect to="/app" />;
+
+    if (error) {
+        // i havnt seen a {loading: true/false} or {errorHandler} component etc,
+        // so for now its just consoleing the error.
+        // in the future i think its a good ui to set loading symbol attached to {loading: true} on submit and then back to false here,
+        // and a error spaner showing firebase authError.
+
+        console.log(error);
     }
 
-    onEmailChange = evt => {
-        this.setState({ email: evt.target.value });
-    };
-
-    onPasswordChange = evt => {
-        this.setState({ password: evt.target.value });
-    };
-
-    onFormSubmit = evt => {
-        const { email, password } = this.state;
-        evt.preventDefault();
-        /**
-         * Note: This code is only filler and serves the purpose of testing react router and its ability to redirect to the application view and mimic that process prior to the actual functionality, DB, server/client side auth checks are added in the future.
-         */
-
-        email && password && this.props.history.push('/app');
-
-        return <LoginAction email={email} password={password} />;
-    };
-
-    render() {
-        return (
-            <div className={classes.overlay}>
-                <div className={classes.loginOverlay}>
-                    <form
-                        className={classes.loginForm}
-                        onSubmit={this.onFormSubmit}
-                    >
-                        <div className={classes.titleGroup}>
-                            <span>Welcome back!</span>
-                        </div>
-                        <div className={classes.emailGroup}>
-                            <label className={classes.emailLabel}>
-                                Email address
-                            </label>
-                            <input
-                                className={classes.emailField}
-                                type="email"
-                                onChange={this.onEmailChange}
-                                required
-                            />
-                        </div>
-                        <div className={classes.passwordGroup}>
-                            <label className={classes.passwordLabel}>
-                                Password
-                            </label>
-                            <input
-                                className={classes.passwordField}
-                                type="password"
-                                onChange={this.onPasswordChange}
-                                required
-                            />
-                        </div>
-                        <div className={classes.loginButtonGroup}>
-                            <button
-                                className={classes.loginButton}
-                                type="submite"
-                            >
-                                Login
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        );
-    }
+    // all the JSX-HTML was previously here are on {LoginPage}
+    return (
+        <LoginPage
+            setEmail={setEmail}
+            setPassword={setPassword}
+            onFormSubmit={onFormSubmit}
+        />
+    );
 }
 
 export default withRouter(Login);
+
+// i implemented the store action only at login right now, but at the store there's actions ready for import both to register and sign out,
+// (same actions for hooks implemntion or class based)
