@@ -81,7 +81,10 @@ class PlayerBar extends Component {
                         <div className={classes.slider}>
                             <div className={classes.progress} />
                         </div>
-                        <span className={classes.progressTime}>0:00</span>
+                        <span className={classes.progressTime}>
+                            0:00{' '}
+                            {/* {uploadedSong ? uploadedSong.duration : '0:00'}  */}
+                        </span>
                     </div>
                     <div className={classes.volume}>
                         <div className={classes.volumeButton}>
