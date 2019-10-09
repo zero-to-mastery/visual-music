@@ -48,6 +48,7 @@ class App extends React.Component {
                     buttonText: this.state.isPlaying ? 'Pause' : 'Play'
                 });
             });
+            console.log(this.state);
         } else {
             alert('No file loaded');
         }
