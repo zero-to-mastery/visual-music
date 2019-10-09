@@ -93,7 +93,7 @@ class PlayerBar extends Component {
                             <input
                                 type="range"
                                 min="0"
-                                max="20"
+                                max="10"
                                 step="0.5"
                                 name="volume"
                                 className={classes.volumeSlider}
