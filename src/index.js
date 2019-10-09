@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './globalScss/index.scss';
 import AppRouter from './routes/AppRouter';
 import { BrowserRouter as Router } from 'react-router-dom';
+import App from './pages/App/App';
 ReactDOM.render(
     <Router>
         <AppRouter />

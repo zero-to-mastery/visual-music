@@ -89,6 +89,7 @@ class App extends React.Component {
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
+                        onVolumeChange={this.onVolumeChange}
                         onFileUpload={this.onFileUpload}
                         onPlayPress={this.onPlayPress}
                         isPlaying={isPlaying}

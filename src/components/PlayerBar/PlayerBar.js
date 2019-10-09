@@ -60,7 +60,8 @@ class PlayerBar extends Component {
             onPlayPress,
             onFileUpload,
             isPlaying,
-            isSongLoaded
+            isSongLoaded,
+            onVolumeChange
         } = this.props;
         return (
             <div className={classes.playerBar}>
@@ -89,6 +90,15 @@ class PlayerBar extends Component {
                     <div className={classes.volume}>
                         <div className={classes.volumeButton}>
                             <VolumeIcon />
+                            <input
+                                type="range"
+                                min="0"
+                                max="20"
+                                step="0.5"
+                                name="volume"
+                                className={classes.volumeSlider}
+                                onChange={onVolumeChange}
+                            ></input>
                         </div>
                     </div>
                 </div>
