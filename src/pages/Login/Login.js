@@ -5,13 +5,13 @@ import { withRouter, Redirect } from 'react-router-dom';
 import LoginPage from './LoginPage/LoginPage';
 
 function Login() {
-    // useSelector Redux hook re-mount every time the `state` in redux-store modified.
+    // useSelector Redux hook re-mount every time the `state` in redux-store modified,
     // at first visit in the page, `uid` and `authError` are both equal null.
     // after submiting a login request, one of them should not be null anymore...
     const uid = useSelector(state => state.firebase.auth.uid);
     const error = useSelector(state => state.auth.authError);
 
-    // useSispatch its the second redux hooks, allow actions dispatching from react component.
+    // useSispatch its the second redux hook, allow actions dispatching from react component.
     // we will dispatch { signIn } action imported from the store.
 
     const dispatch = useDispatch();

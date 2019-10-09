@@ -1,3 +1,5 @@
+// for notes, visit Login.js
+
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../store/actions/authActions';
@@ -19,9 +21,7 @@ function Register() {
         dispatch(register({ name, email, password }));
     };
 
-    if (uid) {
-        return <Redirect to="/app" />;
-    }
+    if (uid) return <Redirect to="/app" />;
 
     if (error) {
         console.log(error);

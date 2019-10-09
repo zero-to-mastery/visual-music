@@ -4,7 +4,7 @@ import App from '../pages/App/App';
 import LandingPage from '../components/LandingPage/LandingPage';
 import Login from '../pages/Login/Login';
 import ForgotPassword from '../pages/ForgotPassword/forgotPasswordPage.component';
-import Register from '../pages/Login/Register';
+import Register from '../pages/Register/Register';
 import ResetPassword from '../pages/ResetPassword/resetPasswordPage.component';
 
 export default function AppRouter() {
