@@ -3,7 +3,7 @@ import React from 'react';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
-import UploadSong from '../../components/UploadSong/UploadSong';
+// import UploadSong from '../../components/UploadSong/UploadSong';
 
 let soundReset = {
     isPlaying: false
@@ -73,13 +73,8 @@ class App extends React.Component {
             uploadedSong,
             isSongLoaded,
             volume,
-<<<<<<< HEAD
-            isPlaying
-            // onSongEnd
-=======
             isPlaying,
             onSongEnd
->>>>>>> upstream/development
         } = this.state;
         return (
             <div className={classes.pageContainer}>
@@ -90,12 +85,6 @@ class App extends React.Component {
                         uploadedSong={uploadedSong}
                         onSongEnd={onSongEnd}
                     />
-<<<<<<< HEAD
-                </div> */}
-                <div className={classes.uploadPage}>
-                    <UploadSong />
-=======
->>>>>>> upstream/development
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar
