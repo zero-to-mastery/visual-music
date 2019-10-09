@@ -9,7 +9,7 @@ export default function sketch(p) {
     let volume;
     let isPlaying = false;
 
-    const width = 900;
+    let width = 900;
     const height = 500;
     const divisions = 5;
     const speed = 1;
@@ -27,6 +27,12 @@ export default function sketch(p) {
 
     //Custom redraw that will trigger upon state change
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        //We need to resize canvas
+        //and set width property to new width
+        //so drawing will bease on this new width
+        width = props.canvasWidth;
+        p.resizeCanvas(props.canvasWidth, height);
+
         if (song) {
             if (song.isLoaded()) {
                 volume = props.volume;
