@@ -48,14 +48,12 @@ class ResetPassword extends React.Component {
                     <div className={classes.formGroup}>
                         <FormInput
                             labelText="Enter a new password"
-                            placeholder="Password"
                             type="password"
                             name="newPassword"
                             onChange={this.onInputChange}
                         />
                         <FormInput
                             labelText="Verify your password"
-                            placeholder="Password"
                             type="password"
                             name="verifyPassword"
                             onChange={this.onInputChange}
