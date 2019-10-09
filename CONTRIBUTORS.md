@@ -24,17 +24,16 @@
 
 [kpence](https://github.com/kpence)
 
-<<<<<<< HEAD
 [ryanboris](https://github.com/ryanboris)
 
 [tomneo2004](https://github.com/tomneo2004)
 
 [JimBratsos](https://github.com/JimBratsos)
-<<<<<<< HEAD
-=======
+
 -[@codinggilm](https://github.com/codinggilm)
->>>>>>> upstream/master
-=======
 
 [Rahul](https://github.com/kohli6010)
->>>>>>> upstream/development
+
+[Rahul](https://github.com/kohli6010)
+
+[Antonio Franceschi](https://github.com/francofle)
