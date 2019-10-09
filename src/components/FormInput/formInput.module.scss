@@ -1,14 +1,16 @@
-.forgotPasswordEmailInput, .forgotPasswordEmailLabel {
-  width: 100%;
-  font-size: 1rem;
+.forgotPasswordEmailInput,
+.forgotPasswordEmailLabel {
+    width: 100%;
+    font-size: 1rem;
+}
 
+.forgotPasswordEmailLabel {
+    margin-top: 12px;
 }
 
 .forgotPasswordEmailInput {
-  border: none;
-  border-radius: 5px;
-  padding: 0 6px;
-  margin-top: 5px;
-  line-height: 1.5rem;
-
+    border: none;
+    border-radius: 5px;
+    padding: 0 6px;
+    line-height: 1.5rem;
 }

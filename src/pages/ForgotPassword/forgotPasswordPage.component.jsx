@@ -34,19 +34,30 @@ class ForgotPassword extends React.Component {
   render() {
     return (
         <div className={classes.forgotPasswordDiv}>
-          <form className={classes.forgotPasswordForm}>
-            <h1 className={classes.pageTitle}>Forgot Password</h1>
-            <p className={classes.subTitle}>Submit the form to reset your password</p>
-            <div className={classes.formGroup}>
-              <FormInput labelText="Enter your email" type='email' onEmailInputChange={this.onEmailInputChange} placeholder='jon@westeros.com'/>
-            </div>
-            <div>
-              <Button btnClass='signUp' text='Submit' type='submit' onClick={this.onFormSubmit}/>
-            </div>
-          </form>
-
+            <form className={classes.forgotPasswordForm}>
+                <h1 className={classes.pageTitle}>Forgot Password</h1>
+                <p className={classes.subTitle}>
+                    Submit the form to reset your password
+                </p>
+                <div className={classes.formGroup}>
+                    <FormInput
+                        labelText="Enter your email"
+                        type="email"
+                        onChange={this.onEmailInputChange}
+                        placeholder="jon@westeros.com"
+                    />
+                </div>
+                <div>
+                    <Button
+                        btnClass="signUp"
+                        text="Submit"
+                        type="submit"
+                        onClick={this.onFormSubmit}
+                    />
+                </div>
+            </form>
         </div>
-    )
+    );
   };
 }
 
