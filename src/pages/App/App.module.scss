@@ -1,18 +1,21 @@
 .visualmusic {
     display: flex;
     flex-direction: column;
-    padding-bottom: 64px;
+    // padding-bottom: 64px;
     font-size: 1rem;
+    flex: 1;
 }
 
 .pageContainer {
     position: relative;
     min-height: 100vh;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   
 .bar {
-    position: absolute;
+    // position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
