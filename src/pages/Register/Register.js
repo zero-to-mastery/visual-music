@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { register, logOut } from '../../store/actions/authActions';
+import { register } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import RegisterPage from './RegisterPage/RegisterPage';
 
@@ -21,8 +21,7 @@ function Register() {
     };
 
     if (uid) {
-        // return <Redirect to="/app" />;
-        dispatch(logOut());
+        return <Redirect to="/app" />;
     }
 
     if (error) {
