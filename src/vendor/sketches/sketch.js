@@ -31,7 +31,7 @@ export default function sketch(p) {
         //and set width property to new width
         //so drawing will bease on this new width
         width = props.canvasWidth;
-        p.resizeCanvas(props.canvasWidth, height);
+        p.resizeCanvas(width, height);
 
         if (song) {
             if (song.isLoaded()) {
