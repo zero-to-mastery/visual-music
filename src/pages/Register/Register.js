@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../store/actions/authActions';
+import { register, logOut } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import RegisterPage from './RegisterPage/RegisterPage';
 
 function Register() {
     const uid = useSelector(state => state.firebase.auth.uid);
+    console.log(uid);
     const error = useSelector(state => state.auth.authError);
 
     const dispatch = useDispatch();
@@ -20,7 +21,8 @@ function Register() {
     };
 
     if (uid) {
-        return <Redirect to="/app" />;
+        // return <Redirect to="/app" />;
+        dispatch(logOut());
     }
 
     if (error) {

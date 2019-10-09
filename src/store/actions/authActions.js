@@ -6,7 +6,6 @@ export const register = newUser => {
             .auth()
             .createUserWithEmailAndPassword(newUser.email, newUser.password)
             .then(resp => {
-                console.log(resp, firestore);
                 return firestore
                     .collection('users')
                     .doc(resp.user.uid)

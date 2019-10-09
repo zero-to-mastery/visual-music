@@ -1,12 +1,3 @@
-// i used react-hooks in coming page cause (first i"m big fan! and second ,)
-// when it come to use redux, the new way of do that it without mapStateToProps
-// etc .. and much more easy to grasp.
-// i added notes on each hook for some that not familliar, hope you'll gonna like it,
-// otherwise in the next pages there's no need for hooks again.
-
-// this is fully working example of firebase-redux-auth.
-// the user and password are a@a.com
-
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../store/actions/authActions';
@@ -25,10 +16,6 @@ function Login() {
 
     const dispatch = useDispatch();
 
-    // instead of `this, bind, constructor` etc.. useState give us an option to declare
-    // a constant and direct function to change it
-    // ( { setEmail() === this.setState(email: ) } )
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -41,15 +28,10 @@ function Login() {
     if (uid) return <Redirect to="/app" />;
 
     if (error) {
-        // i havnt seen a {loading: true/false} or {errorHandler} component etc,
-        // so for now its just consoleing the error.
-        // in the future i think its a good ui to set loading symbol attached to {loading: true} on submit and then back to false here,
-        // and a error spaner showing firebase authError.
-
+        // ToDo - give some UX when getting error and when loading
         console.log(error);
     }
 
-    // all the JSX-HTML was previously here are on {LoginPage}
     return (
         <LoginPage
             setEmail={setEmail}
@@ -60,6 +42,3 @@ function Login() {
 }
 
 export default withRouter(Login);
-
-// i implemented the store action only at login right now, but at the store there's actions ready for import both to register and sign out,
-// (same actions for hooks implemntion or class based)
