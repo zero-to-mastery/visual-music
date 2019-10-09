@@ -1,0 +1,105 @@
+.successComponent{
+    background: #000000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .avatarProfile{
+        background: url('./Particles/avatar-profile.svg');
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 0px;
+        top: 0px;
+    }
+
+    .rectangle{
+        display:flex;
+        justify-content: center;
+        align-content: center;
+        position:absolute;
+        width: 450px;
+        height:600px;
+        background: linear-gradient(180deg, #29AC6D 0%, rgba(41, 172, 109, 0.47) 100%);
+        border-radius: 4px;
+        
+
+        .guitarist{
+            background:url('./Particles/electric-guitar.svg');
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 125px;
+            top: 200px;
+        }
+
+        .successText{
+            background: url('./Particles/SuccessText.svg');
+            position: absolute;
+            width: 136px;
+            height:23.4px;
+            left: 160px;
+            top: 450px;
+            
+            font-family: Biryani;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 26px;
+            line-height: 140%;
+            /* or 36px */
+            text-align: center;
+            letter-spacing: 0.15em;
+
+            color: #EEEEEE;
+        }
+        
+        .backButton{
+            background: url('./Particles/Button.svg');
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            left: 195px;
+            top: 522px;
+            cursor:pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 800px){
+    .successComponent{
+
+        .rectangle{
+
+            width: 300px;
+            height:450px;
+
+
+            .guitarist{
+
+                width: 200px;
+                height: 200px;
+                left: 60px;
+                top: 80px;
+            }
+
+            .successText{
+
+                width: 136px;
+                height:23.4px;
+                left: 88px;
+                top: 330px;
+            }
+            
+            .backButton{
+
+                width: 60px;
+                height: 60px;
+                left: 130px;
+                top: 380px;
+            }
+        }
+    }
+}
+
