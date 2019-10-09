@@ -5,7 +5,7 @@ const FormInput = ({labelText, placeholder, onEmailInputChange, ...otherInputPro
     return (
         <div>
             <label className={classes.forgotPasswordEmailLabel}>{labelText}</label>
-            <input className={classes.forgotPasswordEmailInput} type="text" placeholder={placeholder} onChange={onEmailInputChange} {...otherInputProps}/>
+            <input className={classes.forgotPasswordEmailInput} placeholder={placeholder} onChange={onEmailInputChange} {...otherInputProps}/>
         </div>
     )
 };

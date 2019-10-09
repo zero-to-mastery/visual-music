@@ -11,8 +11,13 @@ TODO: - Implement hover animation using react-spring (as we're already using it 
 import React from 'react';
 import classes from './Button.module.scss';
 
-const Button = ({ text, btnClass }) => (
-    <button className={classes[btnClass]}>{text}</button>
+const Button = ({ text, btnClass, ...otherProps}) => (
+    <button
+        className={classes[btnClass]}
+        {...otherProps}
+    >
+        {text}
+    </button>
 );
 
 export default Button;

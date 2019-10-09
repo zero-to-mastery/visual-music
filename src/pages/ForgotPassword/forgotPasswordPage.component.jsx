@@ -15,25 +15,35 @@ class ForgotPassword extends React.Component {
   onEmailInputChange = (event) => {
     this.setState({
       email: event.target.value
-    }, () => {console.log(this.state.email)})
+    })
+  };
+
+  // TODO: Implement submit button to reset password
+  onFormSubmit = async (event) => {
+    // Placeholder for implementation of password reset functionality.\
+    event.preventDefault();
+    const {email} = this.state;
+    console.log(email);
+
+    // example fetch
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await response.json();
+    console.log(data);
   };
 
   render() {
-    console.log(this.props.location.email);
     return (
         <div className={classes.forgotPasswordDiv}>
-          <div className={classes.forgotPasswordForm}>
+          <form className={classes.forgotPasswordForm}>
             <h1 className={classes.pageTitle}>Forgot Password</h1>
             <p className={classes.subTitle}>Submit the form to reset your password</p>
             <div className={classes.formGroup}>
-              <FormInput labelText="Enter your email" onEmailInputChange={this.onEmailInputChange} placeholder='jon@westeros.com'/>
+              <FormInput labelText="Enter your email" type='email' onEmailInputChange={this.onEmailInputChange} placeholder='jon@westeros.com'/>
             </div>
             <div>
-              <Button btnClass='signUp' text='Submit' onClick={{
-                /*TODO: HandleSubmit*/
-              }}/>
+              <Button btnClass='signUp' text='Submit' type='submit' onClick={this.onFormSubmit}/>
             </div>
-          </div>
+          </form>
 
         </div>
     )
