@@ -3,15 +3,17 @@ import { Route, Switch } from 'react-router-dom';
 import App from '../pages/App/App';
 import LandingPage from '../components/LandingPage/LandingPage';
 import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
 
 export default function AppRouter() {
-    return (
-        <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/login" component={Login} />
-            <Route path="/app" component={App}/>
-        </Switch>
-    );
+	return (
+		<Switch>
+			<Route exact path="/" component={LandingPage} />
+			<Route path="/login" component={Login} />
+			<Route path="/register" component={Register} />
+			<Route path="/app" component={App} />
+		</Switch>
+	);
 }
 
 /**

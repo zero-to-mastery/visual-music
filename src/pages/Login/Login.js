@@ -7,9 +7,9 @@
 // this is fully working example of firebase-redux-auth.
 // the user and password are a@a.com
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn } from '../../store/actions/authActions';
+import { logIn } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import LoginPage from './LoginPage/LoginPage';
 
@@ -34,7 +34,7 @@ function Login() {
 
     const onFormSubmit = event => {
         event.preventDefault();
-        dispatch(signIn({ email, password }));
+        dispatch(logIn({ email, password }));
     };
 
     // in case { uid } is not null anymore we want the user redirect to app
