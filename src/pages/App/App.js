@@ -5,7 +5,7 @@ import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
 
 let soundReset = {
-    isPlaying: false,
+    isPlaying: false
 };
 
 class App extends React.Component {
