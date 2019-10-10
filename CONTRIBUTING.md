@@ -49,7 +49,26 @@ This is where tasks are placed whilst the PR has been submitted and is awaiting 
 
 
 ## Contributing
-We use Trello for task management. If you want to contribute, contact a project admin through Discord (we have a dedicated channel for the project __#visual-music__), an invitation to join the team on Trello we'll be given to you. Feel free to write the team some lines so the contributors get to know each other, add your name on the CONTRIBUTORS.md list and... you're good to go! 
+We use Trello for task management. If you want to contribute, contact a project admin through Discord (we have a dedicated channel for the project __#visual-music__), an invitation to join the team on Trello we'll be given to you. Feel free to write the team some lines so the contributors get to know each other. Add your name on the CONTRIBUTORS.md list by doing the following steps:
+
+1. Add the following command as a comment to your PR
+
+```
+@all-contributors please add <your-name> for <contributions> 
+
+```
+
+2. Replace the <your-name> field with your Github username.
+ 
+ 3. Replace the <contributions> field with the keyword based on the work you did. Every work done has its own emoji/contribution which can be easily understood and explained in the following link: https://allcontributors.org/docs/en/emoji-key
+ 
+ For example, if user Test on Github has contributed to squashing some bugs, to add himself to the Contributors file he will use:
+ ```
+ @all-contributors please add @Test for bug 
+ ```
+ 
+ 4. You're good to go! Enjoy
+ 
 
 ## Working on Code
 * Pick a listed task from the __Tasks selected__ area, assign it to yourself by editing your name into the card
