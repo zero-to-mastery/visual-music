@@ -24,7 +24,8 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch,
-            canvasWidth:0
+            canvasWidth:0,
+            canvasHeight:0
         };
 
         //create a reference and reference to
@@ -47,10 +48,9 @@ class Visualizer extends React.Component {
         window.removeEventListener('resize', this.onWindowResize);
     }
 
-    //calculate new canvas width when window's size changed
-    //calculation should base on parent element
-    onWindowResize = ()=>{
-       
+    //calculation canvas size base on parent element
+    getCanvasSize(){
+
         //get style properties from parent 
         const style = window.getComputedStyle(this.visualizerRef.current.parentElement, null);
 
@@ -73,31 +73,38 @@ class Visualizer extends React.Component {
         borderWidth  -  thisBorderWidth -
         marginWidth - thisMarginWidth;
 
-        // //get padding, border and margin height for <div className={classes.visualizer}></div>
-        // const thisPaddingHeight = parseFloat(thisStyle.getPropertyValue('padding-top')) + parseFloat(thisStyle.getPropertyValue('padding-bottom'));
-        // const thisBorderHeight = parseFloat(thisStyle.getPropertyValue('border-top')) + parseFloat(thisStyle.getPropertyValue('border-bottom'));
-        // const thisMarginHeight = parseFloat(thisStyle.getPropertyValue('margin-top')) + parseFloat(thisStyle.getPropertyValue('margin-bottom'));
+        //get padding, border and margin height for <div className={classes.visualizer}></div>
+        const thisPaddingHeight = parseFloat(thisStyle.getPropertyValue('padding-top')) + parseFloat(thisStyle.getPropertyValue('padding-bottom'));
+        const thisBorderHeight = parseFloat(thisStyle.getPropertyValue('border-top')) + parseFloat(thisStyle.getPropertyValue('border-bottom'));
+        const thisMarginHeight = parseFloat(thisStyle.getPropertyValue('margin-top')) + parseFloat(thisStyle.getPropertyValue('margin-bottom'));
 
-        // //get padding, border and margin height  from parent 
-        // const paddingHeight = parseFloat(style.getPropertyValue('padding-top')) + parseFloat(style.getPropertyValue('padding-bottom'));
-        // const borderHeight = parseFloat(style.getPropertyValue('border-top')) + parseFloat(style.getPropertyValue('border-bottom'));
-        // const marginHeight = parseFloat(style.getPropertyValue('margin-top')) + parseFloat(style.getPropertyValue('margin-bottom'));
+        //get padding, border and margin height  from parent 
+        const paddingHeight = parseFloat(style.getPropertyValue('padding-top')) + parseFloat(style.getPropertyValue('padding-bottom'));
+        const borderHeight = parseFloat(style.getPropertyValue('border-top')) + parseFloat(style.getPropertyValue('border-bottom'));
+        const marginHeight = parseFloat(style.getPropertyValue('margin-top')) + parseFloat(style.getPropertyValue('margin-bottom'));
 
-        // //calcualte new canvas height
-        // const newCanvasHeight = parseFloat(style.getPropertyValue('height')) - 
-        // paddingHeight  - thisPaddingHeight -  
-        // borderHeight  -  thisBorderHeight -
-        // marginHeight - thisMarginHeight;
+        //calcualte new canvas height
+        const newCanvasHeight = parseFloat(style.getPropertyValue('height')) - 
+        paddingHeight  - thisPaddingHeight -  
+        borderHeight  -  thisBorderHeight -
+        marginHeight - thisMarginHeight;
 
-        // console.log('canvas width and height', parseFloat(style.getPropertyValue('width')), parseFloat(style.getPropertyValue('height')));
+        return {
+            canvasWidth: parseInt(newCanvasWidth),
+            canvasHeight: parseInt(newCanvasHeight)
+        }
+    }
+
+    onWindowResize = ()=>{
         
-        this.setState({canvasWidth:parseInt(newCanvasWidth)})
+        const {canvasWidth, canvasHeight} = this.getCanvasSize();
+        this.setState({canvasWidth:canvasWidth, canvasHeight:canvasHeight});
 
     }
 
     render() {
         const { volume, isPlaying, uploadedSong } = this.props;
-        const { sketch, canvasWidth } = this.state;
+        const { sketch, canvasWidth, canvasHeight } = this.state;
 
         return (
             <div className={classes.visualizer} ref={this.visualizerRef}>
@@ -107,6 +114,7 @@ class Visualizer extends React.Component {
                     isPlaying={isPlaying}
                     uploadedSong={uploadedSong}
                     canvasWidth={canvasWidth}
+                    canvasHeight={canvasHeight}
                 />
             </div>
         );
