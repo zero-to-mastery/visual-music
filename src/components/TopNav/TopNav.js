@@ -18,30 +18,17 @@ import logo from '../../assets/LogoSVG.svg';
 import Button from '../Button/Button';
 
 const TopNav = () => (
-	<div>
-		<nav className={classes.topNav}>
-			<img src={logo} alt="logo" height="85px" width="85px" />
-			<div>
-				<Link to="/login">
-					<Button text="Log In" btnClass="logIn" />
-				</Link>
-				<Link to="/register">
-					<Button text="Sign Up" btnClass="signUp" />
-				</Link>
-			</div>
-		</nav>
-		<nav className={classes.topNav}>
-			<img src={logo} alt="logo" height="85px" width="85px" />
-			<div>
-				<Link to="/login">
-					<Button text="Log In" btnClass="logIn" />
-				</Link>
-				<Link to={'/register'}>
-					<Button text="Sign Up" btnClass="signUp" />
-				</Link>
-			</div>
-		</nav>
-	</div>
+	<nav className={classes.topNav}>
+		<img src={logo} alt="logo" height="85px" width="85px" />
+		<div>
+			<Link to="/login">
+				<Button text="Log In" btnClass="logIn" />
+			</Link>
+			<Link to="/register">
+				<Button text="Sign Up" btnClass="signUp" />
+			</Link>
+		</div>
+	</nav>
 );
 
 export default TopNav;
