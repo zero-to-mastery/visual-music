@@ -55,3 +55,24 @@ export const logOut = () => {
             });
     };
 };
+
+export const forgotPassword = ({ email }) => {
+    return (dispatch, getState, { getFirebase }) => {
+        const firebase = getFirebase();
+        firebase
+            .auth()
+            .sendPasswordResetEmail(email)
+            .then(() => {
+                // Todo - Customize account mail.
+                // https://support.google.com/firebase/answer/7000714
+                alert('email sent successfully');
+                dispatch({ type: 'FORGOT_PASSWORD' });
+            })
+            .catch(err => {
+                dispatch({
+                    type: 'ERROR',
+                    err
+                });
+            });
+    };
+};

@@ -9,9 +9,6 @@ export const authReducer = (state = initialState, action) => {
                 authError: null
             };
 
-        case 'SIGNOUT':
-            return state;
-
         case 'ERROR':
             return {
                 ...state,
