@@ -10,7 +10,7 @@ export default function sketch(p) {
     let isPlaying = false;
 
     let width = 900;
-    const height = 500;
+    let height = 500;
     const divisions = 5;
     const speed = 1;
 
@@ -31,7 +31,8 @@ export default function sketch(p) {
         //and set width property to new width
         //so drawing will bease on this new width
         width = props.canvasWidth;
-        p.resizeCanvas(props.canvasWidth, height);
+        height = props.canvasHeight;
+        p.resizeCanvas(width, height);
 
         if (song) {
             if (song.isLoaded()) {

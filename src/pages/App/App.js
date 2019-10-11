@@ -3,10 +3,13 @@ import React from 'react';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
+
 //import Success from '../../components/Success/Success';
+// import UploadSong from '../../components/UploadSong/UploadSong';
+
 
 let soundReset = {
-    isPlaying: false,
+    isPlaying: false
 };
 
 class App extends React.Component {
@@ -48,6 +51,7 @@ class App extends React.Component {
                     buttonText: this.state.isPlaying ? 'Pause' : 'Play'
                 });
             });
+            console.log(this.state);
         } else {
             alert('No file loaded');
         }
@@ -88,6 +92,7 @@ class App extends React.Component {
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
+                        onVolumeChange={this.onVolumeChange}
                         onFileUpload={this.onFileUpload}
                         onPlayPress={this.onPlayPress}
                         isPlaying={isPlaying}

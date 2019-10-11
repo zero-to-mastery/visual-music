@@ -1,5 +1,5 @@
 .playerBar {
-    background-color: #0D4E67;
+    background-color: #0d4e67;
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -15,9 +15,31 @@
     cursor: pointer;
 }
 
-.icon, .playButton, .volumeButton, .snapshotButton, .downloadButton {
+.icon,
+.playButton,
+.volumeButton,
+.snapshotButton,
+.downloadButton {
     display: flex;
     align-items: center;
+}
+
+.volumeButton:hover .volumeSlider {
+    left: 0.6rem;
+    opacity: 1;
+}
+
+.volumeSlider {
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    position: relative;
+    border-radius: 5px;
+    height: 10px;
+    margin: 0 16px;
 }
 
 .nowPlaying {
@@ -30,8 +52,11 @@
 .songTitle {
     font-family: Biryani, sans-serif;
     font-weight: 600;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-left: 7px;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .playerControls {
@@ -50,7 +75,7 @@
 }
 
 .controls {
-    color: #FFFFFF;
+    color: #ffffff;
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
@@ -73,7 +98,7 @@
         border-radius: 5px;
         height: 10px;
         margin: 0 16px;
-        
+
         .progress {
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: inherit;
@@ -113,17 +138,17 @@
     font-family: Biryani, sans-serif;
     background-color: transparent;
     padding: 0.5em 1em;
-    border: 0.05em solid #FFFFFF;
+    border: 0.05em solid #ffffff;
     border-radius: 5px;
-    color: #FFFFFF;
+    color: #ffffff;
     cursor: pointer;
     font-weight: 300;
     display: flex;
     align-items: stretch;
 
     &:hover {
-        background-color: #FFFFFF;
-        color: #0D4E67;
+        background-color: #ffffff;
+        color: #0d4e67;
     }
 }
 
@@ -134,7 +159,7 @@
     display: flex;
     align-items: stretch;
 
-    & [type=file] {
+    & [type='file'] {
         cursor: pointer;
         display: block;
         height: 100%;
@@ -147,7 +172,6 @@
         z-index: -1;
     }
 }
-
 
 @media only screen and (max-width: 900px) {
     .playerBarRight {
@@ -168,8 +192,9 @@
 }
 
 @media screen and (max-width: 700px) {
-
-    .icon, .volumeButton, .playerBarRight .download {
-            display: none;
+    .icon,
+    .volumeButton,
+    .playerBarRight .download {
+        display: none;
     }
 }
