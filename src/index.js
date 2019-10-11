@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom';
 import './globalScss/index.scss';
 import AppRouter from './routes/AppRouter';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Hambergur from './components/VisualPanel/PanelToggle/PanelToggle';
 ReactDOM.render(
     <Router>
         <AppRouter />
     </Router>,
     document.getElementById('root')
 );
+// ReactDOM.render(
+//     <Hambergur />,
+//     document.getElementById('root')
+// );
 
 /**
  * For now, I thought it would be easier just to create an individual file for the routing system called AppRouter, instead of dismantling and reorganizing everything in App for the time being.
