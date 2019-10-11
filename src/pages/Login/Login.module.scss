@@ -129,6 +129,17 @@
             cursor: pointer;
         }
     }
+    .forgotPasswordLinksGroup {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        .forgotPasswordLink {
+            font-size: 14px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+        }
+    }
 
     @media only screen and (max-width:473px){
         .titleGroup{
