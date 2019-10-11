@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { forgotPassword } from '../../store/actions/authActions';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ForgotPasswordPage from './ForgotPasswordPage/ForgotPasswordPage.component';
 
 function ForgotPassword() {
