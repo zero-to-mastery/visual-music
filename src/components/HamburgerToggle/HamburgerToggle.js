@@ -10,9 +10,9 @@
 
 ************************************************************/
 import React from 'react';
-import classes from './HambergurToggle.module.scss';
+import classes from './HamburgerToggle.module.scss';
 
-class HambergurToggle extends React.Component{
+class HamburgerToggle extends React.Component{
 
     constructor(){
         super();
@@ -24,16 +24,18 @@ class HambergurToggle extends React.Component{
 
     toggle = ()=>{
         this.setState({toggle:!this.state.toggle});
+
     }
 
     render(){
 
         const {toggle} = this.state;
+        const {onClick} = this.props;
 
         return (
             <div 
             className={classes.hamOverlay}
-            onClick={this.toggle}
+            onClick={()=>{onClick(); this.toggle();}}
             >
                 <div className={`${classes.hamWrapper} ${toggle?classes.toggle:''}`}>
                     <span></span>
@@ -46,4 +48,4 @@ class HambergurToggle extends React.Component{
     }
 }
 
-export default HambergurToggle;
+export default HamburgerToggle;

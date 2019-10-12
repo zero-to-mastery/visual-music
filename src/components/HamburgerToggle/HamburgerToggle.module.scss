@@ -1,15 +1,17 @@
-$width:100px;
-$height:100px;
+// $width:100px;
+// $height:100px;
 
 .hamOverlay{
     position: relative;
     background-color: #0D4E67;
     border-radius: 4px;
-    min-height: $height;
-    max-height: $height;
-    min-width: $width;
-    max-width: $width;
-    margin: 10%;
+    // min-height: $height;
+    // max-height: $height;
+    // min-width: $width;
+    // max-width: $width;
+    // margin: 10%;
+    width: 100%;
+    height: 100%;
 
     cursor: pointer;
 }
