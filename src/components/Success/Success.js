@@ -16,7 +16,7 @@ class Success extends React.Component{
                 <div className={classes.avatarProfile}></div>
                 <div className={classes.rectangle}>
                     <div className={classes.guitarist}></div>
-                    <div className={classes.successText}></div>
+                    <div className={classes.successText}>{"Success!"}</div>
                     <div className={classes.backButton}></div>
                 </div>
             </div>
