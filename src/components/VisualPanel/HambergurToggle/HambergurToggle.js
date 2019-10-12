@@ -1,7 +1,18 @@
-import React from 'react';
-import classes from './PanelToggle.module.scss';
+/************************************************************
+    Component represent a hambergur sytle of toggle
 
-class PanelToggle extends React.Component{
+    State:
+    - toggle: Indicate whether hambergur is on/off
+
+    Current features:
+    - A hambergur style.
+    - Transition to X when toggle is on.
+
+************************************************************/
+import React from 'react';
+import classes from './HambergurToggle.module.scss';
+
+class HambergurToggle extends React.Component{
 
     constructor(){
         super();
@@ -35,4 +46,4 @@ class PanelToggle extends React.Component{
     }
 }
 
-export default PanelToggle;
+export default HambergurToggle;

@@ -1,0 +1,28 @@
+
+.panelWrapper{
+    width: 300px;
+    height: 756px;
+    margin: 30%;
+    display: flex;
+    flex-direction: column;
+
+    .title{
+        font-family: Biryani;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.3rem;
+        line-height: 32px;
+        color: #0D4E67;
+        border-bottom: 2px solid #0D4E67;
+        margin: 5% 5% 0 5%;
+        padding: 0 2%;
+    }
+
+    .visualList{
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        margin: 5% 0 5% 0;
+        padding: 0 5% 0 5%;
+    }
+}
