@@ -7,6 +7,7 @@
 
     .avatarProfile{
         background: url('./Particles/avatar-profile.svg');
+        background-repeat: no-repeat;
         position: absolute;
         width: 4em;
         height: 4em;
@@ -27,6 +28,7 @@
 
         .guitarist{
             background:url('./Particles/electric-guitar.svg');
+            background-repeat: no-repeat;
             position: absolute;
             width: 20em;
             height: 20em;
@@ -52,6 +54,7 @@
         
         .backButton{
             background: url('./Particles/Button.svg');
+            background-repeat: no-repeat;
             position: absolute;
             width: 6em;
             height: 6em;
