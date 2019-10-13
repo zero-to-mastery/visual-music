@@ -65,9 +65,17 @@ class App extends React.Component {
     *********************************************/
     onFileUpload = event => {
         const song = event.target.files[0];
+        let blobUrl = URL.createObjectURL(song);
+        let audio = document.querySelector('#audio');
+        audio.src = blobUrl;
+        audio.preload = 'metadata';
+        audio.addEventListener('loadedmetadata', () => {
+            this.setState({ duration: this.getTime(audio.duration) });
+        });
         this.setState({
             uploadedSong: song,
             isSongLoaded: true,
+            volume: audio.volume,
             ...soundReset
         });
     };
@@ -76,6 +84,7 @@ class App extends React.Component {
         const {
             uploadedSong,
             isSongLoaded,
+            duration,
             volume,
             isPlaying,
             onSongEnd
@@ -102,6 +111,7 @@ class App extends React.Component {
                         isPlaying={isPlaying}
                         uploadedSong={uploadedSong}
                         isSongLoaded={isSongLoaded}
+                        duration={duration}
                     />
                 </div>
             </div>
