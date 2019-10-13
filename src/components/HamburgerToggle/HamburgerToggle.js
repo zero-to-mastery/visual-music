@@ -4,6 +4,13 @@
     State:
     - toggle: Indicate whether hambergur is on/off
 
+    Props:
+    - initToggle: true to set initial toggle
+     state to on otherwse set to false
+
+    - onClick: callback which is called when hamburger
+     chicked by user and toggle state changed
+
     Current features:
     - A hambergur style.
     - Transition to X when toggle is on.
@@ -22,20 +29,30 @@ class HamburgerToggle extends React.Component{
         }
     }
 
-    toggle = ()=>{
-        this.setState({toggle:!this.state.toggle});
+    componentDidMount(){
+        const {initToggle} = this.props;
+        this.setState({toggle:initToggle});
+    }
 
+    toggle = ()=>{
+        const {onClick} = this.props;
+
+        const newToggleState = !this.state.toggle;
+
+        this.setState({toggle:newToggleState});
+        if(onClick){
+            onClick(newToggleState);
+        }
     }
 
     render(){
 
         const {toggle} = this.state;
-        const {onClick} = this.props;
 
         return (
             <div 
             className={classes.hamOverlay}
-            onClick={()=>{onClick(); this.toggle();}}
+            onClick={()=>{ this.toggle() }}
             >
                 <div className={`${classes.hamWrapper} ${toggle?classes.toggle:''}`}>
                     <span></span>

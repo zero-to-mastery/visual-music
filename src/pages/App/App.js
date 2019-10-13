@@ -71,10 +71,13 @@ class App extends React.Component {
         });
     };
 
-    onTogglePanel = () => {
-        this.setState({togglePanel:!this.state.togglePanel});
-
-        
+    /********************************************
+        Handle hamburger toggle callback. When 
+        hamburger toggle's state changed, we need
+        to set togglePanel state
+    *********************************************/
+    onTogglePanel = (toggleState) => {
+        this.setState({togglePanel:toggleState});
     }
 
     render() {
@@ -91,7 +94,9 @@ class App extends React.Component {
                 <div className={classes.visualContainer}>   
                     <div className={`${classes.visualmusic} ${togglePanel?classes.shrink:''}`}>
                         <div className={classes.hamburger}>
-                            <HamburgerToggle onClick={this.onTogglePanel}/>
+                            <HamburgerToggle 
+                            initToggle={this.state.togglePanel} 
+                            onClick={this.onTogglePanel}/>
                         </div>
                         <Visualizer
                             volume={volume}

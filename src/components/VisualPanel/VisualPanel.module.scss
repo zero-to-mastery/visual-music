@@ -26,4 +26,16 @@
         margin: 5% 0 0% 0;
         padding: 0 5% 0 5%;
     }
+
+    @media only screen and (max-width:500px){
+        .title{
+            font-size: 1rem;
+        }
+    }
+
+    @media only screen and (max-width:350px){
+        .title{
+            font-size: 0.8rem;
+        }
+    }
 }

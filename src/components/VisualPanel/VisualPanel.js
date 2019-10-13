@@ -1,7 +1,7 @@
 /************************************************************
     Main component for visualization list
 
-    Params:
+    Props:
     - visualList: Type of array. An array contain all visualization data that need to be displayed
     - onItemClick: Type of function. A callback function, 
     which take 1 argument when an item is being clicked. Argument which mapped to specific
