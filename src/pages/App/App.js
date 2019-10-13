@@ -52,6 +52,11 @@ class App extends React.Component {
             alert('No file loaded');
         }
     };
+
+    /********************************************
+        Uploaded audio file duration converted in
+        to proper format e.g. 3:14
+    ********************************************/
     getTime(dur) {
         return (
             Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
