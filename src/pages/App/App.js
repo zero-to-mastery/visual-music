@@ -72,7 +72,9 @@ class App extends React.Component {
     };
 
     onTogglePanel = () => {
-        this.setState({togglePanel:!this.state.togglePanel})
+        this.setState({togglePanel:!this.state.togglePanel});
+
+        
     }
 
     render() {
@@ -86,15 +88,7 @@ class App extends React.Component {
         } = this.state;
         return (
             <div className={classes.pageContainer}>
-                <div className={classes.visualContainer}>
-                    {
-                        togglePanel?
-                        <div className={classes.visualPanel}>
-                            <VisualPanel />
-                        </div>
-                        :
-                        null
-                    }    
+                <div className={classes.visualContainer}>   
                     <div className={`${classes.visualmusic} ${togglePanel?classes.shrink:''}`}>
                         <div className={classes.hamburger}>
                             <HamburgerToggle onClick={this.onTogglePanel}/>
@@ -105,6 +99,9 @@ class App extends React.Component {
                             uploadedSong={uploadedSong}
                             onSongEnd={onSongEnd}
                         />
+                    </div>
+                    <div className={`${classes.visualPanel} ${togglePanel?classes.slideIn:''}`}>
+                        <VisualPanel />
                     </div>
                 </div>    
                 <div className={classes.bar}>
