@@ -57,6 +57,7 @@ class PlayerBar extends Component {
     render() {
         const {
             uploadedSong,
+            duration,
             onPlayPress,
             onFileUpload,
             isPlaying,
@@ -83,8 +84,8 @@ class PlayerBar extends Component {
                             <div className={classes.progress} />
                         </div>
                         <span className={classes.progressTime}>
-                            0:00{' '}
-                            {/* {uploadedSong ? uploadedSong.duration : '0:00'}  */}
+                            {/* 0:00{' '} */}
+                            {uploadedSong ? duration : '0:00'}
                         </span>
                     </div>
                     <div className={classes.volume}>
