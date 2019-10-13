@@ -48,11 +48,15 @@ class App extends React.Component {
                     buttonText: this.state.isPlaying ? 'Pause' : 'Play'
                 });
             });
-            console.log(this.state);
         } else {
             alert('No file loaded');
         }
     };
+    getTime(dur) {
+        return (
+            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
+        );
+    }
 
     /********************************************
         Handle file uploads. Uploaded file is saved
