@@ -71,7 +71,7 @@ class App extends React.Component {
     onFileUpload = event => {
         const song = event.target.files[0];
         let blobUrl = URL.createObjectURL(song);
-        let audio = document.querySelector('#audio');
+        let audio = this.player;
         audio.src = blobUrl;
         audio.preload = 'metadata';
         audio.addEventListener('loadedmetadata', () => {
