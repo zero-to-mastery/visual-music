@@ -90,6 +90,9 @@ class App extends React.Component {
                         onSongEnd={onSongEnd}
                     />
                 </div>
+                <div>
+                    <audio id="audio" ref={ref => (this.player = ref)}></audio>
+                </div>
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
