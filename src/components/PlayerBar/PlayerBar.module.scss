@@ -30,7 +30,7 @@
 }
 
 .volumeSlider {
-    left: 0rem;
+    left: 0;
     transition: all 0.3s ease-in-out;
     opacity: 0;
     flex-grow: 1;
@@ -104,7 +104,7 @@
             border-radius: inherit;
             position: absolute;
             pointer-events: none;
-            width: 99%;
+            width: 0;
             height: 100%;
         }
     }

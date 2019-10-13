@@ -7,7 +7,6 @@
     justify-content: center;
 
     height: 95vh;
-    // max-width: 100%;
     background: #050516;
 }
 
@@ -20,7 +19,6 @@
     justify-content: center;
     flex-direction: column;
 
-    /* font-weight: 900; */
     border: dashed 1px #ffffff;
     border-radius: 0.4rem;
     border-width: 0.1rem;
@@ -54,4 +52,15 @@
     text-align: center;
 
     color: $grey;
+}
+
+@media screen and (max-width: 700px) {
+    .fileFormatStyle {
+        font-size: 0.7rem;
+        margin-top: 2rem;
+    }
+    .uploadText {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
 }
