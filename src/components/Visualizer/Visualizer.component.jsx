@@ -25,8 +25,8 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch,
-            canvasWidth:0,
-            canvasHeight:0
+            canvasWidth:100,
+            canvasHeight:100
         };
     }
 

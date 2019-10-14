@@ -1,101 +1,44 @@
-/************************************************************
- Main component for Login.
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn } from '../../store/actions/authActions';
+import { withRouter, Redirect } from 'react-router-dom';
+import LoginPage from './LoginPage/LoginPage';
 
- Allows users to input email address and password and click
- login button to submit the form
+function Login() {
+    // useSelector Redux hook re-mount every time the `state` in redux-store modified,
+    // at first visit in the page, `uid` and `authError` are both equal null.
+    // after submiting a login request, one of them should not be null anymore...
+    const uid = useSelector(state => state.firebase.auth.uid);
+    const error = useSelector(state => state.auth.authError);
 
- Current features:
- 1. Input user email address
- 2. Input user password
- 3. Do not allow email address and password filed to be blank
+    // useSispatch its the second redux hook, allow actions dispatching from react component.
+    // we will dispatch { signIn } action imported from the store.
 
- TODO: - Action when form submit
- ************************************************************/
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import classes from './Login.module.scss';
+    const dispatch = useDispatch();
 
-class Login extends React.Component {
-    constructor(props) {
-        super(props);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-        this.state = {
-            email: '',
-            password: ''
-        };
+    const onFormSubmit = event => {
+        event.preventDefault();
+        dispatch(logIn({ email, password }));
+    };
+
+    // in case { uid } is not null anymore we want the user redirect to app
+    if (uid) return <Redirect to="/app" />;
+
+    if (error) {
+        // ToDo - give some UX when getting error and when loading
+        console.log(error);
     }
 
-    onEmailChange = evt => {
-        this.setState({ email: evt.target.value });
-    };
-
-    onPasswordChange = evt => {
-        this.setState({ password: evt.target.value });
-    };
-
-    onFormSubmit = evt => {
-        const { email, password } = this.state;
-        evt.preventDefault();
-        /**
-         * Note: This code is only filler and serves the purpose of testing react router and its ability to redirect to the application view and mimic that process prior to the actual functionality, DB, server/client side auth checks are added in the future.
-         */
-        email && password && this.props.history.push('/app');
-    };
-
-    render() {
-        return (
-            <div className={classes.overlay}>
-                <div className={classes.loginOverlay}>
-                    <form
-                        className={classes.loginForm}
-                        onSubmit={this.onFormSubmit}
-                    >
-                        <div className={classes.titleGroup}>
-                            <span>Welcome back!</span>
-                        </div>
-                        <div className={classes.emailGroup}>
-                            <label className={classes.emailLabel}>
-                                Email address
-                            </label>
-                            <input
-                                className={classes.emailField}
-                                type="email"
-                                onChange={this.onEmailChange}
-                                required
-                            />
-                        </div>
-                        <div className={classes.passwordGroup}>
-                            <label className={classes.passwordLabel}>
-                                Password
-                            </label>
-                            <input
-                                className={classes.passwordField}
-                                type="password"
-                                onChange={this.onPasswordChange}
-                                required
-                            />
-                        </div>
-                        <div className={classes.loginButtonGroup}>
-                            <button
-                                className={classes.loginButton}
-                                type="submit"
-                            >
-                                Login
-                            </button>
-                        </div>
-                        <div className={classes.forgotPasswordLinksGroup}>
-                            <Link
-                                to={'/forgot-password'}
-                                className={classes.forgotPasswordLink}
-                            >
-                                Forgot Password?
-                            </Link>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        );
-    }
+    return (
+        <LoginPage
+            setEmail={setEmail}
+            setPassword={setPassword}
+            onFormSubmit={onFormSubmit}
+        />
+    );
 }
 
 export default withRouter(Login);
