@@ -1,3 +1,3 @@
 export default {
-	authError: null
+    authError: null
 };
