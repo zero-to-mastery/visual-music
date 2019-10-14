@@ -24,8 +24,8 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch,
-            canvasWidth:0,
-            canvasHeight:0
+            canvasWidth:100,
+            canvasHeight:100
         };
 
         //create a reference and reference to
@@ -104,7 +104,7 @@ class Visualizer extends React.Component {
 
     render() {
         const { volume, isPlaying, uploadedSong } = this.props;
-        const { canvasWidth, canvasHeight } = this.state;
+        const { sketch, canvasWidth, canvasHeight } = this.state;
 
         return (
             <div className={classes.visualizer} ref={this.visualizerRef}>
