@@ -1,5 +1,4 @@
 
-
 .pageContainer {
     position: relative;
 
@@ -7,26 +6,26 @@
     visualContainer's responsiveness is base on
     min-height
     max-height
+    height
     */
     min-height: 100vh;
     max-height: 100vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
-
 .visualContainer{
-    $animSpeed: .5s !default;
-    $hamburgerSize: 40px !default;
+    $animSpeed: .25s;
+    $hamburgerSize: 40px;
     //Modify this value to change panel width
-    $panelWidth: 30% !default; 
-    $visualMusicWidth: 100% !default;
+    $panelWidth: 30%; 
+    $visualMusicWidth: 100%;
 
     position: relative;
-    flex-grow: 1;
-    height: 100%;
+    height:100%;
 
     .visualPanel{
         z-index: 2;
@@ -34,20 +33,23 @@
         width: $panelWidth;
         height: 100%;
         left: -$panelWidth;
+        bottom: 0;
         background-color: white;
 
         transition: all $animSpeed ease-in-out;
 
         &.slideIn{
             left: 0;
+            bottom:0;
         }
     }
 
     .visualmusic {
-        position: absolute;
+        position: relative;
         width: $visualMusicWidth;
         height: 100%;
         right: 0;
+        left: 0;
         background: #595757;
 
         transition: all $animSpeed ease-in-out;
@@ -56,11 +58,11 @@
         justify-content: center;
         align-items: center;
 
-    
+        
         .hamburger{
             position: absolute;
             z-index: 1;
-            top: 0;
+            top: 1%;
             left: 0;
             width: $hamburgerSize;
             height: $hamburgerSize;
@@ -68,6 +70,7 @@
 
         &.shrink{
             width:100% - $panelWidth;
+            left: $panelWidth;
         }
     }
 }
