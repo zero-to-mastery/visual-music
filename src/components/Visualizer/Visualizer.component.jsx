@@ -24,8 +24,8 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch,
-            canvasWidth:0,
-            canvasHeight:0
+            canvasWidth:100,
+            canvasHeight:100
         };
 
         //create a reference and reference to

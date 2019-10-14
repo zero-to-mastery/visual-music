@@ -6,8 +6,8 @@ import { authReducer } from './authReducer';
 // state.firebase/state.auth for example, are ways to reach the content the state holds.
 
 const rootReducer = combineReducers({
-	auth: authReducer,
-	firebase: firebaseReducer
+    auth: authReducer,
+    firebase: firebaseReducer
 });
 
 export default rootReducer;

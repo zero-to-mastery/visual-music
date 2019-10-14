@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Login.module.scss';
+import { Link } from 'react-router-dom';
 
 function LoginPage({ setEmail, setPassword, onFormSubmit }) {
     return (
@@ -39,6 +40,14 @@ function LoginPage({ setEmail, setPassword, onFormSubmit }) {
                         <button className={classes.loginButton} type="submite">
                             Login
                         </button>
+                    </div>
+                    <div className={classes.forgotPasswordLinksGroup}>
+                        <Link
+                            to="/forgot-password"
+                            className={classes.forgotPasswordLink}
+                        >
+                            Forgot Password?
+                        </Link>
                     </div>
                 </form>
             </div>
