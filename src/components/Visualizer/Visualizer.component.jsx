@@ -104,7 +104,7 @@ class Visualizer extends React.Component {
 
     render() {
         const { volume, isPlaying, uploadedSong } = this.props;
-        const { sketch, canvasWidth, canvasHeight } = this.state;
+        const { canvasWidth, canvasHeight } = this.state;
 
         return (
             <div className={classes.visualizer} ref={this.visualizerRef}>
