@@ -5,8 +5,9 @@
     - toggle: Indicate whether hambergur is on/off
 
     Props:
-    - initToggle: true to set initial toggle
-     state to on otherwse set to false
+    - initToggle: Set this property true to set initial toggle
+     state to be on otherwse set to false to set initial toggle
+     state to be off
 
     - onClick: callback which is called when hamburger
      chicked by user and toggle state changed
