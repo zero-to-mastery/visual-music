@@ -5,26 +5,28 @@
     align-items: center;
     justify-content: center;
 
-    .avatarProfile{
-        background: url('./Particles/avatar-profile.svg');
-        background-repeat: no-repeat;
-        position: absolute;
-        width: 4em;
-        height: 4em;
-        right: 0em;
-        top: 0em;
-    }
+    
 
     .rectangle{
+        top:0em;
         display:flex;
         justify-content: center;
         align-content: center;
         position:absolute;
-        width: 45em;
-        height:60em;
+        width: 30em;
+        height:40em;
         background: linear-gradient(180deg, #29AC6D 0%, rgba(41, 172, 109, 0.47) 100%);
         border-radius: 4px;
-        
+
+        .avatarProfile{
+            background: url('./Particles/avatar-profile.svg');
+            background-repeat: no-repeat;
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            left: 27em;
+            top: 1em;
+        }
 
         .guitarist{
             background:url('./Particles/electric-guitar.svg');
@@ -32,15 +34,15 @@
             position: absolute;
             width: 20em;
             height: 20em;
-            left: 12.5em;
-            top: 20em;
+            left: 10em;
+            top: 7em;
         }
 
         .successText{
             position: absolute;
             width: 13.6em;
             height:23.4em;
-            left: 2em;
+            left: 3.35em;
             top: 17em;
             
             font-size: 26px;
@@ -58,46 +60,71 @@
             position: absolute;
             width: 6em;
             height: 6em;
-            left: 19.5em;
-            top: 52.2em;
+            left: 14.5em;
+            top: 34.2em;
             cursor:pointer;
         }
     }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 600px){
     .successComponent{
+        
+
         .rectangle{
+            width: 25em;
+            height:40em;
 
-            width: 30em;
-            height:45em;
-
+            .avatarProfile{
+                left: 22em;
+                top: 1em;
+            }
 
             .guitarist{
-
-                width: 20em;
-                height: 20em;
-                left: 6em;
-                top: 8em;
+                left: 7.5em;
+                top: 12em;
             }
 
             .successText{
-
-                width: 13.6em;
-                height:2.34em;
-                left: 8.8em;
-                top: 33em;
+                left: 1.5em;
+                top: 19em;
             }
             
             .backButton{
-
-                width: 6em;
-                height: 6em;
-                left: 13em;
-                top: 38em;
+                left: 11.5em;
+                top: 35em;
             }
         }
     }
 }
 
+@media screen and (max-width: 450px){
+    .successComponent{
+        
 
+        .rectangle{
+            width: 17em;
+            height:30em;
+
+            .avatarProfile{
+                left: 22em;
+                top: 1em;
+            }
+
+            .guitarist{
+                left: 3em;
+                top: 5em;
+            }
+
+            .successText{
+                left:-1.2em;
+                top: 13em;
+            }
+            
+            .backButton{
+                left: 7em;
+                top: 25em;
+            }
+        }
+    }
+}
