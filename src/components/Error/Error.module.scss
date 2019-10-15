@@ -16,13 +16,13 @@
     align-items: center;
     justify-content: center;
     background-color: #fb3600;
+    z-index: 1;
 
     .guitarIcon {
         margin-bottom: 50px;
     }
 
     .errorMessage {
-        font-family: Biryani;
         text-align: center;
         color: #eee;
 
