@@ -14,20 +14,23 @@ import { ReactComponent as GoBackIcon } from '../../assets/ErrorScreenAssets/go-
 import classes from './Error.module.scss';
 
 const Error = () => {
-  const handleGoBack = () => {};
+    const handleGoBack = () => {};
 
-  return (
-    <div className={classes.errorScreen}>
-      <div className={classes.errorModal}>
-        <GuitarIcon className={classes.guitarIcon} />
-        <div className={classes.errorMessage}>
-          <h1>Oops!</h1>
-          <h2>Image couldn’t be shared</h2>
+    return (
+        <div className={classes.errorScreen}>
+            <div className={classes.errorModal}>
+                <GuitarIcon className={classes.guitarIcon} />
+                <div className={classes.errorMessage}>
+                    <h1>Oops!</h1>
+                    <h2>Image couldn’t be shared</h2>
+                </div>
+                <GoBackIcon
+                    className={classes.goBackIcon}
+                    onClick={handleGoBack}
+                />
+            </div>
         </div>
-        <GoBackIcon className={classes.goBackIcon} onClick={handleGoBack} />
-      </div>
-    </div>
-  )
+    );
 };
 
 export default Error;
