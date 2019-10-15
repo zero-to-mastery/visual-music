@@ -1,0 +1,66 @@
+@import '../../globalScss/variables.scss';
+
+.boxStyle {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
+    height: 95vh;
+    background: #050516;
+}
+
+.uploadFunctionalityStyle {
+    display: flex;
+    width: 45%;
+    height: 45%;
+    padding: 0.5em 1em;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border: dashed 1px #ffffff;
+    border-radius: 0.4rem;
+    border-width: 0.1rem;
+
+    opacity: 0.5;
+}
+
+.iconStyle {
+    background: none;
+    border: none;
+    outline: none;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.uploadText {
+    display: flex;
+    font-weight: 900;
+    font-size: 1.8rem;
+    line-height: 4rem;
+    text-align: center;
+
+    color: $grey;
+}
+
+.fileFormatStyle {
+    display: flex;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-align: center;
+
+    color: $grey;
+}
+
+@media screen and (max-width: 700px) {
+    .fileFormatStyle {
+        font-size: 0.7rem;
+        margin-top: 2rem;
+    }
+    .uploadText {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+}

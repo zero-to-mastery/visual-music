@@ -48,7 +48,9 @@ class LandingPage extends Component {
 
                     <SectionOne scrollClick={() => this.parallax.scrollTo(1)} />
                     <SectionTwo scrollClick={() => this.parallax.scrollTo(2)} />
-                    <SectionThree scrollClick={() => this.parallax.scrollTo(0)} />
+                    <SectionThree
+                        scrollClick={() => this.parallax.scrollTo(0)}
+                    />
                 </Parallax>
             </>
         );

@@ -24,7 +24,9 @@ const TopNav = () => (
             <Link to="/login">
                 <Button text="Log In" btnClass="logIn" />
             </Link>
-            <Button text="Sign Up" btnClass="signUp" />
+            <Link to="/register">
+                <Button text="Sign Up" btnClass="signUp" />
+            </Link>
         </div>
     </nav>
 );

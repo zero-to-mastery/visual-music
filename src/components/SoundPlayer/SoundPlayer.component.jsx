@@ -26,39 +26,44 @@ import classes from './SoundPlayer.module.scss';
     3.  onFileUpload
 *************************************************************/
 const SoundPlayer = ({
-	volume,
-	onPlayPress,
-	onVolumeChange,
-	onFileUpload,
-	buttonText,
-	isSongLoaded
+    volume,
+    onPlayPress,
+    onVolumeChange,
+    onFileUpload,
+    buttonText,
+    isSongLoaded
 }) => (
-	<div className={classes.soundplayer}>
-		<input type='file' accept='audio/*' name='file' onChange={onFileUpload} />
-		<div className={classes.soundplayerControls}>
-			<div>
-				<button
-					className={classes.soundplayer}
-					onClick={onPlayPress}
-					disabled={!isSongLoaded}
-				>
-					{buttonText}
-				</button>
-			</div>
-			<div>
-				<label>Volume</label>
-				<input
-					type='range'
-					name='volume'
-					value={volume}
-					min='0.0'
-					max='1.0'
-					step='0.1'
-					onChange={onVolumeChange}
-				/>
-			</div>
-		</div>
-	</div>
+    <div className={classes.soundplayer}>
+        <input
+            type="file"
+            accept="audio/*"
+            name="file"
+            onChange={onFileUpload}
+        />
+        <div className={classes.soundplayerControls}>
+            <div>
+                <button
+                    className={classes.soundplayer}
+                    onClick={onPlayPress}
+                    disabled={!isSongLoaded}
+                >
+                    {buttonText}
+                </button>
+            </div>
+            <div>
+                <label>Volume</label>
+                <input
+                    type="range"
+                    name="volume"
+                    value={volume}
+                    min="0.0"
+                    max="1.0"
+                    step="0.1"
+                    onChange={onVolumeChange}
+                />
+            </div>
+        </div>
+    </div>
 );
 
 export default SoundPlayer;
