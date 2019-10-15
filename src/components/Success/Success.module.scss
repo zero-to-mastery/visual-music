@@ -2,31 +2,18 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
 
     
 
     .rectangle{
-        top:0em;
-        display:flex;
-        justify-content: center;
+        top:10em;
         align-content: center;
         position:absolute;
         width: 30em;
         height:40em;
         background: linear-gradient(180deg, #29AC6D 0%, rgba(41, 172, 109, 0.47) 100%);
         border-radius: 4px;
-
-        .avatarProfile{
-            background: url('./Particles/avatar-profile.svg');
-            background-repeat: no-repeat;
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            left: 27em;
-            top: 1em;
-        }
 
         .guitarist{
             background:url('./Particles/electric-guitar.svg');
@@ -75,11 +62,6 @@
             width: 25em;
             height:40em;
 
-            .avatarProfile{
-                left: 22em;
-                top: 1em;
-            }
-
             .guitarist{
                 left: 7.5em;
                 top: 12em;
@@ -105,11 +87,6 @@
         .rectangle{
             width: 17em;
             height:30em;
-
-            .avatarProfile{
-                left: 22em;
-                top: 1em;
-            }
 
             .guitarist{
                 left: 3em;
