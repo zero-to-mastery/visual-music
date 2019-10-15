@@ -1,13 +1,13 @@
 .successComponent{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
 
     
 
     .rectangle{
-        top:10em;
+        top:2em;
         align-content: center;
         position:absolute;
         width: 30em;
@@ -28,7 +28,6 @@
         .successText{
             position: absolute;
             width: 13.6em;
-            height:23.4em;
             left: 3.35em;
             top: 17em;
             
@@ -86,7 +85,7 @@
 
         .rectangle{
             width: 17em;
-            height:30em;
+            height:35em;
 
             .guitarist{
                 left: 3em;
