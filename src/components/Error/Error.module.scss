@@ -2,7 +2,6 @@
     position: absolute;
     width: 100vw;
     height: 100%;
-    background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #FB3600 0%, rgba(251, 54, 0, 0.47) 100%);
+    background-color: #fb3600;
 
     .guitarIcon {
         margin-bottom: 50px;
