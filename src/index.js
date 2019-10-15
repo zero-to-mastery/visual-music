@@ -14,9 +14,8 @@ const ROUTER = (
         <Router>
             <AppRouter />
         </Router>
-    </Provider>);
-
-
+    </Provider>
+);
 
 store.firebaseAuthIsReady.then(() => {
     ReactDOM.render(ROUTER, document.getElementById('root'));
