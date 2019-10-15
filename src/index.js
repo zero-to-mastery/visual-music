@@ -14,7 +14,7 @@ const ROUTER = (
         <Router>
             <AppRouter />
         </Router>
-    </Provider>
+    </Provider>);
 
 
 
