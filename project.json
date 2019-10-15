@@ -4,12 +4,7 @@
     "color": "#e8c123",
     "logo": "https://raw.githubusercontent.com/zero-to-mastery/visual-music/master/visual-music-logo/Logo%20Background(1).png",
     "channelName": "visual-music",
-    "desc": [
-        "Visual Music webapp provides the users with a real time visual transcription of a streamed music piece. \nIf the visual transcription can be at first of random assignment of colors and shapes, it shouldn't remain so, as one of the main interest is to transcribe the emotional effects of the music piece.",
-        "__**The applications could be:**__ \n:small_orange_diamond: Screening the visual expression, \n:small_orange_diamond: Hearing impaired accessibility, \n:small_orange_diamond: Downloadable artistic pieces, \n:small_orange_diamond: Tools for visualization theory \nFor more indepth use case [see here](https://github.com/zero-to-mastery/visual-music#applications)",
-        "__**Stack:**__ small_blue_diamond:   Figma small_blue_diamond:   Storybook \n:small_blue_diamond:   React \n:small_blue_diamond:   p5 \n:small_blue_diamond:   react-p5-wrapper \n:small_blue_diamond:   Firebase",
-        "Whilst working on various features, including data visualization and digital signal processing, you will gain valuable experience in collaborating and working with version control and source code management (Github), which are extremely valuable skills."
-    ],
+    "desc": "a",
     "team": [
         ["lucie", "Project Lead"],
         ["arnas", "Front End Lead"],
