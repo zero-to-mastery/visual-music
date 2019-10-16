@@ -76,9 +76,9 @@ class App extends React.Component {
         hamburger toggle's state changed, we need
         to set togglePanel state
     *********************************************/
-    onTogglePanel = (toggleState) => {
-        this.setState({togglePanel:toggleState});
-    }
+    onTogglePanel = toggleState => {
+        this.setState({ togglePanel: toggleState });
+    };
 
     render() {
         const {
@@ -91,12 +91,17 @@ class App extends React.Component {
         } = this.state;
         return (
             <div className={classes.pageContainer}>
-                <div className={classes.visualContainer}>   
-                    <div className={`${classes.visualmusic} ${togglePanel?classes.shrink:''}`}>
+                <div className={classes.visualContainer}>
+                    <div
+                        className={`${classes.visualmusic} ${
+                            togglePanel ? classes.shrink : ''
+                        }`}
+                    >
                         <div className={classes.hamburger}>
-                            <HamburgerToggle 
-                            initToggle={this.state.togglePanel} 
-                            onClick={this.onTogglePanel}/>
+                            <HamburgerToggle
+                                initToggle={this.state.togglePanel}
+                                onClick={this.onTogglePanel}
+                            />
                         </div>
                         <Visualizer
                             volume={volume}
@@ -105,10 +110,14 @@ class App extends React.Component {
                             onSongEnd={onSongEnd}
                         />
                     </div>
-                    <div className={`${classes.visualPanel} ${togglePanel?classes.slideIn:''}`}>
+                    <div
+                        className={`${classes.visualPanel} ${
+                            togglePanel ? classes.slideIn : ''
+                        }`}
+                    >
                         <VisualPanel />
                     </div>
-                </div>    
+                </div>
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}

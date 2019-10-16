@@ -14,26 +14,23 @@
 import React from 'react';
 import classes from './VisualItem.module.scss';
 
-const VisualItem = ({title, imagePath, onClick})=>{
-
-    const imgSrc = imagePath?imagePath:'';
+const VisualItem = ({ title, imagePath, onClick }) => {
+    const imgSrc = imagePath ? imagePath : '';
 
     return (
         <div className={classes.overlay}>
-            <div className={classes.itemWrapper}
-                onClick={onClick}>
+            <div className={classes.itemWrapper} onClick={onClick}>
                 <div className={classes.imageWrapper}>
-                    <img 
-                    className={classes.image} 
-                    src={imgSrc} 
-                    alt='visual-item'/>
+                    <img
+                        className={classes.image}
+                        src={imgSrc}
+                        alt="visual-item"
+                    />
                 </div>
-                <div className={classes.title}>
-                {title}
-                </div>
+                <div className={classes.title}>{title}</div>
             </div>
         </div>
     );
-}
+};
 
 export default VisualItem;

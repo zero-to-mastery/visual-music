@@ -20,42 +20,46 @@
 import React from 'react';
 import classes from './HamburgerToggle.module.scss';
 
-class HamburgerToggle extends React.Component{
-
-    constructor(){
+class HamburgerToggle extends React.Component {
+    constructor() {
         super();
 
-        this.state={
-            toggle:false
-        }
+        this.state = {
+            toggle: false
+        };
     }
 
-    componentDidMount(){
-        const {initToggle} = this.props;
-        this.setState({toggle:initToggle});
+    componentDidMount() {
+        const { initToggle } = this.props;
+        this.setState({ toggle: initToggle });
     }
 
-    toggle = ()=>{
-        const {onClick} = this.props;
+    toggle = () => {
+        const { onClick } = this.props;
 
         const newToggleState = !this.state.toggle;
 
-        this.setState({toggle:newToggleState});
-        if(onClick){
+        this.setState({ toggle: newToggleState });
+        if (onClick) {
             onClick(newToggleState);
         }
-    }
+    };
 
-    render(){
-
-        const {toggle} = this.state;
+    render() {
+        const { toggle } = this.state;
 
         return (
-            <div 
-            className={classes.hamOverlay}
-            onClick={()=>{ this.toggle() }}
+            <div
+                className={classes.hamOverlay}
+                onClick={() => {
+                    this.toggle();
+                }}
             >
-                <div className={`${classes.hamWrapper} ${toggle?classes.toggle:''}`}>
+                <div
+                    className={`${classes.hamWrapper} ${
+                        toggle ? classes.toggle : ''
+                    }`}
+                >
                     <span></span>
                     <span></span>
                     <span></span>
