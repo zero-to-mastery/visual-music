@@ -53,11 +53,20 @@ class App extends React.Component {
                     buttonText: this.state.isPlaying ? 'Pause' : 'Play'
                 });
             });
-            console.log(this.state);
         } else {
             alert('No file loaded');
         }
     };
+
+    /********************************************
+        Uploaded audio file duration converted in
+        to proper format e.g. 3:14
+    ********************************************/
+    getTime(dur) {
+        return (
+            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
+        );
+    }
 
     /********************************************
         Handle file uploads. Uploaded file is saved
@@ -66,9 +75,17 @@ class App extends React.Component {
     *********************************************/
     onFileUpload = event => {
         const song = event.target.files[0];
+        let blobUrl = URL.createObjectURL(song);
+        let audio = this.player;
+        audio.src = blobUrl;
+        audio.preload = 'metadata';
+        audio.addEventListener('loadedmetadata', () => {
+            this.setState({ duration: this.getTime(audio.duration) });
+        });
         this.setState({
             uploadedSong: song,
             isSongLoaded: true,
+            volume: audio.volume,
             ...soundReset
         });
     };
@@ -86,6 +103,7 @@ class App extends React.Component {
         const {
             uploadedSong,
             isSongLoaded,
+            duration,
             volume,
             isPlaying,
             onSongEnd,
@@ -120,6 +138,9 @@ class App extends React.Component {
                         <VisualPanel />
                     </div>
                 </div>
+                <div>
+                    <audio id="audio" ref={ref => (this.player = ref)}></audio>
+                </div>
                 <div className={classes.bar}>
                     <PlayerBar
                         volume={volume}
@@ -129,6 +150,7 @@ class App extends React.Component {
                         isPlaying={isPlaying}
                         uploadedSong={uploadedSong}
                         isSongLoaded={isSongLoaded}
+                        duration={duration}
                     />
                 </div>
             </div>
