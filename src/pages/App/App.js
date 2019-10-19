@@ -6,6 +6,8 @@ import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
 // import UploadSong from '../../components/UploadSong/UploadSong';
+import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
+import VisualPanel from '../../components/VisualPanel/VisualPanel';
 
 let soundReset = {
     isPlaying: false
@@ -19,7 +21,8 @@ class App extends React.Component {
             uploadedSong: null,
             isSongLoaded: false,
             volume: 0.5,
-            ...soundReset
+            ...soundReset,
+            togglePanel: false
         };
     }
 
@@ -70,23 +73,52 @@ class App extends React.Component {
         });
     };
 
+    /********************************************
+        Handle hamburger toggle callback. When 
+        hamburger toggle's state changed, we need
+        to set togglePanel state
+    *********************************************/
+    onTogglePanel = toggleState => {
+        this.setState({ togglePanel: toggleState });
+    };
+
     render() {
         const {
             uploadedSong,
             isSongLoaded,
             volume,
             isPlaying,
-            onSongEnd
+            onSongEnd,
+            togglePanel
         } = this.state;
         return (
             <div className={classes.pageContainer}>
-                <div className={classes.visualmusic}>
-                    <Visualizer
-                        volume={volume}
-                        isPlaying={isPlaying}
-                        uploadedSong={uploadedSong}
-                        onSongEnd={onSongEnd}
-                    />
+                <div className={classes.visualContainer}>
+                    <div
+                        className={`${classes.visualmusic} ${
+                            togglePanel ? classes.shrink : ''
+                        }`}
+                    >
+                        <div className={classes.hamburger}>
+                            <HamburgerToggle
+                                initToggle={this.state.togglePanel}
+                                onClick={this.onTogglePanel}
+                            />
+                        </div>
+                        <Visualizer
+                            volume={volume}
+                            isPlaying={isPlaying}
+                            uploadedSong={uploadedSong}
+                            onSongEnd={onSongEnd}
+                        />
+                    </div>
+                    <div
+                        className={`${classes.visualPanel} ${
+                            togglePanel ? classes.slideIn : ''
+                        }`}
+                    >
+                        <VisualPanel />
+                    </div>
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar

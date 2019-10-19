@@ -1,18 +1,74 @@
-.visualmusic {
-    display: flex;
-    flex-direction: column;
-    font-size: 1rem;
-    flex-grow: 1;
-}
 
 .pageContainer {
     position: relative;
+
+    /*
+    visualContainer's responsiveness is base on
+    min-height
+    max-height
+    height
+    */
     min-height: 100vh;
+    max-height: 100vh;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-  }
+    justify-content: flex-start;
+}
+
+.visualContainer{
+    $animSpeed: .25s;
+    $hamburgerSize: 2.5rem;
+    //Modify this value to change panel width
+    $panelWidth: 30%; 
+    $visualMusicWidth: 100%;
+
+    position: relative;
+    height:100%;
+
+    .visualPanel{
+        z-index: 2;
+        position: absolute;
+        width: $panelWidth;
+        height: 100%;
+        left: -$panelWidth;
+        bottom: 0;
+        background-color: white;
+
+        transition: all $animSpeed ease-in-out;
+
+        &.slideIn{
+            left: 0;
+            bottom:0;
+        }
+    }
+
+    .visualmusic {
+        position: relative;
+        width: $visualMusicWidth;
+        height: 100%;
+        right: 0;
+        left: 0;
+        background: #595757;
+
+        transition: all $animSpeed ease-in-out;
+
+        .hamburger{
+            position: absolute;
+            z-index: 1;
+            top: 1%;
+            left: 0;
+            width: $hamburgerSize;
+            height: $hamburgerSize;
+        }
+
+        &.shrink{
+            width:100% - $panelWidth;
+            left: $panelWidth;
+        }
+    }
+}
 
 .bar {
     // position: absolute;
