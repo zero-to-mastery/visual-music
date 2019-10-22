@@ -9,6 +9,7 @@
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-firebase-file-uploader": "^2.4.3",
+        "react-measure": "^2.3.0",
         "react-p5-wrapper": "^2.0.0",
         "react-redux": "^7.1.1",
         "react-redux-firebase": "^2.4.1",
@@ -23,7 +24,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "format": "prettier --write \"**/*.{js,css}\"",
+        "format": "prettier --write \"**/*.{js,css, scss}\"",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

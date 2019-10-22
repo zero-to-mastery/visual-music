@@ -1,0 +1,35 @@
+
+.overlay{
+    padding: 0 0 5% 0;
+}
+
+.itemWrapper{
+
+    cursor: pointer;
+
+    .imageWrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        padding: 3%;
+
+        .image{
+            width: 100%;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    }
+
+    .title{
+        font-weight: bold;
+        font-size: 1.3rem;
+        line-height: 25px;
+        text-align: center;
+        color: #0D4E67;
+        padding: 5% 0;
+    }
+}

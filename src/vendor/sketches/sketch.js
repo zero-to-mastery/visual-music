@@ -51,7 +51,7 @@ export default function sketch(p) {
             }
         } else {
             //handles initial song load
-            if (props.uploadedSong) {
+            if (props.uploadedSong && props.uploadedSong !== song) {
                 // becuase of using heroku services for fetch the song from firebase, it is good practice to
                 // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more abillity to control this middle time.
                 // for reading more - https://p5js.org/reference/#/p5.SoundFile/loadSound
