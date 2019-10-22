@@ -8,7 +8,7 @@ import RegisterPage from './RegisterPage/RegisterPage';
 
 function Register() {
     const uid = useSelector(state => state.firebase.auth.uid);
-    const error = useSelector(state => state.auth.authError);
+    const error = useSelector(state => state.authError);
 
     const dispatch = useDispatch();
 

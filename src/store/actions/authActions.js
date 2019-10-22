@@ -19,7 +19,7 @@ export const register = newUser => {
             })
             .catch(err => {
                 dispatch({
-                    type: 'ERROR',
+                    type: 'AUTH_ERROR',
                     err
                 });
             });
@@ -37,7 +37,7 @@ export const logIn = credentials => {
             })
             .catch(err => {
                 dispatch({
-                    type: 'ERROR',
+                    type: 'AUTH_ERROR',
                     err
                 });
             });
@@ -70,7 +70,7 @@ export const forgotPassword = ({ email }) => {
             })
             .catch(err => {
                 dispatch({
-                    type: 'ERROR',
+                    type: 'AUTH_ERROR',
                     err
                 });
             });

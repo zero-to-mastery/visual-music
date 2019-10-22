@@ -9,7 +9,7 @@ function Login() {
     // at first visit in the page, `uid` and `authError` are both equal null.
     // after submiting a login request, one of them should not be null anymore...
     const uid = useSelector(state => state.firebase.auth.uid);
-    const error = useSelector(state => state.auth.authError);
+    const error = useSelector(state => state.authError);
 
     // useSispatch its the second redux hook, allow actions dispatching from react component.
     // we will dispatch { signIn } action imported from the store.
