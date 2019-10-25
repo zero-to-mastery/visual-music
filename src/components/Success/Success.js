@@ -1,3 +1,9 @@
+/************************************************************
+  Success screen component.
+
+  TODO:
+  1. Add functionality to go back icon.
+************************************************************/
 import React from 'react';
 
 import {ReactComponent as GuitarIcon} from '../../assets/SuccessScreenAssets/electric-guitar-success.svg';

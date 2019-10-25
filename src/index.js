@@ -8,7 +8,7 @@ import AppRouter from './routes/AppRouter';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import './globalScss/index.scss';
-import Success from './components/Success/Success';
+
 const ROUTER = (
     <Provider store={store}>
         <Router>
@@ -18,7 +18,7 @@ const ROUTER = (
 );
 
 store.firebaseAuthIsReady.then(() => {
-    ReactDOM.render(<Success />, document.getElementById('root'));
+    ReactDOM.render(ROUTER, document.getElementById('root'));
 });
 
 // If you want your app to work offline and load faster, you can change
