@@ -6,13 +6,12 @@
 ************************************************************/
 import React from 'react';
 
-import {ReactComponent as GuitarIcon} from '../../assets/SuccessScreenAssets/electric-guitar-success.svg';
-import {ReactComponent as BackIcon} from '../../assets/SuccessScreenAssets/back-btn-Icon-success.svg';
+import { ReactComponent as GuitarIcon } from '../../assets/SuccessScreenAssets/electric-guitar-success.svg';
+import { ReactComponent as BackIcon } from '../../assets/SuccessScreenAssets/back-btn-Icon-success.svg';
 
 import classes from './Success.module.scss';
 
 const Success = () => {
-
     return (
         <div className={classes.overlay}>
             <div className={classes.successOverlay}>
@@ -22,10 +21,9 @@ const Success = () => {
                     <h1 className={classes.title}>Success!</h1>
                     <BackIcon className={classes.backIcon} />
                 </div>
-                
             </div>
         </div>
     );
-}
+};
 
 export default Success;
