@@ -19,6 +19,7 @@ import { ReactComponent as SnapshotIcon } from '../../assets/PlayerBarAssets/sna
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as SongIcon } from '../../assets/PlayerBarAssets/song-icon.svg';
+import UploadButton from './UploadButton/UploadButton';
 
 import classes from './PlayerBar.module.scss';
 
@@ -48,7 +49,6 @@ const pauseButton = (
 
  functions:
  1.  onPlayPress
- 2.  onFileUpload
  *************************************************************/
 
 class PlayerBar extends Component {
@@ -59,7 +59,6 @@ class PlayerBar extends Component {
             uploadedSong,
             duration,
             onPlayPress,
-            onFileUpload,
             isPlaying,
             isSongLoaded,
             onVolumeChange
@@ -112,18 +111,7 @@ class PlayerBar extends Component {
                             <DownloadIcon />
                         </div>
                     </div>
-                    <div className={classes.uploadButton}>
-                        <label htmlFor="song" className={classes.songContainer}>
-                            Upload New Song
-                            <input
-                                type="file"
-                                id="song"
-                                accept="audio/*"
-                                name="song"
-                                onChange={onFileUpload}
-                            />
-                        </label>
-                    </div>
+                    <UploadButton classes={classes} />
                 </div>
             </div>
         );
