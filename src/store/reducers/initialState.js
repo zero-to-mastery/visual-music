@@ -1,4 +1,4 @@
 export default {
-	authError: null,
-	song: null
+    authError: null,
+    song: null
 };
