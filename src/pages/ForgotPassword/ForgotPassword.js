@@ -6,7 +6,7 @@ import ForgotPasswordPage from './ForgotPasswordPage/ForgotPasswordPage.componen
 
 function ForgotPassword() {
     const dispatch = useDispatch();
-    const error = useSelector(state => state.auth.authError);
+    const error = useSelector(state => state.authError);
 
     const [email, setEmail] = useState('');
 

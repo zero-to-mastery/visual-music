@@ -10,15 +10,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './globalScss/index.scss';
 
 const ROUTER = (
-	<Provider store={store}>
-		<Router>
-			<AppRouter />
-		</Router>
-	</Provider>
+    <Provider store={store}>
+        <Router>
+            <AppRouter />
+        </Router>
+    </Provider>
 );
 
 store.firebaseAuthIsReady.then(() => {
-	ReactDOM.render(ROUTER, document.getElementById('root'));
+    ReactDOM.render(ROUTER, document.getElementById('root'));
 });
 
 // If you want your app to work offline and load faster, you can change
