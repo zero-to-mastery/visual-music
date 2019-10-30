@@ -36,7 +36,7 @@ const SectionThreeIcons = () => (
             id={classes.github}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
         >
-            <a href = "https://github.com/zero-to-mastery/visual-music">
+            <a href = "https://github.com/zero-to-mastery/visual-music" target="_blank">
             <img src={github} alt="github" className={classes.socialIcon} />
             </a>
         </ParallaxLayer>
@@ -47,7 +47,7 @@ const SectionThreeIcons = () => (
             id={classes.linkedIn}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
         >
-            <a href = "https://www.linkedin.com/company/zerotomastery/">
+            <a href = "https://www.linkedin.com/company/zerotomastery/" target="_blank">
             <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
             </a>
         </ParallaxLayer>
