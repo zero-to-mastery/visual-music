@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "dotenv": "^8.2.0",
         "firebase": "^7.1.0",
         "node-sass": "^4.12.0",
         "p5": "^0.9.0",

@@ -9,6 +9,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import './globalScss/index.scss';
 
+// this line for making .env vars a accessible in the whole app, https://stackoverflow.com/questions/49579028/adding-an-env-file-to-react-project
+require('dotenv').config();
+
 const ROUTER = (
 	<Provider store={store}>
 		<Router>
