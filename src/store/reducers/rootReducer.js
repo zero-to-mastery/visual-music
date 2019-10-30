@@ -7,9 +7,9 @@ import { songReducer } from './songReducer';
 // { state.firebase/state.authError } for example, are ways to reach the content the state holds.
 
 const rootReducer = combineReducers({
-	authError: authReducer,
-	firebase: firebaseReducer,
-	song: songReducer
+    authError: authReducer,
+    firebase: firebaseReducer,
+    song: songReducer
 });
 
 export default rootReducer;
