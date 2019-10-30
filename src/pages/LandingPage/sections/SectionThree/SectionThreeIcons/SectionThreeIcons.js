@@ -3,7 +3,7 @@
 Component for social icons in Section Three.
 
 Current features:
-1. Social media icons for Github, Facebook, LinkedIn and Medium. 
+1. Social media icons for Github and LinkedIn. 
 
 TODO: - Implement icons hover animations using react-spring (already installed for parallax).
 TODO: - Responsive to screen size.
@@ -25,17 +25,20 @@ const icons = importAll(
         /\.(svg)$/
     )
 );
-const [facebook, linkedIn, github, medium] = icons;
+const [linkedIn, github] = icons;
 
 const SectionThreeIcons = () => (
     <div className={classes.socialIcons}>
+
         <ParallaxLayer
             offset={2.54}
             speed={0.5}
             id={classes.github}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
         >
+            <a href = "https://github.com/zero-to-mastery/visual-music" target="_blank">
             <img src={github} alt="github" className={classes.socialIcon} />
+            </a>
         </ParallaxLayer>
 
         <ParallaxLayer
@@ -44,26 +47,11 @@ const SectionThreeIcons = () => (
             id={classes.linkedIn}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
         >
+            <a href = "https://www.linkedin.com/company/zerotomastery/" target="_blank">
             <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
+            </a>
         </ParallaxLayer>
 
-        <ParallaxLayer
-            offset={2.54}
-            speed={0.7}
-            id={classes.facebook}
-            style={{ width: 'min-content', height: '0', zIndex: '99' }}
-        >
-            <img src={facebook} alt="facebook" className={classes.socialIcon} />
-        </ParallaxLayer>
-
-        <ParallaxLayer
-            offset={2.54}
-            speed={0.8}
-            id={classes.medium}
-            style={{ width: 'min-content', height: '0', zIndex: '99' }}
-        >
-            <img src={medium} alt="medium" className={classes.socialIcon} />
-        </ParallaxLayer>
     </div>
 );
 
