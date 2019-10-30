@@ -11,7 +11,6 @@ Current features:
 
 import React, { Component } from 'react';
 import classes from './LandingPage.module.scss';
-import TopNav from '../TopNav/TopNav';
 
 import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
 
@@ -28,8 +27,7 @@ class LandingPage extends Component {
     render() {
         return (
             <>
-                <div className={classes.landingPageBg} />
-                <TopNav />
+                <div className={classes.landingPageBg} />{' '}
                 <Parallax
                     pages={3}
                     config={{ tension: 100, friction: 60 }}
@@ -39,17 +37,18 @@ class LandingPage extends Component {
                         offset={1}
                         speed={0.9}
                         style={{ backgroundColor: 'rgba(13, 78, 103, 0.56)' }}
-                    />
+                    />{' '}
                     <ParallaxLayer
                         offset={2}
                         speed={0.55}
                         style={{ backgroundColor: 'rgba(41, 172, 109, 0.56)' }}
                     />
-
-                    <SectionOne scrollClick={() => this.parallax.scrollTo(1)} />
-                    <SectionTwo scrollClick={() => this.parallax.scrollTo(2)} />
-                    <SectionThree scrollClick={() => this.parallax.scrollTo(0)} />
-                </Parallax>
+                    <SectionOne scrollClick={() => this.parallax.scrollTo(1)} />{' '}
+                    <SectionTwo scrollClick={() => this.parallax.scrollTo(2)} />{' '}
+                    <SectionThree
+                        scrollClick={() => this.parallax.scrollTo(0)}
+                    />{' '}
+                </Parallax>{' '}
             </>
         );
     }

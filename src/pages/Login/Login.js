@@ -12,7 +12,7 @@ function Login() {
     const error = useSelector(state => state.authError);
 
     // useSispatch its the second redux hook, allow actions dispatching from react component.
-    // we will dispatch { signIn } action imported from the store.
+    // we will dispatch { logIn } action imported from the store.
 
     const dispatch = useDispatch();
 

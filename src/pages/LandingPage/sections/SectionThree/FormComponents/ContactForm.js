@@ -15,7 +15,7 @@ TODO: - Responsive to screen size.
 import React, { Component } from 'react';
 
 import classes from './ContactForm.module.scss';
-import Button from '../../../../Button/Button';
+import Button from '../../../../../components/Button/Button';
 
 class ContactForm extends Component {
     constructor() {
