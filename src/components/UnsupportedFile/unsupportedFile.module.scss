@@ -1,0 +1,72 @@
+$colortxt : #0D4E67;
+$textposleft : 8.85%;
+
+.screen{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.outerbox{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #0D4E67;
+    border-radius: 4px;
+    width: 34%;
+    height: 32%;
+
+    .innerbox{
+
+        position: absolute;
+        left: 12.7%;
+        top: 17.77%;
+
+        background: #FFFFFF;
+        border: 2px solid #E6E6E6;
+        border-radius: 4px;
+        width: 76%;
+        height: 49%;
+
+        .errortext{
+            position: absolute;
+            left: $textposleft;
+            top: 24.65%;
+
+            font-weight: normal;
+            font-size: 1.05vw;
+            line-height: 140%;
+
+            letter-spacing: 0.15em;
+            white-space:nowrap;
+            color: $colortxt;
+        }
+
+        .unsupportedtext{
+            position: absolute;
+            left: $textposleft;
+            top: 57.17%;
+
+            font-size: 0.8vw;
+            line-height: 160%;
+
+            letter-spacing: 0.1em;
+            white-space:nowrap;
+            color: $colortxt;
+        }
+    }
+
+    .close{
+        position: absolute;
+        left: 78%;
+        top: 80.09%;
+        cursor: pointer;
+
+        width: 6.3vw;
+        height: 5.3vh;
+    }
+
+}
