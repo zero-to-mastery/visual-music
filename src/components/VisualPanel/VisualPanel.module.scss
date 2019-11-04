@@ -1,5 +1,4 @@
-
-.panelWrapper{
+.panelWrapper {
     // width: 300px;
     // height: 756px;
     // margin: 30%;
@@ -7,7 +6,7 @@
     flex-direction: column;
     height: 100%;
 
-    .title{
+    .title {
         font-size: 1.3rem;
         line-height: 2em;
         color: #0D4E67;
@@ -16,7 +15,7 @@
         padding: 0 2%;
     }
 
-    .visualList{
+    .visualList {
         display: flex;
         flex-direction: column;
         overflow: scroll;
@@ -24,14 +23,14 @@
         padding: 0 5% 0 5%;
     }
 
-    @media only screen and (max-width:500px){
-        .title{
+    @media only screen and (max-width:500px) {
+        .title {
             font-size: 1rem;
         }
     }
 
-    @media only screen and (max-width:350px){
-        .title{
+    @media only screen and (max-width:350px) {
+        .title {
             font-size: 0.8rem;
         }
     }

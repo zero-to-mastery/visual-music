@@ -1,29 +1,27 @@
-export const setSong = song => {
+export const downloadVisualStart = () => {
     return (dispatch, getState) => {
         try {
             dispatch({
-                type: 'SONG_SETTED',
-                url: song,
-                name: song.files[0].name
+                type: 'DOWNLOAD_START'
             });
         } catch (err) {
             dispatch({
-                type: 'SONG_ERR',
+                type: 'DOWNLOAD_ERR',
                 err
             });
         }
     };
 };
 
-export const clearSong = () => {
+export const downloadVisualEnd = () => {
     return (dispatch, getState) => {
         try {
             dispatch({
-                type: 'SONG_CLEARED'
+                type: 'DOWNLOAD_END'
             });
         } catch (err) {
             dispatch({
-                type: 'SONG_ERR',
+                type: 'DOWNLOAD_ERR',
                 err
             });
         }

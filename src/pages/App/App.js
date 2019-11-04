@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 // import Error from '../../components/Error/Error';
 // import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
@@ -23,16 +24,25 @@ class App extends React.Component {
             isSongLoaded: false,
             volume: 0.5,
             ...soundReset,
-            togglePanel: false
+            togglePanel: false,
+            downloadVisual: false
         };
     }
 
-    componentDidMount() {
-        this.setState({
-            uploadedSong: this.props.song,
-            isSongLoaded: true,
-            ...soundReset
-        });
+    componentDidUpdate(prevProps) {
+        if (this.props.song !== prevProps.song) {
+            this.setState({
+                uploadedSong: this.props.song,
+                isSongLoaded: true,
+                songEnded: false,
+                ...soundReset
+            });
+        }
+        if (this.props.downloadState !== prevProps.downloadState) {
+            this.setState({
+                downloadVisual: this.props.downloadState
+            });
+        }
     }
 
     /********************************************
@@ -57,15 +67,24 @@ class App extends React.Component {
     *********************************************/
     onPlayPress = event => {
         const { uploadedSong } = this.state;
+
         if (uploadedSong) {
-            this.setState({ isPlaying: !this.state.isPlaying }, () => {
-                this.setState({
-                    buttonText: this.state.isPlaying ? 'Pause' : 'Play'
-                });
-            });
+            this.setState(
+                { uploadedSong, isPlaying: !this.state.isPlaying },
+                // Don't think this is necessary anymore. I don't see any text on the button
+                () => {
+                    this.setState({
+                        buttonText: this.state.isPlaying ? 'Pause' : 'Play'
+                    });
+                }
+            );
         } else {
             alert('No file loaded');
         }
+    };
+
+    onSongEnd = () => {
+        this.setState({ isPlaying: false, songEnded: true });
     };
 
     /********************************************
@@ -94,8 +113,9 @@ class App extends React.Component {
             duration,
             volume,
             isPlaying,
-            onSongEnd,
-            togglePanel
+            togglePanel,
+            songEnded,
+            downloadVisual
         } = this.state;
 
         return (
@@ -117,9 +137,15 @@ class App extends React.Component {
                                 volume={volume}
                                 isPlaying={isPlaying}
                                 uploadedSong={
-                                    uploadedSong ? uploadedSong.url : null
+                                    uploadedSong
+                                        ? uploadedSong.url.files[0]
+                                        : null
                                 }
-                                onSongEnd={onSongEnd}
+                                upSong={uploadedSong}
+                                audioRef={this.player}
+                                downloadVisual={
+                                    songEnded ? downloadVisual : null
+                                }
                             />
                         </div>
                         <div
@@ -134,6 +160,7 @@ class App extends React.Component {
                         <audio
                             id="audio"
                             ref={ref => (this.player = ref)}
+                            onEnded={this.onSongEnd}
                         ></audio>
                     </div>
                     <div className={classes.bar}>
@@ -145,6 +172,7 @@ class App extends React.Component {
                             uploadedSong={uploadedSong}
                             isSongLoaded={isSongLoaded}
                             duration={duration}
+                            songEnded={songEnded}
                         />
                     </div>
                 </div>
@@ -153,4 +181,11 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        song: state.song,
+        downloadState: state.download.downloadState
+    };
+};
+
+export default connect(mapStateToProps)(App);

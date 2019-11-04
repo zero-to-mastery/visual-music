@@ -2,21 +2,25 @@
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { clearSong } from '../../../store/actions/songActions';
+import { setSong } from '../../../store/actions/songActions';
 
 export default function UploadButton({ classes }) {
     const dispatch = useDispatch();
+
+    const setNewSong = e => {
+        e.preventDefault();
+        dispatch(setSong(e.target));
+    };
 
     return (
         <div className={classes.uploadButton}>
             <label className={classes.songContainer}>
                 Upload New Song
-                <button
+                <input
                     id="song"
                     name="song"
-                    onClick={() => {
-                        dispatch(clearSong());
-                    }}
+                    type="file"
+                    onChange={setNewSong}
                 />
             </label>
         </div>
