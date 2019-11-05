@@ -11,21 +11,17 @@ import { ReactComponent as CloseBtn } from '../../assets/UnsupportedFileAssets/c
 
 import classes from './unsupportedFile.module.scss';
 
-const unsupportedFile = () =>{
-
-    const handleBack = () =>{};
-
-    return(
-        <div className = {classes.screen}>
-            <div className = {classes.outerbox}>
-                <div className = {classes.innerbox}>
-                    <h1 className = {classes.errortext}>An Error Occured</h1>
-                    <h1 className = {classes.unsupportedtext}>Unsupported File Format</h1>
+const unsupportedFile = () => {
+    return (
+        <div className={classes.screen}>
+            <div className={classes.outerbox}>
+                <div className={classes.innerbox}>
+                    <h1 className={classes.errortext}>An Error Occured</h1>
+                    <h1 className={classes.unsupportedtext}>
+                        Unsupported File Format
+                    </h1>
                 </div>
-                <CloseBtn
-                className = {classes.close}
-                onClick = {handleBack}
-                />
+                <CloseBtn className={classes.close}/>
             </div>
         </div>
     );

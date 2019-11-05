@@ -66,7 +66,36 @@ $textposleft : 8.85%;
         cursor: pointer;
 
         width: 6.3vw;
-        height: 5.3vh;
     }
 
+}
+
+@media screen and (max-width: 800px) {
+    .close{
+        left: 37.5%;
+        width: 10.3vw;
+    }
+
+    .errortext{
+        font-size: 1.35vw;
+    }
+
+    .unsupportedtext{
+        font-size: 1.2vw;
+    }
+}
+  
+@media screen and (max-width: 500px) {
+    .close{
+        width: 13.3vw;
+        left: 33.5%;
+    }
+
+    .errortext{
+        font-size: 1.85vw;
+    }
+
+    .unsupportedtext{
+        font-size: 1.54vw;
+    }
 }
