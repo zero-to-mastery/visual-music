@@ -51,7 +51,9 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                         </Link>
                     </div>
 
-                    {span && <Span content={span} />}
+                    {span && (
+                        <Span className={classes.errorLabel} content={span} />
+                    )}
                 </form>
             </div>
         </div>

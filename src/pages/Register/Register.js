@@ -15,16 +15,18 @@ function Register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [span, setSpan] = useState(null);
 
     const onFormSubmit = event => {
         event.preventDefault();
+        setSpan(<img src={require('../../assets/loading.svg')} />);
         dispatch(register({ name, email, password }));
     };
 
     if (uid) return <Redirect to="/app" />;
 
     if (error) {
-        console.log(error);
+        if (span !== error) setSpan(error);
     }
 
     return (
@@ -33,6 +35,7 @@ function Register() {
             setEmail={setEmail}
             setPassword={setPassword}
             onFormSubmit={onFormSubmit}
+            span={span}
         />
     );
 }
