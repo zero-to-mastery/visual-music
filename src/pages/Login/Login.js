@@ -37,6 +37,7 @@ function Login() {
             setEmail={setEmail}
             setPassword={setPassword}
             onFormSubmit={onFormSubmit}
+            errorMsg={error?'Email or password incorect':null}
         />
     );
 }
