@@ -1,0 +1,27 @@
+.socialIcons {
+  position: relative;
+  margin-left: 8%;
+}
+
+.socialIcon {
+  width: 5.5vh;
+  transition: all .3s;
+
+  &:hover {
+    cursor: pointer;
+    filter: drop-shadow(1px 4px 5px #ffffff93);
+    transform: translateY(-10%);
+  }
+}
+
+#github {
+  position: absolute;
+  left: 0;
+  z-index: 99;
+}
+
+#linkedIn {
+  position: absolute;
+  left: 5%;
+  z-index: 99;
+}

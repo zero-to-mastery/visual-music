@@ -1,0 +1,59 @@
+.errorScreen {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.errorModal {
+    width: 45em;
+    height: 60em;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fb3600;
+    font-size: 10px;
+    z-index: 1;
+
+    .guitarIcon {
+        margin-bottom: 5em;
+    }
+
+    .errorMessage {
+        text-align: center;
+        color: #eee;
+
+        h1 {
+            font-weight: bolder;
+            font-size: 2.5em;
+            letter-spacing: 3.5px;
+        }
+
+        h2 {
+            font-weight: lighter;
+            font-size: 1.6em;
+            letter-spacing: 1.5px;
+        }
+    }
+
+    .goBackIcon {
+        margin-top: 3em;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .errorModal {
+        font-size: 10px;
+        width: 30em;
+        height: 45em;
+
+        .guitarIcon {
+            margin-bottom: 3em;
+        }
+    }
+}

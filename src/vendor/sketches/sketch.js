@@ -44,14 +44,17 @@ export default function sketch(p) {
                 p.togglePlaying(song);
 
                 //Reinitializes song if a new file is uploaded
-                if (song.file !== props.uploadedSong) {
-                    song.dispose();
-                    song = p.loadSound(props.uploadedSong);
-                }
+                // if (song.file !== props.uploadedSong) {
+                //     song.dispose();
+                //     song = p.loadSound(props.uploadedSong);
+                // }
             }
         } else {
             //handles initial song load
-            if (props.uploadedSong) {
+            if (props.uploadedSong && props.uploadedSong !== song) {
+                // becuase of using heroku services for fetch the song from firebase, it is good practice to
+                // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more abillity to control this middle time.
+                // for reading more - https://p5js.org/reference/#/p5.SoundFile/loadSound
                 song = p.loadSound(props.uploadedSong);
             }
         }

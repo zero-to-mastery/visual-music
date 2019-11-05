@@ -1,0 +1,73 @@
+
+
+.hamOverlay{
+    position: absolute;
+    background-color: #0D4E67;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+}
+
+$wrapperHOffset: 10%;
+$wrapperVOffset: 20%;
+.hamWrapper{
+    position: absolute;
+    top: $wrapperVOffset;
+    bottom: $wrapperVOffset;
+    left: $wrapperHOffset;
+    right: $wrapperHOffset;
+
+    & span{
+        display: block;
+        position: absolute;
+        background: #EEEEEE;
+        border-radius: 2px;
+        width: 100%;
+        height: 20%;
+        left: 0;
+        right: 0;
+
+        transition: all .25s ease-in-out;
+    }
+
+    & span:first-child{
+        top: 0;
+    }
+
+    & span:nth-child(2){
+        top: 40%;
+    }
+
+    & span:nth-child(3){
+        top: 40%;
+        opacity: 0;
+    }
+
+    & span:last-child{
+        bottom: 0;
+    }
+
+    &.toggle{
+
+        & span:first-child{
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        & span:last-child{
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        & span:nth-child(2){
+            transform: rotate(45deg);
+        }
+    
+        & span:nth-child(3){
+            opacity: 1;
+            transform: rotate(-45deg);
+        }
+    }
+}
