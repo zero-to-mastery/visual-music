@@ -13,19 +13,80 @@ TODO: - Responsive to screen size.
  ************************/
 
 import React, { Component } from 'react';
+import * as emailjs from 'emailjs-com';
 
 import classes from './ContactForm.module.scss';
 import Button from '../../../../../components/Button/Button';
+import Span from '../../../../../components/Span/Span';
 
 class ContactForm extends Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            name: '',
+            email: '',
+            message: '',
+            span: null
+        };
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        const { name, email, message } = this.state;
+        this.setState({
+            span: <img src={require('../../../../../assets/loading.svg')} />
+        });
+        let templateParams = {
+            name: name,
+            email: email,
+            message: message
+        };
+        emailjs
+            .send(
+                // 'default_service' and 'visual-music' are coresponse to visual-music user at emailjs.com
+                'default_service',
+                'visual_music',
+                templateParams,
+                process.env.REACT_APP_emailJS
+            )
+            .then(response => {
+                this.setState({
+                    span: null
+                });
+                alert('email sent succsefully');
+            })
+            .catch(err => {
+                console.log('FAILED', err);
+                this.setState({
+                    span: err
+                });
+            });
+        this.resetForm();
+    }
+    resetForm() {
+        let frm = document.getElementsByName('contact-form')[0];
+        frm.reset();
+        this.setState({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        });
+    }
+
+    handleChange = (param, e) => {
+        this.setState({
+            [param]: e.target.value
+        });
+    };
     render() {
+        const { span } = this.state;
         return (
-            <div className={classes.contactForm}>
+            <form
+                name="contact-form"
+                onSubmit={this.handleSubmit.bind(this)}
+                className={classes.contactForm}
+            >
                 <label>
                     Name
                     <br />
@@ -34,6 +95,7 @@ class ContactForm extends Component {
                         name="name"
                         className={classes.formInput}
                         id="name"
+                        onChange={this.handleChange.bind(this, 'name')}
                     />
                 </label>
                 <label>
@@ -44,6 +106,7 @@ class ContactForm extends Component {
                         name="email"
                         className={classes.formInput}
                         id="email"
+                        onChange={this.handleChange.bind(this, 'email')}
                     />
                 </label>
                 <label>
@@ -54,10 +117,12 @@ class ContactForm extends Component {
                         name="message"
                         className={classes.formInput}
                         id="message"
+                        onChange={this.handleChange.bind(this, 'message')}
                     ></textarea>
                 </label>
-                <Button text="Send" btnClass="signUp" />
-            </div>
+                <Button type="submit" text="Send" btnClass="signUp" />
+                {span && <Span content={span} />}
+            </form>
         );
     }
 }

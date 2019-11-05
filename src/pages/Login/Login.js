@@ -18,9 +18,11 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [span, setSpan] = useState(null);
 
     const onFormSubmit = event => {
         event.preventDefault();
+        setSpan(<img src={require('../../assets/loading.svg')} />);
         dispatch(logIn({ email, password }));
     };
 
@@ -28,8 +30,7 @@ function Login() {
     if (uid) return <Redirect to="/app" />;
 
     if (error) {
-        // ToDo - give some UX when getting error and when loading
-        console.log(error);
+        if (span !== error) setSpan(error);
     }
 
     return (
@@ -37,6 +38,7 @@ function Login() {
             setEmail={setEmail}
             setPassword={setPassword}
             onFormSubmit={onFormSubmit}
+            span={span}
         />
     );
 }

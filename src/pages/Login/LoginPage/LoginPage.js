@@ -1,8 +1,9 @@
 import React from 'react';
 import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
+import Span from '../../../components/Span/Span';
 
-function LoginPage({ setEmail, setPassword, onFormSubmit }) {
+function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
@@ -49,6 +50,8 @@ function LoginPage({ setEmail, setPassword, onFormSubmit }) {
                             Forgot Password?
                         </Link>
                     </div>
+
+                    {span && <Span content={span} />}
                 </form>
             </div>
         </div>

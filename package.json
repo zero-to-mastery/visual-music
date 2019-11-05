@@ -1,49 +1,50 @@
 {
-    "name": "visual-music-p5-react-wrapper",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "dotenv": "^8.2.0",
-        "firebase": "^7.1.0",
-        "node-sass": "^4.12.0",
-        "p5": "^0.9.0",
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "react-firebase-file-uploader": "^2.4.3",
-        "react-measure": "^2.3.0",
-        "react-p5-wrapper": "^2.0.0",
-        "react-redux": "^7.1.1",
-        "react-redux-firebase": "^2.4.1",
-        "react-router-dom": "^5.1.2",
-        "react-scripts": "3.0.1",
-        "react-spring": "^8.0.27",
-        "redux": "^4.0.4",
-        "redux-firestore": "^0.9.0",
-        "redux-thunk": "^2.3.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "format": "prettier --write \"**/*.{js,css, scss}\"",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "prettier": "^1.18.2"
-    }
+  "name": "visual-music-p5-react-wrapper",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "emailjs-com": "^2.4.0",
+    "firebase": "^7.1.0",
+    "node-sass": "^4.12.0",
+    "p5": "^0.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-firebase-file-uploader": "^2.4.3",
+    "react-measure": "^2.3.0",
+    "react-p5-wrapper": "^2.0.0",
+    "react-redux": "^7.1.1",
+    "react-redux-firebase": "^2.4.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.0.1",
+    "react-spring": "^8.0.27",
+    "redux": "^4.0.4",
+    "redux-firestore": "^0.9.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "format": "prettier --write \"**/*.{js,css, scss}\"",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
 }
