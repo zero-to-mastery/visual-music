@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import Error from '../../components/Error/Error';
- import UnsupportedFile from '../../components/UnsupportedFile/unsupportedFile';
+//import UnsupportedFile from '../../components/UnsupportedFile/unsupportedFile';
 
 // import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
@@ -123,8 +123,6 @@ class App extends React.Component {
                                 }
                                 onSongEnd={onSongEnd}
                             />
-
-                            <UnsupportedFile/>
                             
                         </div>
                         <div
