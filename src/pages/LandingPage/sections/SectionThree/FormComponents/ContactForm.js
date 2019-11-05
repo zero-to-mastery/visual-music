@@ -36,31 +36,38 @@ class ContactForm extends Component {
         this.setState({
             span: <img src={require('../../../../../assets/loading.svg')} />
         });
-        let templateParams = {
-            name: name,
-            email: email,
-            message: message
-        };
-        emailjs
-            .send(
-                // 'default_service' and 'visual-music' are coresponse to visual-music user at emailjs.com
-                'default_service',
-                'visual_music',
-                templateParams,
-                process.env.REACT_APP_emailJS
-            )
-            .then(response => {
-                this.setState({
-                    span: null
+
+        //add this simple check for begging -
+        if (name.length > 0 && email.length > 0 && message.length > 0) {
+            let templateParams = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            emailjs
+                .send(
+                    // 'default_service' and 'visual-music' are coresponse to visual-music user at emailjs.com
+                    'default_service',
+                    'visual_music',
+                    templateParams,
+                    process.env.REACT_APP_emailJS
+                )
+                .then(response => {
+                    this.setState({
+                        span: null
+                    });
+                    alert('email sent succsefully');
+                })
+                .catch(err => {
+                    console.log('FAILED', err);
+                    this.setState({
+                        span: err
+                    });
                 });
-                alert('email sent succsefully');
-            })
-            .catch(err => {
-                console.log('FAILED', err);
-                this.setState({
-                    span: err
-                });
-            });
+        } else {
+            this.setState({ span: 'unsucssesful attempt' });
+        }
         this.resetForm();
     }
     resetForm() {
@@ -121,7 +128,7 @@ class ContactForm extends Component {
                     ></textarea>
                 </label>
                 <Button type="submit" text="Send" btnClass="signUp" />
-                {span && <Span content={span} />}
+                {span && <Span content={span} className={classes.errorLabel} />}
             </form>
         );
     }
