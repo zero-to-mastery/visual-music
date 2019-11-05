@@ -29,3 +29,19 @@ export const clearSong = () => {
         }
     };
 };
+
+export const storeBlob = blob => {
+    return (dispatch, getState) => {
+        try {
+            dispatch({
+                type: 'BLOB_STORED',
+                blob
+            });
+        } catch (err) {
+            dispatch({
+                type: 'SONG_ERR',
+                err
+            });
+        }
+    };
+};

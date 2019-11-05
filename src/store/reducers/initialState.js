@@ -1,4 +1,5 @@
 export default {
     authError: null,
-    song: null
+    song: null,
+    downloadState: false
 };

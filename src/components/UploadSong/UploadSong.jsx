@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSong } from '../../store/actions/songActions';
+import { setSong, storeBlob } from '../../store/actions/songActions';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from '../../firebase/config';
 import classes from './UploadSong.module.scss';
@@ -36,7 +36,8 @@ function UploadSong() {
             .getDownloadURL()
             .then(url => dispatch(setSong({ url, filename })));
     };
-    const handleUploadStart = () => {
+    const handleUploadStart = blob => {
+        dispatch(storeBlob(blob));
         // ToDo -
         // add some UI response to uploading
     };
