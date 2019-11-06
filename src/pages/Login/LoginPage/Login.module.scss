@@ -79,6 +79,16 @@
         padding-bottom: 6%;
     }
 
+    .errorLabel{
+        width: 100%;
+        font-size: 1.2rem;
+        line-height: 160%;
+        letter-spacing: 0.1em;
+        color: red;
+        text-align: center;
+        padding-bottom: 5%;
+    }
+
     .emailGroup{
         @include formGroup;
         padding-bottom: 5%;

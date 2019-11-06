@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
 
-function LoginPage({ setEmail, setPassword, onFormSubmit }) {
+function LoginPage({ setEmail, setPassword, onFormSubmit, errorMsg }) {
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
@@ -10,6 +10,14 @@ function LoginPage({ setEmail, setPassword, onFormSubmit }) {
                     <div className={classes.titleGroup}>
                         <span>Welcome back!</span>
                     </div>
+                    {
+                        errorMsg?
+                        <div className={classes.errorLabel}>
+                            {errorMsg}
+                        </div>
+                        :
+                        null
+                    }
                     <div className={classes.emailGroup}>
                         <label className={classes.emailLabel}>
                             Email address
