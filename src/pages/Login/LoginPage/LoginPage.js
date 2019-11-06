@@ -3,7 +3,9 @@ import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
 import Span from '../../../components/Span/Span';
 
+
 function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
+
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
@@ -11,7 +13,7 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     <div className={classes.titleGroup}>
                         <span>Welcome back!</span>
                     </div>
-                    <div className={classes.emailGroup}>
+                      <div className={classes.emailGroup}>
                         <label className={classes.emailLabel}>
                             Email address
                         </label>

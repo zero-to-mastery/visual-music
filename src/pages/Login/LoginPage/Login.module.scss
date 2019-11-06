@@ -77,7 +77,8 @@
         padding-bottom: 6%;
     }
 
-    .errorLabel {
+
+    .errorLabel{
         width: 100%;
         font-size: 1.2rem;
         line-height: 160%;
@@ -87,7 +88,8 @@
         padding-bottom: 5%;
     }
 
-    .emailGroup {
+    .emailGroup{
+
         @include formGroup;
         padding-bottom: 5%;
 
