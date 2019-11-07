@@ -38,4 +38,4 @@
 
 [Antonio Franceschi](https://github.com/francofle)
 
-@all-contributors please add <Kiran Nyayapati> for <learning>
+[Kiran Nyayapati] (https://github.com/kiran-nyayapati)
