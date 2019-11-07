@@ -26,12 +26,15 @@ export default function sketch(p) {
     let recordedChunks = [];
 
     function recordStream() {
-        if (!canvasStream) {
+        if (canvasStream) {
+            mediaRecorder.resume();
+        } else {
             // Capture canvas stream (visualization)
-            canvasStream = p.canvas.captureStream(30);
+            canvasStream = p.canvas.captureStream(60);
             // Add audio track to the stream
             canvasStream.addTrack(audioStream.getAudioTracks()[0]);
-
+            // Initialize the array for the data
+            recordedChunks = [];
             // Start recording
             mediaRecorder = new MediaRecorder(canvasStream);
             mediaRecorder.start();
@@ -50,10 +53,11 @@ export default function sketch(p) {
     }
 
     function endRecord() {
-        // Reset audio
         mediaRecorder.stop();
         audio.pause();
         audio.currentTime = 0;
+        canvasStream = null;
+        isPlaying = false;
     }
 
     function download() {
@@ -98,45 +102,54 @@ export default function sketch(p) {
             }
         }
 
+        // Function that get called when a song is loaded
+        function loaded() {
+            isPlaying = props.isPlaying;
+            volume = props.volume;
+            song.setVolume(parseFloat(volume));
+            p.togglePlaying(song);
+        }
+
         //We need to resize canvas
         //and set width property to new width
-        //so drawing will bease on this new width
+        //so drawing will base on this new width
         width = props.canvasWidth;
         height = props.canvasHeight;
         p.resizeCanvas(width, height);
-        canvasStream = undefined;
 
+        // Check for new uploaded song
         if (song) {
             if (song.isLoaded()) {
-                volume = props.volume;
-                isPlaying = props.isPlaying;
+                // Reinitialize song if a new file is uploaded
+                if (song.file !== props.uploadedSong) {
+                    song.dispose();
+                    song = p.loadSound(props.uploadedSong, loaded);
+                    recordedChunks = [];
+                    canvasStream = null;
+                }
 
-                //monitor volume change and toggling of pause/play button
-                song.setVolume(parseFloat(volume));
-                p.togglePlaying(song);
-
-                //Re-initialize song if a new file is uploaded
-                // if (song.file !== props.uploadedSong) {
-                //     song.dispose();
-                //     song = p.loadSound(props.uploadedSong);
-                // }
+                loaded();
             }
         } else {
-            //handles initial song load
-            if (props.uploadedSong && props.uploadedSong !== song) {
-                // becuase of using heroku services for fetch the song from firebase, it is good practice to
-                // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more abillity to control this middle time.
+            if (props.uploadedSong) {
+                // because of using heroku services for fetch the song from firebase, it is good practice to
+                // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more ability to control this middle time.
                 // for reading more - https://p5js.org/reference/#/p5.SoundFile/loadSound
-                // Get the audio element from the DOM
+
+                // Erase recorded data from the previous recorded song
+                recordedChunks = [];
+                canvasStream = null;
+
+                // Get the audio element from the DOM and add the blob as the source
                 audio = props.audioRef;
-                // Add local file source
                 audio.src = URL.createObjectURL(props.blob);
                 // Initialize audio context
                 audio.oncanplay = initAudioStream;
-                // Start p5 visualization
-                song = p.loadSound(props.uploadedSong);
-                // Erase recorded data from previous recorded song
-                recordedChunks = [];
+
+                // Start p5 visualization when press the play button
+                if (props.isPlaying) {
+                    song = p.loadSound(props.uploadedSong, loaded);
+                }
             }
         }
 

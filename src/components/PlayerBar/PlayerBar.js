@@ -122,7 +122,7 @@ export default function PlayerBar(props) {
                         <SnapshotIcon />
                     </div>
                     <div className={classes.downloadButton}>
-                        {songEnded ? (
+                        {songEnded && !isPlaying ? (
                             <DownloadIconReady onClick={onDownloadVisual} />
                         ) : (
                             <DownloadIcon />

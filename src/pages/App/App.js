@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 // import Error from '../../components/Error/Error';
 // import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
@@ -9,7 +10,7 @@ import classes from './App.module.scss';
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
 
-export const App = ({ song, downloadState }) => {
+export const App = ({ song }) => {
     // States
     const [uploadedSong, setUploadedSong] = useState(null);
     const [isSongLoaded, setIsSongLoaded] = useState(false);
@@ -19,6 +20,8 @@ export const App = ({ song, downloadState }) => {
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
+
+    const downloadState = useSelector(state => state.download.downloadState);
 
     // Refs
     const audioRef = useRef(null);
