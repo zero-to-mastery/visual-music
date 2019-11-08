@@ -11,19 +11,20 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     <div className={classes.titleGroup}>
                         <span>Welcome back!</span>
                     </div>
-
                     <div className={classes.emailGroup}>
-                        <label className={classes.emailLabel}>
-                            Email address
-                        </label>
-                        <input
-                            className={classes.emailField}
-                            type="email"
-                            onChange={e => {
-                                setEmail(e.target.value);
-                            }}
-                            required
-                        />
+                        <div className={classes.emailGroup}>
+                            <label className={classes.emailLabel}>
+                                Email address
+                            </label>
+                            <input
+                                className={classes.emailField}
+                                type="email"
+                                onChange={e => {
+                                    setEmail(e.target.value);
+                                }}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className={classes.passwordGroup}>
                         <label className={classes.passwordLabel}>

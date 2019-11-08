@@ -47,7 +47,9 @@ function TopNav() {
 
     return (
         <nav className={classes.topNav}>
-            <img src={logo} alt="logo" height="85px" width="85px" />
+            <Link to="/">
+                <img src={logo} alt="logo" height="85px" width="85px" />
+            </Link>
             {uid ? <AuthNav /> : <UnAuthNav />}
         </nav>
     );
