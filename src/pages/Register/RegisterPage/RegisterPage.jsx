@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Register.module.scss';
-import Span from '../../../components/Span/Span';
+import Span from '../../../components/units/Span/Span';
 /*
  Main component for Signup.
 

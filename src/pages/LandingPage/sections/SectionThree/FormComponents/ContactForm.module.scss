@@ -13,11 +13,12 @@
     }
 
     .errorLabel {
+        background-color: rgba(147, 112, 219, 0.8);
+        padding-top: 3%;
         width: 100%;
         font-size: 1.2rem;
         line-height: 160%;
         letter-spacing: 0.1em;
-        color: red;
         text-align: center;
         padding-bottom: 5%;
     }

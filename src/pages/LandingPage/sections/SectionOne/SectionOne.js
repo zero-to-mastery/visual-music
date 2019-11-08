@@ -14,7 +14,7 @@ TODO: - Refactor section's text to it's own component.
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 import classes from '../../LandingPage.module.scss';
-import Button from '../../../../components/Button/Button';
+import Button from '../../../../components/units/Button/Button';
 
 const SectionOne = ({ scrollClick }) => (
     <section>

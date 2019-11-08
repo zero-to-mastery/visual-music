@@ -10,7 +10,7 @@ TODO: - Refactor section's text to it's own component.
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import Button from '../../../../components/Button/Button';
+import Button from '../../../../components/units/Button/Button';
 import classes from '../../LandingPage.module.scss';
 import blackHairGirl from '../../../../assets/LandingPageAssets/section-2/blackHairAndBubbles.png';
 

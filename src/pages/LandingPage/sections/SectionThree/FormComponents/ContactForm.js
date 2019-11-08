@@ -16,8 +16,8 @@ import React, { Component } from 'react';
 import * as emailjs from 'emailjs-com';
 
 import classes from './ContactForm.module.scss';
-import Button from '../../../../../components/Button/Button';
-import Span from '../../../../../components/Span/Span';
+import Button from '../../../../../components/units/Button/Button';
+import Span from '../../../../../components/units/Span/Span';
 
 class ContactForm extends Component {
     constructor() {
@@ -34,30 +34,36 @@ class ContactForm extends Component {
         e.preventDefault();
         const { name, email, message } = this.state;
         this.setState({
-            span: <img src={require('../../../../../assets/loading.svg')} />
+            span: (
+                <img
+                    alt="loading"
+                    src={require('../../../../../assets/loading.svg')}
+                />
+            )
         });
-
         //add this simple check for begging -
         if (name.length > 0 && email.length > 0 && message.length > 0) {
             let templateParams = {
                 name: name,
                 email: email,
-                message: message
+                message: message,
+                dynamicColor: ''
             };
 
             emailjs
                 .send(
-                    // 'default_service' and 'visual-music' are coresponse to visual-music user at emailjs.com
+                    // 'default_service' and 'visual-music' are coresponse to visual-music user dash configs at emailjs.com
                     'default_service',
                     'visual_music',
                     templateParams,
                     process.env.REACT_APP_emailJS
                 )
                 .then(response => {
+                    this.resetForm();
                     this.setState({
-                        span: null
+                        span: 'email has been sent, thank you :)',
+                        dynamicColor: 'black'
                     });
-                    alert('email sent succsefully');
                 })
                 .catch(err => {
                     console.log('FAILED', err);
@@ -66,13 +72,15 @@ class ContactForm extends Component {
                     });
                 });
         } else {
-            this.setState({ span: 'unsucssesful attempt' });
+            this.setState({
+                span: 'unsuccessful attempt',
+                dynamicColor: 'red'
+            });
         }
-        this.resetForm();
     }
+
     resetForm() {
-        let frm = document.getElementsByName('contact-form')[0];
-        frm.reset();
+        this.refs.form.reset();
         this.setState({
             name: '',
             email: '',
@@ -81,17 +89,17 @@ class ContactForm extends Component {
         });
     }
 
-    handleChange = (param, e) => {
+    handleChange = e => {
         this.setState({
-            [param]: e.target.value
+            [e.target.name]: e.target.value
         });
     };
     render() {
-        const { span } = this.state;
+        const { span, dynamicColor } = this.state;
         return (
             <form
-                name="contact-form"
-                onSubmit={this.handleSubmit.bind(this)}
+                ref="form"
+                onSubmit={e => this.handleSubmit(e)}
                 className={classes.contactForm}
             >
                 <label>
@@ -102,7 +110,7 @@ class ContactForm extends Component {
                         name="name"
                         className={classes.formInput}
                         id="name"
-                        onChange={this.handleChange.bind(this, 'name')}
+                        onChange={e => this.handleChange(e)}
                     />
                 </label>
                 <label>
@@ -113,7 +121,7 @@ class ContactForm extends Component {
                         name="email"
                         className={classes.formInput}
                         id="email"
-                        onChange={this.handleChange.bind(this, 'email')}
+                        onChange={e => this.handleChange(e)}
                     />
                 </label>
                 <label>
@@ -124,11 +132,17 @@ class ContactForm extends Component {
                         name="message"
                         className={classes.formInput}
                         id="message"
-                        onChange={this.handleChange.bind(this, 'message')}
+                        onChange={e => this.handleChange(e)}
                     ></textarea>
                 </label>
                 <Button type="submit" text="Send" btnClass="signUp" />
-                {span && <Span content={span} className={classes.errorLabel} />}
+                {span && (
+                    <Span
+                        content={span}
+                        style={{ color: dynamicColor }}
+                        className={classes.errorLabel}
+                    />
+                )}
             </form>
         );
     }

@@ -15,7 +15,7 @@ TODO: - Refactor section's text to it's own component.
 import React from 'react';
 import { ParallaxLayer } from 'react-spring/renderprops-addons';
 
-import Button from '../../../../components/Button/Button';
+import Button from '../../../../components/units/Button/Button';
 import SectionThreeIcons from './SectionThreeIcons/SectionThreeIcons';
 import Contactform from './FormComponents/ContactForm';
 

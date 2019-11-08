@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
-import Span from '../../../components/Span/Span';
+import Span from '../../../components/units/Span/Span';
 
 function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
     return (

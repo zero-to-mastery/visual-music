@@ -19,7 +19,9 @@ function Register() {
 
     const onFormSubmit = event => {
         event.preventDefault();
-        setSpan(<img src={require('../../assets/loading.svg')} />);
+        setSpan(
+            <img alt="loading" src={require('../../assets/loading.svg')} />
+        );
         dispatch(register({ name, email, password }));
     };
 

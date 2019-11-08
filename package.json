@@ -17,6 +17,7 @@
     "react-redux-firebase": "^2.4.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
+    "react-simple-soundcloud-widget": "0.0.5",
     "react-spring": "^8.0.27",
     "redux": "^4.0.4",
     "redux-firestore": "^0.9.0",
