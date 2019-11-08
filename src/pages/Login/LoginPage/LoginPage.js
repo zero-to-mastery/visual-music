@@ -11,6 +11,7 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     <div className={classes.titleGroup}>
                         <span>Welcome back!</span>
                     </div>
+
                     <div className={classes.emailGroup}>
                         <label className={classes.emailLabel}>
                             Email address

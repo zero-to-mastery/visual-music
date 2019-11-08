@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../store/actions/authActions';
+import { register, cleanError } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import RegisterPage from './RegisterPage/RegisterPage';
 
@@ -19,6 +19,7 @@ function Register() {
 
     const onFormSubmit = event => {
         event.preventDefault();
+        dispatch(cleanError());
         setSpan(
             <img alt="loading" src={require('../../assets/loading.svg')} />
         );
