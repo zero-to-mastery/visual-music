@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { App } from './App';
+import App from './App';
 import UploadSong from '../../components/UploadSong/UploadSong';
 import { withRouter, Redirect } from 'react-router-dom';
 
@@ -19,9 +19,7 @@ function AppBrowser() {
     return (
         <div>
             {uid ? (
-                <div>
-                    {song && song.url ? <App song={song} /> : <UploadSong />}
-                </div>
+                <div>{song.url ? <App song={song} /> : <UploadSong />}</div>
             ) : (
                 <Redirect to="/" />
             )}

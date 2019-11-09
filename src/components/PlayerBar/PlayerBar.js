@@ -14,20 +14,13 @@
  ************************************************************/
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { ReactComponent as DownloadIcon } from '../../assets/PlayerBarAssets/download-icon.svg';
-import { ReactComponent as DownloadIconReady } from '../../assets/PlayerBarAssets/download-ready-icon.svg';
 import { ReactComponent as SnapshotIcon } from '../../assets/PlayerBarAssets/snapshot-icon-white-dark.svg';
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as SongIcon } from '../../assets/PlayerBarAssets/song-icon.svg';
 import UploadButton from './UploadButton/UploadButton';
-import {
-    downloadVisualStart,
-    downloadVisualEnd
-} from '../../store/actions/downloadActions';
-
 import classes from './PlayerBar.module.scss';
+import DownloadButton from './DownloadButton/DownloadButton';
 
 const pauseButton = (
     <svg
@@ -58,15 +51,6 @@ const pauseButton = (
  *************************************************************/
 
 export default function PlayerBar(props) {
-    const dispatch = useDispatch();
-
-    const onDownloadVisual = () => {
-        dispatch(downloadVisualStart());
-        setTimeout(event => {
-            dispatch(downloadVisualEnd());
-        }, 1000);
-    };
-
     const {
         uploadedSong,
         duration,
@@ -122,11 +106,10 @@ export default function PlayerBar(props) {
                         <SnapshotIcon />
                     </div>
                     <div className={classes.downloadButton}>
-                        {songEnded && !isPlaying ? (
-                            <DownloadIconReady onClick={onDownloadVisual} />
-                        ) : (
-                            <DownloadIcon />
-                        )}
+                        <DownloadButton
+                            isPlaying={isPlaying}
+                            songEnded={songEnded}
+                        />
                     </div>
                 </div>
                 <UploadButton classes={classes} />

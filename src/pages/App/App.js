@@ -10,7 +10,7 @@ import classes from './App.module.scss';
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
 
-export const App = ({ song }) => {
+export default function App({ song }) {
     // States
     const [uploadedSong, setUploadedSong] = useState(null);
     const [isSongLoaded, setIsSongLoaded] = useState(false);
@@ -22,7 +22,6 @@ export const App = ({ song }) => {
     const [blob, setBlob] = useState(null);
 
     const downloadState = useSelector(state => state.download.downloadState);
-
     // Refs
     const audioRef = useRef(null);
 
@@ -145,4 +144,4 @@ export const App = ({ song }) => {
             </div>
         </div>
     );
-};
+}

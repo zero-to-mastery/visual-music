@@ -11,7 +11,14 @@ export const songReducer = (state = initialState.song, action) => {
             };
 
         case 'SONG_CLEARED':
-            return null;
+            return {
+                downloadState: false,
+                song: {
+                    url: null,
+                    name: null,
+                    blob: null
+                }
+            };
 
         case 'SONG_ERROR':
             console.log(action.err);

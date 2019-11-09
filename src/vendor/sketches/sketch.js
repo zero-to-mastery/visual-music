@@ -2,6 +2,8 @@ import p5 from 'p5';
 import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 
+import { downloadVisualEnd } from '../../store/actions/downloadActions';
+
 export default function sketch(p) {
     let song;
     let fft;
@@ -155,6 +157,7 @@ export default function sketch(p) {
 
         if (props.downloadVisual) {
             download();
+            props.dispatch(downloadVisualEnd());
         }
     };
 

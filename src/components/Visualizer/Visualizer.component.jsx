@@ -14,6 +14,7 @@
 ************************************************************/
 
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import classes from './Visualizer.module.scss';
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from '../../vendor/sketches/sketch';
@@ -67,6 +68,7 @@ class Visualizer extends React.Component {
                             audioRef={audioRef}
                             downloadVisual={downloadVisual}
                             blob={blob}
+                            dispatch={useDispatch()}
                         />
                     </div>
                 )}
