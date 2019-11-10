@@ -1,4 +1,9 @@
 export default {
     authError: null,
-    song: null
+    song: {
+        url: null,
+        name: null,
+        blob: null
+    },
+    downloadState: false
 };
