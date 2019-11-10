@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Register.module.scss';
-
+import Span from '../../../components/units/Span/Span';
 /*
  Main component for Signup.
 
@@ -15,7 +15,7 @@ import classes from './Register.module.scss';
 
 */
 
-function RegisterPage({ setName, setEmail, setPassword, onFormSubmit }) {
+function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
     const [isPasswordHidden, setIsPasswordHidden] = React.useState(true);
 
     return (
@@ -84,6 +84,9 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit }) {
                             Sign Up
                         </button>
                     </div>
+                    {span && (
+                        <Span className={classes.errorLabel} content={span} />
+                    )}
                 </div>
             </div>
         </div>
