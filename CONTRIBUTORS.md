@@ -39,3 +39,5 @@
 [Antonio Franceschi](https://github.com/francofle)
 
 [Kiran Nyayapati](https://github.com/kiran-nyayapati)
+
+[nagalr](https://github.com/nagalr)
