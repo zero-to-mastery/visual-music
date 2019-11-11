@@ -2,9 +2,11 @@ import p5 from 'p5';
 import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 
+import { currentSongTime } from '../../store/actions/songActions';
 import { downloadVisualEnd } from '../../store/actions/downloadActions';
 
 export default function sketch(p) {
+    let dispatch;
     let song;
     let fft;
     let amplitude;
@@ -106,6 +108,7 @@ export default function sketch(p) {
 
         // Function that get called when a song is loaded
         function loaded() {
+            dispatch = props.dispatch;
             isPlaying = props.isPlaying;
             volume = props.volume;
             song.setVolume(parseFloat(volume));
@@ -157,7 +160,7 @@ export default function sketch(p) {
 
         if (props.downloadVisual) {
             download();
-            props.dispatch(downloadVisualEnd());
+            dispatch(downloadVisualEnd());
         }
     };
 
@@ -177,6 +180,9 @@ export default function sketch(p) {
     };
 
     p.draw = function() {
+        if (song && song.isPlaying()) {
+            dispatch(currentSongTime(song.currentTime()));
+        }
         // WAVES
         const h = height / divisions;
         const spectrum = fft.analyze();

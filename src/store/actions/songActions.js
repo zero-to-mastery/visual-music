@@ -45,3 +45,19 @@ export const storeBlob = blob => {
         }
     };
 };
+
+export const currentSongTime = time => {
+    return (dispatch, getState) => {
+        try {
+            dispatch({
+                type: 'CURRENT_TIME',
+                time
+            });
+        } catch (err) {
+            dispatch({
+                type: 'SONG_ERR',
+                err
+            });
+        }
+    };
+};

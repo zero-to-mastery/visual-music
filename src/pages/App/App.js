@@ -12,6 +12,7 @@ import VisualPanel from '../../components/VisualPanel/VisualPanel';
 export default function App({ song }) {
     // States
     const [uploadedSong, setUploadedSong] = useState(null);
+    const [currentTime, setCurrentTime] = useState('0:00');
     const [isSongLoaded, setIsSongLoaded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState('0:00');
@@ -30,7 +31,14 @@ export default function App({ song }) {
         setIsSongLoaded(true);
         setBlob(song.blob);
         setSongEnded(false);
-    }, [song]);
+    }, []);
+
+    useEffect(() => {
+        let canvasTime = getTime(song.time);
+        if (canvasTime !== currentTime) {
+            setCurrentTime(canvasTime);
+        }
+    }, [song.time]);
 
     /********************************************
         Handles changing of volume state upon
@@ -130,6 +138,7 @@ export default function App({ song }) {
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar
+                        currentTime={currentTime}
                         volume={volume}
                         onVolumeChange={onVolumeChange}
                         onPlayPress={onPlayPress}

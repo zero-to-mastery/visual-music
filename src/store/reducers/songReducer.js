@@ -12,12 +12,15 @@ export const songReducer = (state = initialState.song, action) => {
 
         case 'SONG_CLEARED':
             return {
-                downloadState: false,
-                song: {
-                    url: null,
-                    name: null,
-                    blob: null
-                }
+                url: null,
+                name: null,
+                blob: null,
+                time: 0
+            };
+        case 'CURRENT_TIME':
+            return {
+                ...state,
+                time: action.time
             };
 
         case 'SONG_ERROR':

@@ -58,8 +58,11 @@ export default function PlayerBar(props) {
         isPlaying,
         isSongLoaded,
         onVolumeChange,
-        songEnded
+        songEnded,
+        currentTime
     } = props;
+
+    // console.log(currentTime);
 
     return (
         <div className={classes.playerBar}>
