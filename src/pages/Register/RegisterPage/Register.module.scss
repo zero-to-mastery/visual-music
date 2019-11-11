@@ -82,6 +82,17 @@
         }
     }
 
+    .errorLabel {
+        padding-top: 3%;
+        width: 100%;
+        font-size: 1.2rem;
+        line-height: 160%;
+        letter-spacing: 0.1em;
+        color: red;
+        text-align: center;
+        padding-bottom: 5%;
+    }
+
     .showpassword {
         width: 100%;
         display: flex;
@@ -122,7 +133,7 @@
     }
 }
 
-@media only screen and (min-width: 430px ) and (max-width: 1131px) {
+@media only screen and (min-width: 430px) and (max-width: 1131px) {
     .signupcomponent {
         .container {
             .signup {
@@ -132,17 +143,18 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
-				
-				.custom-button {
-					button {
-						width: 25%;
-					}
-				}
+                }
+
+                .custom-button {
+                    button {
+                        width: 25%;
+                    }
+                }
             }
         }
     }
@@ -152,24 +164,26 @@
     .signupcomponent {
         .container {
             .signup {
-				width: 80%;
+                width: 80%;
+
                 .headlines {
                     justify-content: center;
 
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
-				
-				.custom-button {
-					button {
-						width: 30%;
-					}
-				}
+                }
+
+                .custom-button {
+                    button {
+                        width: 30%;
+                    }
+                }
             }
         }
     }
@@ -178,7 +192,8 @@
 @media (max-width: 892px) {
     .signupcomponent {
         .container {
-			width: 50%;
+            width: 50%;
+
             .signup {
                 .headlines {
                     justify-content: center;
@@ -186,11 +201,12 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }
@@ -200,18 +216,20 @@
     .signupcomponent {
         .container {
             .signup {
-				width: 90%;
+                width: 90%;
+
                 .headlines {
                     justify-content: center;
 
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }
@@ -220,7 +238,8 @@
 @media (max-width: 635px) {
     .signupcomponent {
         .container {
-			width: 60%;
+            width: 60%;
+
             .signup {
                 .headlines {
                     justify-content: center;
@@ -228,11 +247,12 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }
@@ -241,7 +261,8 @@
 @media (max-width: 530px) {
     .signupcomponent {
         .container {
-			width: 70%;
+            width: 70%;
+
             .signup {
                 .headlines {
                     justify-content: center;
@@ -249,11 +270,12 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }
@@ -262,7 +284,8 @@
 @media (max-width: 455px) {
     .signupcomponent {
         .container {
-			width: 80%;
+            width: 80%;
+
             .signup {
                 .headlines {
                     justify-content: center;
@@ -270,11 +293,12 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }
@@ -283,7 +307,8 @@
 @media (max-width: 399px) {
     .signupcomponent {
         .container {
-			width: 90%;
+            width: 90%;
+
             .signup {
                 .headlines {
                     justify-content: center;
@@ -291,11 +316,12 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }
@@ -304,7 +330,8 @@
 @media (max-width: 355px) {
     .signupcomponent {
         .container {
-			width: 100%;
+            width: 100%;
+
             .signup {
                 .headlines {
                     justify-content: center;
@@ -312,11 +339,12 @@
                     .headline {
                         font-size: 18px;
                     }
+
                     .subheadline {
-						font-size: 13px;
-						text-align: center;
+                        font-size: 13px;
+                        text-align: center;
                     }
-				}
+                }
             }
         }
     }

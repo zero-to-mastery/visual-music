@@ -1,17 +1,17 @@
-@mixin formLabel{
+@mixin formLabel {
     font-family: Biryani;
     font-style: normal;
     font-weight: 600;
     font-size: 1rem;
     line-height: 160%;
     letter-spacing: 0.1em;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 @mixin formInputField {
     outline: none;
-    background: #FFFFFF;
-    border: 2px solid #E6E6E6;
+    background: #ffffff;
+    border: 2px solid #e6e6e6;
     box-sizing: border-box;
     border-radius: 4px;
     font-weight: 600;
@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.overlay{
+.overlay {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -32,42 +32,40 @@
     align-items: center;
     background: #595757;
 
-    .loginOverlay{
+    .loginOverlay {
         width: 32%;
-        background: #0D4E67;
+        background: #0d4e67;
         border-radius: 4px;
     }
 
-    @media only screen and (max-width:1178px){
-        .loginOverlay{
+    @media only screen and (max-width: 1178px) {
+        .loginOverlay {
             width: 50%;
         }
     }
-    
-    @media only screen and (max-width:775px){
-        .loginOverlay{
+
+    @media only screen and (max-width: 775px) {
+        .loginOverlay {
             width: 70%;
         }
     }
-    
-    @media only screen and (max-width:600px){
-        .loginOverlay{
+
+    @media only screen and (max-width: 600px) {
+        .loginOverlay {
             width: 80%;
         }
     }
 }
 
-
-
-.loginForm{
-    display:flex;
+.loginForm {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     margin: 7% 10% 10%;
     margin-bottom: 8%;
-    
-    .titleGroup{
+
+    .titleGroup {
         @include formGroup;
         font-family: Biryani;
         font-style: normal;
@@ -75,47 +73,58 @@
         font-size: 2rem;
         line-height: 140%;
         letter-spacing: 0.15em;
-        color: #FFFFFF;
+        color: #ffffff;
         padding-bottom: 6%;
     }
 
-    .emailGroup{
+    .errorLabel {
+        padding-top: 3%;
+        width: 100%;
+        font-size: 1.2rem;
+        line-height: 160%;
+        letter-spacing: 0.1em;
+        color: red;
+        text-align: center;
+        padding-bottom: 5%;
+    }
+
+    .emailGroup {
         @include formGroup;
         padding-bottom: 5%;
 
-        .emailLabel{
+        .emailLabel {
             @include formLabel;
         }
-        
-        .emailField{
-            @include formInputField;
-        }
-    }
-    
-    .passwordGroup{
-        @include formGroup;
-        padding-bottom: 6%;
-    
-        .passwordLabel{
-            @include formLabel;
-        }
-        
-        .passwordField{
+
+        .emailField {
             @include formInputField;
         }
     }
 
-    .loginButtonGroup{
+    .passwordGroup {
+        @include formGroup;
+        padding-bottom: 6%;
+
+        .passwordLabel {
+            @include formLabel;
+        }
+
+        .passwordField {
+            @include formInputField;
+        }
+    }
+
+    .loginButtonGroup {
         @include formGroup;
         justify-content: center;
         align-items: center;
         padding-bottom: 4%;
 
-        .loginButton{
+        .loginButton {
             outline: none;
             width: 120px;
             height: 39px;
-            background: #FFFFFF;
+            background: #ffffff;
             border-radius: 10px;
 
             font-family: Biryani;
@@ -124,16 +133,18 @@
             font-size: 1rem;
             line-height: 100%;
             letter-spacing: 0.1em;
-            color: #0D4E67;
+            color: #0d4e67;
 
             cursor: pointer;
         }
     }
+
     .forgotPasswordLinksGroup {
         margin-top: 5px;
         display: flex;
         justify-content: center;
         width: 100%;
+
         .forgotPasswordLink {
             font-size: 14px;
             background: transparent;
@@ -147,7 +158,7 @@
                 width: 0;
                 height: 1px;
                 background: white;
-                transition: width .3s;
+                transition: width 0.3s;
             }
 
             &:hover::after {
@@ -156,26 +167,15 @@
         }
     }
 
-
-
-    @media only screen and (max-width:473px){
-        .titleGroup{
+    @media only screen and (max-width: 473px) {
+        .titleGroup {
             font-size: 1.5rem;
         }
     }
 
-    @media only screen and (max-width:353px){
-        .titleGroup{
+    @media only screen and (max-width: 353px) {
+        .titleGroup {
             font-size: 1.2rem;
         }
     }
 }
-
-
-
-
-
-
-
-
-

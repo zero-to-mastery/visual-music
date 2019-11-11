@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../../../components/Button/Button';
-import FormInput from '../../../components/FormInput/formInput.component';
+import Button from '../../../components/units/Button/Button';
+import FormInput from '../../../components/units/FormInput/formInput.component';
 import classes from './ForgotPasswordPage.module.scss';
 
 function ForgotPasswordPage({ setEmail, onFormSubmit }) {

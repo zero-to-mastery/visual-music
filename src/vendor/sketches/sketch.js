@@ -2,6 +2,8 @@ import p5 from 'p5';
 import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 
+import { downloadVisualEnd } from '../../store/actions/downloadActions';
+
 export default function sketch(p) {
     let song;
     let fft;
@@ -16,7 +18,69 @@ export default function sketch(p) {
 
     let canvas;
 
+    let audioCtx;
+    let sourceNode;
+    let dest;
+    let canvasStream;
+    let audioStream;
+    let audio;
+    let mediaRecorder;
+    let recordedChunks = [];
+
+    function recordStream() {
+        if (canvasStream) {
+            mediaRecorder.resume();
+        } else {
+            // Capture canvas stream (visualization)
+            canvasStream = p.canvas.captureStream(60);
+            // Add audio track to the stream
+            canvasStream.addTrack(audioStream.getAudioTracks()[0]);
+            // Initialize the array for the data
+            recordedChunks = [];
+            // Start recording
+            mediaRecorder = new MediaRecorder(canvasStream);
+            mediaRecorder.start();
+            // Save data
+            mediaRecorder.ondataavailable = handleDataAvailable;
+            // Stop mediaRecorder and reset audio when the song end
+            audio.onended = endRecord;
+        }
+    }
+
+    function handleDataAvailable(event) {
+        // Add data from the stream to an array
+        if (event.data.size > 0) {
+            recordedChunks.push(event.data);
+        }
+    }
+
+    function endRecord() {
+        mediaRecorder.stop();
+        audio.pause();
+        audio.currentTime = 0;
+        canvasStream = null;
+        isPlaying = false;
+    }
+
+    function download() {
+        // Download stream (webm file) if data available
+        if (recordedChunks.length > 0) {
+            var blob = new Blob(recordedChunks, {
+                type: 'video/webm'
+            });
+            var url = URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            document.body.appendChild(a);
+            a.style = 'display: none';
+            a.href = url;
+            a.download = 'visualization.webm';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    }
+
     p.setup = function() {
+        // Canvas setup
         p.background(7, 11, 21);
         canvas = p.createCanvas(width, height);
         fft = new p5.FFT(0.9, 256); // for the waves
@@ -27,44 +91,88 @@ export default function sketch(p) {
 
     //Custom redraw that will trigger upon state change
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        function initAudioStream(evt) {
+            if (!audioCtx) {
+                // Create a new audio context
+                audioCtx = new AudioContext();
+                // create a stream from the AudioContext
+                dest = audioCtx.createMediaStreamDestination();
+                audioStream = dest.stream;
+                // connect the audio element's output to the stream
+                sourceNode = audioCtx.createMediaElementSource(props.audioRef);
+                sourceNode.connect(dest);
+            }
+        }
+
+        // Function that get called when a song is loaded
+        function loaded() {
+            isPlaying = props.isPlaying;
+            volume = props.volume;
+            song.setVolume(parseFloat(volume));
+            p.togglePlaying(song);
+        }
+
         //We need to resize canvas
         //and set width property to new width
-        //so drawing will bease on this new width
+        //so drawing will base on this new width
         width = props.canvasWidth;
         height = props.canvasHeight;
         p.resizeCanvas(width, height);
 
+        // Check for new uploaded song
         if (song) {
             if (song.isLoaded()) {
-                volume = props.volume;
-                isPlaying = props.isPlaying;
+                // Reinitialize song if a new file is uploaded
+                if (song.file !== props.uploadedSong) {
+                    song.dispose();
+                    song = p.loadSound(props.uploadedSong, loaded);
+                    recordedChunks = [];
+                    canvasStream = null;
+                }
 
-                //monitor volume change and toggling of pause/play button
-                song.setVolume(parseFloat(volume));
-                p.togglePlaying(song);
-
-                //Reinitializes song if a new file is uploaded
-                // if (song.file !== props.uploadedSong) {
-                //     song.dispose();
-                //     song = p.loadSound(props.uploadedSong);
-                // }
+                loaded();
             }
         } else {
-            //handles initial song load
-            if (props.uploadedSong && props.uploadedSong !== song) {
-                // becuase of using heroku services for fetch the song from firebase, it is good practice to
-                // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more abillity to control this middle time.
+            if (props.uploadedSong) {
+                // because of using heroku services for fetch the song from firebase, it is good practice to
+                // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more ability to control this middle time.
                 // for reading more - https://p5js.org/reference/#/p5.SoundFile/loadSound
-                song = p.loadSound(props.uploadedSong);
+
+                // Erase recorded data from the previous recorded song
+                recordedChunks = [];
+                canvasStream = null;
+
+                // Get the audio element from the DOM and add the blob as the source
+                audio = props.audioRef;
+                audio.src = URL.createObjectURL(props.blob);
+                // Initialize audio context
+                audio.oncanplay = initAudioStream;
+
+                // Start p5 visualization when press the play button
+                if (props.isPlaying) {
+                    song = p.loadSound(props.uploadedSong, loaded);
+                }
             }
+        }
+
+        if (props.downloadVisual) {
+            download();
+            props.dispatch(downloadVisualEnd());
         }
     };
 
     p.togglePlaying = function(song) {
         if (isPlaying && !song.isPlaying()) {
+            // Start audio to be recorded
+            audio.play();
+            // Start visualization base on the song
             song.play();
+            // Record audio + visualization
+            recordStream();
         } else if (!isPlaying && song.isPlaying()) {
+            audio.pause();
             song.pause();
+            mediaRecorder.pause();
         }
     };
 
