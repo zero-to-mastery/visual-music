@@ -13,19 +13,95 @@ TODO: - Responsive to screen size.
  ************************/
 
 import React, { Component } from 'react';
+import * as emailjs from 'emailjs-com';
 
 import classes from './ContactForm.module.scss';
-import Button from '../../../../../components/Button/Button';
+import Button from '../../../../../components/units/Button/Button';
+import Span from '../../../../../components/units/Span/Span';
 
 class ContactForm extends Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            name: '',
+            email: '',
+            message: '',
+            span: null
+        };
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        const { name, email, message } = this.state;
+        this.setState({
+            span: (
+                <img
+                    alt="loading"
+                    src={require('../../../../../assets/loading.svg')}
+                />
+            )
+        });
+        //add this simple check for begging -
+        if (name.length > 0 && email.length > 0 && message.length > 0) {
+            let templateParams = {
+                name: name,
+                email: email,
+                message: message,
+                dynamicColor: ''
+            };
+
+            emailjs
+                .send(
+                    // 'default_service' and 'visual-music' are coresponse to visual-music user dash configs at emailjs.com
+                    'default_service',
+                    'visual_music',
+                    templateParams,
+                    process.env.REACT_APP_emailJS
+                )
+                .then(response => {
+                    this.resetForm();
+                    this.setState({
+                        span: 'email has been sent, thank you :)',
+                        dynamicColor: 'black'
+                    });
+                })
+                .catch(err => {
+                    console.log('FAILED', err);
+                    this.setState({
+                        span: err
+                    });
+                });
+        } else {
+            this.setState({
+                span: 'unsuccessful attempt',
+                dynamicColor: 'red'
+            });
+        }
+    }
+
+    resetForm() {
+        this.refs.form.reset();
+        this.setState({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        });
+    }
+
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
     render() {
+        const { span, dynamicColor } = this.state;
         return (
-            <div className={classes.contactForm}>
+            <form
+                ref="form"
+                onSubmit={e => this.handleSubmit(e)}
+                className={classes.contactForm}
+            >
                 <label>
                     Name
                     <br />
@@ -34,6 +110,7 @@ class ContactForm extends Component {
                         name="name"
                         className={classes.formInput}
                         id="name"
+                        onChange={e => this.handleChange(e)}
                     />
                 </label>
                 <label>
@@ -44,6 +121,7 @@ class ContactForm extends Component {
                         name="email"
                         className={classes.formInput}
                         id="email"
+                        onChange={e => this.handleChange(e)}
                     />
                 </label>
                 <label>
@@ -54,10 +132,18 @@ class ContactForm extends Component {
                         name="message"
                         className={classes.formInput}
                         id="message"
+                        onChange={e => this.handleChange(e)}
                     ></textarea>
                 </label>
-                <Button text="Send" btnClass="signUp" />
-            </div>
+                <Button type="submit" text="Send" btnClass="signUp" />
+                {span && (
+                    <Span
+                        content={span}
+                        style={{ color: dynamicColor }}
+                        className={classes.errorLabel}
+                    />
+                )}
+            </form>
         );
     }
 }

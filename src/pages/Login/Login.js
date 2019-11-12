@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logIn } from '../../store/actions/authActions';
+import { logIn, cleanError } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import LoginPage from './LoginPage/LoginPage';
 
@@ -18,9 +18,14 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [span, setSpan] = useState(null);
 
     const onFormSubmit = event => {
         event.preventDefault();
+        dispatch(cleanError());
+        setSpan(
+            <img alt="loading" src={require('../../assets/loading.svg')} />
+        );
         dispatch(logIn({ email, password }));
     };
 
@@ -28,8 +33,7 @@ function Login() {
     if (uid) return <Redirect to="/app" />;
 
     if (error) {
-        // ToDo - give some UX when getting error and when loading
-        console.log(error);
+        if (span !== error) setSpan(error);
     }
 
     return (
@@ -37,6 +41,7 @@ function Login() {
             setEmail={setEmail}
             setPassword={setPassword}
             onFormSubmit={onFormSubmit}
+            span={span}
         />
     );
 }

@@ -16,7 +16,7 @@ import classes from './TopNav.module.scss';
 import logo from '../../assets/LogoSVG.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from '../../store/actions/authActions';
-import Button from '../Button/Button';
+import Button from '../units/Button/Button';
 
 const UnAuthNav = () => (
     <div>
@@ -47,7 +47,9 @@ function TopNav() {
 
     return (
         <nav className={classes.topNav}>
-            <img src={logo} alt="logo" height="85px" width="85px" />
+            <Link to="/">
+                <img src={logo} alt="logo" height="85px" width="85px" />
+            </Link>
             {uid ? <AuthNav /> : <UnAuthNav />}
         </nav>
     );

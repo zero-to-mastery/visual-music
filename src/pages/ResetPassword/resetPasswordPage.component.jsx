@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './resetPasswordPage.module.scss';
-import FormInput from '../../components/FormInput/formInput.component';
-import Button from '../../components/Button/Button';
+import FormInput from '../../components/units/FormInput/formInput.component';
+import Button from '../../components/units/Button/Button';
 
 class ResetPassword extends React.Component {
     constructor(props) {

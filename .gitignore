@@ -2,7 +2,9 @@
 
 # dependencies
 /node_modules
+/package-lock.json
 /.pnp
+/.idea
 .pnp.js
 .env.local
 

@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 // import Error from '../../components/Error/Error';
 //import UnsupportedFile from '../../components/UnsupportedFile/unsupportedFile';
 
@@ -8,34 +8,31 @@ import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
 
-// import UploadSong from '../../components/UploadSong/UploadSong';
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
 
-let soundReset = {
-    isPlaying: false
-};
+export default function App({ song }) {
+    // States
+    const [uploadedSong, setUploadedSong] = useState(null);
+    const [isSongLoaded, setIsSongLoaded] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [duration, setDuration] = useState('0:00');
+    const [volume, setVolume] = useState(0.5);
+    const [togglePanel, setTogglePanel] = useState(false);
+    const [songEnded, setSongEnded] = useState(false);
+    const [blob, setBlob] = useState(null);
 
-class App extends React.Component {
-    constructor(props) {
-        super();
+    const downloadState = useSelector(state => state.download.downloadState);
+    // Refs
+    const audioRef = useRef(null);
 
-        this.state = {
-            uploadedSong: null,
-            isSongLoaded: false,
-            volume: 0.5,
-            ...soundReset,
-            togglePanel: false
-        };
-    }
-
-    componentDidMount() {
-        this.setState({
-            uploadedSong: this.props.song,
-            isSongLoaded: true,
-            ...soundReset
-        });
-    }
+    // Effects
+    useEffect(() => {
+        setUploadedSong(song);
+        setIsSongLoaded(true);
+        setBlob(song.blob);
+        setSongEnded(false);
+    }, [song]);
 
     /********************************************
         Handles changing of volume state upon
@@ -43,11 +40,8 @@ class App extends React.Component {
         sketch file adjusting the sound's actual
         volume to change ellipse diameter on redraw.
     ********************************************/
-    onVolumeChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
+    const onVolumeChange = event => {
+        setVolume(event.target.value);
     };
 
     /*********************************************
@@ -57,24 +51,29 @@ class App extends React.Component {
         sketch file which executes a .pause() or .play()
         command.
     *********************************************/
-    onPlayPress = event => {
-        const { uploadedSong } = this.state;
+    const onPlayPress = event => {
         if (uploadedSong) {
-            this.setState({ isPlaying: !this.state.isPlaying }, () => {
-                this.setState({
-                    buttonText: this.state.isPlaying ? 'Pause' : 'Play'
-                });
-            });
+            setIsPlaying(!isPlaying);
         } else {
             alert('No file loaded');
         }
+    };
+
+    const onSongEnd = () => {
+        setIsPlaying(false);
+        setSongEnded(true);
     };
 
     /********************************************
         Uploaded audio file duration converted in
         to proper format e.g. 3:14
     ********************************************/
-    getTime = dur => {
+    const handleMetadata = event => {
+        const duration = event.currentTarget.duration;
+        setDuration(getTime(duration));
+    };
+
+    const getTime = dur => {
         return (
             Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
         );
@@ -85,75 +84,66 @@ class App extends React.Component {
         hamburger toggle's state changed, we need
         to set togglePanel state
     *********************************************/
-    onTogglePanel = toggleState => {
-        this.setState({ togglePanel: toggleState });
+    const onTogglePanel = toggleState => {
+        setTogglePanel(toggleState);
     };
 
-    render() {
-        const {
-            uploadedSong,
-            isSongLoaded,
-            duration,
-            volume,
-            isPlaying,
-            onSongEnd,
-            togglePanel
-        } = this.state;
-
-        return (
-            <div className={classes.pageContainer}>
-                <div className={classes.visualmusic}>
-                    <div className={classes.visualContainer}>
-                        <div
-                            className={`${classes.visualmusic} ${
-                                togglePanel ? classes.shrink : ''
-                            }`}
-                        >
-                            <div className={classes.hamburger}>
-                                <HamburgerToggle
-                                    initToggle={this.state.togglePanel}
-                                    onClick={this.onTogglePanel}
-                                />
-                            </div>
-                            <Visualizer
-                                volume={volume}
-                                isPlaying={isPlaying}
-                                uploadedSong={
-                                    uploadedSong ? uploadedSong.url : null
-                                }
-                                onSongEnd={onSongEnd}
+    return (
+        <div className={classes.pageContainer}>
+            <div className={classes.visualmusic}>
+                <div className={classes.visualContainer}>
+                    <div
+                        className={`${classes.visualmusic} ${
+                            togglePanel ? classes.shrink : ''
+                        }`}
+                    >
+                        <div className={classes.hamburger}>
+                            <HamburgerToggle
+                                initToggle={togglePanel}
+                                onClick={onTogglePanel}
                             />
                             
                         </div>
-                        <div
-                            className={`${classes.visualPanel} ${
-                                togglePanel ? classes.slideIn : ''
-                            }`}
-                        >
-                            <VisualPanel />
-                        </div>
-                    </div>
-                    <div>
-                        <audio
-                            id="audio"
-                            ref={ref => (this.player = ref)}
-                        ></audio>
-                    </div>
-                    <div className={classes.bar}>
-                        <PlayerBar
+                        <Visualizer
                             volume={volume}
-                            onVolumeChange={this.onVolumeChange}
-                            onPlayPress={this.onPlayPress}
                             isPlaying={isPlaying}
-                            uploadedSong={uploadedSong}
-                            isSongLoaded={isSongLoaded}
-                            duration={duration}
+                            uploadedSong={
+                                uploadedSong ? uploadedSong.url : null
+                            }
+                            blob={blob}
+                            audioRef={audioRef.current}
+                            downloadVisual={songEnded ? downloadState : null}
                         />
                     </div>
+                    <div
+                        className={`${classes.visualPanel} ${
+                            togglePanel ? classes.slideIn : ''
+                        }`}
+                    >
+                        <VisualPanel />
+                    </div>
+                </div>
+                <div>
+                    <audio
+                        id="audio"
+                        ref={audioRef}
+                        onEnded={onSongEnd}
+                        onLoadedMetadata={handleMetadata}
+                    ></audio>
+                </div>
+                <div className={classes.bar}>
+                    <PlayerBar
+                        volume={volume}
+                        onVolumeChange={onVolumeChange}
+                        onPlayPress={onPlayPress}
+                        isPlaying={isPlaying}
+                        uploadedSong={uploadedSong}
+                        isSongLoaded={isSongLoaded}
+                        duration={duration}
+                        songEnded={songEnded}
+                    />
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
-
-export default App;

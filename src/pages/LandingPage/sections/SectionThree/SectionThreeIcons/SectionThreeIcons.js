@@ -35,6 +35,7 @@ const SectionThreeIcons = () => (
             id={classes.github}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
         >
+<<<<<<< HEAD
             <a
                 href="https://github.com/zero-to-mastery/visual-music"
                 target="_blank"
@@ -42,6 +43,11 @@ const SectionThreeIcons = () => (
                 rel="noopener noreferrer"
             >
                 <img src={github} alt="github" className={classes.socialIcon} />
+=======
+            <a href = "https://github.com/zero-to-mastery/visual-music" target="_blank" 
+            rel="noopener noreferrer">
+            <img src={github} alt="github" className={classes.socialIcon} />
+>>>>>>> upstream/development
             </a>
         </ParallaxLayer>
 
@@ -51,6 +57,7 @@ const SectionThreeIcons = () => (
             id={classes.linkedIn}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
         >
+<<<<<<< HEAD
             <a
                 href="https://www.linkedin.com/company/zerotomastery/"
                 target="_blank"
@@ -62,6 +69,11 @@ const SectionThreeIcons = () => (
                     alt="linkedIn"
                     className={classes.socialIcon}
                 />
+=======
+            <a href = "https://www.linkedin.com/company/zerotomastery/" target="_blank"
+            rel="noopener noreferrer">
+            <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
+>>>>>>> upstream/development
             </a>
         </ParallaxLayer>
     </div>

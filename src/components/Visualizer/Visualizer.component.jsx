@@ -14,10 +14,11 @@
 ************************************************************/
 
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import classes from './Visualizer.module.scss';
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from '../../vendor/sketches/sketch';
-import Measure from 'react-measure' 
+import Measure from 'react-measure';
 
 class Visualizer extends React.Component {
     constructor(props) {
@@ -25,30 +26,37 @@ class Visualizer extends React.Component {
 
         this.state = {
             sketch,
-            canvasWidth:100,
-            canvasHeight:100
+            canvasWidth: 100,
+            canvasHeight: 100
         };
     }
 
-    onResize = (content)=>{
-        const {width, height, left, top} = content;
+    onResize = content => {
+        const { width, height, left, top } = content;
         const cWidth = width - left;
         const cHeight = height - top;
-        this.setState({canvasWidth:cWidth, canvasHeight:cHeight});
-    }
+        this.setState({ canvasWidth: cWidth, canvasHeight: cHeight });
+    };
 
     render() {
-        const { volume, isPlaying, uploadedSong } = this.props;
+        const {
+            volume,
+            isPlaying,
+            uploadedSong,
+            audioRef,
+            downloadVisual,
+            blob
+        } = this.props;
         const { sketch, canvasWidth, canvasHeight } = this.state;
 
         return (
             <Measure
-            offset
-            onResize={content=>{
-                this.onResize(content.offset);
-            }}
+                offset
+                onResize={content => {
+                    this.onResize(content.offset);
+                }}
             >
-                {({measureRef}) => (
+                {({ measureRef }) => (
                     <div ref={measureRef} className={classes.visualizer}>
                         <P5Wrapper
                             sketch={sketch}
@@ -57,11 +65,14 @@ class Visualizer extends React.Component {
                             uploadedSong={uploadedSong}
                             canvasWidth={canvasWidth}
                             canvasHeight={canvasHeight}
+                            audioRef={audioRef}
+                            downloadVisual={downloadVisual}
+                            blob={blob}
+                            dispatch={useDispatch()}
                         />
                     </div>
                 )}
             </Measure>
-
         );
     }
 }

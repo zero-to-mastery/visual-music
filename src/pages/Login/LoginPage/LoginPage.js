@@ -1,8 +1,9 @@
 import React from 'react';
 import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
+import Span from '../../../components/units/Span/Span';
 
-function LoginPage({ setEmail, setPassword, onFormSubmit }) {
+function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
@@ -11,17 +12,19 @@ function LoginPage({ setEmail, setPassword, onFormSubmit }) {
                         <span>Welcome back!</span>
                     </div>
                     <div className={classes.emailGroup}>
-                        <label className={classes.emailLabel}>
-                            Email address
-                        </label>
-                        <input
-                            className={classes.emailField}
-                            type="email"
-                            onChange={e => {
-                                setEmail(e.target.value);
-                            }}
-                            required
-                        />
+                        <div className={classes.emailGroup}>
+                            <label className={classes.emailLabel}>
+                                Email address
+                            </label>
+                            <input
+                                className={classes.emailField}
+                                type="email"
+                                onChange={e => {
+                                    setEmail(e.target.value);
+                                }}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className={classes.passwordGroup}>
                         <label className={classes.passwordLabel}>
@@ -49,6 +52,10 @@ function LoginPage({ setEmail, setPassword, onFormSubmit }) {
                             Forgot Password?
                         </Link>
                     </div>
+
+                    {span && (
+                        <Span className={classes.errorLabel} content={span} />
+                    )}
                 </form>
             </div>
         </div>

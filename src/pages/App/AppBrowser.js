@@ -15,10 +15,18 @@ function AppBrowser() {
     // and in case that there is no user (or user log out ...) the route will reDirect to landing page.
     const uid = useSelector(state => state.firebase.auth.uid);
     const song = useSelector(state => state.song);
+<<<<<<< HEAD
     return (
         <div>
             {uid ? (
                 <div> {song ? <App song={song} /> : <UploadSong />} </div>
+=======
+
+    return (
+        <div>
+            {uid ? (
+                <div>{song.url ? <App song={song} /> : <UploadSong />}</div>
+>>>>>>> upstream/development
             ) : (
                 <Redirect to="/" />
             )}
