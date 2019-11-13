@@ -62,7 +62,6 @@ export default function PlayerBar(props) {
         currentTime
     } = props;
 
-    console.log(currentTime);
     return (
         <div className={classes.playerBar}>
             <div className={classes.nowPlaying}>
