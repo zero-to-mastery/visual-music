@@ -27,10 +27,12 @@ export default function App({ song }) {
     // Effects
     useEffect(() => {
         setUploadedSong(song);
-        setIsSongLoaded(true);
         setBlob(song.blob);
         setSongEnded(false);
+        setIsSongLoaded(true);
+
     }, [song]);
+
 
     /********************************************
         Handles changing of volume state upon
@@ -105,11 +107,11 @@ export default function App({ song }) {
                             volume={volume}
                             isPlaying={isPlaying}
                             uploadedSong={
-                                uploadedSong ? uploadedSong.url : null
+                                uploadedSong && uploadedSong.url
                             }
                             blob={blob}
                             audioRef={audioRef.current}
-                            downloadVisual={songEnded ? downloadState : null}
+                            downloadVisual={songEnded && downloadState}
                         />
                     </div>
                     <div
@@ -130,6 +132,7 @@ export default function App({ song }) {
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar
+                        currentTime={audioRef.current && getTime(audioRef.current.currentTime)}
                         volume={volume}
                         onVolumeChange={onVolumeChange}
                         onPlayPress={onPlayPress}
