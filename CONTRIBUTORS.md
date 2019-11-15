@@ -41,3 +41,5 @@
 [Kiran Nyayapati](https://github.com/kiran-nyayapati)
 
 [Matteo Angelotti](https://github.com/matteo1976)
+
+[Michael Donal](https://github.com/michaelbretagne)
