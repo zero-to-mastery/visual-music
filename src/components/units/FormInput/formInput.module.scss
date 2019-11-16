@@ -1,21 +1,73 @@
-.forgotPasswordEmailInput,
-.forgotPasswordEmailLabel {
-    width: 100%;
-    font-size: 1rem;
+// .forgotPasswordEmailInput,
+// .forgotPasswordEmailLabel {
+//     width: 100%;
+//     font-size: 1rem;
+// }
+
+// .forgotPasswordEmailLabel {
+//     margin-top: 12px;
+// }
+
+// .forgotPasswordEmailInput {
+//     border: none;
+//     border-radius: 5px;
+//     padding: 0 6px;
+//     line-height: 1.5rem;
+//     color: rgb(12, 58, 80)
+// }
+
+
+.formInputOverlay{
+    display: flex;
+    flex-direction: column;
+
+    .errorMessage{
+        font-size: 2rem;
+        color: red;
+        text-align: left;
+    }
 }
 
-.forgotPasswordEmailLabel {
-    margin-top: 12px;
-}
+.inputGroup{
+    display: flex;
+    flex-direction: column;
 
-.forgotPasswordEmailInput {
-    border: none;
-    border-radius: 5px;
-    padding: 0 6px;
-    line-height: 1.5rem;
-    color: rgb(12, 58, 80)
-}
+    input[type='password'] {
+        letter-spacing: 0.3em;
+    }
 
-input[type='password'] {
-    letter-spacing: 0.3em
+    .labelOverlay{
+        font-family: Biryani;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 160%;
+        letter-spacing: 0.1em;
+        color:black;
+    }
+
+    .inputField{
+        outline: none;
+        background: #ffffff;
+        border: 2px solid #200ae2;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 2rem;
+
+        &.errorStyle{
+            border: 2px solid red;
+        }
+    }
+
+    &.inlineStyle{
+        flex-direction: row;
+    
+        .labelOverlay{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.5%;
+        }
+    }
 }

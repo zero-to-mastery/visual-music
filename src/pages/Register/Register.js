@@ -1,12 +1,14 @@
 // for notes, visit Login.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, cleanError } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import RegisterPage from './RegisterPage/RegisterPage';
 
+
 function Register() {
+
     const uid = useSelector(state => state.firebase.auth.uid);
     const error = useSelector(state => state.authError);
 
