@@ -36,8 +36,8 @@ const SectionOne = ({ scrollClick }) => (
 
         <ParallaxLayer speed={0.1} offset={0.57}>
             <p className={`${classes.contentWrapper} ${classes.tagline}`}>
-                An app that converts your favoriet music pieces into visual
-                expresions.
+                An app that converts your favorite music pieces into visual
+                expressions.
             </p>
         </ParallaxLayer>
 
