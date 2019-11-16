@@ -29,5 +29,5 @@ require('dotenv').config();
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 store.firebaseAuthIsReady.then(() => {
-	ReactDOM.render(<FormInput type="password" labelText="test:" placeholder="test" />, document.getElementById('root'));
+	ReactDOM.render(<FormInput labelText="test:" placeholder="test" />, document.getElementById('root'));
 });
