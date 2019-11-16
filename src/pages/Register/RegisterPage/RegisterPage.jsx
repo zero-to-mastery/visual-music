@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Register.module.scss';
 import Span from '../../../components/units/Span/Span';
+import FormInput from '../../../components/units/FormInput/formInput.component';
 /*
  Main component for Signup.
 
@@ -32,6 +33,8 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.searchfields}>
                         <div className={classes.name}>
+                        {
+                            /*
                             <label htmlFor="name">Name</label>
                             <input
                                 type="text"
@@ -42,8 +45,18 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                                     setName(e.target.value);
                                 }}
                             />
+                            */
+                           <FormInput 
+                                labelText='Name'
+                                type="text"
+                                required
+                                onChange={e=>setName(e.target.value)}
+                            />
+                        }
                         </div>
                         <div className={classes.email}>
+                        {
+                            /*
                             <label htmlFor="Email">Email Address</label>
                             <input
                                 type="email"
@@ -54,8 +67,18 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                                     setEmail(e.target.value);
                                 }}
                             />
+                            */
+                           <FormInput 
+                                labelText='Email' 
+                                type="email"
+                                required
+                                onChange={e=>setEmail(e.target.value)}
+                           />
+                        }
                         </div>
                         <div className={classes.password}>
+                        {
+                            /*
                             <label htmlFor="password">Password</label>
                             <input
                                 type={isPasswordHidden ? 'password' : 'text'}
@@ -66,6 +89,14 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                                     setPassword(e.target.value);
                                 }}
                             />
+                            */
+                           <FormInput 
+                                labelText='Password' 
+                                type={isPasswordHidden ? 'password' : 'text'}
+                                required
+                                onChange={e=>setPassword(e.target.value)}
+                           />
+                        }
                         </div>
                     </div>
                     <div className={classes.showpassword}>

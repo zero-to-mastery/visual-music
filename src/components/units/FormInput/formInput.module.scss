@@ -22,7 +22,7 @@
     flex-direction: column;
 
     .errorMessage{
-        font-size: 1.5rem;
+        font-size: 1rem;
         color: red;
         text-align: left;
     }
@@ -43,13 +43,12 @@
         font-size: 1rem;
         line-height: 160%;
         letter-spacing: 0.1em;
-        color:black;
+        color:#ffffff;
     }
 
     .inputField{
         outline: none;
         background: #ffffff;
-        border: 2px solid #200ae2;
         box-sizing: border-box;
         border-radius: 4px;
         font-weight: 600;

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
 import Span from '../../../components/units/Span/Span';
+import FormInput from '../../../components/units/FormInput/formInput.component';
 
 function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
     return (
@@ -13,6 +14,8 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.emailGroup}>
                         <div className={classes.emailGroup}>
+                        {
+                            /*
                             <label className={classes.emailLabel}>
                                 Email address
                             </label>
@@ -24,9 +27,18 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                                 }}
                                 required
                             />
+                            */
+                           <FormInput 
+                                labelText='Email address'
+                                type="email"
+                                onChange={e=>setEmail(e.target.value)}
+                            />
+                        }
                         </div>
                     </div>
                     <div className={classes.passwordGroup}>
+                    {
+                        /*
                         <label className={classes.passwordLabel}>
                             Password
                         </label>
@@ -38,6 +50,13 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                             }}
                             required
                         />
+                        */
+                       <FormInput 
+                                labelText='Password'
+                                type="password"
+                                onChange={e=>setPassword(e.target.value)}
+                        />
+                    }
                     </div>
                     <div className={classes.loginButtonGroup}>
                         <button className={classes.loginButton} type="submite">
