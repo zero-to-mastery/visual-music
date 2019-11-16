@@ -14,18 +14,18 @@
  * When input is unfocused the method "validate" is called asynchronously and then
  * method go throught each validators to see if validation is fail.
  * 
- * If one of validators is fail then coresponse error message is setted to "errorMsg"
+ * If one of validators is fail then corespond error message is setted to "errorMsg"
  * state, Thus error is shown.
  * 
  * Defination of validator:
- * Each validator is an object which define two required keys and values
+ * Each validator is an object which define two required keys and corespond values
  * 
  * 1) validate: value is a function which take input value. The function must
  * return true indicate validation passed otherwise false indicate validation fail
  * 
  * 2) failMsg: string that will be displayed when validation fail.
  * 
- * Look into "minValueValidator" below for example.
+ * Look into "minValueValidator" below for example how to create validator.
  * 
  * const minValueValidator = {
     validate:(value)=>{
