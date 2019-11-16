@@ -20,6 +20,7 @@
 .formInputOverlay{
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     .errorMessage{
         font-size: 1rem;
@@ -46,6 +47,9 @@
         color:#ffffff;
     }
 
+    $largeFont: 2rem;
+    $mediumFont: 1.5rem;
+    $smallFont: 0.3rem;
     .inputField{
         outline: none;
         background: #ffffff;
@@ -56,6 +60,18 @@
 
         &.errorStyle{
             border: 2px solid red;
+        }
+
+        &.large{
+            font-size: $largeFont;
+        }
+
+        &.medium{
+            font-size: $mediumFont;
+        }
+
+        &.small{
+            font-size: 0.3rem;
         }
     }
 

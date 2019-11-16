@@ -22,8 +22,8 @@
         width: 70%;
         // height: 70%;
         display: flex;
-        // flex-wrap: wrap;
-        flex-direction: column;
+        flex-wrap: wrap;
+        // flex-direction: column;
 
         .headlines {
             width: 100%;
@@ -54,18 +54,17 @@
         width: 100%;
         height: 50%;
         display: flex;
-        // flex-wrap: wrap;
-        flex-direction: column;
+        flex-wrap: wrap;
 
         .name,
         .email,
         .password {
             width: 100%;
             display: flex;
-            // flex-wrap: wrap;
-            // height: 30%;
+            flex-wrap: wrap;
+            height: 30%;
             margin-top: 3.33%;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         label {
@@ -129,9 +128,11 @@
             color: #0d4e67;
             background: #ffffff;
             border-radius: 10px;
-            width: 20%;
+            width: 30%;
+            font-size: 1.1rem;
             border: none;
             outline: none;
+            padding: 1% 1%;
         }
     }
 }

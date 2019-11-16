@@ -49,6 +49,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                            <FormInput 
                                 labelText='Name'
                                 type="text"
+                                fontSize='medium'
                                 required
                                 onChange={e=>setName(e.target.value)}
                             />
@@ -71,6 +72,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                            <FormInput 
                                 labelText='Email' 
                                 type="email"
+                                fontSize='medium'
                                 required
                                 onChange={e=>setEmail(e.target.value)}
                            />
@@ -93,6 +95,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                            <FormInput 
                                 labelText='Password' 
                                 type={isPasswordHidden ? 'password' : 'text'}
+                                fontSize='medium'
                                 required
                                 onChange={e=>setPassword(e.target.value)}
                            />

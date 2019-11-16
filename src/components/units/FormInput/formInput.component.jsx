@@ -45,6 +45,7 @@ const FormInput = ({
     onChange,
     inline = false,//Make lable and input at same line when true
     validators = [minValueValidator],//Custom validator array
+    fontSize = 'large',//font size of input. large, medium or small
     ...otherInputProps
 }) => {
     const [errorMsg, setErrorMsg] = useState('');
@@ -75,7 +76,8 @@ const FormInput = ({
                     <label>{labelText}</label>
                 </div>
                 <input
-                    className={`${classes.inputField} ${errorMsg && !onFocus?classes.errorStyle:null}`}
+                    className={`${classes.inputField} ${classes[fontSize]} 
+                    ${errorMsg && !onFocus?classes.errorStyle:null}`}
                     placeholder={placeholder}
                     onChange={onChangeHandler}
                     onFocus={()=>setOnFocus(true)}
