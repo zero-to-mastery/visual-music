@@ -25,26 +25,24 @@
  * 
  * 2) failMsg: string that will be displayed when validation fail.
  * 
- * Look into "minValueValidator" which is provided as default
- * validator for example.
- */
-import React, {useState} from 'react';
-import classes from './formInput.module.scss';
-
-//A default validation to check if input value length is less than 1
-const minValueValidator = {
+ * Look into "minValueValidator" below for example.
+ * 
+ * const minValueValidator = {
     validate:(value)=>{
         return value.length > 1? true:false;
     },
     failMsg:'Input value is too short'
 }
+ */
+import React, {useState} from 'react';
+import classes from './formInput.module.scss';
 
 const FormInput = ({
     labelText,
     placeholder,
     onChange,
     inline = false,//Make lable and input at same line when true
-    validators = [minValueValidator],//Custom validator array
+    validators = null,//Custom validator array
     fontSize = 'large',//font size of input. large, medium or small
     ...otherInputProps
 }) => {
@@ -60,7 +58,10 @@ const FormInput = ({
 
     //validate method, called when input unfocus
     const validate = async (value)=>{
-        if(!value || !validators) setErrorMsg('');
+        if(!value || !validators){ 
+            setErrorMsg('');
+            return;
+        }
 
         let validator = validators.find((val)=>{
             return !val.validate(value);

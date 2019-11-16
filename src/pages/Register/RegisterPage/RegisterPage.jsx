@@ -16,6 +16,39 @@ import FormInput from '../../../components/units/FormInput/formInput.component';
 
 */
 
+const nameValidators=[
+    {
+        validate:(value)=>{
+            return value.length >= 2?true:false;
+        },
+        failMsg:'Name is too short'
+    },
+    {
+        validate:(value)=>{
+            return value.length <= 15?true:false;
+        },
+        failMsg:'Name is too long'
+    }
+];
+
+const emailValidators=[
+    {
+        validate:(value)=>{
+            return value.includes('@')&&((value.match(/@/g) || []).length===1);
+        },
+        failMsg:'Email is not valid'
+    }
+];
+
+const passwordValidators=[
+    {
+        validate:(value)=>{
+            return value.length >= 6?true:false;
+        },
+        failMsg:'Password is too short'
+    }
+];
+
 function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
     const [isPasswordHidden, setIsPasswordHidden] = React.useState(true);
 
@@ -33,73 +66,34 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.searchfields}>
                         <div className={classes.name}>
-                        {
-                            /*
-                            <label htmlFor="name">Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                required
-                                onChange={e => {
-                                    setName(e.target.value);
-                                }}
-                            />
-                            */
-                           <FormInput 
-                                labelText='Name'
-                                type="text"
-                                fontSize='medium'
-                                required
-                                onChange={e=>setName(e.target.value)}
-                            />
-                        }
-                        </div>
+                            <FormInput 
+                                    labelText='Name'
+                                    type="text"
+                                    fontSize='medium'
+                                    validators={nameValidators}
+                                    required
+                                    onChange={e=>setName(e.target.value)}
+                                />
+                            </div>
                         <div className={classes.email}>
-                        {
-                            /*
-                            <label htmlFor="Email">Email Address</label>
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                required
-                                onChange={e => {
-                                    setEmail(e.target.value);
-                                }}
+                            <FormInput 
+                                    labelText='Email' 
+                                    type="email"
+                                    fontSize='medium'
+                                    validators={emailValidators}
+                                    required
+                                    onChange={e=>setEmail(e.target.value)}
                             />
-                            */
-                           <FormInput 
-                                labelText='Email' 
-                                type="email"
-                                fontSize='medium'
-                                required
-                                onChange={e=>setEmail(e.target.value)}
-                           />
-                        }
                         </div>
                         <div className={classes.password}>
-                        {
-                            /*
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type={isPasswordHidden ? 'password' : 'text'}
-                                name="password"
-                                id="password"
-                                required
-                                onChange={e => {
-                                    setPassword(e.target.value);
-                                }}
+                            <FormInput 
+                                    labelText='Password' 
+                                    type={isPasswordHidden ? 'password' : 'text'}
+                                    fontSize='medium'
+                                    validators={passwordValidators}
+                                    required
+                                    onChange={e=>setPassword(e.target.value)}
                             />
-                            */
-                           <FormInput 
-                                labelText='Password' 
-                                type={isPasswordHidden ? 'password' : 'text'}
-                                fontSize='medium'
-                                required
-                                onChange={e=>setPassword(e.target.value)}
-                           />
-                        }
                         </div>
                     </div>
                     <div className={classes.showpassword}>
