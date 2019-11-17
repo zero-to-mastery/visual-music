@@ -55,11 +55,11 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.passwordGroup}>
                         <FormInput 
-                                labelText='Password'
-                                type="password"
-                                validators={passwordValidators}
-                                onChange={e=>setPassword(e.target.value)}                                    require
-                                required
+                            labelText='Password'
+                            type="password"
+                            validators={passwordValidators}
+                            onChange={e=>setPassword(e.target.value)}                                    
+                            required
                             />
                     </div>
                     <div className={classes.loginButtonGroup}>

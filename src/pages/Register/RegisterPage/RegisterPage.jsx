@@ -55,7 +55,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
     return (
         <div className={classes.signupcomponent}>
             <div className={classes.container}>
-                <div className={classes.signup}>
+                <form className={classes.signup} onSubmit={onFormSubmit}>
                     <div className={classes.headlines}>
                         <h2 className={classes.headline}>
                             Welcome to Visual Music!
@@ -67,32 +67,32 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                     <div className={classes.searchfields}>
                         <div className={classes.name}>
                             <FormInput 
-                                    labelText='Name'
-                                    type="text"
-                                    fontSize='medium'
-                                    validators={nameValidators}
-                                    required
-                                    onChange={e=>setName(e.target.value)}
+                                labelText='Name'
+                                type="text"
+                                fontSize='medium'
+                                validators={nameValidators}
+                                required
+                                onChange={e=>setName(e.target.value)}
                                 />
                             </div>
                         <div className={classes.email}>
                             <FormInput 
-                                    labelText='Email' 
-                                    type="email"
-                                    fontSize='medium'
-                                    validators={emailValidators}
-                                    required
-                                    onChange={e=>setEmail(e.target.value)}
+                                labelText='Email' 
+                                type="email"
+                                fontSize='medium'
+                                validators={emailValidators}
+                                required
+                                onChange={e=>setEmail(e.target.value)}
                             />
                         </div>
                         <div className={classes.password}>
                             <FormInput 
-                                    labelText='Password' 
-                                    type={isPasswordHidden ? 'password' : 'text'}
-                                    fontSize='medium'
-                                    validators={passwordValidators}
-                                    required
-                                    onChange={e=>setPassword(e.target.value)}
+                                labelText='Password' 
+                                type={isPasswordHidden ? 'password' : 'text'}
+                                fontSize='medium'
+                                validators={passwordValidators}
+                                required
+                                onChange={e=>setPassword(e.target.value)}
                             />
                         </div>
                     </div>
@@ -108,14 +108,14 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                         <label htmlFor="showpassword">Show Password</label>
                     </div>
                     <div className={classes.custombutton}>
-                        <button type="submit" onClick={onFormSubmit}>
+                        <button type="submit" >
                             Sign Up
                         </button>
                     </div>
                     {span && (
                         <Span className={classes.errorLabel} content={span} />
                     )}
-                </div>
+                </form>
             </div>
         </div>
     );
