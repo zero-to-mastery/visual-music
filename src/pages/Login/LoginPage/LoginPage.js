@@ -1,3 +1,15 @@
+/*
+ Main component for Login.
+
+ Allows users to input email address and password and click
+ Login button to submit the form
+
+ Current features:
+ 1. Input user email address
+ 2. Input user password
+ 3. Do not allow email address and password filed to be blank
+ 4. Validate email address and password field.
+*/
 import React from 'react';
 import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
@@ -33,19 +45,21 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     <div className={classes.emailGroup}>
                         <div className={classes.emailGroup}>
                             <FormInput 
-                                    labelText='Email address'
-                                    type="email"
-                                    validators={emailValidators}
-                                    onChange={e=>setEmail(e.target.value)}
+                                labelText='Email address'
+                                type="email"
+                                validators={emailValidators}
+                                onChange={e=>setEmail(e.target.value)}
+                                required
                                 />
                         </div>
                     </div>
                     <div className={classes.passwordGroup}>
                         <FormInput 
-                                    labelText='Password'
-                                    type="password"
-                                    validators={passwordValidators}
-                                    onChange={e=>setPassword(e.target.value)}
+                                labelText='Password'
+                                type="password"
+                                validators={passwordValidators}
+                                onChange={e=>setPassword(e.target.value)}                                    require
+                                required
                             />
                     </div>
                     <div className={classes.loginButtonGroup}>

@@ -13,7 +13,7 @@ import FormInput from '../../../components/units/FormInput/formInput.component';
  2. Input user email address
  3. Input user password
  4. Do not allow email address and password filed to be blank
-
+ 5. Validate name, email address and password field.
 */
 
 const nameValidators=[
