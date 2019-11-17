@@ -1,6 +1,6 @@
 // for notes, visit Login.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, cleanError } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
