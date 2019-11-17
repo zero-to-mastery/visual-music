@@ -16,21 +16,23 @@ import { Link } from 'react-router-dom';
 import Span from '../../../components/units/Span/Span';
 import FormInput from '../../../components/units/FormInput/formInput.component';
 
-const emailValidators=[
+const emailValidators = [
     {
-        validate:(value)=>{
-            return value.includes('@')&&((value.match(/@/g) || []).length===1);
+        validate: value => {
+            return (
+                value.includes('@') && (value.match(/@/g) || []).length === 1
+            );
         },
-        failMsg:'Email is not valid'
+        failMsg: 'Email is not valid'
     }
 ];
 
-const passwordValidators=[
+const passwordValidators = [
     {
-        validate:(value)=>{
-            return value.length >= 6?true:false;
+        validate: value => {
+            return value.length >= 6 ? true : false;
         },
-        failMsg:'Password is too short'
+        failMsg: 'Password is too short'
     }
 ];
 
@@ -44,23 +46,23 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.emailGroup}>
                         <div className={classes.emailGroup}>
-                            <FormInput 
-                                labelText='Email address'
+                            <FormInput
+                                labelText="Email address"
                                 type="email"
                                 validators={emailValidators}
-                                onChange={e=>setEmail(e.target.value)}
+                                onChange={e => setEmail(e.target.value)}
                                 required
-                                />
+                            />
                         </div>
                     </div>
                     <div className={classes.passwordGroup}>
-                        <FormInput 
-                            labelText='Password'
+                        <FormInput
+                            labelText="Password"
                             type="password"
                             validators={passwordValidators}
-                            onChange={e=>setPassword(e.target.value)}                                    
+                            onChange={e => setPassword(e.target.value)}
                             required
-                            />
+                        />
                     </div>
                     <div className={classes.loginButtonGroup}>
                         <button className={classes.loginButton} type="submite">

@@ -6,9 +6,7 @@ import { register, cleanError } from '../../store/actions/authActions';
 import { withRouter, Redirect } from 'react-router-dom';
 import RegisterPage from './RegisterPage/RegisterPage';
 
-
 function Register() {
-
     const uid = useSelector(state => state.firebase.auth.uid);
     const error = useSelector(state => state.authError);
 

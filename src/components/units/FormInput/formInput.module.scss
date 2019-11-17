@@ -56,7 +56,7 @@
         box-sizing: border-box;
         border-radius: 4px;
         font-weight: 600;
-        font-size: 2rem;
+        font-size: $largeFont;
 
         &.errorStyle{
             border: 2px solid red;
