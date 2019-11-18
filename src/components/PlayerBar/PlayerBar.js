@@ -18,6 +18,7 @@ import { ReactComponent as SnapshotIcon } from '../../assets/PlayerBarAssets/sna
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as SongIcon } from '../../assets/PlayerBarAssets/song-icon.svg';
+import { ReactComponent as RollingIcon } from '../../assets/LoadingAssets/Rolling.svg';
 import UploadButton from './UploadButton/UploadButton';
 import classes from './PlayerBar.module.scss';
 import DownloadButton from './DownloadButton/DownloadButton';
@@ -55,12 +56,20 @@ export default function PlayerBar(props) {
         uploadedSong,
         duration,
         onPlayPress,
+        playPressed,
         isPlaying,
-        isSongLoaded,
         onVolumeChange,
         songEnded
         // currentTime
     } = props;
+
+    let actionButton;
+
+    if (isPlaying) {
+        actionButton = pauseButton;
+    } else {
+        actionButton = <RollingIcon />;
+    }
 
     return (
         <div className={classes.playerBar}>
@@ -74,7 +83,7 @@ export default function PlayerBar(props) {
             </div>
             <div className={classes.playerControls}>
                 <div className={classes.playButton} onClick={onPlayPress}>
-                    {isPlaying && isSongLoaded ? pauseButton : <PlayIcon />}
+                    {playPressed ? actionButton : <PlayIcon />}
                 </div>
                 <div className={classes.controls}>
                     <span className={classes.progressTime}>0:00</span>

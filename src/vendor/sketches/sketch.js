@@ -9,7 +9,7 @@ export default function sketch(p) {
     let fft;
     let amplitude;
     let volume;
-    let isPlaying = false;
+    let playPressed = false;
 
     let width = 900;
     let height = 500;
@@ -59,7 +59,7 @@ export default function sketch(p) {
         audio.pause();
         audio.currentTime = 0;
         canvasStream = null;
-        isPlaying = false;
+        playPressed = false;
     }
 
     function download() {
@@ -106,7 +106,7 @@ export default function sketch(p) {
 
         // Function that get called when a song is loaded
         function loaded() {
-            isPlaying = props.isPlaying;
+            playPressed = props.playPressed;
             volume = props.volume;
             song.setVolume(parseFloat(volume));
             p.togglePlaying(song);
@@ -149,7 +149,7 @@ export default function sketch(p) {
                 audio.oncanplay = initAudioStream;
 
                 // Start p5 visualization when press the play button
-                if (props.isPlaying) {
+                if (props.playPressed) {
                     song = p.loadSound(props.uploadedSong, loaded);
                 }
             }
@@ -162,14 +162,14 @@ export default function sketch(p) {
     };
 
     p.togglePlaying = function(song) {
-        if (isPlaying && !song.isPlaying()) {
+        if (playPressed && !song.isPlaying()) {
             // Start audio to be recorded
             audio.play();
             // Start visualization base on the song
             song.play();
             // Record audio + visualization
             recordStream();
-        } else if (!isPlaying && song.isPlaying()) {
+        } else if (!playPressed && song.isPlaying()) {
             audio.pause();
             song.pause();
             mediaRecorder.pause();
