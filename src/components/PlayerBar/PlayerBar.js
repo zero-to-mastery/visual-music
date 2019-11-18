@@ -59,6 +59,7 @@ export default function PlayerBar(props) {
         isSongLoaded,
         onVolumeChange,
         songEnded
+        // currentTime
     } = props;
 
     return (
