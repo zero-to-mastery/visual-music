@@ -43,3 +43,5 @@
 [Matteo Angelotti](https://github.com/matteo1976)
 
 [Michael Donal](https://github.com/michaelbretagne)
+
+[Bo Zhao](https://github.com/zbc)
