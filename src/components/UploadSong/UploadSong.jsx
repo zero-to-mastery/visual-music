@@ -4,10 +4,10 @@ import { setSong, storeBlob } from '../../store/actions/songActions';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from '../../firebase/config';
 import classes from './UploadSong.module.scss';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import ProgressSpinner from '../ProgressSpinner/ProgressSpinner';
 
 function UploadSong() {
-    const [uploadStart, setUploadStart] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
     const dispatch = useDispatch();
 
     const uid = useSelector(state => state.firebase.auth.uid);
@@ -41,11 +41,10 @@ function UploadSong() {
 
     const handleUploadStart = blob => {
         dispatch(storeBlob(blob));
-        setUploadStart(true);
     };
 
     const handleProgress = progress => {
-        console.log(progress);
+        setUploadProgress(progress);
     };
 
     const handleUploadError = error => {
@@ -55,8 +54,8 @@ function UploadSong() {
 
     return (
         <div className={classes.boxStyle}>
-            {uploadStart ? (
-                <LoadingSpinner />
+            {uploadProgress !== 0 ? (
+                <ProgressSpinner percentage={uploadProgress} />
             ) : (
                 <div className={classes.uploadFunctionalityStyle}>
                     <button

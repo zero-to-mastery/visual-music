@@ -37,7 +37,7 @@ class ContactForm extends Component {
             span: (
                 <img
                     alt="loading"
-                    src={require('../../../../../assets/loading.svg')}
+                    src={require('../../../../../assets/LoadingAssets/LoadingBars.svg')}
                 />
             )
         });

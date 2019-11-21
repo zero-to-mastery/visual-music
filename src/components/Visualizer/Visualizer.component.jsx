@@ -41,7 +41,7 @@ class Visualizer extends React.Component {
     render() {
         const {
             volume,
-            isPlaying,
+            playPressed,
             uploadedSong,
             audioRef,
             downloadVisual,
@@ -61,7 +61,7 @@ class Visualizer extends React.Component {
                         <P5Wrapper
                             sketch={sketch}
                             volume={volume}
-                            isPlaying={isPlaying}
+                            playPressed={playPressed}
                             uploadedSong={uploadedSong}
                             canvasWidth={canvasWidth}
                             canvasHeight={canvasHeight}

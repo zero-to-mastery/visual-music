@@ -12,7 +12,7 @@ import VisualPanel from '../../components/VisualPanel/VisualPanel';
 export default function App({ song }) {
     // States
     const [uploadedSong, setUploadedSong] = useState(null);
-    const [isSongLoaded, setIsSongLoaded] = useState(false);
+    const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState('0:00');
     const [volume, setVolume] = useState(0.5);
@@ -29,10 +29,9 @@ export default function App({ song }) {
         setUploadedSong(song);
         setBlob(song.blob);
         setSongEnded(false);
-        setIsSongLoaded(true);
-
+        setPlayPressed(false);
+        setIsPlaying(false);
     }, [song]);
-
 
     /********************************************
         Handles changing of volume state upon
@@ -53,14 +52,19 @@ export default function App({ song }) {
     *********************************************/
     const onPlayPress = event => {
         if (uploadedSong) {
-            setIsPlaying(!isPlaying);
+            setPlayPressed(!playPressed);
         } else {
             alert('No file loaded');
         }
     };
 
+    const onAudioPlay = () => {
+        setIsPlaying(true);
+    };
+
     const onSongEnd = () => {
         setIsPlaying(false);
+        setPlayPressed(false);
         setSongEnded(true);
     };
 
@@ -105,10 +109,8 @@ export default function App({ song }) {
                         </div>
                         <Visualizer
                             volume={volume}
-                            isPlaying={isPlaying}
-                            uploadedSong={
-                                uploadedSong && uploadedSong.url
-                            }
+                            playPressed={playPressed}
+                            uploadedSong={uploadedSong && uploadedSong.url}
                             blob={blob}
                             audioRef={audioRef.current}
                             downloadVisual={songEnded && downloadState}
@@ -128,17 +130,21 @@ export default function App({ song }) {
                         ref={audioRef}
                         onEnded={onSongEnd}
                         onLoadedMetadata={handleMetadata}
+                        onPlay={onAudioPlay}
                     ></audio>
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar
-                        currentTime={audioRef.current && getTime(audioRef.current.currentTime)}
+                        currentTime={
+                            audioRef.current &&
+                            getTime(audioRef.current.currentTime)
+                        }
                         volume={volume}
                         onVolumeChange={onVolumeChange}
                         onPlayPress={onPlayPress}
+                        playPressed={playPressed}
                         isPlaying={isPlaying}
                         uploadedSong={uploadedSong}
-                        isSongLoaded={isSongLoaded}
                         duration={duration}
                         songEnded={songEnded}
                     />

@@ -1,0 +1,45 @@
+.notAnimated,
+.animated {
+    display: flex;
+    justify-content: space-around;
+}
+
+.animated {
+    animation: uploaded 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes uploaded {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}
+
+.circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.value {
+    position: absolute;
+    color: #ccc;
+    font-size: 2rem;
+    align-self: center;
+}
