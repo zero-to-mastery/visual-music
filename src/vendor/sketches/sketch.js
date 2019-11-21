@@ -23,9 +23,22 @@ export default function sketch(p) {
     let dest;
     let canvasStream;
     let audioStream;
-    let audio;
     let mediaRecorder;
     let recordedChunks = [];
+    let audio = document.getElementById('audio');
+
+    function initAudioStream(evt) {
+        if (!audioCtx) {
+            // Create a new audio context
+            audioCtx = new AudioContext();
+            // create a stream from the AudioContext
+            dest = audioCtx.createMediaStreamDestination();
+            audioStream = dest.stream;
+            // connect the audio element's output to the stream
+            sourceNode = audioCtx.createMediaElementSource(audio);
+            sourceNode.connect(dest);
+        }
+    }
 
     function recordStream() {
         if (canvasStream) {
@@ -91,19 +104,6 @@ export default function sketch(p) {
 
     //Custom redraw that will trigger upon state change
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
-        function initAudioStream(evt) {
-            if (!audioCtx) {
-                // Create a new audio context
-                audioCtx = new AudioContext();
-                // create a stream from the AudioContext
-                dest = audioCtx.createMediaStreamDestination();
-                audioStream = dest.stream;
-                // connect the audio element's output to the stream
-                sourceNode = audioCtx.createMediaElementSource(props.audioRef);
-                sourceNode.connect(dest);
-            }
-        }
-
         // Function that get called when a song is loaded
         function loaded() {
             playPressed = props.playPressed;
@@ -142,8 +142,7 @@ export default function sketch(p) {
                 recordedChunks = [];
                 canvasStream = null;
 
-                // Get the audio element from the DOM and add the blob as the source
-                audio = props.audioRef;
+                // Add audio source
                 audio.src = URL.createObjectURL(props.blob);
                 // Initialize audio context
                 audio.oncanplay = initAudioStream;

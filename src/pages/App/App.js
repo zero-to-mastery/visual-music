@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // import Error from '../../components/Error/Error';
 // import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
@@ -15,14 +15,13 @@ export default function App({ song }) {
     const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState('0:00');
+    const [currentTime, setCurrentTime] = useState('0:00');
     const [volume, setVolume] = useState(0.5);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
 
     const downloadState = useSelector(state => state.download.downloadState);
-    // Refs
-    const audioRef = useRef(null);
 
     // Effects
     useEffect(() => {
@@ -83,6 +82,10 @@ export default function App({ song }) {
         );
     };
 
+    const currentTimeHandler = e => {
+        setCurrentTime(getTime(e.target.currentTime));
+    };
+
     /********************************************
         Handle hamburger toggle callback. When 
         hamburger toggle's state changed, we need
@@ -112,7 +115,6 @@ export default function App({ song }) {
                             playPressed={playPressed}
                             uploadedSong={uploadedSong && uploadedSong.url}
                             blob={blob}
-                            audioRef={audioRef.current}
                             downloadVisual={songEnded && downloadState}
                         />
                     </div>
@@ -127,18 +129,15 @@ export default function App({ song }) {
                 <div>
                     <audio
                         id="audio"
-                        ref={audioRef}
                         onEnded={onSongEnd}
                         onLoadedMetadata={handleMetadata}
                         onPlay={onAudioPlay}
+                        onTimeUpdate={currentTimeHandler}
                     ></audio>
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar
-                        currentTime={
-                            audioRef.current &&
-                            getTime(audioRef.current.currentTime)
-                        }
+                        currentTime={currentTime}
                         volume={volume}
                         onVolumeChange={onVolumeChange}
                         onPlayPress={onPlayPress}

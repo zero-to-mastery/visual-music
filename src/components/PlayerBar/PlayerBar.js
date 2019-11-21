@@ -5,9 +5,9 @@
  Current features:
  1. Load audio file.
  2. Play/Pause audio.
+ 3. Download visualization
+ 4. Change volume
 
- TODO: - Change volume
- TODO: - Get song duration
  TODO: - Get current progress
  TODO: - Allow users to control the part of the song to be played
 
@@ -39,19 +39,8 @@ const pauseButton = (
     </svg>
 );
 
-/***********************************************************
- Parameters (src/pages/App/App.js):
- state:
- 1. volume
- 2. isPlaying
- 3. uploadedSong
- 4. isSongLoaded
-
- functions:
- 1.  onPlayPress
- *************************************************************/
-
 export default function PlayerBar(props) {
+    // Props from (src/pages/App/App.js):
     const {
         uploadedSong,
         duration,
@@ -59,12 +48,12 @@ export default function PlayerBar(props) {
         playPressed,
         isPlaying,
         onVolumeChange,
-        songEnded
-        // currentTime
+        songEnded,
+        currentTime
     } = props;
 
+    // Change play button to loading svg when loading on p5 sound
     let actionButton;
-
     if (isPlaying) {
         actionButton = pauseButton;
     } else {
@@ -86,12 +75,11 @@ export default function PlayerBar(props) {
                     {playPressed ? actionButton : <PlayIcon />}
                 </div>
                 <div className={classes.controls}>
-                    <span className={classes.progressTime}>0:00</span>
+                    <span className={classes.progressTime}>{currentTime}</span>
                     <div className={classes.slider}>
                         <div className={classes.progress} />
                     </div>
                     <span className={classes.progressTime}>
-                        {/* 0:00{' '} */}
                         {uploadedSong ? duration : '0:00'}
                     </span>
                 </div>
