@@ -100,6 +100,7 @@ export default function sketch(p) {
         amplitude = new p5.Amplitude(); // for the ellipses
         p.noFill();
         p.stroke(0, 100);
+        initAudioStream();
     };
 
     //Custom redraw that will trigger upon state change
@@ -144,8 +145,6 @@ export default function sketch(p) {
 
                 // Add audio source
                 audio.src = URL.createObjectURL(props.blob);
-                // Initialize audio context
-                audio.oncanplay = initAudioStream;
 
                 // Start p5 visualization when press the play button
                 if (props.playPressed) {

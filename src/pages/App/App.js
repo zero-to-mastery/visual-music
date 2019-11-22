@@ -14,8 +14,8 @@ export default function App({ song }) {
     const [uploadedSong, setUploadedSong] = useState(null);
     const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [duration, setDuration] = useState('0:00');
-    const [currentTime, setCurrentTime] = useState('0:00');
+    const [duration, setDuration] = useState(null);
+    const [currentTime, setCurrentTime] = useState(null);
     const [volume, setVolume] = useState(0.5);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
@@ -67,23 +67,15 @@ export default function App({ song }) {
         setSongEnded(true);
     };
 
-    /********************************************
-        Uploaded audio file duration converted in
-        to proper format e.g. 3:14
-    ********************************************/
+    // Set duration from audio event
     const handleMetadata = event => {
         const duration = event.currentTarget.duration;
-        setDuration(getTime(duration));
+        setDuration(duration);
     };
 
-    const getTime = dur => {
-        return (
-            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
-        );
-    };
-
-    const currentTimeHandler = e => {
-        setCurrentTime(getTime(e.target.currentTime));
+    // Set currentTime from audio event (onTimeUpdate)
+    const onTimeChange = e => {
+        setCurrentTime(e.target.currentTime);
     };
 
     /********************************************
@@ -132,7 +124,7 @@ export default function App({ song }) {
                         onEnded={onSongEnd}
                         onLoadedMetadata={handleMetadata}
                         onPlay={onAudioPlay}
-                        onTimeUpdate={currentTimeHandler}
+                        onTimeUpdate={onTimeChange}
                     ></audio>
                 </div>
                 <div className={classes.bar}>
