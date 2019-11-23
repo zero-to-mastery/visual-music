@@ -92,8 +92,8 @@ class ContactForm extends Component {
 
     validateForm(formValues) {
         const {name, email, message} = formValues;
-        var validationErrors = null;
-        var bValid = true;
+        let validationErrors = null;
+        let bValid = true;
 
         if(!name || name.length === 0){
             validationErrors = {name: "Name is required", ...validationErrors};
