@@ -55,11 +55,15 @@
         }
     }
 
-    .closeButton{
+    .closeButtonArea{
         width: 100%;
         text-align: right;
         padding-right: 3.5%;
         margin-bottom: 1%;
+
+        .closeButton{
+            cursor: pointer;
+        }
     }
 }
 

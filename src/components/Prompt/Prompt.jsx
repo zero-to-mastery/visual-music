@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../units/Button/Button';
 import {ReactComponent as CloseBtn} from '../../assets/PromptAssets/close.svg';
 
 import classes from './Prompt.module.scss';
@@ -27,8 +26,8 @@ const Prompt = ({title, message, onClosed})=>{
                         null
                     }
                 </div>
-                <div className={classes.closeButton}>
-                    <CloseBtn onClick={onClosed} />
+                <div className={classes.closeButtonArea}>
+                    <CloseBtn className={classes.closeButton} onClick={onClosed} />
                 </div>
             </div>
         </div>
