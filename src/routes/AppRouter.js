@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import TopNav from '../components/TopNav/TopNav';
 import AppBrowser from '../pages/App/AppBrowser';
 import LandingPage from '../pages/LandingPage/LandingPage';
+import {NewLandingPage} from '../pages/LandingPage/NewLandingPage';
 import Login from '../pages/Login/Login';
 import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
 import Register from '../pages/Register/Register';
@@ -13,7 +14,7 @@ export default function AppRouter() {
         <>
             <TopNav />{' '}
             <Switch>
-                <Route exact path="/" component={LandingPage} />{' '}
+                <Route exact path="/" component={NewLandingPage} />{' '}
                 <Route path="/login" component={Login} />{' '}
                 <Route path="/register" component={Register} />{' '}
                 <Route path="/app" component={AppBrowser} />{' '}

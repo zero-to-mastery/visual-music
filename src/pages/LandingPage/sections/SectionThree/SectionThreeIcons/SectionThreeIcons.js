@@ -29,30 +29,34 @@ const [linkedIn, github] = icons;
 
 const SectionThreeIcons = () => (
     <div className={classes.socialIcons}>
-
-        <ParallaxLayer
+        <span id={classes.github}>
+        {/* <ParallaxLayer
             offset={2.54}
             speed={0.5}
             id={classes.github}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
-        >
+        > */}
             <a href = "https://github.com/zero-to-mastery/visual-music" target="_blank" 
             rel="noopener noreferrer">
             <img src={github} alt="github" className={classes.socialIcon} />
             </a>
-        </ParallaxLayer>
+        {/* </ParallaxLayer> */}
+        </span>
 
-        <ParallaxLayer
+        {/* <ParallaxLayer
             offset={2.54}
             speed={0.6}
             id={classes.linkedIn}
             style={{ width: 'min-content', height: '0', zIndex: '99' }}
-        >
+        > */}
+        <span id={classes.linkedIn}>
+
             <a href = "https://www.linkedin.com/company/zerotomastery/" target="_blank"
-            rel="noopener noreferrer">
-            <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
-            </a>
-        </ParallaxLayer>
+                rel="noopener noreferrer">
+                <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
+                </a>
+        </span>
+        {/* </ParallaxLayer> */}
 
     </div>
 );

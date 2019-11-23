@@ -135,7 +135,7 @@ class ContactForm extends Component {
                         onChange={e => this.handleChange(e)}
                     ></textarea>
                 </label>
-                <Button type="submit" text="Send" btnClass="signUp" />
+                <Button type="submit" text="Send" btnClass="signUp" style={{width:'100px'}} />
                 {span && (
                     <Span
                         content={span}

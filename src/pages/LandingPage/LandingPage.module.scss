@@ -3,13 +3,15 @@ $medium: 620px;
 $medium-large: 978px;
 $large: 1052px;
 $x-large: 1200px;
+$bgImage:'../../assets/LandingPageAssets/bg-image2.gif';
 
 .landingPageBg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  position: relative;
+  top:130px;
+  padding: 20px;
+  display:flex;
+  flex-flow: column wrap;
+
   background-image: url('../../assets/LandingPageAssets/bg-image2.gif');
   background-position: center;
   background-size: cover;
@@ -18,7 +20,9 @@ $x-large: 1200px;
   color: #FFFFFF;
   background-color: rgba(0, 0, 0, 0.6);
   background-blend-mode: overlay;
+
 }
+
 
 // .landingPageBg::after,
 // .landingPageBg::before {
@@ -26,22 +30,115 @@ $x-large: 1200px;
 //   background-blend-mode: overlay;
 // }
 
-.contentWrapper {
-  width: auto;
+.contentWrapperZone1 {
+  width: auto;  
   margin: 0 8%;
   color: #FFFFFF;
-
-  @media only screen and (min-width: $medium) {
-    width: 40%;
-  }
+  
+  // @media only screen and (min-width: $medium) {
+  //   width: 40%;
+  // }
+  
 }
 
+.contentWrapperZone2 {
+  width: auto;  
+  margin: 0 8%;
+  color: #FFFFFF;
+  height: 500px;
+}
+
+
+/* Section Two Styles */
+.blackHairGirlWrapper {
+  width: 50%;
+  margin-right: 15%;
+  margin-left: auto;
+}
+
+.blackHairGirl {
+    /* position: relative; */
+    /* justify-self: start; */
+    /* flex: 1 0 auto; */
+    height: 350px;
+    /* height: 301px; */
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+.contentTextZone2{
+  width: 50%;
+}
+
+
+.item1{
+  margin-left: 3%;
+  height: 700px;
+  white-space: nowrap;
+  width: 90vw;
+  align-self: stretch;
+}
+.item2{
+  padding: 0px;
+  margin: 10px;
+  align-content: left;
+  justify-content: space-around;
+  /* align-self: stretch; */
+  display: flex;
+  width: 97vw;
+  flex-flow: row wrap;
+
+  .divInt{  
+    /*flex: 1 1 auto; */
+    padding: 5px;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    /* text-align: center; */  }
+  
+}
+
+
+.item3{
+  padding: 20px;
+  padding-bottom: 40px;
+  margin: 10px;
+  align-content: left;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  /* justify-items: stretch; */
+  align-content: stretch;
+  justify-items: stretch;
+  align-items: center;
+  .divInt1{  
+    grid-column: 1/2;
+    text-align: center;
+  }
+  .divInt2{  
+    margin-left: 15%;
+    grid-column: 2/3;
+  }
+
+  
+}
+.item4{
+  width: 100vw;
+  background:blue;
+}
+
+
 .heading {
+  padding-top:7%;
   font-size: 1.8rem;
   font-weight: 400;
+  width: 50vw;
+  border-bottom: 1.5px solid #FFFFFF;
 
   @media only screen and (min-width: $small) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   @media only screen and (min-width: $medium-large) {
@@ -56,21 +153,51 @@ $x-large: 1200px;
     font-size: 3.2rem;
   }
 }
-
 .tagline {
+  padding-top:5%;
  font-size: 1.5rem;
  font-weight: 300;
+ 
+
+  @media only screen and (min-width: $small) {
+    font-size: 0.8rem;
+  }
+
+  @media only screen and (min-width: $medium-large) {
+    font-size: 1rem;
+  }
+  @media only screen and (min-width: $large) {
+    font-size: 1.2rem;
+  }
+
+  @media only screen and (min-width: $x-large) {
+    font-size: 1.5rem;
+  }  
+};
+.socialIcons {
+  position: relative;
+  margin-left: 8%;
 }
 
-/* Section Two Styles */
-.blackHairGirlWrapper {
-  width: 35vw;
-  margin-right: 15%;
-  margin-left: auto;
+.socialIcon {
+  width: 5.5vh;
+  transition: all .3s;
+
+  &:hover {
+    cursor: pointer;
+    filter: drop-shadow(1px 4px 5px #ffffff93);
+    transform: translateY(-10%);
+  }
 }
 
-.blackHairGirl {
-  width: 100%;
-} 
+#github {
+  position: absolute;
+  left: 0;
+  z-index: 99;
+}
 
-
+#linkedIn {
+  position: absolute;
+  left: 5%;
+  z-index: 99;
+}

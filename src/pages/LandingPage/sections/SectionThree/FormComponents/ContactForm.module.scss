@@ -1,9 +1,9 @@
 .contactForm {
-    width: 66%;
+    // width: 66%;
     margin-left: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
     color: white;
 
     label {
@@ -29,9 +29,14 @@
         margin-top: 1%;
         border: none;
         border-radius: 2px;
+        #buttonSend{
+            width: 100px;
+        }
+    
     }
 
     #message {
         overflow: hidden;
     }
+    
 }
