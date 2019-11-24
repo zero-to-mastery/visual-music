@@ -16,8 +16,8 @@ import React, { Component } from 'react';
 import * as emailjs from 'emailjs-com';
 
 import classes from './ContactForm.module.scss';
-import Button from '../../../../../components/units/Button/Button';
-import Span from '../../../../../components/units/Span/Span';
+import Button from '../../../../components/units/Button/Button';
+import Span from '../../../../components/units/Span/Span';
 
 class ContactForm extends Component {
     constructor() {
@@ -37,7 +37,7 @@ class ContactForm extends Component {
             span: (
                 <img
                     alt="loading"
-                    src={require('../../../../../assets/loading.svg')}
+                    src={require('./../../../../assets/loading.svg')}
                 />
             )
         });

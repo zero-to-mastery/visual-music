@@ -1,185 +1,76 @@
-/*********************** 
-
-Main component for the Landing Page.
-Welcome users into the app and sign up new users.
-
-Current features:
-1. Scroll button to scroll to next section. 
-2. Sign Up form.
-
-
-
-
-
-
-
-
-
-
-************************/
-
-
-
-// da usare  
-// *******************sezione 1****************************************************
-// classes.landingPageBg}
-
-
-
-// <h2 className={`${classes.contentWrapper} ${classes.heading}`}>
-// Discover and Share Music Visualization
-// </h2>
-
-// <hr
-// style={{
-//     marginLeft: '8%',
-//     width: '30%',
-//     border: '2px solid white'
-// }}
-// />
-// <p className={`${classes.contentWrapper} ${classes.tagline}`}>
-// An app that converts your favoriet music pieces into visual
-// expresions.
-// </p>
-
-// <Button text="Get Started" btnClass="getStarted" to="visualizer" />
-
-// <Button text="Scroll" btnClass="scroll" />
-
-
-/**
- * *********************  sezione 2**********************************************
-            <hr
-                style={{
-                    marginLeft: '8%',
-                    width: '30%',
-                    border: '2px solid white'
-                }}
-            />
- 
-            <p className={`${classes.contentWrapper} ${classes.tagline}`}>
-                Collection of visual themes to transcribe the emotional and
-                rythmic effects of an uploaded mp3 song.
-            </p>
- 
-            <div className={classes.blackHairGirlWrapper}>
-                <img
-                    src={blackHairGirl}
-                    alt="black haired girl"
-                    className={classes.blackHairGirl}
-                />
-            </div>
- 
-            <Button text="Scroll" btnClass="scroll" />
- 
-
-
-            ******************************* sezione 3 *************************
-
-
-
-
-            <h2 className={`${classes.contentWrapper} ${classes.heading}`}>
-                Contact
-            </h2>
-
-            <hr
-                style={{
-                    marginLeft: '8%',
-                    width: '30%',
-                    border: '2px solid white'
-                }}
-            />
-
-            <p className={`${classes.contentWrapper} ${classes.tagline}`}>
-                Would you like to write us?
-            </p>
-            <Button text="Scroll" btnClass="scroll" />
-
-
- */
-
-
-
-
-
-
-
-import React, { Component } from 'react';
-import classes from './LandingPage.module.scss';
-
-import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
-
-import SectionOne from './sections/SectionOne/SectionOne';
-import SectionTwo from './sections/SectionTwo/SectionTwo';
-import SectionThree from './sections/SectionThree/SectionThree';
+import React, {PureComponent} from 'react';
+import classes from './NewLandingPage.module.scss';
 
 import blackHairGirl from '../../assets/LandingPageAssets/section-2/blackHairAndBubbles.png';
-import SectionThreeIcons from './sections/SectionThree/SectionThreeIcons/SectionThreeIcons';
-import Contactform from './sections/SectionThree/FormComponents/ContactForm'
+import SectionThreeIcons from './ContactComponents/SectionThreeIcons/SectionThreeIcons';
+import ContactForm from './ContactComponents/FormComponents/ContactForm';
+import  {Rotate, Roll, Fade} from'react-reveal';
 
 
-class LandingPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+export default class LandingPage extends PureComponent{
+    render(){
+        return(
+            <div className={classes.container}>
+                <Rotate bottom right>
+                <div className={`${classes.item} ${classes.item1}`}>
+                    <div className={classes.int1item1}>
+                        <div className={classes.myText}>
+                            <h2 className={classes.heading}>
+                                <p>Discover and Share </p>   
+                                <p>Music Visualization</p>
+                            </h2>
 
-    render() {
-        return (
-            <div className={classes.landingPageBg} >
-                <div className={classes.item1}>
-                    <h2 className={classes.heading}>
-                         <p>Discover and Share </p>   
-                        <p>Music Visualization</p>
-                    </h2>
-
-                    <p className={classes.tagline}>
-                         An app that converts your favoriet music pieces into visual
-                         expresions.
-                    </p>
-                </div>
-                <div className={classes.item2}>
-                    <div  className={classes.divInt}>
-                        <h2 >
-                            Best Experience
-                        </h2>
-                        <div className={`${classes.contentWrapper} ${classes.tagline}`}>
-                            <p>Collection of visual themes to transcribe the emotional and</p>
-                            <p>rythmic effects of an uploaded mp3 song. </p>
-
+                            <p className={classes.tagline}>
+                                An app that converts your favoriet music pieces into visual
+                                expresions.
+                            </p>
                         </div>
                     </div>
-                        <img
-                            src={blackHairGirl}
-                            alt="black haired girl"
-                            className={classes.blackHairGirl}
-                        />
                 </div>
-                <div className={classes.item3}>
-                    <div className={classes.divInt1}>
-                        <h2 >
-                            Contact
-                        </h2>
-                         <SectionThreeIcons /> 
+                </Rotate>
+      
+                <div className={`${classes.item} ${classes.item2}`}>
+                    <Roll right>
+
+                    <div className={classes.int1Item2}>
+                        <div className={classes.myText}>
+                            <h2 className={classes.heading} >
+                                Best Experience
+                            </h2>
+                            <div className={classes.tagline}>
+                                <p>Collection of visual themes to transcribe the emotional and</p>
+                                <p>rythmic effects of an uploaded mp3 song. </p>
+                            </div>
+                        </div>    
                     </div>
+                    </Roll>
 
-                    <div className={classes.divInt2}>
-                        <p className={classes.tagline}>
-                            Would you like to write us?
-                        </p>                    
-                         <Contactform /> 
-
-                    </div>
-
-
-
-
+                    <Roll left>
+                            <img 
+                                src={blackHairGirl}
+                                alt="blackHairGirl"
+                                className={`${classes.blackHairGirl} ${classes.int2Item2} `}
+                            />
+                    </Roll>
                 </div>
 
+                <div className={`${classes.item} ${classes.item3}`}>
+                    <Fade top>
+                    <div className={classes.int1Item3}>
+                        <h1 >Contact </h1>
+                        <SectionThreeIcons /> 
+                    </div>
+                    </Fade>
+                    <Fade Buttom>
+                    <div className={classes.int2Item3}>
+                    <h1 >Would you like to write us? </h1>
+                        <ContactForm/>
+                    </div>
+                    </Fade>
+      
+                  </div> 
+      
             </div>
-        );
+        )
     }
 }
-
-export default LandingPage;

@@ -1,17 +1,13 @@
-$small: 470px;
-$medium: 620px;
-$medium-large: 978px;
-$large: 1052px;
+$small: 320px;
+$medium: 480px;
+$medium-large: 640px;
+$large: 900px;
 $x-large: 1200px;
-$bgImage:'../../assets/LandingPageAssets/bg-image2.gif';
 
-.landingPageBg {
-  position: relative;
-  top:130px;
-  padding: 20px;
-  display:flex;
-  flex-flow: column wrap;
 
+
+body{
+  margin: 0 auto;
   background-image: url('../../assets/LandingPageAssets/bg-image2.gif');
   background-position: center;
   background-size: cover;
@@ -20,184 +16,147 @@ $bgImage:'../../assets/LandingPageAssets/bg-image2.gif';
   color: #FFFFFF;
   background-color: rgba(0, 0, 0, 0.6);
   background-blend-mode: overlay;
-
 }
 
 
-// .landingPageBg::after,
-// .landingPageBg::before {
-//   background-color: rgba(0, 0, 0, 0.6);
-//   background-blend-mode: overlay;
-// }
-
-.contentWrapperZone1 {
-  width: auto;  
-  margin: 0 8%;
-  color: #FFFFFF;
-  
-  // @media only screen and (min-width: $medium) {
-  //   width: 40%;
-  // }
-  
-}
-
-.contentWrapperZone2 {
-  width: auto;  
-  margin: 0 8%;
-  color: #FFFFFF;
-  height: 500px;
-}
-
-
-/* Section Two Styles */
-.blackHairGirlWrapper {
-  width: 50%;
-  margin-right: 15%;
-  margin-left: auto;
-}
-
-.blackHairGirl {
-    /* position: relative; */
-    /* justify-self: start; */
-    /* flex: 1 0 auto; */
-    height: 350px;
-    /* height: 301px; */
-    width: 400px;
-    padding: 10px;
-    margin: 10px;
-}
-
-
-.contentTextZone2{
-  width: 50%;
-}
-
-
-.item1{
-  margin-left: 3%;
-  height: 700px;
-  white-space: nowrap;
-  width: 90vw;
-  align-self: stretch;
-}
-.item2{
-  padding: 0px;
-  margin: 10px;
-  align-content: left;
-  justify-content: space-around;
-  /* align-self: stretch; */
+.container{
   display: flex;
-  width: 97vw;
   flex-flow: row wrap;
-
-  .divInt{  
-    /*flex: 1 1 auto; */
-    padding: 5px;
-    margin-top: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 3em;
-    /* text-align: center; */  }
-  
-}
-
-
-.item3{
-  padding: 20px;
-  padding-bottom: 40px;
-  margin: 10px;
-  align-content: left;
-  display: grid;
-  grid-template-columns: 35% 65%;
-  /* justify-items: stretch; */
-  align-content: stretch;
-  justify-items: stretch;
-  align-items: center;
-  .divInt1{  
-    grid-column: 1/2;
-    text-align: center;
-  }
-  .divInt2{  
-    margin-left: 15%;
-    grid-column: 2/3;
-  }
-
-  
-}
-.item4{
   width: 100vw;
-  background:blue;
+  
+
+    .myText{
+        
+        padding-left: 10vw;
+        padding-right: 20px;;
+
+        .heading {
+            font-size: 1.8rem;
+            font-weight: 400;
+            border-bottom: 1.5px solid #FFFFFF;
+          
+            @media only screen and (min-width: $small) {
+              font-size: 1.5rem;
+              
+            }
+          
+            @media only screen and (min-width: $medium-large) {
+              font-size: 2.4rem;
+            }
+          
+            @media only screen and (min-width: $large) {
+              font-size: 2.8rem;
+            }
+          
+            @media only screen and (min-width: $x-large) {
+              font-size: 3.2rem;
+            }
+          }
+          .tagline {
+           padding-top: 10px ;   
+           font-size: 1.5rem;
+           font-weight: 300;
+           
+          
+            @media only screen and (min-width: $small) {
+              font-size: 0.8rem;
+              
+            }
+          
+            @media only screen and (min-width: $medium-large) {
+              font-size: 1rem;
+            }
+            @media only screen and (min-width: $large) {
+              font-size: 1.2rem;
+            }
+          
+            @media only screen and (min-width: $x-large) {
+              font-size: 1.5rem;
+            }  
+          }
+    }
+
+    .item{
+      height: 500px;
+      flex:1 1 100%; 
+      min-width: 400px;
+      }
+    
+    .item1{
+      display: flex;
+      flex-flow: row wrap; 
+      width: 100vw;
+      height: 100vh;
+          -webkit-flex-flow:row nowrap;
+        -moz-flex-flow:row nowrap;
+        -ms-flex-flow: row nowrap;
+        -o-flex-flow:row nowrap;
+        .int1item1{
+          flex: 0 1 60%;
+          align-self: center;
+        }
+    }
+    
+    
+    
+    .item2{
+        height: 500px;
+        display: flex;
+        flex-flow: row wrap; 
+        margin-bottom: 100px;
+        
+        .int1Item2{
+            height: 20vh;
+            min-width: 200px; 
+            flex: 1 1 40%;
+            padding-top:5%;
+
+            h2{
+              width: 70%;
+            }
+          }
+        
+        .int2Item2{
+            padding:45px;
+            margin:auto;
+            text-align: center;
+            max-width: 600px;
+            min-width: 400px; 
+            flex: 1 1 60%;
+        }
+        
+    }
+    
+    
+    .item3{
+      height: 500px;
+      display: flex;
+      flex-flow: row wrap; 
+      margin: auto;
+  
+        .int1Item3{
+          min-width: 200px;
+          max-width: 400px;
+          flex: 1 1 30%;
+          margin-left: 15%;
+
+          h1{
+            margin-bottom: 15px;
+          }
+      }
+        
+        .int2Item3{
+
+          padding-left: 10%;
+          min-width: 400px;
+          /* max-width: 40%; */
+          flex: 1 1 55%;
+      }
+        
+    }
+    
+    
+
+
 }
 
-
-.heading {
-  padding-top:7%;
-  font-size: 1.8rem;
-  font-weight: 400;
-  width: 50vw;
-  border-bottom: 1.5px solid #FFFFFF;
-
-  @media only screen and (min-width: $small) {
-    font-size: 1.5rem;
-  }
-
-  @media only screen and (min-width: $medium-large) {
-    font-size: 2.4rem;
-  }
-
-  @media only screen and (min-width: $large) {
-    font-size: 2.8rem;
-  }
-
-  @media only screen and (min-width: $x-large) {
-    font-size: 3.2rem;
-  }
-}
-.tagline {
-  padding-top:5%;
- font-size: 1.5rem;
- font-weight: 300;
- 
-
-  @media only screen and (min-width: $small) {
-    font-size: 0.8rem;
-  }
-
-  @media only screen and (min-width: $medium-large) {
-    font-size: 1rem;
-  }
-  @media only screen and (min-width: $large) {
-    font-size: 1.2rem;
-  }
-
-  @media only screen and (min-width: $x-large) {
-    font-size: 1.5rem;
-  }  
-};
-.socialIcons {
-  position: relative;
-  margin-left: 8%;
-}
-
-.socialIcon {
-  width: 5.5vh;
-  transition: all .3s;
-
-  &:hover {
-    cursor: pointer;
-    filter: drop-shadow(1px 4px 5px #ffffff93);
-    transform: translateY(-10%);
-  }
-}
-
-#github {
-  position: absolute;
-  left: 0;
-  z-index: 99;
-}
-
-#linkedIn {
-  position: absolute;
-  left: 5%;
-  z-index: 99;
-}

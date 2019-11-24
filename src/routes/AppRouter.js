@@ -14,7 +14,7 @@ export default function AppRouter() {
         <>
             <TopNav />{' '}
             <Switch>
-                <Route exact path="/" component={NewLandingPage} />{' '}
+                <Route exact path="/" component={LandingPage} />{' '}
                 <Route path="/login" component={Login} />{' '}
                 <Route path="/register" component={Register} />{' '}
                 <Route path="/app" component={AppBrowser} />{' '}
