@@ -11,6 +11,10 @@ export default function sketch(p) {
     let volume;
     let playPressed = false;
 
+    let prevCueTime;
+    let newCueTime;
+    let jumpedSong;
+
     let width = 900;
     let height = 500;
     const divisions = 5;
@@ -57,6 +61,14 @@ export default function sketch(p) {
             mediaRecorder.ondataavailable = handleDataAvailable;
             // Stop mediaRecorder and reset audio when the song end
             audio.onended = endRecord;
+        }
+    }
+
+    function pauseAllMedia() {
+        audio.pause();
+        song.pause();
+        if (mediaRecorder.state === 'recording') {
+            mediaRecorder.pause();
         }
     }
 
@@ -108,8 +120,28 @@ export default function sketch(p) {
         // Function that get called when a song is loaded
         function loaded() {
             playPressed = props.playPressed;
+            newCueTime = parseInt(props.cueTime);
             volume = props.volume;
             song.setVolume(parseFloat(volume));
+
+            // Restart song where it was stopped if the user jump the song
+            song.playMode('restart');
+            // Jump song to desired time
+            if (newCueTime && newCueTime !== prevCueTime) {
+                // When jump func is called the song start playing automatically
+                song.jump(newCueTime);
+                audio.currentTime = newCueTime;
+                prevCueTime = newCueTime;
+                jumpedSong = true;
+            } else {
+                jumpedSong = false;
+            }
+
+            // Pause song if song was on pause before the jump function was called
+            if (!playPressed && jumpedSong) {
+                pauseAllMedia();
+            }
+
             p.togglePlaying(song);
         }
 
@@ -160,17 +192,23 @@ export default function sketch(p) {
     };
 
     p.togglePlaying = function(song) {
-        if (playPressed && !song.isPlaying()) {
+        // Use audio.paused instead of song.isPlaying. isPlaying is not always reliable
+        if (playPressed && audio.paused) {
             // Start audio to be recorded
             audio.play();
             // Start visualization base on the song
             song.play();
+            // Jump if the user clicked in the progress slider
+            song.jump(audio.currentTime);
             // Record audio + visualization
             recordStream();
-        } else if (!playPressed && song.isPlaying()) {
-            audio.pause();
-            song.pause();
-            mediaRecorder.pause();
+        } else if (!playPressed && !audio.paused) {
+            if (!song.isPlaying()) {
+                // P5 bug: sometime p5 show isPlaying = false instead of true
+                song.play();
+                song.pause();
+            }
+            pauseAllMedia();
         }
     };
 

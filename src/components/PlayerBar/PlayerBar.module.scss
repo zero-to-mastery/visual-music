@@ -93,7 +93,6 @@
     .slider {
         flex-grow: 1;
         background-color: rgba(255, 255, 255, 0.25);
-        cursor: pointer;
         position: relative;
         border-radius: 5px;
         height: 10px;
@@ -106,6 +105,12 @@
             position: absolute;
             pointer-events: none;
             height: 100%;
+        }
+
+        .rangeInput {
+            width: 100%;
+            opacity: 0;
+            cursor: pointer;
         }
     }
 }

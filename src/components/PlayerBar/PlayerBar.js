@@ -7,8 +7,7 @@
  2. Play/Pause audio.
  3. Download visualization
  4. Change volume
-
- TODO: - Allow users to control the part of the song to be played
+ 5. Control the part of the song to be played
 
  ************************************************************/
 
@@ -36,7 +35,8 @@ export default function PlayerBar(props) {
         isPlaying,
         onVolumeChange,
         songEnded,
-        currentTime
+        currentTime,
+        onCueTimeChange
     } = props;
 
     // Set formated duration
@@ -91,6 +91,15 @@ export default function PlayerBar(props) {
                         <div
                             className={classes.progress}
                             style={sliderProgressWidth}
+                        />
+                        <input
+                            className={classes.rangeInput}
+                            type="range"
+                            min="0"
+                            max={duration}
+                            step="1"
+                            name="cue"
+                            onClick={onCueTimeChange}
                         />
                     </div>
                     <span className={classes.progressTime}>

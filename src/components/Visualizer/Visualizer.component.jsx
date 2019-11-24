@@ -32,7 +32,14 @@ const Visualizer = React.memo(props => {
         setCanvasHeight(cHeight);
     };
 
-    const { volume, playPressed, uploadedSong, downloadVisual, blob } = props;
+    const {
+        volume,
+        cueTime,
+        playPressed,
+        uploadedSong,
+        downloadVisual,
+        blob
+    } = props;
 
     return (
         <Measure
@@ -53,6 +60,7 @@ const Visualizer = React.memo(props => {
                         downloadVisual={downloadVisual}
                         blob={blob}
                         dispatch={useDispatch()}
+                        cueTime={cueTime}
                     />
                 </div>
             )}

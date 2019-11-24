@@ -16,6 +16,7 @@ export default function App({ song }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(null);
     const [currentTime, setCurrentTime] = useState(null);
+    const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
@@ -78,6 +79,11 @@ export default function App({ song }) {
         setCurrentTime(e.target.currentTime);
     };
 
+    // Set cue time when users click on the progress slider (/PlayerBar.js)
+    const onCueTimeChange = e => {
+        setCueTime(e.target.value);
+    };
+
     /********************************************
         Handle hamburger toggle callback. When 
         hamburger toggle's state changed, we need
@@ -108,6 +114,7 @@ export default function App({ song }) {
                             uploadedSong={uploadedSong && uploadedSong.url}
                             blob={blob}
                             downloadVisual={songEnded && downloadState}
+                            cueTime={cueTime}
                         />
                     </div>
                     <div
@@ -138,6 +145,7 @@ export default function App({ song }) {
                         uploadedSong={uploadedSong}
                         duration={duration}
                         songEnded={songEnded}
+                        onCueTimeChange={onCueTimeChange}
                     />
                 </div>
             </div>
