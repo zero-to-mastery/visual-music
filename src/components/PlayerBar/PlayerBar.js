@@ -33,6 +33,7 @@ export default function PlayerBar(props) {
         onPlayPress,
         playPressed,
         isPlaying,
+        volume,
         onVolumeChange,
         songEnded,
         currentTime,
@@ -112,9 +113,10 @@ export default function PlayerBar(props) {
                         <input
                             type="range"
                             min="0"
-                            max="10"
-                            step="0.5"
+                            max="1"
+                            step="0.1"
                             name="volume"
+                            value={volume}
                             className={classes.volumeSlider}
                             onChange={onVolumeChange}
                         ></input>
