@@ -148,9 +148,11 @@ export default function sketch(p) {
         //We need to resize canvas
         //and set width property to new width
         //so drawing will base on this new width
-        width = props.canvasWidth;
-        height = props.canvasHeight;
-        p.resizeCanvas(width, height);
+        if (width !== props.canvasWidth || height !== props.canvasHeight) {
+            width = props.canvasWidth;
+            height = props.canvasHeight;
+            p.resizeCanvas(width, height);
+        }
 
         // Check for new uploaded song
         if (song) {
