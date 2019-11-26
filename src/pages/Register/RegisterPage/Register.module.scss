@@ -20,13 +20,13 @@
 
     .signup {
         width: 70%;
-        height: 70%;
         display: flex;
         flex-wrap: wrap;
 
         .headlines {
             width: 100%;
             height: 16.66%;
+            padding-bottom: 2%;
             color: white;
             display: flex;
             flex-wrap: wrap;
@@ -63,23 +63,24 @@
             flex-wrap: wrap;
             height: 30%;
             margin-top: 3.33%;
+            justify-content: flex-start;
         }
 
-        label {
-            width: 100%;
-            font-size: 15px;
-            line-height: 160%;
-            letter-spacing: 0.1em;
-            color: #ffffff;
-        }
+        // label {
+        //     width: 100%;
+        //     font-size: 15px;
+        //     line-height: 160%;
+        //     letter-spacing: 0.1em;
+        //     color: #ffffff;
+        // }
 
-        input {
-            background: #ffffff;
-            border: 2px solid #e6e6e6;
-            box-sizing: border-box;
-            border-radius: 4px;
-            width: 100%;
-        }
+        // input {
+        //     background: #ffffff;
+        //     border: 2px solid #e6e6e6;
+        //     box-sizing: border-box;
+        //     border-radius: 4px;
+        //     width: 100%;
+        // }
     }
 
     .errorLabel {
@@ -100,7 +101,6 @@
         align-items: center;
 
         input {
-            height: 50%;
             width: 5%;
         }
 
@@ -126,9 +126,11 @@
             color: #0d4e67;
             background: #ffffff;
             border-radius: 10px;
-            width: 20%;
+            width: 30%;
+            font-size: 1.1rem;
             border: none;
             outline: none;
+            padding: 1% 1%;
         }
     }
 }
