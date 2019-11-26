@@ -38,7 +38,6 @@
     cursor: pointer;
     position: relative;
     border-radius: 5px;
-    height: 10px;
     margin: 0 16px;
 }
 
@@ -93,19 +92,24 @@
     .slider {
         flex-grow: 1;
         background-color: rgba(255, 255, 255, 0.25);
-        cursor: pointer;
         position: relative;
         border-radius: 5px;
         height: 10px;
         margin: 0 16px;
+        overflow: hidden;
 
         .progress {
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: inherit;
             position: absolute;
             pointer-events: none;
-            width: 0;
             height: 100%;
+        }
+
+        .rangeInput {
+            width: 100%;
+            opacity: 0;
+            cursor: pointer;
         }
     }
 }
@@ -176,6 +180,7 @@
 @media only screen and (max-width: 900px) {
     .playerBarRight {
         width: 30%;
+
         .download {
             width: 50%;
         }
@@ -192,6 +197,7 @@
 }
 
 @media screen and (max-width: 700px) {
+
     .icon,
     .volumeButton,
     .playerBarRight .download {
