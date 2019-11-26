@@ -1,21 +1,88 @@
-.forgotPasswordEmailInput,
-.forgotPasswordEmailLabel {
+// .forgotPasswordEmailInput,
+// .forgotPasswordEmailLabel {
+//     width: 100%;
+//     font-size: 1rem;
+// }
+
+// .forgotPasswordEmailLabel {
+//     margin-top: 12px;
+// }
+
+// .forgotPasswordEmailInput {
+//     border: none;
+//     border-radius: 5px;
+//     padding: 0 6px;
+//     line-height: 1.5rem;
+//     color: rgb(12, 58, 80)
+// }
+
+
+.formInputOverlay{
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    font-size: 1rem;
+
+    .errorMessage{
+        font-size: 1rem;
+        color: red;
+        text-align: left;
+    }
 }
 
-.forgotPasswordEmailLabel {
-    margin-top: 12px;
-}
+.inputGroup{
+    display: flex;
+    flex-direction: column;
 
-.forgotPasswordEmailInput {
-    border: none;
-    border-radius: 5px;
-    padding: 0 6px;
-    line-height: 1.5rem;
-    color: rgb(12, 58, 80)
-}
+    input[type='password'] {
+        letter-spacing: 0.3em;
+    }
 
-input[type='password'] {
-    letter-spacing: 0.3em
+    .labelOverlay{
+        font-family: Biryani;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 160%;
+        letter-spacing: 0.1em;
+        color:#ffffff;
+    }
+
+    $largeFont: 2rem;
+    $mediumFont: 1.5rem;
+    $smallFont: 0.3rem;
+    .inputField{
+        outline: none;
+        background: #ffffff;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: $largeFont;
+
+        &.errorStyle{
+            border: 2px solid red;
+        }
+
+        &.large{
+            font-size: $largeFont;
+        }
+
+        &.medium{
+            font-size: $mediumFont;
+        }
+
+        &.small{
+            font-size: 0.3rem;
+        }
+    }
+
+    &.inlineStyle{
+        flex-direction: row;
+    
+        .labelOverlay{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.5%;
+        }
+    }
 }

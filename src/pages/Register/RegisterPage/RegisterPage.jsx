@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Register.module.scss';
 import Span from '../../../components/units/Span/Span';
+import FormInput from '../../../components/units/FormInput/formInput.component';
 /*
  Main component for Signup.
 
@@ -12,8 +13,41 @@ import Span from '../../../components/units/Span/Span';
  2. Input user email address
  3. Input user password
  4. Do not allow email address and password filed to be blank
-
+ 5. Validate name, email address and password field.
 */
+
+const nameValidators=[
+    {
+        validate:(value)=>{
+            return value.length >= 2?true:false;
+        },
+        failMsg:'Name is too short'
+    },
+    {
+        validate:(value)=>{
+            return value.length <= 15?true:false;
+        },
+        failMsg:'Name is too long'
+    }
+];
+
+const emailValidators=[
+    {
+        validate:(value)=>{
+            return value.includes('@')&&((value.match(/@/g) || []).length===1);
+        },
+        failMsg:'Email is not valid'
+    }
+];
+
+const passwordValidators=[
+    {
+        validate:(value)=>{
+            return value.length >= 6?true:false;
+        },
+        failMsg:'Password is too short'
+    }
+];
 
 function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
     const [isPasswordHidden, setIsPasswordHidden] = React.useState(true);
@@ -21,7 +55,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
     return (
         <div className={classes.signupcomponent}>
             <div className={classes.container}>
-                <div className={classes.signup}>
+                <form className={classes.signup} onSubmit={onFormSubmit}>
                     <div className={classes.headlines}>
                         <h2 className={classes.headline}>
                             Welcome to Visual Music!
@@ -32,39 +66,33 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.searchfields}>
                         <div className={classes.name}>
-                            <label htmlFor="name">Name</label>
-                            <input
+                            <FormInput 
+                                labelText='Name'
                                 type="text"
-                                name="name"
-                                id="name"
+                                fontSize='medium'
+                                validators={nameValidators}
                                 required
-                                onChange={e => {
-                                    setName(e.target.value);
-                                }}
-                            />
-                        </div>
+                                onChange={e=>setName(e.target.value)}
+                                />
+                            </div>
                         <div className={classes.email}>
-                            <label htmlFor="Email">Email Address</label>
-                            <input
+                            <FormInput 
+                                labelText='Email' 
                                 type="email"
-                                name="email"
-                                id="email"
+                                fontSize='medium'
+                                validators={emailValidators}
                                 required
-                                onChange={e => {
-                                    setEmail(e.target.value);
-                                }}
+                                onChange={e=>setEmail(e.target.value)}
                             />
                         </div>
                         <div className={classes.password}>
-                            <label htmlFor="password">Password</label>
-                            <input
+                            <FormInput 
+                                labelText='Password' 
                                 type={isPasswordHidden ? 'password' : 'text'}
-                                name="password"
-                                id="password"
+                                fontSize='medium'
+                                validators={passwordValidators}
                                 required
-                                onChange={e => {
-                                    setPassword(e.target.value);
-                                }}
+                                onChange={e=>setPassword(e.target.value)}
                             />
                         </div>
                     </div>
@@ -80,14 +108,14 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                         <label htmlFor="showpassword">Show Password</label>
                     </div>
                     <div className={classes.custombutton}>
-                        <button type="submit" onClick={onFormSubmit}>
+                        <button type="submit" >
                             Sign Up
                         </button>
                     </div>
                     {span && (
                         <Span className={classes.errorLabel} content={span} />
                     )}
-                </div>
+                </form>
             </div>
         </div>
     );

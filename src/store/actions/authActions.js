@@ -15,7 +15,7 @@ export const register = newUser => {
                     });
             })
             .then(() => {
-                dispatch({ type: 'REGISTER' });
+                dispatch({ type: 'ERROR_CLEARED' });
             })
             .catch(err => {
                 dispatch({
@@ -33,7 +33,7 @@ export const logIn = credentials => {
             .auth()
             .signInWithEmailAndPassword(credentials.email, credentials.password)
             .then(() => {
-                dispatch({ type: 'LOGIN_WITH_CREDENTIALS' });
+                dispatch({ type: 'ERROR_CLEARED' });
             })
             .catch(err => {
                 dispatch({
