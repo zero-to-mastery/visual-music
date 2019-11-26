@@ -6,7 +6,6 @@ Created as a class component to acommodate for form validation and API requests.
 Current features:
 1. Non functioning contact form with Name, Email and Message inputs, and a submit button.
 
-TODO: - Implement form validation.
 TODO: - Implement API request.
 TODO: - Responsive to screen size.
 
@@ -26,13 +25,14 @@ class ContactForm extends Component {
             name: '',
             email: '',
             message: '',
-            span: null
+            span: null,
+            errors: null
         };
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const { name, email, message } = this.state;
+        const { name, email, message} = this.state;
         this.setState({
             span: (
                 <img
@@ -42,7 +42,7 @@ class ContactForm extends Component {
             )
         });
         //add this simple check for begging -
-        if (name.length > 0 && email.length > 0 && message.length > 0) {
+        if (this.validateForm({name,email,message})) {
             let templateParams = {
                 name: name,
                 email: email,
@@ -73,9 +73,9 @@ class ContactForm extends Component {
                 });
         } else {
             this.setState({
-                span: 'unsuccessful attempt',
-                dynamicColor: 'red'
-            });
+                span: null,
+                dynamicColor: ''
+            })
         }
     }
 
@@ -85,8 +85,39 @@ class ContactForm extends Component {
             name: '',
             email: '',
             subject: '',
-            message: ''
+            message: '',
+            errors: null
         });
+    }
+
+    validateForm(formValues) {
+        const {name, email, message} = formValues;
+        let validationErrors = null;
+        let bValid = true;
+
+        if(!name || name.length === 0){
+            validationErrors = {name: "Name is required", ...validationErrors};
+            bValid = false;
+        }
+
+        if(!email || email.length === 0){
+            validationErrors = {email: "Email Address is required", ...validationErrors};
+            bValid = false;
+        } else if(!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)){
+            validationErrors = {email: "Email Address is invalid", ...validationErrors};
+            bValid = false; 
+        }
+
+        if(!message || message.length === 0){
+            validationErrors = {message: "Message is required", ...validationErrors};
+            bValid = false;
+        }
+
+        this.setState({
+            errors: validationErrors
+        })
+
+        return bValid;
     }
 
     handleChange = e => {
@@ -112,6 +143,8 @@ class ContactForm extends Component {
                         id="name"
                         onChange={e => this.handleChange(e)}
                     />
+                    <Span content={this.state.errors && this.state.errors.name}
+                          className={classes.validationError}/>
                 </label>
                 <label>
                     Email address
@@ -123,6 +156,8 @@ class ContactForm extends Component {
                         id="email"
                         onChange={e => this.handleChange(e)}
                     />
+                    <Span content={this.state.errors && this.state.errors.email}
+                          className={classes.validationError}/>
                 </label>
                 <label>
                     Message
@@ -134,6 +169,8 @@ class ContactForm extends Component {
                         id="message"
                         onChange={e => this.handleChange(e)}
                     ></textarea>
+                    <Span content={this.state.errors && this.state.errors.message}
+                          className={classes.validationError}/>
                 </label>
                 <Button type="submit" text="Send" btnClass="signUp" />
                 {span && (
