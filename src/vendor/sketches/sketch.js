@@ -191,6 +191,11 @@ export default function sketch(p) {
             download();
             props.dispatch(downloadVisualEnd());
         }
+
+        if (props.takeScreenshot) {
+            let screenshotUrl = p.canvas.toDataURL();
+            console.log(screenshotUrl);
+        }
     };
 
     p.togglePlaying = function(song) {

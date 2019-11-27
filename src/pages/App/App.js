@@ -18,13 +18,14 @@ export default function App({ song }) {
     const [currentTime, setCurrentTime] = useState(null);
     const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
+    const [takeScreenshot, setTakeScreenshot] = useState(false);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
 
     const downloadState = useSelector(state => state.download.downloadState);
 
-    // Effects
+    // Update state when a new song is uploaded
     useEffect(() => {
         setUploadedSong(song);
         setBlob(song.blob);
@@ -93,6 +94,11 @@ export default function App({ song }) {
         setTogglePanel(toggleState);
     };
 
+    //
+    const onScreenshotClick = () => {
+        setTakeScreenshot(true);
+    };
+
     return (
         <div className={classes.pageContainer}>
             <div className={classes.visualmusic}>
@@ -110,6 +116,7 @@ export default function App({ song }) {
                         </div>
                         <Visualizer
                             volume={volume}
+                            takeScreenshot={takeScreenshot}
                             playPressed={playPressed}
                             uploadedSong={uploadedSong && uploadedSong.url}
                             blob={blob}
@@ -139,6 +146,7 @@ export default function App({ song }) {
                         currentTime={currentTime}
                         volume={volume}
                         onVolumeChange={onVolumeChange}
+                        onScreenshotClick={onScreenshotClick}
                         onPlayPress={onPlayPress}
                         playPressed={playPressed}
                         isPlaying={isPlaying}

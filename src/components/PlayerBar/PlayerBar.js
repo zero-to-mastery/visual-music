@@ -35,6 +35,7 @@ export default function PlayerBar(props) {
         isPlaying,
         volume,
         onVolumeChange,
+        onScreenshotClick,
         songEnded,
         currentTime,
         onCueTimeChange
@@ -126,7 +127,7 @@ export default function PlayerBar(props) {
             <div className={classes.playerBarRight}>
                 <div className={classes.download}>
                     <div className={classes.snapshotButton}>
-                        <SnapshotIcon />
+                        <SnapshotIcon onClick={onScreenshotClick} />
                     </div>
                     <div className={classes.downloadButton}>
                         <DownloadButton
