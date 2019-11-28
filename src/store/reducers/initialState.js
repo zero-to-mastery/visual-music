@@ -5,5 +5,6 @@ export default {
         name: null,
         blob: null
     },
-    downloadState: false
+    downloadState: false,
+    screenshotUrl: ''
 };

@@ -3,6 +3,7 @@ import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 
 import { downloadVisualEnd } from '../../store/actions/downloadActions';
+import { getScreenshotUrl } from '../../store/actions/screenshotActions';
 
 export default function sketch(p) {
     let song;
@@ -194,7 +195,7 @@ export default function sketch(p) {
 
         if (props.takeScreenshot) {
             let screenshotUrl = p.canvas.toDataURL();
-            console.log(screenshotUrl);
+            props.dispatch(getScreenshotUrl(screenshotUrl));
         }
     };
 

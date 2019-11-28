@@ -1,0 +1,35 @@
+@import '../../globalScss/variables.scss';
+
+.showModal,
+.hideModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+  transition: all 0.5s;
+
+  .image {
+    width: 60%;
+    height: 60%;
+    align-self: center;
+  }
+}
+
+.showModal {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.hideModal {
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+}

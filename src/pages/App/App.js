@@ -8,6 +8,7 @@ import classes from './App.module.scss';
 
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
+import ScreenshotModal from '../../components/ScreenshotModal/ScreenshotModal';
 
 export default function App({ song }) {
     // States
@@ -23,7 +24,8 @@ export default function App({ song }) {
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
 
-    const downloadState = useSelector(state => state.download.downloadState);
+    const { downloadState } = useSelector(state => state.download);
+    const { screenshotUrl } = useSelector(state => state.screenshot);
 
     // Update state when a new song is uploaded
     useEffect(() => {
@@ -94,7 +96,7 @@ export default function App({ song }) {
         setTogglePanel(toggleState);
     };
 
-    //
+    // Sent info to visualizer.js then sketch.js to take a screenshot
     const onScreenshotClick = () => {
         setTakeScreenshot(true);
     };
@@ -157,6 +159,7 @@ export default function App({ song }) {
                     />
                 </div>
             </div>
+            <ScreenshotModal screenshotUrl={screenshotUrl} />
         </div>
     );
 }
