@@ -13,12 +13,44 @@
   justify-content: center;
   flex-direction: column;
   z-index: 10;
-  transition: all 0.5s;
+  transition: all 0.3s linear;
 
   .image {
     width: 60%;
     height: 60%;
     align-self: center;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    margin: 2rem;
+    align-self: center;
+
+    .shareOption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      font-weight: 900;
+      color: $white;
+      cursor: pointer;
+
+      &:active {
+        color: #ccc;
+
+        svg {
+          fill: #ccc;
+        }
+      }
+
+      .shareIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        margin-left: 1rem;
+      }
+    }
   }
 }
 

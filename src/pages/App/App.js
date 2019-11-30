@@ -19,13 +19,15 @@ export default function App({ song }) {
     const [currentTime, setCurrentTime] = useState(null);
     const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
-    const [takeScreenshot, setTakeScreenshot] = useState(false);
+    // const [takeScreenshot, setTakeScreenshot] = useState(false);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
 
     const { downloadState } = useSelector(state => state.download);
-    const { screenshotUrl } = useSelector(state => state.screenshot);
+    const { screenshotUrl, takeScreenshot } = useSelector(
+        state => state.screenshot
+    );
 
     // Update state when a new song is uploaded
     useEffect(() => {
@@ -96,70 +98,66 @@ export default function App({ song }) {
         setTogglePanel(toggleState);
     };
 
-    // Sent info to visualizer.js then sketch.js to take a screenshot
-    const onScreenshotClick = () => {
-        setTakeScreenshot(true);
-    };
-
     return (
-        <div className={classes.pageContainer}>
-            <div className={classes.visualmusic}>
-                <div className={classes.visualContainer}>
-                    <div
-                        className={`${classes.visualmusic} ${
-                            togglePanel ? classes.shrink : ''
-                        }`}
-                    >
-                        <div className={classes.hamburger}>
-                            <HamburgerToggle
-                                initToggle={togglePanel}
-                                onClick={onTogglePanel}
+        <>
+            <div className={classes.pageContainer}>
+                <div className={classes.visualmusic}>
+                    <div className={classes.visualContainer}>
+                        <div
+                            className={`${classes.visualmusic} ${
+                                togglePanel ? classes.shrink : ''
+                            }`}
+                        >
+                            <div className={classes.hamburger}>
+                                <HamburgerToggle
+                                    initToggle={togglePanel}
+                                    onClick={onTogglePanel}
+                                />
+                            </div>
+                            <Visualizer
+                                volume={volume}
+                                takeScreenshot={takeScreenshot}
+                                playPressed={playPressed}
+                                uploadedSong={uploadedSong && uploadedSong.url}
+                                blob={blob}
+                                downloadVisual={songEnded && downloadState}
+                                cueTime={cueTime}
                             />
                         </div>
-                        <Visualizer
+                        <div
+                            className={`${classes.visualPanel} ${
+                                togglePanel ? classes.slideIn : ''
+                            }`}
+                        >
+                            <VisualPanel />
+                        </div>
+                    </div>
+                    <div>
+                        <audio
+                            id="audio"
+                            onEnded={onSongEnd}
+                            onLoadedMetadata={handleMetadata}
+                            onPlay={onAudioPlay}
+                            onTimeUpdate={onTimeChange}
+                        ></audio>
+                    </div>
+                    <div className={classes.bar}>
+                        <PlayerBar
+                            currentTime={currentTime}
                             volume={volume}
-                            takeScreenshot={takeScreenshot}
+                            onVolumeChange={onVolumeChange}
+                            onPlayPress={onPlayPress}
                             playPressed={playPressed}
-                            uploadedSong={uploadedSong && uploadedSong.url}
-                            blob={blob}
-                            downloadVisual={songEnded && downloadState}
-                            cueTime={cueTime}
+                            isPlaying={isPlaying}
+                            uploadedSong={uploadedSong}
+                            duration={duration}
+                            songEnded={songEnded}
+                            onCueTimeChange={onCueTimeChange}
                         />
                     </div>
-                    <div
-                        className={`${classes.visualPanel} ${
-                            togglePanel ? classes.slideIn : ''
-                        }`}
-                    >
-                        <VisualPanel />
-                    </div>
-                </div>
-                <div>
-                    <audio
-                        id="audio"
-                        onEnded={onSongEnd}
-                        onLoadedMetadata={handleMetadata}
-                        onPlay={onAudioPlay}
-                        onTimeUpdate={onTimeChange}
-                    ></audio>
-                </div>
-                <div className={classes.bar}>
-                    <PlayerBar
-                        currentTime={currentTime}
-                        volume={volume}
-                        onVolumeChange={onVolumeChange}
-                        onScreenshotClick={onScreenshotClick}
-                        onPlayPress={onPlayPress}
-                        playPressed={playPressed}
-                        isPlaying={isPlaying}
-                        uploadedSong={uploadedSong}
-                        duration={duration}
-                        songEnded={songEnded}
-                        onCueTimeChange={onCueTimeChange}
-                    />
                 </div>
             </div>
             <ScreenshotModal screenshotUrl={screenshotUrl} />
-        </div>
+        </>
     );
 }

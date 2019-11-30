@@ -1,0 +1,34 @@
+.socialIconsContainer {
+  display: flex;
+  justify-content: space-evenly;
+
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #0B4E67,
+  }
+
+  .socialIcon {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .1s;
+
+    &:active {
+      background-color: #ccc;
+    }
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+}
+
+.backToPlayer {
+  position: absolute;
+  right: 4rem;
+  bottom: 3rem;
+}

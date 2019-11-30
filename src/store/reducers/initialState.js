@@ -6,5 +6,8 @@ export default {
         blob: null
     },
     downloadState: false,
-    screenshotUrl: ''
+    screenshot: {
+        takeScreenshot: false,
+        screenshotUrl: ''
+    }
 };

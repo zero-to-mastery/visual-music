@@ -1,13 +1,20 @@
 import initialState from './initialState';
 
-export const screenshotReducer = (
-    state = initialState.screenshotUrl,
-    action
-) => {
+export const screenshotReducer = (state = initialState.screenshot, action) => {
     switch (action.type) {
-        case 'GET_SCREENSHOT_URL':
-            console.log(action.screenshotUrl);
+        case 'TAKE_SCREENSHOT':
             return {
+                ...state,
+                takeScreenshot: true
+            };
+
+        case 'TAKE_SCREENSHOT_ERR':
+            console.log(action.err);
+            break;
+
+        case 'GET_SCREENSHOT_URL':
+            return {
+                ...state,
                 screenshotUrl: action.screenshotUrl
             };
 
@@ -15,12 +22,14 @@ export const screenshotReducer = (
             console.log(action.err);
             break;
 
-        case 'CLEAR_SCREENSHOT_URL':
+        case 'CLEAR_SCREENSHOT':
             return {
-                screenshotUrl: ''
+                ...state,
+                screenshotUrl: '',
+                takeScreenshot: false
             };
 
-        case 'CLEAR_SCREENSHOT_URL_ERR':
+        case 'CLEAR_SCREENSHOT_ERR':
             console.log(action.err);
             break;
 
