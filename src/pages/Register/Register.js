@@ -17,6 +17,8 @@ function Register() {
     const [password, setPassword] = useState('');
     const [span, setSpan] = useState(null);
 
+    console.log(name);
+
     const onFormSubmit = event => {
         event.preventDefault();
         dispatch(cleanError());

@@ -11,6 +11,10 @@ export default function sketch(p) {
     let volume;
     let playPressed = false;
 
+    let prevCueTime;
+    let newCueTime;
+    let jumpedSong;
+
     let width = 900;
     let height = 500;
     const divisions = 5;
@@ -23,9 +27,22 @@ export default function sketch(p) {
     let dest;
     let canvasStream;
     let audioStream;
-    let audio;
     let mediaRecorder;
     let recordedChunks = [];
+    let audio = document.getElementById('audio');
+
+    function initAudioStream(evt) {
+        if (!audioCtx) {
+            // Create a new audio context
+            audioCtx = new AudioContext();
+            // create a stream from the AudioContext
+            dest = audioCtx.createMediaStreamDestination();
+            audioStream = dest.stream;
+            // connect the audio element's output to the stream
+            sourceNode = audioCtx.createMediaElementSource(audio);
+            sourceNode.connect(dest);
+        }
+    }
 
     function recordStream() {
         if (canvasStream) {
@@ -44,6 +61,14 @@ export default function sketch(p) {
             mediaRecorder.ondataavailable = handleDataAvailable;
             // Stop mediaRecorder and reset audio when the song end
             audio.onended = endRecord;
+        }
+    }
+
+    function pauseAllMedia() {
+        audio.pause();
+        song.pause();
+        if (mediaRecorder.state === 'recording') {
+            mediaRecorder.pause();
         }
     }
 
@@ -87,37 +112,47 @@ export default function sketch(p) {
         amplitude = new p5.Amplitude(); // for the ellipses
         p.noFill();
         p.stroke(0, 100);
+        initAudioStream();
     };
 
     //Custom redraw that will trigger upon state change
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
-        function initAudioStream(evt) {
-            if (!audioCtx) {
-                // Create a new audio context
-                audioCtx = new AudioContext();
-                // create a stream from the AudioContext
-                dest = audioCtx.createMediaStreamDestination();
-                audioStream = dest.stream;
-                // connect the audio element's output to the stream
-                sourceNode = audioCtx.createMediaElementSource(props.audioRef);
-                sourceNode.connect(dest);
-            }
-        }
-
         // Function that get called when a song is loaded
         function loaded() {
             playPressed = props.playPressed;
+            newCueTime = parseInt(props.cueTime);
             volume = props.volume;
             song.setVolume(parseFloat(volume));
+
+            // Restart song where it was stopped if the user jump the song
+            song.playMode('restart');
+            // Jump song to desired time
+            if (newCueTime && newCueTime !== prevCueTime) {
+                // When jump func is called the song start playing automatically
+                song.jump(newCueTime);
+                audio.currentTime = newCueTime;
+                prevCueTime = newCueTime;
+                jumpedSong = true;
+            } else {
+                jumpedSong = false;
+            }
+
+            // Pause song if song was on pause before the jump function was called
+            if (!playPressed && jumpedSong) {
+                pauseAllMedia();
+            }
+
             p.togglePlaying(song);
         }
 
         //We need to resize canvas
         //and set width property to new width
         //so drawing will base on this new width
-        width = props.canvasWidth;
-        height = props.canvasHeight;
-        p.resizeCanvas(width, height);
+        if (width !== props.canvasWidth || height !== props.canvasHeight) {
+            width = props.canvasWidth;
+            height = props.canvasHeight;
+            p.resizeCanvas(width, height);
+        }
 
         // Check for new uploaded song
         if (song) {
@@ -142,11 +177,8 @@ export default function sketch(p) {
                 recordedChunks = [];
                 canvasStream = null;
 
-                // Get the audio element from the DOM and add the blob as the source
-                audio = props.audioRef;
+                // Add audio source
                 audio.src = URL.createObjectURL(props.blob);
-                // Initialize audio context
-                audio.oncanplay = initAudioStream;
 
                 // Start p5 visualization when press the play button
                 if (props.playPressed) {
@@ -162,17 +194,23 @@ export default function sketch(p) {
     };
 
     p.togglePlaying = function(song) {
-        if (playPressed && !song.isPlaying()) {
+        // Use audio.paused instead of song.isPlaying. isPlaying is not always reliable
+        if (playPressed && audio.paused) {
             // Start audio to be recorded
             audio.play();
             // Start visualization base on the song
             song.play();
+            // Jump if the user clicked in the progress slider
+            song.jump(audio.currentTime);
             // Record audio + visualization
             recordStream();
-        } else if (!playPressed && song.isPlaying()) {
-            audio.pause();
-            song.pause();
-            mediaRecorder.pause();
+        } else if (!playPressed && !audio.paused) {
+            if (!song.isPlaying()) {
+                // P5 bug: sometime p5 show isPlaying = false instead of true
+                song.play();
+                song.pause();
+            }
+            pauseAllMedia();
         }
     };
 
