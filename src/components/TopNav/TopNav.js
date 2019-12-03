@@ -33,7 +33,7 @@ const AuthNav = () => {
     const dispatch = useDispatch();
     return (
         <div>
-            <Link to="/login">
+            <Link to="/app">
                 <Button text="App" btnClass="app" />
             </Link>
             <Button
