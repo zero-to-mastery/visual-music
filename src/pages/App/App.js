@@ -9,6 +9,8 @@ import classes from './App.module.scss';
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
 import ScreenshotModal from '../../components/ScreenshotModal/ScreenshotModal';
+import Error from '../../components/Error/Error';
+import Success from '../../components/Success/Success';
 
 export default function App({ song }) {
     // States
@@ -19,15 +21,16 @@ export default function App({ song }) {
     const [currentTime, setCurrentTime] = useState(null);
     const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
-    // const [takeScreenshot, setTakeScreenshot] = useState(false);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
-
     const { downloadState } = useSelector(state => state.download);
-    const { screenshotUrl, takeScreenshot } = useSelector(
-        state => state.screenshot
-    );
+    const {
+        screenshotUrl,
+        takeScreenshot,
+        screenshotSuccess,
+        screenshotError
+    } = useSelector(state => state.screenshot);
 
     // Update state when a new song is uploaded
     useEffect(() => {
@@ -158,6 +161,8 @@ export default function App({ song }) {
                 </div>
             </div>
             <ScreenshotModal screenshotUrl={screenshotUrl} />
+            <Success screenshotSuccess={screenshotSuccess} />
+            <Error screenshotError={screenshotError} />
         </>
     );
 }

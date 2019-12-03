@@ -29,6 +29,51 @@ export const getScreenshotUrl = screenshotUrl => {
     };
 };
 
+export const shareScreenshotSuccess = () => {
+    return (dispatch, getState) => {
+        try {
+            dispatch({
+                type: 'SHARE_SCREENSHOT_SUCCESS'
+            });
+        } catch (err) {
+            dispatch({
+                type: 'SHARE_SCREENSHOT_SUCCESS_ERR',
+                err
+            });
+        }
+    };
+};
+
+export const shareScreenshotError = () => {
+    return (dispatch, getState) => {
+        try {
+            dispatch({
+                type: 'SHARE_SCREENSHOT_ERROR'
+            });
+        } catch (err) {
+            dispatch({
+                type: 'SHARE_SCREENSHOT_ERROR_ERR',
+                err
+            });
+        }
+    };
+};
+
+export const shareScreenshotEnd = () => {
+    return (dispatch, getState) => {
+        try {
+            dispatch({
+                type: 'SHARE_SCREENSHOT_END'
+            });
+        } catch (err) {
+            dispatch({
+                type: 'SHARE_SCREENSHOT_END_ERR',
+                err
+            });
+        }
+    };
+};
+
 export const clearScreenshot = () => {
     return (dispatch, getState) => {
         try {

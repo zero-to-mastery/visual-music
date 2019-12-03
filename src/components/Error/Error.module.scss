@@ -1,10 +1,22 @@
-.errorScreen {
+.errorScreenShow,
+.errorScreenHide {
     position: absolute;
+    top: 0;
     width: 100vw;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: black;
+    z-index: 20;
+}
+
+.errorScreenShow {
+    display: flex;
+}
+
+.errorScreenHide {
+    display: none;
 }
 
 .errorModal {
@@ -17,7 +29,6 @@
     justify-content: center;
     background-color: #fb3600;
     font-size: 10px;
-    z-index: 1;
 
     .guitarIcon {
         margin-bottom: 5em;

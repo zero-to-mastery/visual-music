@@ -8,6 +8,8 @@ export default {
     downloadState: false,
     screenshot: {
         takeScreenshot: false,
-        screenshotUrl: ''
+        screenshotUrl: '',
+        screenshotSuccess: false,
+        screenshotError: false
     }
 };

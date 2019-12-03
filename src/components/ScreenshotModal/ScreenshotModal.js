@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ReactComponent as ShareIcon } from '../../assets/SharingAssets/share-icon.svg';
 import DefaultImg from '../../assets/LandingPageAssets/bg-image2.gif';
 import BackToPlayer from './BackToPlayer';
-import SocialIcons from './SocialIcons';
+import SocialIcons from './SocialIcons/SocialIcons';
 import classes from './ScreenshotModal.module.scss';
 
 const ScreenshotModal = ({ screenshotUrl }) => {
@@ -25,7 +25,10 @@ const ScreenshotModal = ({ screenshotUrl }) => {
             />
             <div className={classes.options}>
                 {showSocialIcons ? (
-                    <SocialIcons hideSocialIcons={hideSocialIconsHandler} />
+                    <SocialIcons
+                        hideSocialIcons={hideSocialIconsHandler}
+                        url={screenshotUrl}
+                    />
                 ) : (
                     <div
                         className={classes.shareOption}
