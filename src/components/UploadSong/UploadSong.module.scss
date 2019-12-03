@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
 
-    height: 95vh;
+    height: 100vh;
     background: #050516;
 }
 
@@ -18,11 +18,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     border: dashed 1px #ffffff;
     border-radius: 0.4rem;
     border-width: 0.1rem;
-
     opacity: 0.5;
 }
 
@@ -41,7 +39,6 @@
     font-size: 1.8rem;
     line-height: 4rem;
     text-align: center;
-
     color: $grey;
 }
 
@@ -50,7 +47,6 @@
     font-weight: 900;
     font-size: 1.1rem;
     text-align: center;
-
     color: $grey;
 }
 
@@ -59,6 +55,7 @@
         font-size: 0.7rem;
         margin-top: 2rem;
     }
+
     .uploadText {
         font-size: 1rem;
         line-height: 2rem;

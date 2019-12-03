@@ -17,11 +17,16 @@ function Register() {
     const [password, setPassword] = useState('');
     const [span, setSpan] = useState(null);
 
+    console.log(name);
+
     const onFormSubmit = event => {
         event.preventDefault();
         dispatch(cleanError());
         setSpan(
-            <img alt="loading" src={require('../../assets/loading.svg')} />
+            <img
+                alt="loading"
+                src={require('../../assets/LoadingAssets/LoadingBars.svg')}
+            />
         );
         dispatch(register({ name, email, password }));
     };

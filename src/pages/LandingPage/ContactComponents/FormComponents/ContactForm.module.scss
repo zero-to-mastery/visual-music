@@ -35,6 +35,11 @@
     
     }
 
+    .validationError {
+        color: red;
+        font-size: 1.2em;
+    }
+
     #message {
         overflow: hidden;
     }

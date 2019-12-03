@@ -15,22 +15,29 @@ import { Link } from 'react-router-dom';
 import classes from './TopNav.module.scss';
 import logo from '../../assets/LogoSVG.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { logOut } from '../../store/actions/authActions';
+import { logOut, cleanError } from '../../store/actions/authActions';
 import Button from '../units/Button/Button';
 
-const UnAuthNav = () => (
+const UnAuthNav = ({ dispatch }) => (
     <div>
         <Link to="/login">
-            <Button text="Log In" btnClass="logIn" />
+            <Button
+                onClick={() => dispatch(cleanError)}
+                text="Log In"
+                btnClass="logIn"
+            />
         </Link>
         <Link to="/register">
-            <Button text="Sign Up" btnClass="signUp" />
+            <Button
+                onClick={() => dispatch(cleanError)}
+                text="Sign Up"
+                btnClass="signUp"
+            />
         </Link>
     </div>
 );
 
-const AuthNav = () => {
-    const dispatch = useDispatch();
+const AuthNav = ({ dispatch }) => {
     return (
         <div>
             <Button
@@ -44,13 +51,18 @@ const AuthNav = () => {
 
 function TopNav() {
     const uid = useSelector(state => state.firebase.auth.uid);
+    const dispatch = useDispatch();
 
     return (
         <nav className={classes.topNav}>
             <Link to="/">
                 <img src={logo} alt="logo" height="85px" width="85px" />
             </Link>
-            {uid ? <AuthNav /> : <UnAuthNav />}
+            {uid ? (
+                <AuthNav dispatch={dispatch} />
+            ) : (
+                <UnAuthNav dispatch={dispatch} />
+            )}
         </nav>
     );
 }

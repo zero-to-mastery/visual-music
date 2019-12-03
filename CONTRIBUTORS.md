@@ -1,3 +1,4 @@
+
 [lucierabahi](https://github.com/lucierabahi)
 
 [amaduasko](https://github.com/amaduasko)
@@ -34,10 +35,16 @@
 
 [Rahul](https://github.com/kohli6010)
 
-[Rahul](https://github.com/kohli6010)
-
 [Antonio Franceschi](https://github.com/francofle)
 
 [Kiran Nyayapati](https://github.com/kiran-nyayapati)
 
+[Andronikus](https://github.com/Andronikus)
+
 [Matteo Angelotti](https://github.com/matteo1976)
+
+[Michael Donal](https://github.com/michaelbretagne)
+
+[Bo Zhao](https://github.com/zbc)
+
+[Karanveer](https://github.com/kkaranveer6)

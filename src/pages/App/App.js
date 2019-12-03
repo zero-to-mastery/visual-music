@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // import Error from '../../components/Error/Error';
 // import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
@@ -12,24 +12,25 @@ import VisualPanel from '../../components/VisualPanel/VisualPanel';
 export default function App({ song }) {
     // States
     const [uploadedSong, setUploadedSong] = useState(null);
-    const [isSongLoaded, setIsSongLoaded] = useState(false);
+    const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [duration, setDuration] = useState('0:00');
+    const [duration, setDuration] = useState(null);
+    const [currentTime, setCurrentTime] = useState(null);
+    const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
 
     const downloadState = useSelector(state => state.download.downloadState);
-    // Refs
-    const audioRef = useRef(null);
 
     // Effects
     useEffect(() => {
         setUploadedSong(song);
-        setIsSongLoaded(true);
         setBlob(song.blob);
         setSongEnded(false);
+        setPlayPressed(false);
+        setIsPlaying(false);
     }, [song]);
 
     /********************************************
@@ -51,30 +52,36 @@ export default function App({ song }) {
     *********************************************/
     const onPlayPress = event => {
         if (uploadedSong) {
-            setIsPlaying(!isPlaying);
+            setPlayPressed(!playPressed);
         } else {
             alert('No file loaded');
         }
     };
 
+    const onAudioPlay = () => {
+        setIsPlaying(true);
+    };
+
     const onSongEnd = () => {
         setIsPlaying(false);
+        setPlayPressed(false);
         setSongEnded(true);
     };
 
-    /********************************************
-        Uploaded audio file duration converted in
-        to proper format e.g. 3:14
-    ********************************************/
+    // Set duration from audio event
     const handleMetadata = event => {
         const duration = event.currentTarget.duration;
-        setDuration(getTime(duration));
+        setDuration(duration);
     };
 
-    const getTime = dur => {
-        return (
-            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
-        );
+    // Set currentTime from audio event (onTimeUpdate)
+    const onTimeChange = e => {
+        setCurrentTime(e.target.currentTime);
+    };
+
+    // Set cue time when users click on the progress slider (/PlayerBar.js)
+    const onCueTimeChange = e => {
+        setCueTime(e.target.value);
     };
 
     /********************************************
@@ -103,13 +110,11 @@ export default function App({ song }) {
                         </div>
                         <Visualizer
                             volume={volume}
-                            isPlaying={isPlaying}
-                            uploadedSong={
-                                uploadedSong ? uploadedSong.url : null
-                            }
+                            playPressed={playPressed}
+                            uploadedSong={uploadedSong && uploadedSong.url}
                             blob={blob}
-                            audioRef={audioRef.current}
-                            downloadVisual={songEnded ? downloadState : null}
+                            downloadVisual={songEnded && downloadState}
+                            cueTime={cueTime}
                         />
                     </div>
                     <div
@@ -123,21 +128,24 @@ export default function App({ song }) {
                 <div>
                     <audio
                         id="audio"
-                        ref={audioRef}
                         onEnded={onSongEnd}
                         onLoadedMetadata={handleMetadata}
+                        onPlay={onAudioPlay}
+                        onTimeUpdate={onTimeChange}
                     ></audio>
                 </div>
                 <div className={classes.bar}>
                     <PlayerBar
+                        currentTime={currentTime}
                         volume={volume}
                         onVolumeChange={onVolumeChange}
                         onPlayPress={onPlayPress}
+                        playPressed={playPressed}
                         isPlaying={isPlaying}
                         uploadedSong={uploadedSong}
-                        isSongLoaded={isSongLoaded}
                         duration={duration}
                         songEnded={songEnded}
+                        onCueTimeChange={onCueTimeChange}
                     />
                 </div>
             </div>
