@@ -24,11 +24,8 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                 <div className={classes.signup}>
                     <div className={classes.headlines}>
                         <h2 className={classes.headline}>
-                            Welcome to Visual Music!
+                            Welcome to <strong>Visual Music!</strong>
                         </h2>
-                        <span className={classes.subheadline}>
-                            Get Started Absolutely free
-                        </span>
                     </div>
                     <div className={classes.searchfields}>
                         <div className={classes.name}>
@@ -68,21 +65,13 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                             />
                         </div>
                     </div>
-                    <div className={classes.showpassword}>
-                        <input
-                            type="checkbox"
-                            name="showpassword"
-                            id="showpassword"
-                            onClick={() => {
-                                setIsPasswordHidden(!isPasswordHidden);
-                            }}
-                        />
-                        <label htmlFor="showpassword">Show Password</label>
-                    </div>
                     <div className={classes.custombutton}>
                         <button type="submit" onClick={onFormSubmit}>
                             Sign Up
                         </button>
+                    </div>
+                    <div>
+                        <h3>Already a member? <a href="">Sign In</a></h3>
                     </div>
                     {span && (
                         <Span className={classes.errorLabel} content={span} />
