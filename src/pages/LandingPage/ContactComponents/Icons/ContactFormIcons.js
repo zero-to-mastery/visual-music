@@ -15,9 +15,9 @@ TODO: - Implement click functionality for the icons.
 ************************/
 
 import React from 'react';
-import classes from './SectionThreeIcons.module.scss';
+import classes from './ContactFormIcons.module.scss';
 
-import importAll from './../../../../utils/importAllFiles'
+import importAll from '../../../../utils/importAllFiles'
 
 
 
@@ -34,25 +34,12 @@ const [linkedIn, github] = icons;
 const SectionThreeIcons = () => (
     <div className={classes.socialIcons}>
         <span id={classes.github}>
-        {/* <ParallaxLayer
-            offset={2.54}
-            speed={0.5}
-            id={classes.github}
-            style={{ width: 'min-content', height: '0', zIndex: '99' }}
-        > */}
             <a href = "https://github.com/zero-to-mastery/visual-music" target="_blank" 
             rel="noopener noreferrer">
             <img src={github} alt="github" className={classes.socialIcon} />
             </a>
-        {/* </ParallaxLayer> */}
         </span>
 
-        {/* <ParallaxLayer
-            offset={2.54}
-            speed={0.6}
-            id={classes.linkedIn}
-            style={{ width: 'min-content', height: '0', zIndex: '99' }}
-        > */}
         <span id={classes.linkedIn}>
 
             <a href = "https://www.linkedin.com/company/zerotomastery/" target="_blank"
@@ -60,8 +47,6 @@ const SectionThreeIcons = () => (
                 <img src={linkedIn} alt="linkedIn" className={classes.socialIcon} />
                 </a>
         </span>
-        {/* </ParallaxLayer> */}
-
     </div>
 );
 

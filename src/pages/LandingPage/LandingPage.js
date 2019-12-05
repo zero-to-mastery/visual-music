@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import classes from './LandingPage.module.scss';
 
 import blackHairGirl from '../../assets/LandingPageAssets/section-2/blackHairAndBubbles.png';
-import SectionThreeIcons from './ContactComponents/SectionThreeIcons/SectionThreeIcons';
+import SectionThreeIcons from './ContactComponents/Icons/ContactFormIcons';
 import ContactForm from './ContactComponents/FormComponents/ContactForm';
 import  {Rotate, Roll, Fade} from'react-reveal';
 

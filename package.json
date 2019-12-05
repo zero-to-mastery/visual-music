@@ -16,6 +16,7 @@
         "react-p5-wrapper": "^2.0.0",
         "react-redux": "^7.1.3",
         "react-redux-firebase": "^2.4.1",
+        "react-reveal": "^1.2.2",
         "react-router-dom": "^5.1.2",
         "react-scripts": "3.0.1",
         "react-simple-soundcloud-widget": "0.0.5",
