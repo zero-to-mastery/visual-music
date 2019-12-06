@@ -16,7 +16,6 @@ import Span from '../../../components/units/Span/Span';
 */
 
 function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
-    // const [isPasswordHidden, setIsPasswordHidden] = React.useState(true);
 
     return (
         <div className={classes.signupcomponent}>
@@ -55,7 +54,6 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                         <div className={classes.password}>
                             <label htmlFor="password">Password</label>
                             <input
-                                // type={isPasswordHidden ? 'password' : 'text'}
                                 name="password"
                                 id="password"
                                 required
@@ -71,7 +69,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                         </button>
                     </div>
                     <div>
-                        <h3>Already a member? <a href="">Sign In</a></h3>
+                        <h3>Already a member? <a href="../../Login/LoginPage/LoginPage.js">Sign In</a></h3>
                     </div>
                     {span && (
                         <Span className={classes.errorLabel} content={span} />
