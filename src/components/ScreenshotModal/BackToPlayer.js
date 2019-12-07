@@ -13,7 +13,7 @@ const BackToPlayer = ({ hideSocialIcons }) => {
     };
     return (
         <div className={classes.backToPlayer} onClick={backToPlayerHandler}>
-            <p>Back to PLayer</p>
+            <p>Back to Player</p>
             <LeftArrow className={classes.backArrowIcon} />
         </div>
     );

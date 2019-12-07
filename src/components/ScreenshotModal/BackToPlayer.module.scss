@@ -10,11 +10,11 @@
   cursor: pointer;
 
   &:active {
-    color: #ccc;
+    color: $light-grey;
 
     svg {
       path {
-        fill: #ccc;
+        fill: $light-grey;
       }
     }
   }

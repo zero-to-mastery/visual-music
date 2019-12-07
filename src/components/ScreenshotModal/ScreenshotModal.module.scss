@@ -8,7 +8,7 @@
   bottom: 0;
   right: 0;
   margin: auto;
-  background-color: black;
+  background-color: $grey;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -38,10 +38,10 @@
       cursor: pointer;
 
       &:active {
-        color: #ccc;
+        color: $light-grey;
 
         svg {
-          fill: #ccc;
+          fill: $light-grey;
         }
       }
 

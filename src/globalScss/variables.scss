@@ -8,4 +8,15 @@ color: $white;
 Add variables here. 
 */
 $white: #eee;
-$grey: #4f4e4e;
+
+$light-grey: #c0c0c0;
+$grey: #595757;
+
+$black: #050516;
+
+$green: #008000;
+$light-green: rgba(41, 172, 109, 1);
+$dark-green: rgba(35, 79, 58, 1);
+$green-gradient: (180deg, $light-green 1%, $dark-green 100%);
+
+$red: #fb3600;
