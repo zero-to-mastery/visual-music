@@ -3,6 +3,7 @@ import 'p5/lib/addons/p5.sound';
 import 'p5/lib/addons/p5.dom';
 
 import { downloadVisualEnd } from '../../store/actions/downloadActions';
+import { getScreenshotUrl } from '../../store/actions/screenshotActions';
 
 export default function sketch(p) {
     let song;
@@ -117,9 +118,9 @@ export default function sketch(p) {
 
     //Custom redraw that will trigger upon state change
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
+        playPressed = props.playPressed;
         // Function that get called when a song is loaded
         function loaded() {
-            playPressed = props.playPressed;
             newCueTime = parseInt(props.cueTime);
             volume = props.volume;
             song.setVolume(parseFloat(volume));
@@ -145,6 +146,10 @@ export default function sketch(p) {
             p.togglePlaying(song);
         }
 
+        function loadingError() {
+            console.log('Oops, song not recognize!');
+        }
+
         //We need to resize canvas
         //and set width property to new width
         //so drawing will base on this new width
@@ -160,7 +165,11 @@ export default function sketch(p) {
                 // Reinitialize song if a new file is uploaded
                 if (song.file !== props.uploadedSong) {
                     song.dispose();
-                    song = p.loadSound(props.uploadedSong, loaded);
+                    song = p.loadSound(
+                        props.uploadedSong,
+                        loaded,
+                        loadingError
+                    );
                     recordedChunks = [];
                     canvasStream = null;
                 }
@@ -168,11 +177,8 @@ export default function sketch(p) {
                 loaded();
             }
         } else {
+            // Check if song is uploaded on firebase
             if (props.uploadedSong) {
-                // because of using heroku services for fetch the song from firebase, it is good practice to
-                // add here {  [successCallback], [errorCallback], [whileLoading] } p5 methods for more ability to control this middle time.
-                // for reading more - https://p5js.org/reference/#/p5.SoundFile/loadSound
-
                 // Erase recorded data from the previous recorded song
                 recordedChunks = [];
                 canvasStream = null;
@@ -180,16 +186,19 @@ export default function sketch(p) {
                 // Add audio source
                 audio.src = URL.createObjectURL(props.blob);
 
-                // Start p5 visualization when press the play button
-                if (props.playPressed) {
-                    song = p.loadSound(props.uploadedSong, loaded);
-                }
+                // Load song into p5 when song is uploaded on firebase
+                song = p.loadSound(props.uploadedSong, loaded, loadingError);
             }
         }
 
         if (props.downloadVisual) {
             download();
             props.dispatch(downloadVisualEnd());
+        }
+
+        if (props.takeScreenshot) {
+            let screenshotUrl = p.canvas.toDataURL();
+            props.dispatch(getScreenshotUrl(screenshotUrl));
         }
     };
 

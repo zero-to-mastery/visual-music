@@ -1,0 +1,28 @@
+@import '../../globalScss/variables.scss';
+
+.backToPlayer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 900;
+  color: $white;
+  cursor: pointer;
+
+  &:active {
+    color: $light-grey;
+
+    svg {
+      path {
+        fill: $light-grey;
+      }
+    }
+  }
+
+  .backArrowIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 1rem;
+    padding: 0.5rem;
+  }
+}

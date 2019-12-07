@@ -1,3 +1,5 @@
+@import '../../globalScss/variables.scss';
+
 .pageContainer {
     position: relative;
 
@@ -33,7 +35,7 @@
         height: 100%;
         left: -$panelWidth;
         bottom: 0;
-        background-color: white;
+        background-color: $white;
 
         transition: all $animSpeed ease-in-out;
 
@@ -49,7 +51,7 @@
         height: 100%;
         right: 0;
         left: 0;
-        background: #595757;
+        background: $grey;
 
         transition: all $animSpeed ease-in-out;
 

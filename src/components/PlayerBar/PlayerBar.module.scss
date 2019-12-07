@@ -130,9 +130,12 @@
         margin-left: auto;
         margin-right: 10%;
 
-        .snapshotButton {
-            .downloadButton {
-                cursor: pointer;
+        .snapshotButton,
+        .downloadButton {
+            cursor: pointer;
+
+            svg:active {
+                fill: #ccc
             }
         }
     }
