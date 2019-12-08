@@ -8,6 +8,9 @@ import classes from './App.module.scss';
 
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
+import ScreenshotModal from '../../components/ScreenshotModal/ScreenshotModal';
+import Error from '../../components/Error/Error';
+import Success from '../../components/Success/Success';
 
 export default function App({ song }) {
     // States
@@ -21,10 +24,15 @@ export default function App({ song }) {
     const [togglePanel, setTogglePanel] = useState(false);
     const [songEnded, setSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
+    const { downloadState } = useSelector(state => state.download);
+    const {
+        screenshotUrl,
+        takeScreenshot,
+        screenshotSuccess,
+        screenshotError
+    } = useSelector(state => state.screenshot);
 
-    const downloadState = useSelector(state => state.download.downloadState);
-
-    // Effects
+    // Update state when a new song is uploaded
     useEffect(() => {
         setUploadedSong(song);
         setBlob(song.blob);
@@ -94,61 +102,67 @@ export default function App({ song }) {
     };
 
     return (
-        <div className={classes.pageContainer}>
-            <div className={classes.visualmusic}>
-                <div className={classes.visualContainer}>
-                    <div
-                        className={`${classes.visualmusic} ${
-                            togglePanel ? classes.shrink : ''
-                        }`}
-                    >
-                        <div className={classes.hamburger}>
-                            <HamburgerToggle
-                                initToggle={togglePanel}
-                                onClick={onTogglePanel}
+        <>
+            <div className={classes.pageContainer}>
+                <div className={classes.visualmusic}>
+                    <div className={classes.visualContainer}>
+                        <div
+                            className={`${classes.visualmusic} ${
+                                togglePanel ? classes.shrink : ''
+                            }`}
+                        >
+                            <div className={classes.hamburger}>
+                                <HamburgerToggle
+                                    initToggle={togglePanel}
+                                    onClick={onTogglePanel}
+                                />
+                            </div>
+                            <Visualizer
+                                volume={volume}
+                                takeScreenshot={takeScreenshot}
+                                playPressed={playPressed}
+                                uploadedSong={uploadedSong && uploadedSong.url}
+                                blob={blob}
+                                downloadVisual={songEnded && downloadState}
+                                cueTime={cueTime}
                             />
                         </div>
-                        <Visualizer
+                        <div
+                            className={`${classes.visualPanel} ${
+                                togglePanel ? classes.slideIn : ''
+                            }`}
+                        >
+                            <VisualPanel />
+                        </div>
+                    </div>
+                    <div>
+                        <audio
+                            id="audio"
+                            onEnded={onSongEnd}
+                            onLoadedMetadata={handleMetadata}
+                            onPlay={onAudioPlay}
+                            onTimeUpdate={onTimeChange}
+                        ></audio>
+                    </div>
+                    <div className={classes.bar}>
+                        <PlayerBar
+                            currentTime={currentTime}
                             volume={volume}
+                            onVolumeChange={onVolumeChange}
+                            onPlayPress={onPlayPress}
                             playPressed={playPressed}
-                            uploadedSong={uploadedSong && uploadedSong.url}
-                            blob={blob}
-                            downloadVisual={songEnded && downloadState}
-                            cueTime={cueTime}
+                            isPlaying={isPlaying}
+                            uploadedSong={uploadedSong}
+                            duration={duration}
+                            songEnded={songEnded}
+                            onCueTimeChange={onCueTimeChange}
                         />
                     </div>
-                    <div
-                        className={`${classes.visualPanel} ${
-                            togglePanel ? classes.slideIn : ''
-                        }`}
-                    >
-                        <VisualPanel />
-                    </div>
-                </div>
-                <div>
-                    <audio
-                        id="audio"
-                        onEnded={onSongEnd}
-                        onLoadedMetadata={handleMetadata}
-                        onPlay={onAudioPlay}
-                        onTimeUpdate={onTimeChange}
-                    ></audio>
-                </div>
-                <div className={classes.bar}>
-                    <PlayerBar
-                        currentTime={currentTime}
-                        volume={volume}
-                        onVolumeChange={onVolumeChange}
-                        onPlayPress={onPlayPress}
-                        playPressed={playPressed}
-                        isPlaying={isPlaying}
-                        uploadedSong={uploadedSong}
-                        duration={duration}
-                        songEnded={songEnded}
-                        onCueTimeChange={onCueTimeChange}
-                    />
                 </div>
             </div>
-        </div>
+            <ScreenshotModal screenshotUrl={screenshotUrl} />
+            <Success screenshotSuccess={screenshotSuccess} />
+            <Error screenshotError={screenshotError} />
+        </>
     );
 }

@@ -34,6 +34,7 @@ const Visualizer = React.memo(props => {
 
     const {
         volume,
+        takeScreenshot,
         cueTime,
         playPressed,
         uploadedSong,
@@ -52,15 +53,16 @@ const Visualizer = React.memo(props => {
                 <div ref={measureRef} className={classes.visualizer}>
                     <P5Wrapper
                         sketch={sketch}
-                        volume={volume}
                         playPressed={playPressed}
+                        volume={volume}
+                        takeScreenshot={takeScreenshot}
                         uploadedSong={uploadedSong}
                         canvasWidth={canvasWidth}
                         canvasHeight={canvasHeight}
                         downloadVisual={downloadVisual}
                         blob={blob}
-                        dispatch={useDispatch()}
                         cueTime={cueTime}
+                        dispatch={useDispatch()}
                     />
                 </div>
             )}

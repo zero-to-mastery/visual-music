@@ -12,15 +12,15 @@
  ************************************************************/
 
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as SnapshotIcon } from '../../assets/PlayerBarAssets/snapshot-icon-white-dark.svg';
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as PauseIcon } from '../../assets/PlayerBarAssets/pause-icon.svg';
 import { ReactComponent as SongIcon } from '../../assets/PlayerBarAssets/song-icon.svg';
 import { ReactComponent as RollingIcon } from '../../assets/LoadingAssets/Rolling.svg';
 import UploadButton from './UploadButton/UploadButton';
-import classes from './PlayerBar.module.scss';
+import ScreenshotButton from './ScreenshotButton/ScreenshotButton';
 import DownloadButton from './DownloadButton/DownloadButton';
+import classes from './PlayerBar.module.scss';
 
 export default function PlayerBar(props) {
     const [formatedDuration, setFormatedDuration] = useState('0:00');
@@ -126,7 +126,7 @@ export default function PlayerBar(props) {
             <div className={classes.playerBarRight}>
                 <div className={classes.download}>
                     <div className={classes.snapshotButton}>
-                        <SnapshotIcon />
+                        <ScreenshotButton />
                     </div>
                     <div className={classes.downloadButton}>
                         <DownloadButton
