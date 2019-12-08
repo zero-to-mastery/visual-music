@@ -133,8 +133,8 @@ function UploadSong() {
             {
             /*
             Problem:
-            FileUploader have to be rerendered everytime,
-            in order to make onChange to work otherwise it will only
+            FileUploader have to be unmounted and remounted everytime,
+            in order to make onChange to work/invoked otherwise it will only
             work at first time.
             */    
             promptUnsupport?
