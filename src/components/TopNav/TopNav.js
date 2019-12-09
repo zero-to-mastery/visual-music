@@ -40,6 +40,9 @@ const UnAuthNav = ({ dispatch }) => (
 const AuthNav = ({ dispatch }) => {
     return (
         <div>
+            <Link to="/app">
+                <Button text="App" btnClass="app" />
+            </Link>
             <Button
                 text="Log Out"
                 btnClass="signUp"
