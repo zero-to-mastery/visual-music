@@ -172,7 +172,7 @@ class ContactForm extends Component {
                     <Span content={this.state.errors && this.state.errors.message}
                           className={classes.validationError}/>
                 </label>
-                <Button type="submit" text="Send" btnClass="signUp" style={{width:'100px'}} />
+                <Button type="submit" text="Send" btnClass="signUp" style={{width:"8rem"}} />
                 {span && (
                     <Span
                         content={span}

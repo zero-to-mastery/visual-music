@@ -21,7 +21,7 @@ export default class LandingPage extends PureComponent{
                                 </h2>
 
                                 <p className={classes.tagline}>
-                                    An app that converts your favoriet music pieces into visual
+                                    An app that converts your favorite music pieces into visual
                                     expresions.
                                 </p>
                             </div>
