@@ -15,8 +15,8 @@ import React, { Component } from 'react';
 import * as emailjs from 'emailjs-com';
 
 import classes from './ContactForm.module.scss';
-import Button from '../../../../../components/units/Button/Button';
-import Span from '../../../../../components/units/Span/Span';
+import Button from '../../../../components/units/Button/Button';
+import Span from '../../../../components/units/Span/Span';
 
 class ContactForm extends Component {
     constructor() {
@@ -37,7 +37,7 @@ class ContactForm extends Component {
             span: (
                 <img
                     alt="loading"
-                    src={require('../../../../../assets/LoadingAssets/LoadingBars.svg')}
+                    src={require('./../../../../assets/LoadingAssets/LoadingBars.svg')}
                 />
             )
         });
@@ -172,7 +172,7 @@ class ContactForm extends Component {
                     <Span content={this.state.errors && this.state.errors.message}
                           className={classes.validationError}/>
                 </label>
-                <Button type="submit" text="Send" btnClass="signUp" />
+                <Button type="submit" text="Send" btnClass="signUp" style={{width:"8rem"}} />
                 {span && (
                     <Span
                         content={span}

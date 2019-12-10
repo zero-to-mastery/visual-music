@@ -1,57 +1,73 @@
-/*********************** 
-
-Main component for the Landing Page.
-Welcome users into the app and sign up new users.
-
-Current features:
-1. Scroll button to scroll to next section. 
-2. Sign Up form.
-
-************************/
-
-import React, { Component } from 'react';
+import React, {PureComponent} from 'react';
 import classes from './LandingPage.module.scss';
 
-import { Parallax, ParallaxLayer } from 'react-spring/renderprops-addons';
+import blackHairGirl from '../../assets/LandingPageAssets/section-2/blackHairAndBubbles.png';
+import SectionThreeIcons from './ContactComponents/Icons/ContactFormIcons';
+import ContactForm from './ContactComponents/FormComponents/ContactForm';
+import  {Rotate, Roll, Fade} from'react-reveal';
 
-import SectionOne from './sections/SectionOne/SectionOne';
-import SectionTwo from './sections/SectionTwo/SectionTwo';
-import SectionThree from './sections/SectionThree/SectionThree';
 
-class LandingPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+export default class LandingPage extends PureComponent{
+    render(){
+        return(
+            <div className={classes.container}>
+                <Rotate bottom right>
+                    <div className={`${classes.item} ${classes.item1}`}>
+                        <div className={classes.int1item1}>
+                            <div className={classes.myText}>
+                                <h2 className={classes.heading}>
+                                    <p>Discover and Share </p>   
+                                    <p>Music Visualization</p>
+                                </h2>
 
-    render() {
-        return (
-            <>
-                <div className={classes.landingPageBg} />{' '}
-                <Parallax
-                    pages={3}
-                    config={{ tension: 100, friction: 60 }}
-                    ref={ref => (this.parallax = ref)}
-                >
-                    <ParallaxLayer
-                        offset={1}
-                        speed={0.9}
-                        style={{ backgroundColor: 'rgba(13, 78, 103, 0.56)' }}
-                    />{' '}
-                    <ParallaxLayer
-                        offset={2}
-                        speed={0.55}
-                        style={{ backgroundColor: 'rgba(41, 172, 109, 0.56)' }}
-                    />
-                    <SectionOne scrollClick={() => this.parallax.scrollTo(1)} />{' '}
-                    <SectionTwo scrollClick={() => this.parallax.scrollTo(2)} />{' '}
-                    <SectionThree
-                        scrollClick={() => this.parallax.scrollTo(0)}
-                    />{' '}
-                </Parallax>{' '}
-            </>
-        );
+                                <p className={classes.tagline}>
+                                    An app that converts your favorite music pieces into visual
+                                    expresions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </Rotate>
+      
+                <div className={`${classes.item} ${classes.item2}`}>
+                    <Roll right>
+                        <div className={classes.int1Item2}>
+                            <div className={classes.myText}>
+                                <h2 className={classes.heading} >
+                                    Best Experience
+                                </h2>
+                                <div className={classes.tagline}>
+                                    <p>Collection of visual themes to transcribe the emotional and</p>
+                                    <p>rythmic effects of an uploaded mp3 song. </p>
+                                </div>
+                            </div>    
+                        </div>
+                    </Roll>
+
+                    <Roll left>
+                        <img 
+                            src={blackHairGirl}
+                            alt="blackHairGirl"
+                            className={`${classes.blackHairGirl} ${classes.int2Item2} `}
+                        />
+                    </Roll>
+                </div>
+
+                <div className={`${classes.item} ${classes.item3}`}>
+                    <Fade top>
+                        <div className={classes.int1Item3}>
+                            <h1 >Contact </h1>
+                            <SectionThreeIcons /> 
+                        </div>
+                    </Fade>
+                    <Fade Buttom>
+                        <div className={classes.int2Item3}>
+                        <h1 >Would you like to write us? </h1>
+                            <ContactForm/>
+                        </div>
+                    </Fade>      
+                </div> 
+            </div>
+        )
     }
 }
-
-export default LandingPage;
