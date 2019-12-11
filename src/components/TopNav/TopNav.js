@@ -22,14 +22,14 @@ const UnAuthNav = ({ dispatch }) => (
     <div>
         <Link to="/login">
             <Button
-                onClick={() => dispatch(cleanError)}
+                onClick={() => dispatch(cleanError())}
                 text="Log In"
                 btnClass="logIn"
             />
         </Link>
         <Link to="/register">
             <Button
-                onClick={() => dispatch(cleanError)}
+                onClick={() => dispatch(cleanError())}
                 text="Sign Up"
                 btnClass="signUp"
             />
