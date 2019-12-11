@@ -4,6 +4,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "detect-file-type": "^0.2.7",
         "dotenv": "^8.2.0",
         "emailjs-com": "^2.4.0",
         "firebase": "^7.3.0",
