@@ -13,7 +13,8 @@ export const store = createStore(
         reactReduxFirebase(FBConfig, {
             userProfile: 'users',
             useFirestoreForProfile: true,
-            attachAuthIsReady: true
+            attachAuthIsReady: true,
+            logErrors: false
         }),
         reduxFirestore(FBConfig)
     )

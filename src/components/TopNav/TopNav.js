@@ -11,7 +11,7 @@ TODO: - Black background on scroll.
 ************************/
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import classes from './TopNav.module.scss';
 import logo from '../../assets/LogoSVG.svg';
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,12 +37,14 @@ const UnAuthNav = ({ dispatch }) => (
     </div>
 );
 
-const AuthNav = ({ dispatch }) => {
+const AuthNav = ({ dispatch, pathname }) => {
     return (
         <div>
-            <Link to="/app">
-                <Button text="App" btnClass="app" />
-            </Link>
+            {pathname !== '/app' && (
+                <Link to="/app">
+                    <Button text="App" btnClass="app" />
+                </Link>
+            )}
             <Button
                 text="Log Out"
                 btnClass="signUp"
@@ -52,7 +54,7 @@ const AuthNav = ({ dispatch }) => {
     );
 };
 
-function TopNav() {
+function TopNav(props) {
     const uid = useSelector(state => state.firebase.auth.uid);
     const dispatch = useDispatch();
 
@@ -62,7 +64,10 @@ function TopNav() {
                 <img src={logo} alt="logo" height="85px" width="85px" />
             </Link>
             {uid ? (
-                <AuthNav dispatch={dispatch} />
+                <AuthNav
+                    pathname={props.location.pathname}
+                    dispatch={dispatch}
+                />
             ) : (
                 <UnAuthNav dispatch={dispatch} />
             )}
@@ -70,4 +75,4 @@ function TopNav() {
     );
 }
 
-export default TopNav;
+export default withRouter(TopNav);

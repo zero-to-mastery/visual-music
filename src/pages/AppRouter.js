@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import TopNav from '../components/TopNav/TopNav';
-import AppBrowser from '../pages/App/AppBrowser';
-import LandingPage from '../pages/LandingPage/LandingPage';
-import Login from '../pages/Login/Login';
-import ForgotPassword from '../pages/ForgotPassword/ForgotPassword';
-import Register from '../pages/Register/Register';
-import ResetPassword from '../pages/ResetPassword/resetPasswordPage.component';
+import AppBrowser from './App/AppBrowser';
+import LandingPage from './LandingPage/LandingPage';
+import Login from './Login/Login';
+import ForgotPassword from './ForgotPassword/ForgotPassword';
+import Register from './Register/Register';
+import ResetPassword from './ResetPassword/resetPasswordPage.component';
 
 export default function AppRouter() {
     return (

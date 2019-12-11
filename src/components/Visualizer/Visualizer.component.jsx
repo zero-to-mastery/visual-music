@@ -17,7 +17,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import classes from './Visualizer.module.scss';
 import P5Wrapper from 'react-p5-wrapper';
-import sketch from '../../vendor/sketches/sketch';
+import sketch from '../../vendor/sketch';
 import Measure from 'react-measure';
 
 const Visualizer = React.memo(props => {

@@ -39,7 +39,7 @@ const ScreenshotModal = ({ screenshotUrl }) => {
                     </div>
                 )}
 
-                {showSocialIcons ? null : (
+                {!showSocialIcons && (
                     <BackToPlayer hideSocialIcons={hideSocialIconsHandler} />
                 )}
             </div>
