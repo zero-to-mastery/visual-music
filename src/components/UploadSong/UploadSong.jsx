@@ -134,7 +134,7 @@ function UploadSong() {
             work at first time.
             */
 
-            promptUnsupport ? null : (
+            !promptUnsupport && (
                 <FileUploader
                     id="fileElem"
                     style={{ display: 'none' }}

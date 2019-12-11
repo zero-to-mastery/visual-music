@@ -11,8 +11,7 @@ export default function sketch(p) {
     let playPressed = false;
     let width = 900;
     let height = 500;
-    const divisions = 5;
-    const speed = 1;
+
     // initial jump functionalty set
     let prevCueTime, newCueTime, jumpedSong;
     // initial download visual set
