@@ -25,7 +25,7 @@ import classes from './PlayerBar.module.scss';
 export default function PlayerBar(props) {
     const [formatedDuration, setFormatedDuration] = useState('0:00');
     const [formatedCurrentTime, setFormatedCurrentTime] = useState('0:00');
-
+    const [isPlayerBarShowed, setIsPlayerBarShowed] = useState(true);
     // Props from (src/pages/App/App.js):
     const {
         uploadedSong,
@@ -35,9 +35,11 @@ export default function PlayerBar(props) {
         isPlaying,
         volume,
         onVolumeChange,
-        songEnded,
+        isSongEnded,
         currentTime,
-        onCueTimeChange
+        onCueTimeChange,
+        isFullSize,
+        setIsFullSize
     } = props;
 
     // Set formated duration
@@ -50,12 +52,38 @@ export default function PlayerBar(props) {
         setFormatedCurrentTime(getTime(currentTime));
     }, [currentTime]);
 
+    useEffect(() => {
+        const bar = document.getElementById('player_bar');
+        if (isFullSize && bar) {
+            bar.addEventListener(
+                'mouseenter',
+                () => setIsPlayerBarShowed(true),
+                false
+            );
+            bar.addEventListener(
+                'mouseleave',
+                () => setIsPlayerBarShowed(false),
+                false
+            );
+        }
+
+        return () => {
+            bar.removeEventListener(
+                'mouseenter',
+                () => setIsPlayerBarShowed(true),
+                false
+            );
+            bar.removeEventListener(
+                'mouseleave',
+                () => setIsPlayerBarShowed(false),
+                false
+            );
+        };
+    }, [isFullSize]);
+
     // Format time (eg. 140 to 2:20)
-    const getTime = dur => {
-        return (
-            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
-        );
-    };
+    const getTime = dur =>
+        Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2);
 
     // Update the width for the progress slider base on the current time
     const sliderProgressWidth = {
@@ -71,7 +99,12 @@ export default function PlayerBar(props) {
     }
 
     return (
-        <div className={classes.playerBar}>
+        <div
+            id="player_bar"
+            className={`${classes.playerBar} ${isFullSize &&
+                !isPlayerBarShowed &&
+                classes.hide}`}
+        >
             <div className={classes.nowPlaying}>
                 <div className={classes.icon}>
                     <SongIcon />
@@ -125,13 +158,28 @@ export default function PlayerBar(props) {
             </div>
             <div className={classes.playerBarRight}>
                 <div className={classes.download}>
+                    <div className={classes.fullScreenIcon}>
+                        {/* I didn't know which icon to add so you more than welcome to replace this one */}
+                        <img
+                            className={`${classes.sizeIcon} ${
+                                isFullSize
+                                    ? classes.fullSizeIcon
+                                    : classes.normalSizeIcon
+                            }`}
+                            alt="set size icon"
+                            src="https://icon-library.net//images/full-screen-icon-png/full-screen-icon-png-21.jpg"
+                            onClick={() => {
+                                setIsFullSize(!isFullSize);
+                            }}
+                        />
+                    </div>
                     <div className={classes.snapshotButton}>
                         <ScreenshotButton />
                     </div>
                     <div className={classes.downloadButton}>
                         <DownloadButton
                             isPlaying={isPlaying}
-                            songEnded={songEnded}
+                            isSongEnded={isSongEnded}
                         />
                     </div>
                 </div>

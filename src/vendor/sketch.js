@@ -11,7 +11,6 @@ export default function sketch(p) {
     let playPressed = false;
     let width = 900;
     let height = 500;
-
     // initial jump functionalty set
     let prevCueTime, newCueTime, jumpedSong;
     // initial download visual set
@@ -103,6 +102,10 @@ export default function sketch(p) {
         initAudioStream();
     };
 
+    function loadingError() {
+        console.log('Oops, song not recognize!');
+    }
+
     //Custom redraw that will trigger upon state change
     p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
         playPressed = props.playPressed;
@@ -133,18 +136,16 @@ export default function sketch(p) {
             p.togglePlaying(song);
         }
 
-        function loadingError() {
-            console.log('Oops, song not recognize!');
-        }
-
         //We need to resize canvas
         //and set width property to new width
         //so drawing will base on this new width
-        if (width !== props.canvasWidth || height !== props.canvasHeight) {
-            width = props.canvasWidth;
-            height = props.canvasHeight;
-            p.resizeCanvas(width, height);
-        }
+
+        width = props.canvasWidth;
+        height = props.canvasHeight;
+
+        props.isFullSize
+            ? p.resizeCanvas(p.windowWidth + 100, p.windowHeight + 100)
+            : p.resizeCanvas(width, height);
 
         // Check for new uploaded song
         if (song) {
@@ -171,7 +172,7 @@ export default function sketch(p) {
                 canvasStream = null;
 
                 // Add audio source
-                audio.src = URL.createObjectURL(props.blob);
+                if (props.blob) audio.src = URL.createObjectURL(props.blob);
 
                 // Load song into p5 when song is uploaded on firebase
                 song = p.loadSound(props.uploadedSong, loaded, loadingError);

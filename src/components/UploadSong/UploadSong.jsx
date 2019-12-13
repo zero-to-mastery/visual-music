@@ -39,14 +39,6 @@ function UploadSong() {
             .then(url => dispatch(setSong({ url, filename })));
     };
 
-    const handleUploadStart = blob => {
-        dispatch(storeBlob(blob));
-    };
-
-    const handleProgress = progress => {
-        setUploadProgress(progress);
-    };
-
     const handleUploadError = error => {
         // ToDo - implement error span
         console.log(error);
@@ -61,7 +53,7 @@ function UploadSong() {
                 //detect file format
                 detectFileType.fromBuffer(buffer, (err, result) => {
                     if (err) {
-                        console.log(err);
+                        handleUploadError(err);
                     }
 
                     if (result.ext !== 'mp3') {
@@ -74,10 +66,6 @@ function UploadSong() {
         }
     };
 
-    const handleUnsupportedClosed = () => {
-        setPromptUnsupport(false);
-    };
-
     const renderSelectAudioFile = () => {
         return promptUnsupport ? (
             <div className={classes.unsupportBox}>
@@ -85,7 +73,7 @@ function UploadSong() {
                 <UnsupportPrompt
                     title="An error occured"
                     message="Unsupported file format"
-                    onClosed={handleUnsupportedClosed}
+                    onClosed={() => setPromptUnsupport(false)}
                 />
                 )
             </div>
@@ -127,19 +115,18 @@ function UploadSong() {
             ) : (
                 renderSelectAudioFile()
             )}
-            {/*
+            {/* 
             Problem:
             FileUploader have to be unmounted and remounted everytime,
             in order to make onChange to work/invoked otherwise it will only
             work at first time.
             */
-
             !promptUnsupport && (
                 <FileUploader
                     id="fileElem"
                     style={{ display: 'none' }}
-                    onUploadStart={handleUploadStart}
-                    onProgress={handleProgress}
+                    onUploadStart={blob => dispatch(storeBlob(blob))}
+                    onProgress={progress => setUploadProgress(progress)}
                     onUploadSuccess={handleUploadSuccess}
                     onUploadError={handleUploadError}
                     accept="audio/mp3"

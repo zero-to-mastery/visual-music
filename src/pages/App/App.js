@@ -19,8 +19,9 @@ export default function App({ song }) {
     const [currentTime, setCurrentTime] = useState(null);
     const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
-    const [togglePanel, setTogglePanel] = useState(false);
-    const [songEnded, setSongEnded] = useState(false);
+    const [isTogglePanel, setisTogglePanel] = useState(false);
+    const [isSongEnded, setisSongEnded] = useState(false);
+    const [isFullSize, setIsFullSize] = useState(false);
     const [blob, setBlob] = useState(null);
     // Redux States
     const { downloadState } = useSelector(state => state.download);
@@ -35,7 +36,7 @@ export default function App({ song }) {
     useEffect(() => {
         setUploadedSong(song);
         setBlob(song.blob);
-        setSongEnded(false);
+        setisSongEnded(false);
         setPlayPressed(false);
         setIsPlaying(false);
     }, [song]);
@@ -43,7 +44,7 @@ export default function App({ song }) {
     const onSongEnd = () => {
         setIsPlaying(false);
         setPlayPressed(false);
-        setSongEnded(true);
+        setisSongEnded(true);
     };
 
     return (
@@ -52,14 +53,15 @@ export default function App({ song }) {
                 <div className={classes.visualmusic}>
                     <div className={classes.visualContainer}>
                         <div
-                            className={`${classes.visualmusic} ${togglePanel &&
-                                classes.shrink}`}
+                            className={`${
+                                classes.visualmusic
+                            } ${isTogglePanel && classes.shrink}`}
                         >
                             <div className={classes.hamburger}>
                                 <HamburgerToggle
-                                    initToggle={togglePanel}
+                                    initToggle={isTogglePanel}
                                     onClick={toggleState =>
-                                        setTogglePanel(toggleState)
+                                        setisTogglePanel(toggleState)
                                     }
                                 />
                             </div>
@@ -69,13 +71,15 @@ export default function App({ song }) {
                                 playPressed={playPressed}
                                 uploadedSong={uploadedSong && uploadedSong.url}
                                 blob={blob}
-                                downloadVisual={songEnded && downloadState}
+                                downloadVisual={isSongEnded && downloadState}
                                 cueTime={cueTime}
+                                isFullSize={isFullSize}
                             />
                         </div>
                         <div
-                            className={`${classes.visualPanel} ${togglePanel &&
-                                classes.slideIn}`}
+                            className={`${
+                                classes.visualPanel
+                            } ${isTogglePanel && classes.slideIn}`}
                         >
                             <VisualPanel />
                         </div>
@@ -103,8 +107,10 @@ export default function App({ song }) {
                             isPlaying={isPlaying}
                             uploadedSong={uploadedSong}
                             duration={duration}
-                            songEnded={songEnded}
+                            isSongEnded={isSongEnded}
                             onCueTimeChange={e => setCueTime(e.target.value)}
+                            isFullSize={isFullSize}
+                            setIsFullSize={setIsFullSize}
                         />
                     </div>
                 </div>

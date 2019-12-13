@@ -39,7 +39,8 @@ const Visualizer = React.memo(props => {
         playPressed,
         uploadedSong,
         downloadVisual,
-        blob
+        blob,
+        isFullSize
     } = props;
 
     return (
@@ -50,7 +51,11 @@ const Visualizer = React.memo(props => {
             }}
         >
             {({ measureRef }) => (
-                <div ref={measureRef} className={classes.visualizer}>
+                <div
+                    ref={measureRef}
+                    className={`${classes.visualizer} ${isFullSize &&
+                        classes.fullSize}`}
+                >
                     <P5Wrapper
                         sketch={sketch}
                         playPressed={playPressed}
@@ -63,6 +68,7 @@ const Visualizer = React.memo(props => {
                         blob={blob}
                         cueTime={cueTime}
                         dispatch={useDispatch()}
+                        isFullSize={isFullSize}
                     />
                 </div>
             )}
