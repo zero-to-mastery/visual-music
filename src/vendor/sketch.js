@@ -139,14 +139,28 @@ export default function sketch(p) {
         //We need to resize canvas
         //and set width property to new width
         //so drawing will base on this new width
-
-        width = props.canvasWidth;
-        height = props.canvasHeight;
-
-        props.isFullSize
-            ? p.resizeCanvas(p.windowWidth + 100, p.windowHeight + 100)
-            : p.resizeCanvas(width, height);
-
+        if (props.isFullSize) {
+            width = p.windowWidth + 100;
+            height = p.windowHeight + 100;
+        } else {
+            width = props.canvasWidth;
+            height = props.canvasHeight;
+        }
+        if (width !== p.width || height !== p.height) {
+            let beforeResizeCanvas = p.get();
+            p.resizeCanvas(width, height);
+            p.copy(
+                beforeResizeCanvas,
+                0,
+                0,
+                beforeResizeCanvas.width,
+                beforeResizeCanvas.height,
+                0,
+                0,
+                width,
+                height
+            );
+        }
         // Check for new uploaded song
         if (song) {
             if (song.isLoaded()) {

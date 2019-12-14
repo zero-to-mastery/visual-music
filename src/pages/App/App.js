@@ -53,9 +53,8 @@ export default function App({ song }) {
                 <div className={classes.visualmusic}>
                     <div className={classes.visualContainer}>
                         <div
-                            className={`${
-                                classes.visualmusic
-                            } ${isTogglePanel && classes.shrink}`}
+                            className={`${classes.visualmusic}
+                             ${isTogglePanel && classes.shrink}`}
                         >
                             <div className={classes.hamburger}>
                                 <HamburgerToggle
@@ -77,9 +76,8 @@ export default function App({ song }) {
                             />
                         </div>
                         <div
-                            className={`${
-                                classes.visualPanel
-                            } ${isTogglePanel && classes.slideIn}`}
+                            className={`${classes.visualPanel}
+                             ${isTogglePanel && classes.slideIn}`}
                         >
                             <VisualPanel />
                         </div>

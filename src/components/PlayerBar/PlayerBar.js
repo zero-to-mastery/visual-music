@@ -101,9 +101,8 @@ export default function PlayerBar(props) {
     return (
         <div
             id="player_bar"
-            className={`${classes.playerBar} ${isFullSize &&
-                !isPlayerBarShowed &&
-                classes.hide}`}
+            className={`${classes.playerBar} 
+            ${isFullSize && !isPlayerBarShowed && classes.hideBar}`}
         >
             <div className={classes.nowPlaying}>
                 <div className={classes.icon}>
@@ -158,21 +157,6 @@ export default function PlayerBar(props) {
             </div>
             <div className={classes.playerBarRight}>
                 <div className={classes.download}>
-                    <div className={classes.fullScreenIcon}>
-                        {/* I didn't know which icon to add so you more than welcome to replace this one */}
-                        <img
-                            className={`${classes.sizeIcon} ${
-                                isFullSize
-                                    ? classes.fullSizeIcon
-                                    : classes.normalSizeIcon
-                            }`}
-                            alt="set size icon"
-                            src="https://icon-library.net//images/full-screen-icon-png/full-screen-icon-png-21.jpg"
-                            onClick={() => {
-                                setIsFullSize(!isFullSize);
-                            }}
-                        />
-                    </div>
                     <div className={classes.snapshotButton}>
                         <ScreenshotButton />
                     </div>
@@ -184,6 +168,18 @@ export default function PlayerBar(props) {
                     </div>
                 </div>
                 <UploadButton classes={classes} />
+
+                {/* I didn't know which icon to add so you more than welcome to replace this one */}
+                <img
+                    className={`${classes.setSizeIcon} ${
+                        isFullSize
+                            ? classes.fullSizeIcon
+                            : classes.normalSizeIcon
+                    }`}
+                    alt="set size icon"
+                    src="https://icon-library.net//images/full-screen-icon-png/full-screen-icon-png-21.jpg"
+                    onClick={() => setIsFullSize(!isFullSize)}
+                />
             </div>
         </div>
     );
