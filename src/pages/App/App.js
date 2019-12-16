@@ -9,6 +9,7 @@ import VisualPanel from '../../components/VisualPanel/VisualPanel';
 import ScreenshotModal from '../../components/ScreenshotModal/ScreenshotModal';
 import Error from '../../components/Error/Error';
 import Success from '../../components/Success/Success';
+import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
 export default function App({ song }) {
     // Local States
@@ -21,7 +22,6 @@ export default function App({ song }) {
     const [volume, setVolume] = useState(0.5);
     const [isTogglePanel, setisTogglePanel] = useState(false);
     const [isSongEnded, setisSongEnded] = useState(false);
-    const [isFullSize, setIsFullSize] = useState(false);
     const [blob, setBlob] = useState(null);
     // Redux States
     const { downloadState } = useSelector(state => state.download);
@@ -31,6 +31,9 @@ export default function App({ song }) {
         screenshotSuccess,
         screenshotError
     } = useSelector(state => state.screenshot);
+    const { isFullSize, isElementsShowed } = useSelector(
+        state => state.fullSize
+    );
 
     // Update state when a new song is uploaded
     useEffect(() => {
@@ -56,7 +59,13 @@ export default function App({ song }) {
                             className={`${classes.visualmusic}
                              ${isTogglePanel && classes.shrink}`}
                         >
-                            <div className={classes.hamburger}>
+                            <div
+                                id="hamburger"
+                                className={`${classes.hamburger} 
+                             ${isFullSize &&
+                                 !isElementsShowed &&
+                                 classes.hideHamburger}`}
+                            >
                                 <HamburgerToggle
                                     initToggle={isTogglePanel}
                                     onClick={toggleState =>
@@ -72,12 +81,15 @@ export default function App({ song }) {
                                 blob={blob}
                                 downloadVisual={isSongEnded && downloadState}
                                 cueTime={cueTime}
-                                isFullSize={isFullSize}
                             />
                         </div>
                         <div
+                            id="visual_panel"
                             className={`${classes.visualPanel}
-                             ${isTogglePanel && classes.slideIn}`}
+                             ${isTogglePanel && classes.slideIn}
+                             ${isFullSize &&
+                                 !isElementsShowed &&
+                                 classes.hideVisualPanel}`}
                         >
                             <VisualPanel />
                         </div>
@@ -107,8 +119,6 @@ export default function App({ song }) {
                             duration={duration}
                             isSongEnded={isSongEnded}
                             onCueTimeChange={e => setCueTime(e.target.value)}
-                            isFullSize={isFullSize}
-                            setIsFullSize={setIsFullSize}
                         />
                     </div>
                 </div>
@@ -116,6 +126,8 @@ export default function App({ song }) {
             <ScreenshotModal screenshotUrl={screenshotUrl} />
             <Success screenshotSuccess={screenshotSuccess} />
             <Error screenshotError={screenshotError} />
+            {isFullSize && <ShowElementsOnFullSize elemID={'hamburger'} />}{' '}
+            {isFullSize && <ShowElementsOnFullSize elemID={'visual_panel'} />}{' '}
         </>
     );
 }

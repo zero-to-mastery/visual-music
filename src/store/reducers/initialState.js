@@ -11,5 +11,9 @@ export default {
         screenshotUrl: '',
         screenshotSuccess: false,
         screenshotError: false
+    },
+    fullSize: {
+        isFullSize: false,
+        isElementsShowed: true
     }
 };

@@ -10,8 +10,13 @@
  5. Control the part of the song to be played
 
  ************************************************************/
-
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    setIsFullSize,
+    setIsElementsShowed
+} from '../../store/actions/fullSizeActions';
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as PauseIcon } from '../../assets/PlayerBarAssets/pause-icon.svg';
@@ -21,11 +26,17 @@ import UploadButton from './UploadButton/UploadButton';
 import ScreenshotButton from './ScreenshotButton/ScreenshotButton';
 import DownloadButton from './DownloadButton/DownloadButton';
 import classes from './PlayerBar.module.scss';
+import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
 export default function PlayerBar(props) {
     const [formatedDuration, setFormatedDuration] = useState('0:00');
     const [formatedCurrentTime, setFormatedCurrentTime] = useState('0:00');
-    const [isPlayerBarShowed, setIsPlayerBarShowed] = useState(true);
+
+    const dispatch = useDispatch();
+    const { isFullSize, isElementsShowed } = useSelector(
+        state => state.fullSize
+    );
+
     // Props from (src/pages/App/App.js):
     const {
         uploadedSong,
@@ -37,9 +48,7 @@ export default function PlayerBar(props) {
         onVolumeChange,
         isSongEnded,
         currentTime,
-        onCueTimeChange,
-        isFullSize,
-        setIsFullSize
+        onCueTimeChange
     } = props;
 
     // Set formated duration
@@ -51,35 +60,6 @@ export default function PlayerBar(props) {
     useEffect(() => {
         setFormatedCurrentTime(getTime(currentTime));
     }, [currentTime]);
-
-    useEffect(() => {
-        const bar = document.getElementById('player_bar');
-        if (isFullSize && bar) {
-            bar.addEventListener(
-                'mouseenter',
-                () => setIsPlayerBarShowed(true),
-                false
-            );
-            bar.addEventListener(
-                'mouseleave',
-                () => setIsPlayerBarShowed(false),
-                false
-            );
-        }
-
-        return () => {
-            bar.removeEventListener(
-                'mouseenter',
-                () => setIsPlayerBarShowed(true),
-                false
-            );
-            bar.removeEventListener(
-                'mouseleave',
-                () => setIsPlayerBarShowed(false),
-                false
-            );
-        };
-    }, [isFullSize]);
 
     // Format time (eg. 140 to 2:20)
     const getTime = dur =>
@@ -97,12 +77,11 @@ export default function PlayerBar(props) {
     } else {
         actionButton = <RollingIcon />;
     }
-
     return (
         <div
             id="player_bar"
             className={`${classes.playerBar} 
-            ${isFullSize && !isPlayerBarShowed && classes.hideBar}`}
+            ${isFullSize && !isElementsShowed && classes.hideBar}`}
         >
             <div className={classes.nowPlaying}>
                 <div className={classes.icon}>
@@ -178,9 +157,11 @@ export default function PlayerBar(props) {
                     }`}
                     alt="set size icon"
                     src="https://icon-library.net//images/full-screen-icon-png/full-screen-icon-png-21.jpg"
-                    onClick={() => setIsFullSize(!isFullSize)}
+                    onClick={() => dispatch(setIsFullSize(!isFullSize))}
                 />
             </div>
+
+            {isFullSize && <ShowElementsOnFullSize elemID={'player_bar'} />}
         </div>
     );
 }

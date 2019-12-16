@@ -149,17 +149,18 @@ export default function sketch(p) {
         if (width !== p.width || height !== p.height) {
             let beforeResizeCanvas = p.get();
             p.resizeCanvas(width, height);
-            p.copy(
-                beforeResizeCanvas,
-                0,
-                0,
-                beforeResizeCanvas.width,
-                beforeResizeCanvas.height,
-                0,
-                0,
-                width,
-                height
-            );
+            mediaRecorder &&
+                p.copy(
+                    beforeResizeCanvas,
+                    0,
+                    0,
+                    beforeResizeCanvas.width,
+                    beforeResizeCanvas.height,
+                    0,
+                    0,
+                    width,
+                    height
+                );
         }
         // Check for new uploaded song
         if (song) {
