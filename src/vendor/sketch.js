@@ -4,7 +4,7 @@ import 'p5/lib/addons/p5.dom';
 
 import { downloadVisualEnd } from '../store/actions/downloadActions';
 import { getScreenshotUrl } from '../store/actions/screenshotActions';
-import { drawOne } from './draw/drawOne';
+import { drawOne } from './draws/drawOne';
 export default function sketch(p) {
     // initial song and canvas props set
     let song, fft, amplitude, volume, canvas;
