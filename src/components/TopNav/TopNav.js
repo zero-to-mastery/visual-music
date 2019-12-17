@@ -11,25 +11,26 @@ TODO: - Black background on scroll.
 ************************/
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import classes from './TopNav.module.scss';
 import logo from '../../assets/LogoSVG.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut, cleanError } from '../../store/actions/authActions';
 import Button from '../units/Button/Button';
+import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
 const UnAuthNav = ({ dispatch }) => (
     <div>
         <Link to="/login">
             <Button
-                onClick={() => dispatch(cleanError)}
+                onClick={() => dispatch(cleanError())}
                 text="Log In"
                 btnClass="logIn"
             />
         </Link>
         <Link to="/register">
             <Button
-                onClick={() => dispatch(cleanError)}
+                onClick={() => dispatch(cleanError())}
                 text="Sign Up"
                 btnClass="signUp"
             />
@@ -37,12 +38,14 @@ const UnAuthNav = ({ dispatch }) => (
     </div>
 );
 
-const AuthNav = ({ dispatch }) => {
+const AuthNav = ({ dispatch, pathname }) => {
     return (
         <div>
-            <Link to="/app">
-                <Button text="App" btnClass="app" />
-            </Link>
+            {pathname !== '/app' && (
+                <Link to="/app">
+                    <Button text="App" btnClass="app" />
+                </Link>
+            )}
             <Button
                 text="Log Out"
                 btnClass="signUp"
@@ -52,22 +55,35 @@ const AuthNav = ({ dispatch }) => {
     );
 };
 
-function TopNav() {
+function TopNav(props) {
     const uid = useSelector(state => state.firebase.auth.uid);
     const dispatch = useDispatch();
+    const { isFullSize, isElementsShowed } = useSelector(
+        state => state.fullSize
+    );
 
     return (
-        <nav className={classes.topNav}>
-            <Link to="/">
-                <img src={logo} alt="logo" height="85px" width="85px" />
-            </Link>
-            {uid ? (
-                <AuthNav dispatch={dispatch} />
-            ) : (
-                <UnAuthNav dispatch={dispatch} />
-            )}
-        </nav>
+        <>
+            <nav
+                id="top_nav"
+                className={`${classes.topNav}
+         ${isFullSize && !isElementsShowed && classes.hideNav}`}
+            >
+                <Link to="/">
+                    <img src={logo} alt="logo" height="85px" width="85px" />
+                </Link>
+                {uid ? (
+                    <AuthNav
+                        pathname={props.location.pathname}
+                        dispatch={dispatch}
+                    />
+                ) : (
+                    <UnAuthNav dispatch={dispatch} />
+                )}
+            </nav>
+            {isFullSize && <ShowElementsOnFullSize elemID={'top_nav'} />}
+        </>
     );
 }
 
-export default TopNav;
+export default withRouter(TopNav);

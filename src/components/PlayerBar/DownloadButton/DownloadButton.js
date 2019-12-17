@@ -4,7 +4,7 @@ import { ReactComponent as DownloadIcon } from '../../../assets/PlayerBarAssets/
 import { ReactComponent as DownloadIconReady } from '../../../assets/PlayerBarAssets/download-ready-icon.svg';
 import { downloadVisualStart } from '../../../store/actions/downloadActions';
 
-export default function DownloadButton({ songEnded, isPlaying }) {
+export default function DownloadButton({ isSongEnded, isPlaying }) {
     const dispatch = useDispatch();
 
     const onDownloadVisual = () => {
@@ -12,7 +12,7 @@ export default function DownloadButton({ songEnded, isPlaying }) {
     };
     return (
         <>
-            {songEnded && !isPlaying ? (
+            {isSongEnded && !isPlaying ? (
                 <DownloadIconReady onClick={onDownloadVisual} />
             ) : (
                 <DownloadIcon />

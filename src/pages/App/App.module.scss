@@ -38,11 +38,16 @@
         background-color: $white;
 
         transition: all $animSpeed ease-in-out;
+        opacity: 1;
 
         &.slideIn {
             left: 0;
             bottom: 0;
         }
+    }
+
+    .hideVisualPanel {
+        opacity: 0;
     }
 
     .visualmusic {
@@ -62,6 +67,11 @@
             left: 0;
             width: $hamburgerSize;
             height: $hamburgerSize;
+            opacity: 1;
+        }
+
+        .hideHamburger {
+            opacity: 0;
         }
 
         &.shrink {

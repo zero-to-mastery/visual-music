@@ -1,6 +1,6 @@
 import React from 'react';
 import CircularIndicator from './CircularIndicator';
-import { ReactComponent as LoadingCircle } from '../../assets/LoadingAssets/LoadingCircle.svg';
+import { ReactComponent as LoadingCircle } from '../../LoadingCircle.svg';
 import classes from './ProgressSpinner.module.scss';
 
 const ProgressSpinner = ({ percentage }) => {

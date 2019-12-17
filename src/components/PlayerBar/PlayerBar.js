@@ -10,8 +10,13 @@
  5. Control the part of the song to be played
 
  ************************************************************/
-
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    setIsFullSize,
+    setIsElementsShowed
+} from '../../store/actions/fullSizeActions';
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as PauseIcon } from '../../assets/PlayerBarAssets/pause-icon.svg';
@@ -21,10 +26,16 @@ import UploadButton from './UploadButton/UploadButton';
 import ScreenshotButton from './ScreenshotButton/ScreenshotButton';
 import DownloadButton from './DownloadButton/DownloadButton';
 import classes from './PlayerBar.module.scss';
+import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
 export default function PlayerBar(props) {
     const [formatedDuration, setFormatedDuration] = useState('0:00');
     const [formatedCurrentTime, setFormatedCurrentTime] = useState('0:00');
+
+    const dispatch = useDispatch();
+    const { isFullSize, isElementsShowed } = useSelector(
+        state => state.fullSize
+    );
 
     // Props from (src/pages/App/App.js):
     const {
@@ -35,7 +46,7 @@ export default function PlayerBar(props) {
         isPlaying,
         volume,
         onVolumeChange,
-        songEnded,
+        isSongEnded,
         currentTime,
         onCueTimeChange
     } = props;
@@ -51,11 +62,8 @@ export default function PlayerBar(props) {
     }, [currentTime]);
 
     // Format time (eg. 140 to 2:20)
-    const getTime = dur => {
-        return (
-            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
-        );
-    };
+    const getTime = dur =>
+        Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2);
 
     // Update the width for the progress slider base on the current time
     const sliderProgressWidth = {
@@ -69,9 +77,12 @@ export default function PlayerBar(props) {
     } else {
         actionButton = <RollingIcon />;
     }
-
     return (
-        <div className={classes.playerBar}>
+        <div
+            id="player_bar"
+            className={`${classes.playerBar} 
+            ${isFullSize && !isElementsShowed && classes.hideBar}`}
+        >
             <div className={classes.nowPlaying}>
                 <div className={classes.icon}>
                     <SongIcon />
@@ -131,12 +142,26 @@ export default function PlayerBar(props) {
                     <div className={classes.downloadButton}>
                         <DownloadButton
                             isPlaying={isPlaying}
-                            songEnded={songEnded}
+                            isSongEnded={isSongEnded}
                         />
                     </div>
                 </div>
                 <UploadButton classes={classes} />
+
+                {/* I didn't know which icon to add so you more than welcome to replace this one */}
+                <img
+                    className={`${classes.setSizeIcon} ${
+                        isFullSize
+                            ? classes.fullSizeIcon
+                            : classes.normalSizeIcon
+                    }`}
+                    alt="set size icon"
+                    src="https://icon-library.net//images/full-screen-icon-png/full-screen-icon-png-21.jpg"
+                    onClick={() => dispatch(setIsFullSize(!isFullSize))}
+                />
             </div>
+
+            {isFullSize && <ShowElementsOnFullSize elemID={'player_bar'} />}
         </div>
     );
 }

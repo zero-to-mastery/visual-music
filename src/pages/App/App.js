@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import Error from '../../components/Error/Error';
-// import SoundPlayer from '../../components/SoundPlayer/SoundPlayer.component';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
@@ -11,9 +9,10 @@ import VisualPanel from '../../components/VisualPanel/VisualPanel';
 import ScreenshotModal from '../../components/ScreenshotModal/ScreenshotModal';
 import Error from '../../components/Error/Error';
 import Success from '../../components/Success/Success';
+import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
 export default function App({ song }) {
-    // States
+    // Local States
     const [uploadedSong, setUploadedSong] = useState(null);
     const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -21,9 +20,10 @@ export default function App({ song }) {
     const [currentTime, setCurrentTime] = useState(null);
     const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
-    const [togglePanel, setTogglePanel] = useState(false);
-    const [songEnded, setSongEnded] = useState(false);
+    const [isTogglePanel, setisTogglePanel] = useState(false);
+    const [isSongEnded, setisSongEnded] = useState(false);
     const [blob, setBlob] = useState(null);
+    // Redux States
     const { downloadState } = useSelector(state => state.download);
     const {
         screenshotUrl,
@@ -31,74 +31,23 @@ export default function App({ song }) {
         screenshotSuccess,
         screenshotError
     } = useSelector(state => state.screenshot);
+    const { isFullSize, isElementsShowed } = useSelector(
+        state => state.fullSize
+    );
 
     // Update state when a new song is uploaded
     useEffect(() => {
         setUploadedSong(song);
         setBlob(song.blob);
-        setSongEnded(false);
+        setisSongEnded(false);
         setPlayPressed(false);
         setIsPlaying(false);
     }, [song]);
 
-    /********************************************
-        Handles changing of volume state upon
-        slider interaction. State changes are sent to
-        sketch file adjusting the sound's actual
-        volume to change ellipse diameter on redraw.
-    ********************************************/
-    const onVolumeChange = event => {
-        setVolume(event.target.value);
-    };
-
-    /*********************************************
-        Handles toggling of pause/play button.
-        Used to monitor if the user wants to pause/play
-        the loaded sound. State changes are sent to
-        sketch file which executes a .pause() or .play()
-        command.
-    *********************************************/
-    const onPlayPress = event => {
-        if (uploadedSong) {
-            setPlayPressed(!playPressed);
-        } else {
-            alert('No file loaded');
-        }
-    };
-
-    const onAudioPlay = () => {
-        setIsPlaying(true);
-    };
-
     const onSongEnd = () => {
         setIsPlaying(false);
         setPlayPressed(false);
-        setSongEnded(true);
-    };
-
-    // Set duration from audio event
-    const handleMetadata = event => {
-        const duration = event.currentTarget.duration;
-        setDuration(duration);
-    };
-
-    // Set currentTime from audio event (onTimeUpdate)
-    const onTimeChange = e => {
-        setCurrentTime(e.target.currentTime);
-    };
-
-    // Set cue time when users click on the progress slider (/PlayerBar.js)
-    const onCueTimeChange = e => {
-        setCueTime(e.target.value);
-    };
-
-    /********************************************
-        Handle hamburger toggle callback. When 
-        hamburger toggle's state changed, we need
-        to set togglePanel state
-    *********************************************/
-    const onTogglePanel = toggleState => {
-        setTogglePanel(toggleState);
+        setisSongEnded(true);
     };
 
     return (
@@ -107,14 +56,21 @@ export default function App({ song }) {
                 <div className={classes.visualmusic}>
                     <div className={classes.visualContainer}>
                         <div
-                            className={`${classes.visualmusic} ${
-                                togglePanel ? classes.shrink : ''
-                            }`}
+                            className={`${classes.visualmusic}
+                             ${isTogglePanel && classes.shrink}`}
                         >
-                            <div className={classes.hamburger}>
+                            <div
+                                id="hamburger"
+                                className={`${classes.hamburger} 
+                             ${isFullSize &&
+                                 !isElementsShowed &&
+                                 classes.hideHamburger}`}
+                            >
                                 <HamburgerToggle
-                                    initToggle={togglePanel}
-                                    onClick={onTogglePanel}
+                                    initToggle={isTogglePanel}
+                                    onClick={toggleState =>
+                                        setisTogglePanel(toggleState)
+                                    }
                                 />
                             </div>
                             <Visualizer
@@ -123,14 +79,17 @@ export default function App({ song }) {
                                 playPressed={playPressed}
                                 uploadedSong={uploadedSong && uploadedSong.url}
                                 blob={blob}
-                                downloadVisual={songEnded && downloadState}
+                                downloadVisual={isSongEnded && downloadState}
                                 cueTime={cueTime}
                             />
                         </div>
                         <div
-                            className={`${classes.visualPanel} ${
-                                togglePanel ? classes.slideIn : ''
-                            }`}
+                            id="visual_panel"
+                            className={`${classes.visualPanel}
+                             ${isTogglePanel && classes.slideIn}
+                             ${isFullSize &&
+                                 !isElementsShowed &&
+                                 classes.hideVisualPanel}`}
                         >
                             <VisualPanel />
                         </div>
@@ -139,23 +98,27 @@ export default function App({ song }) {
                         <audio
                             id="audio"
                             onEnded={onSongEnd}
-                            onLoadedMetadata={handleMetadata}
-                            onPlay={onAudioPlay}
-                            onTimeUpdate={onTimeChange}
+                            onLoadedMetadata={e =>
+                                setDuration(e.currentTarget.duration)
+                            }
+                            onPlay={() => setIsPlaying(true)}
+                            onTimeUpdate={e =>
+                                setCurrentTime(e.target.currentTime)
+                            }
                         ></audio>
                     </div>
                     <div className={classes.bar}>
                         <PlayerBar
                             currentTime={currentTime}
                             volume={volume}
-                            onVolumeChange={onVolumeChange}
-                            onPlayPress={onPlayPress}
+                            onVolumeChange={e => setVolume(e.target.value)}
+                            onPlayPress={() => setPlayPressed(!playPressed)}
                             playPressed={playPressed}
                             isPlaying={isPlaying}
                             uploadedSong={uploadedSong}
                             duration={duration}
-                            songEnded={songEnded}
-                            onCueTimeChange={onCueTimeChange}
+                            isSongEnded={isSongEnded}
+                            onCueTimeChange={e => setCueTime(e.target.value)}
                         />
                     </div>
                 </div>
@@ -163,6 +126,8 @@ export default function App({ song }) {
             <ScreenshotModal screenshotUrl={screenshotUrl} />
             <Success screenshotSuccess={screenshotSuccess} />
             <Error screenshotError={screenshotError} />
+            {isFullSize && <ShowElementsOnFullSize elemID={'hamburger'} />}{' '}
+            {isFullSize && <ShowElementsOnFullSize elemID={'visual_panel'} />}{' '}
         </>
     );
 }
