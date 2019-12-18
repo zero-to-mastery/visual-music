@@ -5,7 +5,7 @@
     font-size: 1rem;
     line-height: 160%;
     letter-spacing: 0.1em;
-    color: #ffffff;
+    color: #434C5F;
 }
 
 @mixin formInputField {
@@ -34,7 +34,7 @@
 
     .loginOverlay {
         width: 32%;
-        background: #0d4e67;
+        background: #ffffff;
         border-radius: 4px;
     }
 
@@ -73,7 +73,7 @@
         font-size: 2rem;
         line-height: 140%;
         letter-spacing: 0.15em;
-        color: #ffffff;
+        color: #434C5F;
         padding-bottom: 6%;
     }
 
@@ -136,6 +136,17 @@
             color: #0d4e67;
 
             cursor: pointer;
+        }
+    }
+
+    .rememberMeGroup{
+        margin-top: 5px;
+        
+        .rememberMeLabel{
+           margin-left: 5px;
+           font-family: Ubuntu;
+           font-size: 14px;
+           line-height: 16px;
         }
     }
 

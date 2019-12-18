@@ -3,13 +3,13 @@ import classes from './Login.module.scss';
 import { Link } from 'react-router-dom';
 import Span from '../../../components/units/Span/Span';
 
-function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
+function LoginPage({ setEmail, setPassword, onRemeber, onFormSubmit, span }) {
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
                 <form className={classes.loginForm} onSubmit={onFormSubmit}>
                     <div className={classes.titleGroup}>
-                        <span>Welcome back!</span>
+                        <span>Sign In</span>
                     </div>
                     <div className={classes.emailGroup}>
                         <div className={classes.emailGroup}>
@@ -38,6 +38,18 @@ function LoginPage({ setEmail, setPassword, onFormSubmit, span }) {
                             }}
                             required
                         />
+                    </div>
+                    <div className={classes.rememberMeGroup}>
+                        <input
+                            className={classes.passwordField}
+                            type="checkbox"
+                            onChange={e => {
+                                //TODO: 
+                            }}
+                        />
+                        <label className={classes.rememberMeLabel}>
+                            Remember Me
+                        </label>
                     </div>
                     <div className={classes.loginButtonGroup}>
                         <button className={classes.loginButton} type="submite">
