@@ -30,7 +30,7 @@ function AppBrowser() {
                 dispatch(disconnect(uid))
             );
         };
-    }, [userName]);
+    }, [userName, dispatch, uid]);
 
     return (
         <div>
