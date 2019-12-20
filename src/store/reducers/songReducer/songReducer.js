@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 export const songReducer = (state = initialState.song, action) => {
     switch (action.type) {

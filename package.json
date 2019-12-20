@@ -24,7 +24,8 @@
         "react-spring": "^8.0.27",
         "redux": "^4.0.4",
         "redux-firestore": "^0.9.0",
-        "redux-thunk": "^2.3.0"
+        "redux-thunk": "^2.3.0",
+        "socket.io-client": "^2.3.0"
     },
     "scripts": {
         "start": "react-scripts start",

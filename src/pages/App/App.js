@@ -13,16 +13,13 @@ import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
 export default function App({ song }) {
     // Local States
-    const [uploadedSong, setUploadedSong] = useState(null);
     const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(null);
     const [currentTime, setCurrentTime] = useState(null);
-    const [cueTime, setCueTime] = useState(0);
     const [volume, setVolume] = useState(0.5);
     const [isTogglePanel, setisTogglePanel] = useState(false);
     const [isSongEnded, setisSongEnded] = useState(false);
-    const [blob, setBlob] = useState(null);
     // Redux States
     const { downloadState } = useSelector(state => state.download);
     const {
@@ -37,8 +34,6 @@ export default function App({ song }) {
 
     // Update state when a new song is uploaded
     useEffect(() => {
-        setUploadedSong(song);
-        setBlob(song.blob);
         setisSongEnded(false);
         setPlayPressed(false);
         setIsPlaying(false);
@@ -77,10 +72,10 @@ export default function App({ song }) {
                                 volume={volume}
                                 takeScreenshot={takeScreenshot}
                                 playPressed={playPressed}
-                                uploadedSong={uploadedSong && uploadedSong.url}
-                                blob={blob}
+                                uploadedSong={song.url && song.url}
+                                blob={song.blob}
                                 downloadVisual={isSongEnded && downloadState}
-                                cueTime={cueTime}
+                                currentTime={currentTime}
                             />
                         </div>
                         <div
@@ -103,6 +98,9 @@ export default function App({ song }) {
                             }
                             onPlay={() => setIsPlaying(true)}
                             onTimeUpdate={e =>
+                                !isSongEnded &&
+                                parseInt(e.target.currentTime) !==
+                                    parseInt(currentTime) &&
                                 setCurrentTime(e.target.currentTime)
                             }
                         ></audio>
@@ -115,10 +113,12 @@ export default function App({ song }) {
                             onPlayPress={() => setPlayPressed(!playPressed)}
                             playPressed={playPressed}
                             isPlaying={isPlaying}
-                            uploadedSong={uploadedSong}
+                            uploadedSong={song}
                             duration={duration}
                             isSongEnded={isSongEnded}
-                            onCueTimeChange={e => setCueTime(e.target.value)}
+                            onCueTimeChange={e =>
+                                setCurrentTime(e.target.value)
+                            }
                         />
                     </div>
                 </div>
@@ -126,8 +126,13 @@ export default function App({ song }) {
             <ScreenshotModal screenshotUrl={screenshotUrl} />
             <Success screenshotSuccess={screenshotSuccess} />
             <Error screenshotError={screenshotError} />
-            {isFullSize && <ShowElementsOnFullSize elemID={'hamburger'} />}{' '}
-            {isFullSize && <ShowElementsOnFullSize elemID={'visual_panel'} />}{' '}
+            {/* attach when fullSize event listeners to hamburger and visual-panel for show while hover on */}
+            {isFullSize && (
+                <>
+                    <ShowElementsOnFullSize elemID={'hamburger'} />{' '}
+                    <ShowElementsOnFullSize elemID={'visual_panel'} />{' '}
+                </>
+            )}
         </>
     );
 }

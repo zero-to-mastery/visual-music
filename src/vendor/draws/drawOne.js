@@ -116,7 +116,7 @@ const splitOctaves = (spectrum, slicesPerOctave, p) => {
 };
 
 // average a point in an array with its neighbors
-const smoothPoint = function(spectrum, index, numberOfNeighbors) {
+const smoothPoint = (spectrum, index, numberOfNeighbors) => {
     // default to 2 neighbors on either side
     let neighbors = numberOfNeighbors || 2;
     let spectrumLength = spectrum.length;

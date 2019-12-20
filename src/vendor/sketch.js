@@ -5,14 +5,14 @@ import 'p5/lib/addons/p5.dom';
 import { downloadVisualEnd } from '../store/actions/downloadActions';
 import { getScreenshotUrl } from '../store/actions/screenshotActions';
 import { drawOne } from './draws/drawOne';
+
 export default function sketch(p) {
     // initial song and canvas props set
     let song, fft, amplitude, volume, canvas;
-    let playPressed = false;
+    let playPressed,
+        jumpedSong = false;
     let width = 900;
     let height = 500;
-    // initial jump functionalty set
-    let prevCueTime, newCueTime, jumpedSong;
     // initial download visual set
     let audioCtx, sourceNode, dest, canvasStream, audioStream, mediaRecorder;
     let recordedChunks = [];
@@ -111,18 +111,19 @@ export default function sketch(p) {
         playPressed = props.playPressed;
         // Function that get called when a song is loaded
         function loaded() {
-            newCueTime = parseInt(props.cueTime);
             volume = props.volume;
             song.setVolume(parseFloat(volume));
 
             // Restart song where it was stopped if the user jump the song
             song.playMode('restart');
             // Jump song to desired time
-            if (newCueTime && newCueTime !== prevCueTime) {
+            if (
+                parseInt(props.currentTime) !== parseInt(song.currentTime()) &&
+                parseInt(props.currentTime) <= parseInt(song.duration())
+            ) {
                 // When jump func is called the song start playing automatically
-                song.jump(newCueTime);
-                audio.currentTime = newCueTime;
-                prevCueTime = newCueTime;
+                song.jump(props.currentTime);
+                audio.currentTime = props.currentTime;
                 jumpedSong = true;
             } else {
                 jumpedSong = false;
@@ -200,8 +201,7 @@ export default function sketch(p) {
         }
 
         if (props.takeScreenshot) {
-            let screenshotUrl = p.canvas.toDataURL();
-            props.dispatch(getScreenshotUrl(screenshotUrl));
+            props.dispatch(getScreenshotUrl(p.canvas.toDataURL()));
         }
     };
 

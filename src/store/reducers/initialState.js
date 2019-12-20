@@ -15,5 +15,10 @@ export default {
     fullSize: {
         isFullSize: false,
         isElementsShowed: true
+    },
+    chat: {
+        room: 'global',
+        messages: [],
+        onlineUsers: null
     }
 };

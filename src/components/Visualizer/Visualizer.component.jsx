@@ -36,7 +36,7 @@ const Visualizer = React.memo(props => {
     const {
         volume,
         takeScreenshot,
-        cueTime,
+        currentTime,
         playPressed,
         uploadedSong,
         downloadVisual,
@@ -66,7 +66,7 @@ const Visualizer = React.memo(props => {
                         canvasHeight={canvasHeight}
                         downloadVisual={downloadVisual}
                         blob={blob}
-                        cueTime={cueTime}
+                        currentTime={currentTime}
                         dispatch={useDispatch()}
                         isFullSize={isFullSize}
                     />

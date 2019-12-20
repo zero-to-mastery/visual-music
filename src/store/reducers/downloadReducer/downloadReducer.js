@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 export const downloadReducer = (state = initialState.downloadState, action) => {
     switch (action.type) {
