@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 export const screenshotReducer = (state = initialState.screenshot, action) => {
     switch (action.type) {

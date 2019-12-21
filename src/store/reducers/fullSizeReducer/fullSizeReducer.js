@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 export const fullSizeReducer = (state = initialState.fullSize, action) => {
     switch (action.type) {

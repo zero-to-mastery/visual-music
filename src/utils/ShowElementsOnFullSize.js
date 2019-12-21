@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setIsElementsShowed } from '../store/actions/fullSizeActions';
+
 export default function ShowElementsOnFullSize({ elemID }) {
     const dispatch = useDispatch();
     useEffect(() => {
