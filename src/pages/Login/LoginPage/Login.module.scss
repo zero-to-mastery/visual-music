@@ -2,9 +2,8 @@
     font-family: Biryani;
     font-style: normal;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.4em;
     line-height: 160%;
-    letter-spacing: 0.1em;
     color: #434C5F;
 }
 
@@ -14,28 +13,49 @@
     border: 2px solid #e6e6e6;
     box-sizing: border-box;
     border-radius: 4px;
-    font-weight: 600;
-    font-size: 2rem;
+    font-weight: normal;
+    font-size: 1rem;
+    height: 45px;
+    padding: 4px;
 }
 
 @mixin formGroup {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-top: 32px;
 }
 
 .overlay {
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     background: #595757;
 
     .loginOverlay {
-        width: 32%;
-        background: #ffffff;
-        border-radius: 4px;
+        width: 34%;
+        height: 100%;
+        background: #ffffff;       
+        z-index: 3;
+        position: relative;
+
+        .innerLoginOverlay{
+            border-color: #C43388;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 4px;
+            position: absolute;
+            box-sizing: border-box;
+            transform: translate(-50%, 0);
+            left: 50%;
+            height: 84%;
+            margin-top: 8%;
+            width: 84%;
+            margin-right: 8%;
+
+        }
     }
 
     @media only screen and (max-width: 1178px) {
@@ -62,8 +82,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 7% 10% 10%;
-    margin-bottom: 8%;
+    margin: 6%;
+    
 
     .titleGroup {
         @include formGroup;
@@ -71,10 +91,9 @@
         font-style: normal;
         font-weight: normal;
         font-size: 2rem;
-        line-height: 140%;
-        letter-spacing: 0.15em;
+        line-height: 1.4;
+        text-align: center;
         color: #434C5F;
-        padding-bottom: 6%;
     }
 
     .errorLabel {
@@ -114,36 +133,17 @@
         }
     }
 
-    .loginButtonGroup {
-        @include formGroup;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 4%;
-
-        .loginButton {
-            outline: none;
-            width: 120px;
-            height: 39px;
-            background: #ffffff;
-            border-radius: 10px;
-
-            font-family: Biryani;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 1rem;
-            line-height: 100%;
-            letter-spacing: 0.1em;
-            color: #0d4e67;
-
-            cursor: pointer;
-        }
+    .signInProps{
+        width: 100%;
+        margin-top: 20px;
     }
 
     .rememberMeGroup{
-        margin-top: 5px;
+        float: left;
+        width: 50%;
         
         .rememberMeLabel{
-           margin-left: 5px;
+           margin-left: 8px;
            font-family: Ubuntu;
            font-size: 14px;
            line-height: 16px;
@@ -151,17 +151,16 @@
     }
 
     .forgotPasswordLinksGroup {
-        margin-top: 5px;
-        display: flex;
-        justify-content: center;
-        width: 100%;
+        float: right;
 
         .forgotPasswordLink {
             font-size: 14px;
+            font-family: Ubuntu;
             background: transparent;
             display: inline-block;
-            color: white;
+            color: #2F80ED;
             text-decoration: none;
+            text-align: right;
 
             &::after {
                 content: '';
@@ -175,6 +174,34 @@
             &:hover::after {
                 width: 100%;
             }
+        }
+    }
+
+    .loginButtonGroup {
+        @include formGroup;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 4%;
+        margin-top: 40px;
+
+        .loginButton {
+            outline: none;
+            width: 250px;
+            height: 50px;
+            background: #C43388;
+            border-radius: 100px;
+            padding: 17px 0%;
+
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.4em;
+            line-height: 100%;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ffffff;
+
+            cursor: pointer;
         }
     }
 

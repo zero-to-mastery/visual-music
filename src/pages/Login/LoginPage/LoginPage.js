@@ -7,6 +7,7 @@ function LoginPage({ setEmail, setPassword, onRemeber, onFormSubmit, span }) {
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
+                <div className={classes.innerLoginOverlay}>
                 <form className={classes.loginForm} onSubmit={onFormSubmit}>
                     <div className={classes.titleGroup}>
                         <span>Sign In</span>
@@ -39,36 +40,39 @@ function LoginPage({ setEmail, setPassword, onRemeber, onFormSubmit, span }) {
                             required
                         />
                     </div>
-                    <div className={classes.rememberMeGroup}>
-                        <input
-                            className={classes.passwordField}
-                            type="checkbox"
-                            onChange={e => {
-                                //TODO: 
-                            }}
-                        />
-                        <label className={classes.rememberMeLabel}>
-                            Remember Me
-                        </label>
+                    <div className={classes.signInProps}>
+                        <div className={classes.rememberMeGroup}>
+                            <input
+                                className={classes.passwordField}
+                                type="checkbox"
+                                onChange={e => {
+                                    //TODO: 
+                                }}
+                            />
+                            <label className={classes.rememberMeLabel}>
+                                Remember Me
+                            </label>
+                        </div>
+                        <div className={classes.forgotPasswordLinksGroup}>
+                            <Link
+                                to="/forgot-password"
+                                className={classes.forgotPasswordLink}
+                            >
+                                Forgot Password?
+                            </Link>
+                        </div>
                     </div>
                     <div className={classes.loginButtonGroup}>
                         <button className={classes.loginButton} type="submite">
-                            Login
+                            Continue
                         </button>
-                    </div>
-                    <div className={classes.forgotPasswordLinksGroup}>
-                        <Link
-                            to="/forgot-password"
-                            className={classes.forgotPasswordLink}
-                        >
-                            Forgot Password?
-                        </Link>
                     </div>
 
                     {span && (
                         <Span className={classes.errorLabel} content={span} />
                     )}
                 </form>
+                </div>
             </div>
         </div>
     );
