@@ -38,13 +38,13 @@
     }
 
     .labelOverlay{
+        color: black;
         font-family: Biryani;
         font-style: normal;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 1rem;
         line-height: 160%;
         letter-spacing: 0.1em;
-        color:#ffffff;
     }
 
     $largeFont: 2rem;
@@ -55,7 +55,7 @@
         background: #ffffff;
         box-sizing: border-box;
         border-radius: 4px;
-        font-weight: 600;
+        font-weight: 400;
         font-size: $largeFont;
 
         &.errorStyle{
