@@ -94,7 +94,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                             onChange={e=>setPassword(e.target.value)}
                         />
                     </div>
-                    {/* <div className={classes.showpassword}>
+                    <div className={classes.showpassword}>
                         <input
                             type="checkbox"
                             name="showpassword"
@@ -104,7 +104,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                             }}
                         />
                         <label htmlFor="showpassword">Show Password</label>
-                    </div> */}
+                    </div>
                     <div className={classes.custombutton}>
                         <button type="submit" >
                             Continue

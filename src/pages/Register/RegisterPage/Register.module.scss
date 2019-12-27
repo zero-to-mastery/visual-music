@@ -82,23 +82,22 @@
             }
         
             .showpassword {
-                background-color: green;
-                width: 90%;
+                width: 30%;
                 display: flex;
-                margin-top: 2%;
+                justify-content: center;
                 align-items: center;
+                margin-top: 2%;
         
                 input {
-                    width: 5%;
+                    width: auto;
                 }
         
                 label {
                     width: 90%;
-                    font-size: 15px;
-                    line-height: 160%;
+                    font-size: .75rem;
                     letter-spacing: 0.1em;
-                    color: #ffffff;
-                    padding: 1%;
+                    color: #111;
+                    padding: 2%;
                 }
             }
         
