@@ -7,6 +7,9 @@ function LoginPage({ setEmail, setPassword, onRemember, onFormSubmit, span }) {
     return (
         <div className={classes.overlay}>
             <div className={classes.loginOverlay}>
+                <div className={classes.backgroundTitle}>
+                    
+                </div>
                 <div className={classes.innerLoginOverlay}>
                     <form className={classes.loginForm} onSubmit={onFormSubmit}>
                         <div className={classes.titleGroup}>

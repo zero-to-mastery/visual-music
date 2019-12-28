@@ -28,10 +28,12 @@
 
 .overlay {
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: #595757;
+    background-image: url('../../assets/SignInAssets/sign-in-bg.png');
 
     .loginOverlay {
         width: 34%;
