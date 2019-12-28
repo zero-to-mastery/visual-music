@@ -6,7 +6,6 @@ import { downloadReducer } from './downloadReducer/downloadReducer';
 import { screenshotReducer } from './screenshotReducer/screenshotReducer';
 import { fullSizeReducer } from './fullSizeReducer/fullSizeReducer';
 import { chatReducer } from './chatReducer/chatReducer';
-import { routeReducer } from './routeReducer/routeReducer';
 
 // the root reducer will become the state at the whole app.
 // { state.firebase/state.authError } for example, are ways to reach the content the state holds.
@@ -18,8 +17,7 @@ const rootReducer = combineReducers({
     download: downloadReducer,
     screenshot: screenshotReducer,
     fullSize: fullSizeReducer,
-    chat: chatReducer,
-    route:routeReducer
+    chat: chatReducer
 });
 
 export default rootReducer;

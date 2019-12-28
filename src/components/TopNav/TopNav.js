@@ -19,22 +19,44 @@ import { logOut, cleanError } from '../../store/actions/authActions';
 import Button from '../units/Button/Button';
 import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 
-const UnAuthNav = ({ dispatch }) => (
+const UnAuthNav = ({ dispatch, pathname }) => (
     <div>
-        <Link to="/login">
-            <Button
-                onClick={() => dispatch(cleanError())}
-                text="Log In"
-                btnClass="logIn"
-            />
-        </Link>
-        <Link to="/register">
-            <Button
-                onClick={() => dispatch(cleanError())}
-                text="Sign Up"
-                btnClass="signUp"
-            />
-        </Link>
+        {
+            pathname === '/login'?
+            <Link to="/">
+                <Button
+                    onClick={() => dispatch(cleanError())}
+                    text="Home"
+                    btnClass="logIn"
+                />
+            </Link>
+            :
+            <Link to="/login">
+                <Button
+                    onClick={() => dispatch(cleanError())}
+                    text="Log In"
+                    btnClass="logIn"
+                />
+            </Link>
+        }
+        {
+            pathname === '/register'?
+            <Link to="/">
+                <Button
+                    onClick={() => dispatch(cleanError())}
+                    text="Home"
+                    btnClass="signUp"
+                />
+            </Link>
+            :
+            <Link to="/register">
+                <Button
+                    onClick={() => dispatch(cleanError())}
+                    text="Sign Up"
+                    btnClass="signUp"
+                />
+            </Link>
+        }
     </div>
 );
 
@@ -78,7 +100,10 @@ function TopNav(props) {
                         dispatch={dispatch}
                     />
                 ) : (
-                    <UnAuthNav dispatch={dispatch} />
+                    <UnAuthNav 
+                        pathname={props.location.pathname} 
+                        dispatch={dispatch} 
+                    />
                 )}
             </nav>
             {isFullSize && <ShowElementsOnFullSize elemID={'top_nav'} />}
