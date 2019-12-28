@@ -20,5 +20,8 @@ export default {
         room: 'global',
         messages: [],
         onlineUsers: null
+    },
+    route:{
+        currentRoute: ''
     }
 };
