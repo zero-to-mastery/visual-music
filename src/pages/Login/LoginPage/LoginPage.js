@@ -6,10 +6,15 @@ import Span from '../../../components/units/Span/Span';
 function LoginPage({ setEmail, setPassword, onRemember, onFormSubmit, span }) {
     return (
         <div className={classes.overlay}>
+            <div className={classes.backgroundTitle}>
+                <h2 className={classes.heading}>
+                    Visualize music a new way!
+                </h2>
+                <p className={classes.subtitle}>
+                    The app that converts your favorite music pieces into visual expressions.
+                </p>
+            </div>
             <div className={classes.loginOverlay}>
-                <div className={classes.backgroundTitle}>
-                    
-                </div>
                 <div className={classes.innerLoginOverlay}>
                     <form className={classes.loginForm} onSubmit={onFormSubmit}>
                         <div className={classes.titleGroup}>

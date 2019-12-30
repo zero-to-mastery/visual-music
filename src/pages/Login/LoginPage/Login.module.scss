@@ -27,20 +27,42 @@
 }
 
 .overlay {
+    background-image: url('../../../assets/SignInAssets/sign-in/sign-in-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    background-image: url('../../assets/SignInAssets/sign-in-bg.png');
+    justify-content: flex-start;
+    height: fit-content;
+    
+
+    .backgroundTitle{
+        width: 66%;
+        padding: 20% 8% 8% 8%;
+        font-family: Biryani;
+        color: white;
+        position: relative;
+
+        h2 {
+            font-size: 2.5rem;
+            width: 60%;
+        }
+
+        p {
+            font-size: 1.5rem;
+            width: 60%;
+            min-width: 480px;
+        }
+    }
 
     .loginOverlay {
         width: 34%;
-        height: 100vh;
+        height: 100%;
+        min-height: 100vh;
         background: #ffffff;       
         z-index: 3;
-
+        
         .innerLoginOverlay{
             border-color: #C43388;
             border-width: 1px;
@@ -49,6 +71,7 @@
             box-sizing: border-box;
             margin: 8%;
             width: 84%;
+            height: fit-content;
 
         }
     }
