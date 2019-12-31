@@ -79,14 +79,15 @@
             }
 
             .errorLabel {
-                padding-top: 3%;
-                width: 100%;
-                font-size: 1.2rem;
-                line-height: 160%;
-                letter-spacing: 0.1em;
-                color: red;
-                text-align: center;
-                padding-bottom: 5%;
+                padding: .75rem 1rem;
+                width: 90%;
+                background-color: rgba(red, .3);
+                color: darken(red, 10);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: .8rem;
+                border-radius: 4px;
             }
         
             .showpassword {

@@ -64,6 +64,7 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
             <div className={classes.coltwo}>
                 <form className={classes.signupform} onSubmit={onFormSubmit}>
                     <h1 className={classes.signupheading}>Sign Up</h1>
+                    {span && <Span className={classes.errorLabel} content={span} />}
                     <div className={classes.name}>
                         <FormInput 
                             labelText='Name'
@@ -111,9 +112,6 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                         </button>
                     </div>
                     <h2>Already a member?&nbsp;&nbsp;<Link to="/login">Sign In</Link></h2>
-                    {span && (
-                        <Span className={classes.errorLabel} content={span} />
-                    )}
                 </form>
             </div>
         </div>
