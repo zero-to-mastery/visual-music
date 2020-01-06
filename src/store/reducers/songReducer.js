@@ -13,11 +13,7 @@ export const songReducer = (state = initialState.song, action) => {
         case 'SONG_CLEARED':
             return {
                 downloadState: false,
-                song: {
-                    url: null,
-                    name: null,
-                    blob: null
-                }
+                song: initialState.song
             };
 
         case 'SONG_ERROR':
@@ -34,7 +30,7 @@ export const songReducer = (state = initialState.song, action) => {
                     ...state,
                     currentTime: action.currentTime
                 }
-        case 'SET_DURATION':
+        case 'SET_DURATION_FORMATED':
             return {
                 ...state,
                 duration: action.duration

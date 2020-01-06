@@ -7,7 +7,7 @@ import classes from './App.module.scss';
 import HamburgerToggle from '../../components/HamburgerToggle/HamburgerToggle';
 import VisualPanel from '../../components/VisualPanel/VisualPanel';
 
-import { setCurrentTimeFormated, setDuration, setPlayPressed } from '../../store/actions/songActions';
+import { setCurrentTimeFormated, setDurationFormated, setPlayPressed } from '../../store/actions/songActions';
 import { getTimeFormated } from '../../utils/timeConversion';
 
 export default function App() {
@@ -40,7 +40,6 @@ export default function App() {
         setIsPlaying(false);
     }, [songUrl, songName, songBLob]);
 
-    console.log('isPlaying', isPlaying);
     /********************************************
         Handles changing of volume state upon
         slider interaction. State changes are sent to
@@ -72,14 +71,14 @@ export default function App() {
 
     const onSongEnd = () => {
         setIsPlaying(false);
-        setPlayPressed(false);
+        dispatch(setPlayPressed(false));
         setSongEnded(true);
     };
 
     // Set duration from audio event
     const handleMetadata = event => {
         const duration = getTimeFormated(event.currentTarget.duration);
-        dispatch(setDuration(duration))
+        dispatch(setDurationFormated(duration))
 
     };
 

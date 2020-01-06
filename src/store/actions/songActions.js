@@ -57,10 +57,10 @@ export const setCurrentTimeFormated = currentTime => {
     }
 }
 
-export const setDuration = duration => {
+export const setDurationFormated = duration => {
     return (dispatch, getState) => {
         try{
-            dispatch({type: 'SET_DURATION', duration})
+            dispatch({type: 'SET_DURATION_FORMATED', duration})
         }catch(err){
             dispatchError(dispatch,err);
         }
