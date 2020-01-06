@@ -14,8 +14,20 @@ function AppBrowser() {
     // in case there is user but no song, upload song mockup will be the rendered component,
     // and in case that there is no user (or user log out ...) the route will reDirect to landing page.
     const uid = useSelector(state => state.firebase.auth.uid);
-    const song = useSelector(state => state.song);
-
+    // const song = useSelector(state => state.song);
+    const songUrl = useSelector(state => state.song.url);
+    
+    return (
+        <div>
+            {uid ? (
+                <div>{songUrl ? <App /> : <UploadSong />}</div>
+            ) : (
+                <Redirect to="/" />
+            )}
+        </div>
+    );
+    
+    /*
     return (
         <div>
             {uid ? (
@@ -25,6 +37,8 @@ function AppBrowser() {
             )}
         </div>
     );
+    */
+    
 }
 
 export default withRouter(AppBrowser);

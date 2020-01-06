@@ -10,8 +10,7 @@
  5. Control the part of the song to be played
 
  ************************************************************/
-
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 import { ReactComponent as SnapshotIcon } from '../../assets/PlayerBarAssets/snapshot-icon-white-dark.svg';
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
@@ -21,10 +20,9 @@ import { ReactComponent as RollingIcon } from '../../assets/LoadingAssets/Rollin
 import UploadButton from './UploadButton/UploadButton';
 import classes from './PlayerBar.module.scss';
 import DownloadButton from './DownloadButton/DownloadButton';
+import { getSecondsFromTimeFormated } from '../../utils/timeConversion';
 
 export default function PlayerBar(props) {
-    const [formatedDuration, setFormatedDuration] = useState('0:00');
-    const [formatedCurrentTime, setFormatedCurrentTime] = useState('0:00');
 
     // Props from (src/pages/App/App.js):
     const {
@@ -37,29 +35,13 @@ export default function PlayerBar(props) {
         onVolumeChange,
         songEnded,
         currentTime,
-        onCueTimeChange
+        onCueTimeChange,
+        currentTimeFormated
     } = props;
-
-    // Set formated duration
-    useEffect(() => {
-        setFormatedDuration(getTime(duration));
-    }, [duration]);
-
-    // Set formated current time
-    useEffect(() => {
-        setFormatedCurrentTime(getTime(currentTime));
-    }, [currentTime]);
-
-    // Format time (eg. 140 to 2:20)
-    const getTime = dur => {
-        return (
-            Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2)
-        );
-    };
 
     // Update the width for the progress slider base on the current time
     const sliderProgressWidth = {
-        width: `${(100 * currentTime) / duration}%`
+        width: `${(100 * currentTime) / getSecondsFromTimeFormated(duration)}%`
     };
 
     // Change play button to loading svg when loading on p5 sound
@@ -86,7 +68,7 @@ export default function PlayerBar(props) {
                 </div>
                 <div className={classes.controls}>
                     <span className={classes.progressTime}>
-                        {formatedCurrentTime}
+                        {currentTimeFormated}
                     </span>
                     <div className={classes.slider}>
                         <div
@@ -104,7 +86,7 @@ export default function PlayerBar(props) {
                         />
                     </div>
                     <span className={classes.progressTime}>
-                        {formatedDuration}
+                        {duration}
                     </span>
                 </div>
                 <div className={classes.volume}>
