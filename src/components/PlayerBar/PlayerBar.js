@@ -28,9 +28,6 @@ import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
 import { getTimeFormatedMMSS } from '../../utils/timeFormat';
 
 export default function PlayerBar(props) {
-    // const [formatedDuration, setFormatedDuration] = useState('0:00');
-    // const [formatedCurrentTime, setFormatedCurrentTime] = useState('0:00');
-
     const dispatch = useDispatch();
     const { isFullSize, isElementsShowed } = useSelector(
         state => state.fullSize
@@ -50,23 +47,7 @@ export default function PlayerBar(props) {
         onCueTimeChange
     } = props;
 
-    // Set formated duration
-    /*
-    useEffect(() => {
-        setFormatedDuration(getTime(duration));
-    }, [duration]);
-    */
-    // Set formated current time
-    /*
-    useEffect(() => {
-        setFormatedCurrentTime(getTime(currentTime));
-    }, [currentTime]);
-    */
-    // Format time (eg. 140 to 2:20)
-    /*
-    const getTime = dur =>
-        Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2);
-    */
+   
     // Update the width for the progress slider base on the current time
     const sliderProgressWidth = {
         width: `${(100 * currentTime) / duration}%`
@@ -99,9 +80,7 @@ export default function PlayerBar(props) {
                 </div>
                 <div className={classes.controls}>
                     <span className={classes.progressTime}>
-                        {// formatedCurrentTime
-                            getTimeFormatedMMSS(currentTime)
-                        }
+                        {getTimeFormatedMMSS(currentTime)}
                     </span>
                     <div className={classes.slider}>
                         <div
@@ -119,9 +98,7 @@ export default function PlayerBar(props) {
                         />
                     </div>
                     <span className={classes.progressTime}>
-                        {//formatedDuration
-                            getTimeFormatedMMSS(duration)
-                        }
+                        {getTimeFormatedMMSS(duration)}
                     </span>
                 </div>
                 <div className={classes.volume}>

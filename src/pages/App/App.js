@@ -14,11 +14,8 @@ import { setCurrentTime, setDuration, setPlayPressed } from '../../store/actions
 
 export default function App() {
     // Local States
-    // const [playPressed, setPlayPressed] = useState(false);
     const [uploadedSong, setUploadedSong] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    // const [duration, setDuration] = useState(null);
-    // const [currentTime, setCurrentTime] = useState(null);
     const [volume, setVolume] = useState(0.5);
     const [isTogglePanel, setisTogglePanel] = useState(false);
     const [isSongEnded, setisSongEnded] = useState(false);
@@ -34,24 +31,25 @@ export default function App() {
         state => state.fullSize
     );
 
-    const { url, name, blob, duration, currentTime, isPlayPressed } = useSelector(state => state.song);
+    const songUrl  = useSelector(state => state.song.url);
+    const songName = useSelector(state => state.song.name);
+    const songBlob = useSelector(state => state.song.blob);
+    const { duration, currentTime, isPlayPressed } = useSelector(state => state.song);
 
     const dispatch = useDispatch();
 
     // Update state when a new song is uploaded
     useEffect(() => {
-        setUploadedSong({url: url, name: name, blob: blob});
+        setUploadedSong({url: songUrl, name: songName, blob: songBlob});
         setisSongEnded(false);
-        // setPlayPressed(false);
-        //playPressedHandler(false);
         setIsPlaying(false);
-    }, [url,name,blob]);
+    }, [songUrl,songName,songBlob]);
 
     const onSongEnd = () => {
         setIsPlaying(false);
-        // setPlayPressed(false);
         playPressedHandler(false);
         setisSongEnded(true);
+        dispatch(setCurrentTime(0));
     };
 
     const playPressedHandler = (isPlayPressed) => {
@@ -92,10 +90,8 @@ export default function App() {
                                 volume={volume}
                                 takeScreenshot={takeScreenshot}
                                 playPressed={isPlayPressed}
-                                // uploadedSong={uploadedSong.url && uploadedSong.url}
-                                uploadedSong={url && url}
-                                // blob={uploadedSong.blob}
-                                blob={blob}
+                                uploadedSong={songUrl}
+                                blob={songBlob}
                                 downloadVisual={isSongEnded && downloadState}
                                 currentTime={currentTime}
                             />
@@ -125,16 +121,13 @@ export default function App() {
                             currentTime={currentTime}
                             volume={volume}
                             onVolumeChange={e => setVolume(e.target.value)}
-                            // onPlayPress={() => dispatch(setPlayPressed(!playPressed))}
                             onPlayPress={() => playPressedHandler(!isPlayPressed)}
                             playPressed={isPlayPressed}
                             isPlaying={isPlaying}
                             uploadedSong={uploadedSong}
                             duration={duration}
                             isSongEnded={isSongEnded}
-                            onCueTimeChange={e =>
-                                setCurrentTime(e.target.value)
-                            }
+                            onCueTimeChange={e => setCurrentTime(e.target.value)}
                         />
                     </div>
                 </div>

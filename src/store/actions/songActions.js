@@ -51,7 +51,10 @@ export const setCurrentTime = currentTime => {
         try{
             dispatch({type: 'SET_CURRENT_TIME', currentTime})
         }catch(err){
-            dispatchError(dispatch,err);
+            dispatch({
+                type: 'SONG_ERR',
+                err
+            });
         }
 
     }
@@ -62,7 +65,10 @@ export const setDuration = duration => {
         try{
             dispatch({type: 'SET_DURATION', duration})
         }catch(err){
-            dispatchError(dispatch,err);
+            dispatch({
+                type: 'SONG_ERR',
+                err
+            });
         }
 
     }
@@ -73,10 +79,11 @@ export const setPlayPressed = isPlayPressed => {
         try{
             dispatch({type: 'PLAY_PRESSED', isPlayPressed})
         }catch(err){
-            dispatchError(dispatch,err);
+            dispatch({
+                type: 'SONG_ERR',
+                err
+            });
         }
 
     }
 }
-
-const dispatchError = (dispatch,err) => {dispatch({type: 'SONG_ERR', err})}
