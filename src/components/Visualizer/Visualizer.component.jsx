@@ -14,15 +14,16 @@
 ************************************************************/
 
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import classes from './Visualizer.module.scss';
 import P5Wrapper from 'react-p5-wrapper';
-import sketch from '../../vendor/sketches/sketch';
+import sketch from '../../vendor/sketch';
 import Measure from 'react-measure';
 
 const Visualizer = React.memo(props => {
     const [canvasWidth, setCanvasWidth] = useState(100);
     const [canvasHeight, setCanvasHeight] = useState(100);
+    const isFullSize = useSelector(state => state.fullSize.isFullSize);
 
     const onResize = content => {
         const { width, height, left, top } = content;
@@ -34,7 +35,8 @@ const Visualizer = React.memo(props => {
 
     const {
         volume,
-        cueTime,
+        takeScreenshot,
+        currentTime,
         playPressed,
         uploadedSong,
         downloadVisual,
@@ -49,18 +51,24 @@ const Visualizer = React.memo(props => {
             }}
         >
             {({ measureRef }) => (
-                <div ref={measureRef} className={classes.visualizer}>
+                <div
+                    ref={measureRef}
+                    className={`${classes.visualizer} ${isFullSize &&
+                        classes.fullSize}`}
+                >
                     <P5Wrapper
                         sketch={sketch}
-                        volume={volume}
                         playPressed={playPressed}
+                        volume={volume}
+                        takeScreenshot={takeScreenshot}
                         uploadedSong={uploadedSong}
                         canvasWidth={canvasWidth}
                         canvasHeight={canvasHeight}
                         downloadVisual={downloadVisual}
                         blob={blob}
+                        currentTime={currentTime}
                         dispatch={useDispatch()}
-                        cueTime={cueTime}
+                        isFullSize={isFullSize}
                     />
                 </div>
             )}

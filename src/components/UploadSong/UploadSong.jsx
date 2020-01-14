@@ -4,31 +4,31 @@ import { setSong, storeBlob } from '../../store/actions/songActions';
 import FileUploader from 'react-firebase-file-uploader';
 import firebase from '../../firebase/config';
 import classes from './UploadSong.module.scss';
-import ProgressSpinner from '../ProgressSpinner/ProgressSpinner';
+import ProgressSpinner from '../../assets/LoadingAssets/jsSpinners/ProgressSpinner/ProgressSpinner';
+import UnsupportPrompt from '../units/Prompt/Prompt';
+import detectFileType from 'detect-file-type';
 
 function UploadSong() {
     const [uploadProgress, setUploadProgress] = useState(0);
+    const [promptUnsupport, setPromptUnsupport] = useState(false);
     const dispatch = useDispatch();
 
     const uid = useSelector(state => state.firebase.auth.uid);
 
-    // i've added FileUploader hidden button at the bottom of the return and it "clicked" when the svg button clicked.
-    // useEffect needed here because we don't want just to attach the hidden button to the click (and only in the second clicking fire the fileuploader),
-    // we want it to simulate a click at the first click, so at the click first useEffect attach the click and then the click fired
+    /*
+    Here we hold a ref to FileUploader because we need to trigger upload
+    task manually
+    */
+    let uploaderRef = null;
 
-    const handleClick = React.useEffect(() => {
-        const fileSelect = document.getElementById('fileSelect');
+    //trigger file selection window
+    const handleClick = () => {
         const fileElem = document.getElementById('fileElem');
-        fileSelect.addEventListener(
-            'click',
-            function(e) {
-                if (fileElem) {
-                    fileElem.click();
-                }
-            },
-            false
-        );
-    }, []);
+
+        if (fileElem) {
+            fileElem.click();
+        }
+    };
 
     const handleUploadSuccess = filename => {
         firebase
@@ -39,25 +39,47 @@ function UploadSong() {
             .then(url => dispatch(setSong({ url, filename })));
     };
 
-    const handleUploadStart = blob => {
-        dispatch(storeBlob(blob));
-    };
-
-    const handleProgress = progress => {
-        setUploadProgress(progress);
-    };
-
     const handleUploadError = error => {
         // ToDo - implement error span
         console.log(error);
     };
 
-    return (
-        <div className={classes.boxStyle}>
-            {uploadProgress !== 0 ? (
-                <ProgressSpinner percentage={uploadProgress} />
-            ) : (
-                <div className={classes.uploadFunctionalityStyle}>
+    const handleFileSelected = e => {
+        const blob = e.target.files[0];
+
+        if (blob) {
+            //convert file to array buffer
+            blob.arrayBuffer().then(buffer => {
+                //detect file format
+                detectFileType.fromBuffer(buffer, (err, result) => {
+                    if (err) {
+                        handleUploadError(err);
+                    }
+
+                    if (result.ext !== 'mp3') {
+                        setPromptUnsupport(true);
+                    } else {
+                        uploaderRef.startUpload(blob);
+                    }
+                });
+            });
+        }
+    };
+
+    const renderSelectAudioFile = () => {
+        return promptUnsupport ? (
+            <div className={classes.unsupportBox}>
+                (
+                <UnsupportPrompt
+                    title="An error occured"
+                    message="Unsupported file format"
+                    onClosed={() => setPromptUnsupport(false)}
+                />
+                )
+            </div>
+        ) : (
+            <div className={classes.uploadFunctionalityStyle}>
+                {
                     <button
                         className={classes.iconStyle}
                         id="fileSelect"
@@ -77,24 +99,45 @@ function UploadSong() {
                             />
                         </svg>
                     </button>
-                    <div className={classes.uploadText}>Upload New Song</div>
-                    <div className={classes.fileFormatStyle}>
-                        file format supported: mp3
-                    </div>
+                }
+                <div className={classes.uploadText}>Upload New Song</div>
+                <div className={classes.fileFormatStyle}>
+                    file format supported: mp3
                 </div>
-            )}
+            </div>
+        );
+    };
 
-            <FileUploader
-                id="fileElem"
-                style={{ display: 'none' }}
-                onUploadStart={handleUploadStart}
-                onProgress={handleProgress}
-                onUploadSuccess={handleUploadSuccess}
-                onUploadError={handleUploadError}
-                accept="audio/*"
-                name="file"
-                storageRef={firebase.storage().ref(uid)}
-            />
+    return (
+        <div className={classes.boxStyle}>
+            {uploadProgress !== 0 ? (
+                <ProgressSpinner percentage={uploadProgress} />
+            ) : (
+                renderSelectAudioFile()
+            )}
+            {/* 
+            Problem:
+            FileUploader have to be unmounted and remounted everytime,
+            in order to make onChange to work/invoked otherwise it will only
+            work at first time.
+            */
+            !promptUnsupport && (
+                <FileUploader
+                    id="fileElem"
+                    style={{ display: 'none' }}
+                    onUploadStart={blob => dispatch(storeBlob(blob))}
+                    onProgress={progress => setUploadProgress(progress)}
+                    onUploadSuccess={handleUploadSuccess}
+                    onUploadError={handleUploadError}
+                    accept="audio/mp3"
+                    name="file"
+                    storageRef={firebase.storage().ref(uid)}
+                    onChange={handleFileSelected}
+                    ref={instance => {
+                        uploaderRef = instance;
+                    }}
+                />
+            )}
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './Register.module.scss';
 import Span from '../../../components/units/Span/Span';
 import FormInput from '../../../components/units/FormInput/formInput.component';
@@ -53,48 +54,46 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
     const [isPasswordHidden, setIsPasswordHidden] = React.useState(true);
 
     return (
-        <div className={classes.signupcomponent}>
-            <div className={classes.container}>
-                <form className={classes.signup} onSubmit={onFormSubmit}>
-                    <div className={classes.headlines}>
-                        <h2 className={classes.headline}>
-                            Welcome to Visual Music!
-                        </h2>
-                        <span className={classes.subheadline}>
-                            Get Started Absolutely free
-                        </span>
+        <div className={classes.signup}>
+            <div className={classes.colone}>
+                <div className={classes.container}>
+                    <h1 className={classes.heading}>Visualize music in a new way!</h1>
+                    <h3 className={classes.subheading}>The app that converts your favourite music pieces into visual expressions</h3>
+                </div>
+            </div>
+            <div className={classes.coltwo}>
+                <form className={classes.signupform} onSubmit={onFormSubmit}>
+                    <h1 className={classes.signupheading}>Sign Up</h1>
+                    {span && <Span className={classes.errorLabel} content={span} />}
+                    <div className={classes.name}>
+                        <FormInput 
+                            labelText='Name'
+                            type="text"
+                            fontSize='medium'
+                            validators={nameValidators}
+                            required
+                            onChange={e=>setName(e.target.value)}
+                            />
                     </div>
-                    <div className={classes.searchfields}>
-                        <div className={classes.name}>
-                            <FormInput 
-                                labelText='Name'
-                                type="text"
-                                fontSize='medium'
-                                validators={nameValidators}
-                                required
-                                onChange={e=>setName(e.target.value)}
-                                />
-                            </div>
-                        <div className={classes.email}>
-                            <FormInput 
-                                labelText='Email' 
-                                type="email"
-                                fontSize='medium'
-                                validators={emailValidators}
-                                required
-                                onChange={e=>setEmail(e.target.value)}
-                            />
-                        </div>
-                        <div className={classes.password}>
-                            <FormInput 
-                                labelText='Password' 
-                                type={isPasswordHidden ? 'password' : 'text'}
-                                fontSize='medium'
-                                validators={passwordValidators}
-                                required
-                                onChange={e=>setPassword(e.target.value)}
-                            />
-                        </div>
+                    <div className={classes.email}>
+                        <FormInput 
+                            labelText='Email address' 
+                            type="email"
+                            fontSize='medium'
+                            validators={emailValidators}
+                            required
+                            onChange={e=>setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className={classes.password}>
+                        <FormInput 
+                            labelText='Password' 
+                            type={isPasswordHidden ? 'password' : 'text'}
+                            fontSize='medium'
+                            validators={passwordValidators}
+                            required
+                            onChange={e=>setPassword(e.target.value)}
+                        />
                     </div>
                     <div className={classes.showpassword}>
                         <input
@@ -109,12 +108,10 @@ function RegisterPage({ setName, setEmail, setPassword, onFormSubmit, span }) {
                     </div>
                     <div className={classes.custombutton}>
                         <button type="submit" >
-                            Sign Up
+                            Continue
                         </button>
                     </div>
-                    {span && (
-                        <Span className={classes.errorLabel} content={span} />
-                    )}
+                    <h2>Already a member?&nbsp;&nbsp;<Link to="/login">Sign In</Link></h2>
                 </form>
             </div>
         </div>

@@ -1,10 +1,24 @@
-.errorScreen {
+@import '../../globalScss/variables.scss';
+
+.errorScreenShow,
+.errorScreenHide {
     position: absolute;
+    top: 0;
     width: 100vw;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: $grey;
+    z-index: 20;
+}
+
+.errorScreenShow {
+    display: flex;
+}
+
+.errorScreenHide {
+    display: none;
 }
 
 .errorModal {
@@ -15,9 +29,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #fb3600;
+    background-color: $red;
     font-size: 10px;
-    z-index: 1;
 
     .guitarIcon {
         margin-bottom: 5em;
@@ -25,7 +38,7 @@
 
     .errorMessage {
         text-align: center;
-        color: #eee;
+        color: $white;
 
         h1 {
             font-weight: bolder;

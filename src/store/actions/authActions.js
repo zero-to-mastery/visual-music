@@ -79,15 +79,8 @@ export const forgotPassword = ({ email }) => {
 
 export const cleanError = () => {
     return (dispatch, getState) => {
-        try {
-            dispatch({
-                type: 'ERROR_CLEARED'
-            });
-        } catch (err) {
-            dispatch({
-                type: 'SONG_ERR',
-                err
-            });
-        }
+        dispatch({
+            type: 'ERROR_CLEARED'
+        });
     };
 };

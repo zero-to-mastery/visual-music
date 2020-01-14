@@ -56,9 +56,8 @@ class HamburgerToggle extends React.Component {
                 }}
             >
                 <div
-                    className={`${classes.hamWrapper} ${
-                        toggle ? classes.toggle : ''
-                    }`}
+                    className={`${classes.hamWrapper} ${toggle &&
+                        classes.toggle}`}
                 >
                     <span></span>
                     <span></span>

@@ -1,0 +1,78 @@
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #050516;
+}
+
+.promptOverlay{
+    width: 50%;
+    // height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0D4E67;
+    border-radius: 4px;
+
+    .content{
+        width: 80%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        background-color: #FFFFFF;
+        border: 2px solid #E6E6E6;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 6% 5%;
+        margin-top: 6%;
+        margin-bottom: 6%;
+
+        .title{
+            text-align: left;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 2rem;
+            line-height: 140%;
+            letter-spacing: 0.15em;
+            color: #0D4E67;
+
+            padding-bottom: 3%;
+        }
+
+        .message{
+            text-align: left;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.7rem;
+            line-height: 160%;
+            letter-spacing: 0.1em;
+            color: #0D4E67;
+        }
+    }
+
+    .closeButtonArea{
+        width: 100%;
+        text-align: right;
+        padding-right: 3.5%;
+        margin-bottom: 1%;
+
+        .closeButton{
+            cursor: pointer;
+        }
+    }
+}
+
+@media only screen and (max-width:980px){
+    .promptOverlay{
+        width: 80%;
+        height: 75%;
+
+          
+    }
+}

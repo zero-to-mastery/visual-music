@@ -46,10 +46,10 @@ export const storeBlob = blob => {
     };
 };
 
-export const setCurrentTimeFormated = currentTime => {
+export const setCurrentTime = currentTime => {
     return (dispatch, getState) => {
         try{
-            dispatch({type: 'SET_CURRENT_TIME_FORMATED', currentTime})
+            dispatch({type: 'SET_CURRENT_TIME', currentTime})
         }catch(err){
             dispatchError(dispatch,err);
         }
@@ -57,10 +57,10 @@ export const setCurrentTimeFormated = currentTime => {
     }
 }
 
-export const setDurationFormated = duration => {
+export const setDuration = duration => {
     return (dispatch, getState) => {
         try{
-            dispatch({type: 'SET_DURATION_FORMATED', duration})
+            dispatch({type: 'SET_DURATION', duration})
         }catch(err){
             dispatchError(dispatch,err);
         }

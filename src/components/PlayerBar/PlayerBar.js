@@ -1,28 +1,40 @@
 /************************************************************
  Main component for Player Bar.
  Allows users to upload an audio file and control it.
-
  Current features:
  1. Load audio file.
  2. Play/Pause audio.
  3. Download visualization
  4. Change volume
  5. Control the part of the song to be played
-
  ************************************************************/
-import React  from 'react';
-import { ReactComponent as SnapshotIcon } from '../../assets/PlayerBarAssets/snapshot-icon-white-dark.svg';
+/* eslint-disable */
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    setIsFullSize,
+    setIsElementsShowed
+} from '../../store/actions/fullSizeActions';
 import { ReactComponent as VolumeIcon } from '../../assets/PlayerBarAssets/volume-icon.svg';
 import { ReactComponent as PlayIcon } from '../../assets/PlayerBarAssets/play-icon.svg';
 import { ReactComponent as PauseIcon } from '../../assets/PlayerBarAssets/pause-icon.svg';
 import { ReactComponent as SongIcon } from '../../assets/PlayerBarAssets/song-icon.svg';
 import { ReactComponent as RollingIcon } from '../../assets/LoadingAssets/Rolling.svg';
 import UploadButton from './UploadButton/UploadButton';
-import classes from './PlayerBar.module.scss';
+import ScreenshotButton from './ScreenshotButton/ScreenshotButton';
 import DownloadButton from './DownloadButton/DownloadButton';
-import { getSecondsFromTimeFormated } from '../../utils/timeConversion';
+import classes from './PlayerBar.module.scss';
+import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
+import { getTimeFormatedMMSS } from '../../utils/timeFormat';
 
 export default function PlayerBar(props) {
+    // const [formatedDuration, setFormatedDuration] = useState('0:00');
+    // const [formatedCurrentTime, setFormatedCurrentTime] = useState('0:00');
+
+    const dispatch = useDispatch();
+    const { isFullSize, isElementsShowed } = useSelector(
+        state => state.fullSize
+    );
 
     // Props from (src/pages/App/App.js):
     const {
@@ -33,15 +45,31 @@ export default function PlayerBar(props) {
         isPlaying,
         volume,
         onVolumeChange,
-        songEnded,
+        isSongEnded,
         currentTime,
-        onCueTimeChange,
-        currentTimeFormated
+        onCueTimeChange
     } = props;
 
+    // Set formated duration
+    /*
+    useEffect(() => {
+        setFormatedDuration(getTime(duration));
+    }, [duration]);
+    */
+    // Set formated current time
+    /*
+    useEffect(() => {
+        setFormatedCurrentTime(getTime(currentTime));
+    }, [currentTime]);
+    */
+    // Format time (eg. 140 to 2:20)
+    /*
+    const getTime = dur =>
+        Math.floor(dur / 60) + ':' + ('0' + Math.floor(dur % 60)).slice(-2);
+    */
     // Update the width for the progress slider base on the current time
     const sliderProgressWidth = {
-        width: `${(100 * currentTime) / getSecondsFromTimeFormated(duration)}%`
+        width: `${(100 * currentTime) / duration}%`
     };
 
     // Change play button to loading svg when loading on p5 sound
@@ -51,9 +79,12 @@ export default function PlayerBar(props) {
     } else {
         actionButton = <RollingIcon />;
     }
-
     return (
-        <div className={classes.playerBar}>
+        <div
+            id="player_bar"
+            className={`${classes.playerBar} 
+            ${isFullSize && !isElementsShowed && classes.hideBar}`}
+        >
             <div className={classes.nowPlaying}>
                 <div className={classes.icon}>
                     <SongIcon />
@@ -68,7 +99,9 @@ export default function PlayerBar(props) {
                 </div>
                 <div className={classes.controls}>
                     <span className={classes.progressTime}>
-                        {currentTimeFormated}
+                        {// formatedCurrentTime
+                            getTimeFormatedMMSS(currentTime)
+                        }
                     </span>
                     <div className={classes.slider}>
                         <div
@@ -86,7 +119,9 @@ export default function PlayerBar(props) {
                         />
                     </div>
                     <span className={classes.progressTime}>
-                        {duration}
+                        {//formatedDuration
+                            getTimeFormatedMMSS(duration)
+                        }
                     </span>
                 </div>
                 <div className={classes.volume}>
@@ -108,17 +143,31 @@ export default function PlayerBar(props) {
             <div className={classes.playerBarRight}>
                 <div className={classes.download}>
                     <div className={classes.snapshotButton}>
-                        <SnapshotIcon />
+                        <ScreenshotButton />
                     </div>
                     <div className={classes.downloadButton}>
                         <DownloadButton
                             isPlaying={isPlaying}
-                            songEnded={songEnded}
+                            isSongEnded={isSongEnded}
                         />
                     </div>
                 </div>
                 <UploadButton classes={classes} />
+
+                {/* I didn't know which icon to add so you more than welcome to replace this one */}
+                <img
+                    className={`${classes.setSizeIcon} ${
+                        isFullSize
+                            ? classes.fullSizeIcon
+                            : classes.normalSizeIcon
+                    }`}
+                    alt="set size icon"
+                    src="https://icon-library.net//images/full-screen-icon-png/full-screen-icon-png-21.jpg"
+                    onClick={() => dispatch(setIsFullSize(!isFullSize))}
+                />
             </div>
+
+            {isFullSize && <ShowElementsOnFullSize elemID={'player_bar'} />}
         </div>
     );
 }
