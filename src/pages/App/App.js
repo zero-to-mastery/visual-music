@@ -14,7 +14,6 @@ import { setCurrentTime, setDuration, setPlayPressed } from '../../store/actions
 
 export default function App() {
     // Local States
-    const [uploadedSong, setUploadedSong] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.5);
     const [isTogglePanel, setisTogglePanel] = useState(false);
@@ -31,19 +30,15 @@ export default function App() {
         state => state.fullSize
     );
 
-    const songUrl  = useSelector(state => state.song.url);
-    const songName = useSelector(state => state.song.name);
-    const songBlob = useSelector(state => state.song.blob);
-    const { duration, currentTime, isPlayPressed } = useSelector(state => state.song);
+    const songInfo = useSelector(state => state.song);
 
     const dispatch = useDispatch();
 
     // Update state when a new song is uploaded
     useEffect(() => {
-        setUploadedSong({url: songUrl, name: songName, blob: songBlob});
         setisSongEnded(false);
         setIsPlaying(false);
-    }, [songUrl,songName,songBlob]);
+    }, []);
 
     const onSongEnd = () => {
         setIsPlaying(false);
@@ -58,7 +53,7 @@ export default function App() {
 
     const onTimeUpdateHandler = e => {
         const songCurrentTime = parseInt(e.target.currentTime);
-        if(!isSongEnded && songCurrentTime !== currentTime){
+        if(!isSongEnded && songCurrentTime !== songInfo.currentTime){
             dispatch(setCurrentTime(songCurrentTime));
         }
     }
@@ -89,11 +84,11 @@ export default function App() {
                             <Visualizer
                                 volume={volume}
                                 takeScreenshot={takeScreenshot}
-                                playPressed={isPlayPressed}
-                                uploadedSong={songUrl}
-                                blob={songBlob}
+                                playPressed={songInfo.isPlayPressed}
+                                uploadedSong={songInfo.url}
+                                blob={songInfo.blob}
                                 downloadVisual={isSongEnded && downloadState}
-                                currentTime={currentTime}
+                                currentTime={songInfo.currentTime}
                             />
                         </div>
                         <div
@@ -118,14 +113,14 @@ export default function App() {
                     </div>
                     <div className={classes.bar}>
                         <PlayerBar
-                            currentTime={currentTime}
+                            currentTime={songInfo.currentTime}
                             volume={volume}
                             onVolumeChange={e => setVolume(e.target.value)}
-                            onPlayPress={() => playPressedHandler(!isPlayPressed)}
-                            playPressed={isPlayPressed}
+                            onPlayPress={() => playPressedHandler(!songInfo.isPlayPressed)}
+                            playPressed={songInfo.isPlayPressed}
                             isPlaying={isPlaying}
-                            uploadedSong={uploadedSong}
-                            duration={duration}
+                            uploadedSong={songInfo}
+                            duration={songInfo.duration}
                             isSongEnded={isSongEnded}
                             onCueTimeChange={e => setCurrentTime(e.target.value)}
                         />
