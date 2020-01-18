@@ -32,25 +32,26 @@ export default function PlayerBar(props) {
     const { isFullSize, isElementsShowed } = useSelector(
         state => state.fullSize
     );
+    
+    const songName        = useSelector(state => state.song.name);
+    const isPlayPressed   = useSelector(state => state.song.isPlayPressed);
+    const songCurrentTime = useSelector(state => state.song.currentTime);
+    const songDuration    = useSelector(state => state.song.duration);
 
     // Props from (src/pages/App/App.js):
     const {
-        uploadedSong,
-        duration,
         onPlayPress,
-        playPressed,
         isPlaying,
         volume,
         onVolumeChange,
         isSongEnded,
-        currentTime,
         onCueTimeChange
     } = props;
 
    
     // Update the width for the progress slider base on the current time
     const sliderProgressWidth = {
-        width: `${(100 * currentTime) / duration}%`
+        width: `${(100 * songCurrentTime) / songDuration}%`
     };
 
     // Change play button to loading svg when loading on p5 sound
@@ -71,16 +72,16 @@ export default function PlayerBar(props) {
                     <SongIcon />
                 </div>
                 <div className={classes.songTitle}>
-                    {uploadedSong ? uploadedSong.name : 'No song selected'}
+                    {songName ? songName : 'No song selected'}
                 </div>
             </div>
             <div className={classes.playerControls}>
                 <div className={classes.playButton} onClick={onPlayPress}>
-                    {playPressed ? actionButton : <PlayIcon />}
+                    {isPlayPressed ? actionButton : <PlayIcon />}
                 </div>
                 <div className={classes.controls}>
                     <span className={classes.progressTime}>
-                        {getTimeFormatedMMSS(currentTime)}
+                        {getTimeFormatedMMSS(songCurrentTime)}
                     </span>
                     <div className={classes.slider}>
                         <div
@@ -91,14 +92,14 @@ export default function PlayerBar(props) {
                             className={classes.rangeInput}
                             type="range"
                             min="0"
-                            max={duration}
+                            max={songDuration}
                             step="1"
                             name="cue"
                             onClick={onCueTimeChange}
                         />
                     </div>
                     <span className={classes.progressTime}>
-                        {getTimeFormatedMMSS(duration)}
+                        {getTimeFormatedMMSS(songDuration)}
                     </span>
                 </div>
                 <div className={classes.volume}>

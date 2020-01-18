@@ -25,6 +25,11 @@ const Visualizer = React.memo(props => {
     const [canvasHeight, setCanvasHeight] = useState(100);
     const isFullSize = useSelector(state => state.fullSize.isFullSize);
 
+    const songCurrentTime = useSelector(state => state.song.currentTime);
+    const isPlayPressed   = useSelector(state => state.song.isPlayPressed);
+    const songUrl         = useSelector(state => state.song.url);
+    const songBLob        = useSelector(state => state.song.blob);
+
     const onResize = content => {
         const { width, height, left, top } = content;
         const cWidth = width - left;
@@ -33,14 +38,11 @@ const Visualizer = React.memo(props => {
         setCanvasHeight(cHeight);
     };
 
+
     const {
         volume,
         takeScreenshot,
-        currentTime,
-        playPressed,
-        uploadedSong,
         downloadVisual,
-        blob
     } = props;
 
     return (
@@ -58,15 +60,15 @@ const Visualizer = React.memo(props => {
                 >
                     <P5Wrapper
                         sketch={sketch}
-                        playPressed={playPressed}
+                        playPressed={isPlayPressed}
                         volume={volume}
                         takeScreenshot={takeScreenshot}
-                        uploadedSong={uploadedSong}
+                        uploadedSong={songUrl}
                         canvasWidth={canvasWidth}
                         canvasHeight={canvasHeight}
                         downloadVisual={downloadVisual}
-                        blob={blob}
-                        currentTime={currentTime}
+                        blob={songBLob}
+                        currentTime={songCurrentTime}
                         dispatch={useDispatch()}
                         isFullSize={isFullSize}
                     />

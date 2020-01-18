@@ -30,7 +30,8 @@ export default function App() {
         state => state.fullSize
     );
 
-    const songInfo = useSelector(state => state.song);
+    const songCurrentTime = useSelector(state => state.song.currentTime);
+    const isPlayPressed   = useSelector(state => state.song.isPlayPressed);
 
     const dispatch = useDispatch();
 
@@ -52,9 +53,9 @@ export default function App() {
     }
 
     const onTimeUpdateHandler = e => {
-        const songCurrentTime = parseInt(e.target.currentTime);
-        if(!isSongEnded && songCurrentTime !== songInfo.currentTime){
-            dispatch(setCurrentTime(songCurrentTime));
+        const currentTime = parseInt(e.target.currentTime);
+        if(!isSongEnded && currentTime !== songCurrentTime){
+            dispatch(setCurrentTime(currentTime));
         }
     }
     
@@ -76,19 +77,13 @@ export default function App() {
                             >
                                 <HamburgerToggle
                                     initToggle={isTogglePanel}
-                                    onClick={toggleState =>
-                                        setisTogglePanel(toggleState)
-                                    }
+                                    onClick={ toggleState => setisTogglePanel(toggleState) }
                                 />
                             </div>
                             <Visualizer
                                 volume={volume}
                                 takeScreenshot={takeScreenshot}
-                                playPressed={songInfo.isPlayPressed}
-                                uploadedSong={songInfo.url}
-                                blob={songInfo.blob}
                                 downloadVisual={isSongEnded && downloadState}
-                                currentTime={songInfo.currentTime}
                             />
                         </div>
                         <div
@@ -113,14 +108,10 @@ export default function App() {
                     </div>
                     <div className={classes.bar}>
                         <PlayerBar
-                            currentTime={songInfo.currentTime}
                             volume={volume}
                             onVolumeChange={e => setVolume(e.target.value)}
-                            onPlayPress={() => playPressedHandler(!songInfo.isPlayPressed)}
-                            playPressed={songInfo.isPlayPressed}
+                            onPlayPress={() => playPressedHandler(!isPlayPressed)}
                             isPlaying={isPlaying}
-                            uploadedSong={songInfo}
-                            duration={songInfo.duration}
                             isSongEnded={isSongEnded}
                             onCueTimeChange={e => setCurrentTime(e.target.value)}
                         />
