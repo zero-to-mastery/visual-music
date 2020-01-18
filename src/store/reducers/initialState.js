@@ -3,7 +3,10 @@ export default {
     song: {
         url: null,
         name: null,
-        blob: null
+        blob: null,
+        duration: 0,
+        currentTime: 0,
+        isPlayPressed: false
     },
     downloadState: false,
     screenshot: {
@@ -20,8 +23,5 @@ export default {
         room: 'global',
         messages: [],
         onlineUsers: null
-    },
-    route:{
-        currentRoute: ''
     }
 };

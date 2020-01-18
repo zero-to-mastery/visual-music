@@ -14,8 +14,9 @@ function AppBrowser() {
     // and in case that there is no user (or user log out ...) the route will reDirect to landing page.
     const uid = useSelector(state => state.firebase.auth.uid);
     const userName = useSelector(state => state.firebase.profile.name);
-    const song = useSelector(state => state.song);
+    const songURl = useSelector(state => state.song.url);
     const dispatch = useDispatch();
+    
     useEffect(() => {
         if (userName) {
             dispatch(initChat({ uid, userName }));
@@ -35,7 +36,7 @@ function AppBrowser() {
     return (
         <div>
             {uid ? (
-                <> {song.url ? <App song={song} /> : <UploadSong />} </>
+                <> {songURl ? <App /> : <UploadSong />} </>
             ) : (
                 <Redirect to="/" />
             )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Visualizer from '../../components/Visualizer/Visualizer.component';
 import PlayerBar from '../../components/PlayerBar/PlayerBar';
 import classes from './App.module.scss';
@@ -10,13 +10,11 @@ import ScreenshotModal from '../../components/ScreenshotModal/ScreenshotModal';
 import Error from '../../components/Error/Error';
 import Success from '../../components/Success/Success';
 import ShowElementsOnFullSize from '../../utils/ShowElementsOnFullSize';
+import { setCurrentTime, setDuration, setPlayPressed } from '../../store/actions/songActions';
 
-export default function App({ song }) {
+export default function App() {
     // Local States
-    const [playPressed, setPlayPressed] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [duration, setDuration] = useState(null);
-    const [currentTime, setCurrentTime] = useState(null);
     const [volume, setVolume] = useState(0.5);
     const [isTogglePanel, setisTogglePanel] = useState(false);
     const [isSongEnded, setisSongEnded] = useState(false);
@@ -32,19 +30,35 @@ export default function App({ song }) {
         state => state.fullSize
     );
 
+    const songCurrentTime = useSelector(state => state.song.currentTime);
+    const isPlayPressed   = useSelector(state => state.song.isPlayPressed);
+
+    const dispatch = useDispatch();
+
     // Update state when a new song is uploaded
     useEffect(() => {
         setisSongEnded(false);
-        setPlayPressed(false);
         setIsPlaying(false);
-    }, [song]);
+    }, []);
 
     const onSongEnd = () => {
         setIsPlaying(false);
-        setPlayPressed(false);
+        playPressedHandler(false);
         setisSongEnded(true);
+        dispatch(setCurrentTime(0));
     };
 
+    const playPressedHandler = (isPlayPressed) => {
+        dispatch(setPlayPressed(isPlayPressed));
+    }
+
+    const onTimeUpdateHandler = e => {
+        const currentTime = parseInt(e.target.currentTime);
+        if(!isSongEnded && currentTime !== songCurrentTime){
+            dispatch(setCurrentTime(currentTime));
+        }
+    }
+    
     return (
         <>
             <div className={classes.pageContainer}>
@@ -63,19 +77,13 @@ export default function App({ song }) {
                             >
                                 <HamburgerToggle
                                     initToggle={isTogglePanel}
-                                    onClick={toggleState =>
-                                        setisTogglePanel(toggleState)
-                                    }
+                                    onClick={ toggleState => setisTogglePanel(toggleState) }
                                 />
                             </div>
                             <Visualizer
                                 volume={volume}
                                 takeScreenshot={takeScreenshot}
-                                playPressed={playPressed}
-                                uploadedSong={song.url && song.url}
-                                blob={song.blob}
                                 downloadVisual={isSongEnded && downloadState}
-                                currentTime={currentTime}
                             />
                         </div>
                         <div
@@ -93,32 +101,19 @@ export default function App({ song }) {
                         <audio
                             id="audio"
                             onEnded={onSongEnd}
-                            onLoadedMetadata={e =>
-                                setDuration(e.currentTarget.duration)
-                            }
+                            onLoadedMetadata={e => dispatch(setDuration(parseInt(e.currentTarget.duration)))}
                             onPlay={() => setIsPlaying(true)}
-                            onTimeUpdate={e =>
-                                !isSongEnded &&
-                                parseInt(e.target.currentTime) !==
-                                    parseInt(currentTime) &&
-                                setCurrentTime(e.target.currentTime)
-                            }
+                            onTimeUpdate={onTimeUpdateHandler}
                         ></audio>
                     </div>
                     <div className={classes.bar}>
                         <PlayerBar
-                            currentTime={currentTime}
                             volume={volume}
                             onVolumeChange={e => setVolume(e.target.value)}
-                            onPlayPress={() => setPlayPressed(!playPressed)}
-                            playPressed={playPressed}
+                            onPlayPress={() => playPressedHandler(!isPlayPressed)}
                             isPlaying={isPlaying}
-                            uploadedSong={song}
-                            duration={duration}
                             isSongEnded={isSongEnded}
-                            onCueTimeChange={e =>
-                                setCurrentTime(e.target.value)
-                            }
+                            onCueTimeChange={e => setCurrentTime(e.target.value)}
                         />
                     </div>
                 </div>

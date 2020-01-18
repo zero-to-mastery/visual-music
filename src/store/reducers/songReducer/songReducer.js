@@ -1,7 +1,7 @@
 import initialState from '../initialState';
 
 export const songReducer = (state = initialState.song, action) => {
-    switch (action.type) {
+    switch (action.type) {  
         case 'SONG_SETTED':
             // for more info- https://trello.com/c/AAphnJN4/116-discussion-cors-error
             return {
@@ -11,11 +11,7 @@ export const songReducer = (state = initialState.song, action) => {
             };
 
         case 'SONG_CLEARED':
-            return {
-                url: null,
-                name: null,
-                blob: null
-            };
+            return initialState.song;
 
         case 'SONG_ERROR':
             console.log(action.err);
@@ -26,7 +22,21 @@ export const songReducer = (state = initialState.song, action) => {
                 ...state,
                 blob: action.blob
             };
-
+        case 'SET_CURRENT_TIME':
+                return {
+                    ...state,
+                    currentTime: action.currentTime
+                }
+        case 'SET_DURATION':
+            return {
+                ...state,
+                duration: action.duration
+            }
+        case 'PLAY_PRESSED':
+            return {
+                ...state,
+                isPlayPressed: action.isPlayPressed
+            }
         default:
             return state;
     }
